@@ -3,56 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rocket Print — premium custom apparel and local designs from Wellington, Texas." />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="description" content="Rocket Print — premium custom apparel, local designs, and custom printing from Wellington, Texas." />
+  <meta name="theme-color" content="#080808" />
+  <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
+
+  <meta property="og:title" content="Rocket Print | Wellington, Texas" />
+  <meta property="og:description" content="Local designs. Premium apparel. Custom printing from Wellington, Texas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
+
   <title>Rocket Print | Wellington, Texas</title>
 
   <style>
     :root{
-      --bg:#0b0b0b;
-      --panel:#141414;
-      --panel-2:#1b1b1b;
+      --bg:#080808;
+      --bg-soft:#0e0e0e;
+      --panel:#131313;
+      --panel-2:#191919;
+      --panel-3:#202020;
       --text:#ffffff;
-      --muted:#b9b9b9;
-      --red:#e53935;
-      --red-dark:#b71c1c;
-      --line:#2a2a2a;
-      --shadow:0 18px 50px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1180px;
+      --muted:#b6b6b6;
+      --muted-2:#858585;
+      --red:#e43a35;
+      --red-bright:#ff4a44;
+      --red-dark:#a91412;
+      --line:rgba(255,255,255,.095);
+      --line-strong:rgba(255,255,255,.17);
+      --shadow:0 22px 70px rgba(0,0,0,.42);
+      --radius:22px;
+      --radius-sm:14px;
+      --max:1200px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(229,57,53,.10), transparent 32%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.6;
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:105px;
     }
 
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(228,58,53,.15), transparent 26%),
+        radial-gradient(circle at 7% 36%, rgba(228,58,53,.06), transparent 28%),
+        var(--bg);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    body.menu-open{overflow:hidden}
+
+    button,input,textarea,select{font:inherit}
     a{color:inherit}
     img{max-width:100%;display:block}
 
     .wrap{
-      width:min(calc(100% - 32px), var(--max));
+      width:min(calc(100% - 36px), var(--max));
       margin-inline:auto;
     }
+
+    .announcement{
+      min-height:34px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:7px 16px;
+      color:#f1f1f1;
+      background:#111;
+      border-bottom:1px solid var(--line);
+      font-size:.82rem;
+      letter-spacing:.025em;
+    }
+
+    .announcement b{color:#ff6e69}
 
     header{
       position:sticky;
       top:0;
-      z-index:100;
-      backdrop-filter:blur(12px);
-      background:rgba(11,11,11,.82);
+      z-index:200;
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      background:rgba(8,8,8,.80);
       border-bottom:1px solid rgba(255,255,255,.07);
     }
 
     .nav{
-      min-height:72px;
+      min-height:76px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -62,118 +102,222 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:11px;
       text-decoration:none;
       font-weight:900;
-      letter-spacing:.04em;
-      font-size:1.2rem;
+      letter-spacing:-.01em;
+      white-space:nowrap;
     }
 
     .brand-mark{
-      width:38px;
-      height:38px;
-      border-radius:10px;
+      width:42px;
+      height:42px;
+      border-radius:12px;
       display:grid;
       place-items:center;
-      background:linear-gradient(145deg,var(--red),var(--red-dark));
-      font-weight:900;
-      box-shadow:0 10px 25px rgba(229,57,53,.22);
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(145deg,var(--red-bright),var(--red-dark));
+      box-shadow:0 10px 28px rgba(228,58,53,.25);
+      font-size:1.1rem;
+      font-weight:1000;
     }
 
-    .brand span:last-child{color:var(--red)}
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      width:28px;
+      height:3px;
+      background:white;
+      opacity:.9;
+      left:-9px;
+      top:19px;
+      transform:skewX(-22deg);
+      box-shadow:0 -6px 0 rgba(255,255,255,.45),0 6px 0 rgba(255,255,255,.28);
+    }
+
+    .brand-word{
+      font-size:1.08rem;
+      letter-spacing:.055em;
+    }
+
+    .brand-word .red{color:var(--red-bright)}
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap:22px;
+      gap:24px;
     }
 
     .nav-links a{
       text-decoration:none;
-      color:#e7e7e7;
-      font-size:.95rem;
+      color:#d7d7d7;
+      font-size:.93rem;
+      font-weight:650;
+      transition:.2s;
     }
 
     .nav-links a:hover{color:white}
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#121212;
+      color:white;
+      cursor:pointer;
+    }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:13px 20px;
-      border-radius:12px;
+      gap:9px;
+      min-height:46px;
+      padding:12px 19px;
+      border-radius:13px;
       text-decoration:none;
-      font-weight:800;
+      font-weight:850;
       border:1px solid transparent;
       transition:.2s ease;
       cursor:pointer;
+      white-space:nowrap;
     }
 
     .btn-primary{
-      background:var(--red);
+      background:linear-gradient(135deg,var(--red-bright),var(--red));
       color:#fff;
-      box-shadow:0 10px 24px rgba(229,57,53,.22);
+      box-shadow:0 12px 28px rgba(228,58,53,.22);
     }
 
     .btn-primary:hover{
       transform:translateY(-2px);
-      background:#ef403b;
+      box-shadow:0 17px 35px rgba(228,58,53,.30);
     }
 
     .btn-secondary{
-      background:transparent;
-      border-color:#3a3a3a;
+      background:rgba(255,255,255,.035);
+      border-color:var(--line-strong);
       color:#fff;
     }
 
     .btn-secondary:hover{
-      border-color:#666;
-      background:#141414;
+      background:rgba(255,255,255,.075);
+      transform:translateY(-2px);
     }
 
     .btn-disabled{
-      opacity:.52;
+      opacity:.47;
       cursor:not-allowed;
       pointer-events:none;
+      filter:saturate(.5);
+    }
+
+    .mobile-menu{
+      position:fixed;
+      inset:111px 0 auto 0;
+      z-index:190;
+      display:none;
+      background:rgba(8,8,8,.98);
+      border-bottom:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .mobile-menu.open{display:block}
+
+    .mobile-menu .wrap{
+      padding:18px 0 24px;
+      display:grid;
+      gap:4px;
+    }
+
+    .mobile-menu a{
+      padding:15px 6px;
+      text-decoration:none;
+      font-weight:750;
+      color:#dedede;
+      border-bottom:1px solid rgba(255,255,255,.05);
     }
 
     .hero{
-      padding:105px 0 85px;
-      min-height:76vh;
+      position:relative;
+      min-height:calc(100vh - 110px);
       display:grid;
       align-items:center;
+      padding:88px 0 72px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      right:-240px;
+      top:40px;
+      background:var(--red);
+      filter:blur(110px);
+      opacity:.14;
+      pointer-events:none;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:52px;
+      grid-template-columns:1.04fr .96fr;
+      gap:56px;
       align-items:center;
+      position:relative;
+      z-index:1;
     }
 
     .eyebrow{
-      color:#ff6d68;
-      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:17px;
+      color:#ff6b66;
       text-transform:uppercase;
       letter-spacing:.18em;
-      font-size:.78rem;
-      margin-bottom:16px;
+      font-size:.76rem;
+      font-weight:900;
     }
+
+    .eyebrow::before{
+      content:"";
+      width:24px;
+      height:2px;
+      background:var(--red);
+      border-radius:20px;
+    }
+
+    h1,h2,h3{line-height:1.05}
 
     h1{
-      font-size:clamp(3rem,7vw,6.4rem);
-      line-height:.94;
-      margin:0 0 22px;
-      letter-spacing:-.05em;
+      margin:0 0 24px;
+      font-size:clamp(3.35rem,7.2vw,6.8rem);
+      letter-spacing:-.065em;
+      max-width:850px;
     }
 
-    .hero-red{color:var(--red)}
+    .hero-line{display:block}
+    .hero-red{
+      color:var(--red-bright);
+      text-shadow:0 8px 32px rgba(228,58,53,.10);
+    }
 
-    .hero p{
-      font-size:clamp(1.05rem,2vw,1.25rem);
+    .hero-copy{
+      max-width:640px;
       color:var(--muted);
-      max-width:650px;
+      font-size:clamp(1.03rem,1.7vw,1.25rem);
       margin:0 0 30px;
     }
 
@@ -181,101 +325,244 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-    }
-
-    .hero-card{
-      position:relative;
-      min-height:450px;
-      border-radius:30px;
-      overflow:hidden;
-      background:
-        linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,.01)),
-        #171717;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-      padding:28px;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:auto -80px -110px auto;
-      width:310px;
-      height:310px;
-      border-radius:50%;
-      background:var(--red);
-      filter:blur(5px);
-      opacity:.16;
-    }
-
-    .mock-shirt{
-      position:absolute;
-      inset:70px 40px 40px;
-      display:grid;
-      place-items:center;
-    }
-
-    .shirt{
-      width:250px;
-      height:275px;
-      background:#080808;
-      clip-path:polygon(25% 0,37% 8%,63% 8%,75% 0,100% 14%,83% 34%,78% 28%,78% 100%,22% 100%,22% 28%,17% 34%,0 14%);
-      box-shadow:0 20px 60px rgba(0,0,0,.55);
-      position:relative;
-    }
-
-    .shirt-logo{
-      position:absolute;
-      top:90px;
-      left:50%;
-      transform:translateX(-50%);
-      width:140px;
-      text-align:center;
-      font-size:1.2rem;
-      font-weight:900;
-      letter-spacing:.04em;
-    }
-
-    .shirt-logo .r{color:var(--red)}
-
-    .mini-label{
-      position:absolute;
-      top:24px;
-      left:24px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:800;
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    section{padding:88px 0}
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:24px;
       margin-bottom:30px;
     }
 
-    .section-head h2{
-      font-size:clamp(2rem,4vw,3.2rem);
+    .hero-points{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      color:#cdcdcd;
+      font-size:.9rem;
+    }
+
+    .hero-points span{
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+
+    .check{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(228,58,53,.18);
+      color:#ff6c67;
+      font-size:.72rem;
+      font-weight:900;
+    }
+
+    .showcase{
+      position:relative;
+      min-height:540px;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(150deg,rgba(255,255,255,.075),rgba(255,255,255,.01) 46%),
+        #121212;
+      box-shadow:var(--shadow);
+    }
+
+    .showcase::after{
+      content:"";
+      position:absolute;
+      width:290px;
+      height:290px;
+      border-radius:50%;
+      right:-100px;
+      bottom:-100px;
+      background:var(--red);
+      filter:blur(10px);
+      opacity:.15;
+    }
+
+    .showcase-top{
+      position:absolute;
+      top:22px;
+      left:22px;
+      right:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      z-index:2;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:34px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.055);
+      border:1px solid var(--line);
+      font-size:.77rem;
+      font-weight:800;
+      color:#ddd;
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      background:var(--red-bright);
+      border-radius:50%;
+      box-shadow:0 0 0 4px rgba(228,58,53,.12);
+    }
+
+    .shirt-stage{
+      position:absolute;
+      inset:74px 26px 34px;
+      display:grid;
+      place-items:center;
+      z-index:1;
+    }
+
+    .shirt{
+      position:relative;
+      width:min(320px,72%);
+      aspect-ratio:.84;
+      background:linear-gradient(145deg,#080808,#111);
+      clip-path:polygon(25% 0,37% 8%,63% 8%,75% 0,100% 14%,83% 34%,78% 28%,78% 100%,22% 100%,22% 28%,17% 34%,0 14%);
+      filter:drop-shadow(0 28px 30px rgba(0,0,0,.48));
+    }
+
+    .shirt-design{
+      position:absolute;
+      top:32%;
+      left:50%;
+      transform:translateX(-50%);
+      width:48%;
+      text-align:center;
+      font-weight:1000;
+      letter-spacing:.055em;
+      line-height:1;
+      font-size:clamp(.9rem,2.5vw,1.55rem);
+    }
+
+    .shirt-design small{
+      display:block;
+      margin-top:7px;
+      color:#cfcfcf;
+      font-size:.44em;
+      letter-spacing:.18em;
+    }
+
+    .speed{
+      color:var(--red-bright);
+      position:relative;
+    }
+
+    .speed::before{
+      content:"";
+      position:absolute;
+      left:-30%;
+      top:42%;
+      width:27%;
+      height:3px;
+      background:var(--red-bright);
+      box-shadow:0 -7px 0 rgba(228,58,53,.72),0 7px 0 rgba(228,58,53,.45);
+      transform:skewX(-20deg);
+    }
+
+    .showcase-caption{
+      position:absolute;
+      left:26px;
+      bottom:24px;
+      z-index:2;
+      color:#9f9f9f;
+      font-size:.82rem;
+    }
+
+    .stats{
+      padding:0 0 24px;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .stat{
+      padding:20px 18px;
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:rgba(255,255,255,.025);
+      text-align:center;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.05rem;
+      margin-bottom:3px;
+    }
+
+    .stat span{
+      color:var(--muted-2);
+      font-size:.84rem;
+    }
+
+    section{
+      padding:92px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:28px;
+      margin-bottom:34px;
+    }
+
+    .section-head h2,
+    .split-copy h2,
+    .custom-copy h2{
       margin:0;
-      letter-spacing:-.035em;
+      font-size:clamp(2.2rem,4.8vw,3.8rem);
+      letter-spacing:-.052em;
     }
 
     .section-head p{
       margin:0;
+      max-width:580px;
       color:var(--muted);
-      max-width:570px;
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-bottom:24px;
+    }
+
+    .filter-btn{
+      border:1px solid var(--line);
+      background:#121212;
+      color:#c9c9c9;
+      border-radius:999px;
+      padding:9px 14px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:.86rem;
+      transition:.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      color:#fff;
+      border-color:rgba(228,58,53,.50);
+      background:rgba(228,58,53,.12);
     }
 
     .gallery{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:20px;
+      gap:19px;
     }
 
     .design-card{
@@ -283,523 +570,1052 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       overflow:hidden;
-      transition:.2s ease;
+      transition:.22s ease;
+      cursor:pointer;
+      min-width:0;
     }
 
+    .design-card.hidden{display:none}
+
     .design-card:hover{
-      transform:translateY(-4px);
-      border-color:#474747;
+      transform:translateY(-5px);
+      border-color:rgba(255,255,255,.19);
       box-shadow:var(--shadow);
     }
 
     .design-preview{
-      min-height:330px;
+      min-height:350px;
+      position:relative;
+      overflow:hidden;
       display:grid;
       place-items:center;
-      padding:24px;
       background:
-        radial-gradient(circle at 70% 20%, rgba(229,57,53,.11), transparent 30%),
-        #111;
+        radial-gradient(circle at 77% 18%, rgba(228,58,53,.12), transparent 27%),
+        linear-gradient(150deg,#161616,#0d0d0d);
+    }
+
+    .design-preview::after{
+      content:"View design";
+      position:absolute;
+      right:16px;
+      bottom:16px;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(0,0,0,.62);
+      border:1px solid rgba(255,255,255,.13);
+      color:#f0f0f0;
+      font-size:.76rem;
+      font-weight:800;
+      opacity:0;
+      transform:translateY(6px);
+      transition:.2s;
+    }
+
+    .design-card:hover .design-preview::after{
+      opacity:1;
+      transform:translateY(0);
     }
 
     .design-preview .shirt{
-      width:190px;
-      height:220px;
+      width:210px;
     }
 
-    .design-preview .shirt-logo{
-      top:72px;
-      width:110px;
-      font-size:.95rem;
+    .design-preview .shirt-design{
+      width:54%;
+      font-size:1rem;
     }
 
-    .card-body{
-      padding:20px;
+    .design-card:nth-child(2n) .design-preview{
+      background:
+        radial-gradient(circle at 25% 78%, rgba(228,58,53,.11), transparent 26%),
+        linear-gradient(145deg,#111,#191919);
+    }
+
+    .card-body{padding:20px}
+
+    .card-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
     }
 
     .tag{
       display:inline-block;
-      color:#ff6d68;
-      font-size:.74rem;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.12em;
       margin-bottom:7px;
+      color:#ff6d68;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:.71rem;
+      font-weight:900;
     }
 
     .card-body h3{
-      margin:0 0 7px;
-      font-size:1.18rem;
+      margin:0 0 6px;
+      font-size:1.16rem;
+      letter-spacing:-.015em;
     }
 
     .card-body p{
       margin:0;
       color:var(--muted);
-      font-size:.94rem;
+      font-size:.91rem;
     }
 
-    .custom{
-      background:linear-gradient(145deg,#171717,#101010);
+    .coming{
+      flex:0 0 auto;
+      padding:5px 8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.045);
       border:1px solid var(--line);
-      border-radius:26px;
-      padding:46px;
+      color:#9b9b9b;
+      font-size:.69rem;
+      font-weight:800;
+    }
+
+    .custom-box{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
+      grid-template-columns:1.04fr .96fr;
+      gap:50px;
       align-items:center;
+      padding:52px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(228,58,53,.13), transparent 32%),
+        linear-gradient(145deg,#181818,#101010);
+      box-shadow:0 28px 80px rgba(0,0,0,.22);
     }
 
-    .custom h2{
-      margin:0 0 14px;
-      font-size:clamp(2rem,4vw,3.2rem);
-      letter-spacing:-.035em;
+    .custom-copy p{
+      color:var(--muted);
+      max-width:640px;
+      margin:17px 0 26px;
     }
 
-    .custom p{color:var(--muted);margin:0 0 24px}
-
-    .service-list{
+    .service-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:14px;
+      gap:12px;
     }
 
     .service{
-      padding:16px;
-      border-radius:14px;
+      min-height:92px;
+      display:flex;
+      align-items:flex-end;
+      padding:17px;
+      border-radius:15px;
       border:1px solid var(--line);
-      background:#121212;
-      font-weight:700;
+      background:#111;
+      position:relative;
+      overflow:hidden;
+      font-weight:800;
+    }
+
+    .service::before{
+      content:"";
+      position:absolute;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      top:-27px;
+      right:-24px;
+      background:rgba(228,58,53,.15);
     }
 
     .steps{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:18px;
+      gap:16px;
     }
 
     .step{
-      padding:24px;
-      border-radius:16px;
-      background:var(--panel);
+      min-height:190px;
+      padding:23px;
       border:1px solid var(--line);
+      border-radius:17px;
+      background:var(--panel);
     }
 
     .step-num{
-      width:40px;
-      height:40px;
+      width:42px;
+      height:42px;
       display:grid;
       place-items:center;
-      background:var(--red);
-      border-radius:10px;
-      font-weight:900;
-      margin-bottom:16px;
+      margin-bottom:20px;
+      border-radius:12px;
+      background:linear-gradient(145deg,var(--red-bright),var(--red-dark));
+      font-weight:1000;
+      box-shadow:0 10px 22px rgba(228,58,53,.18);
     }
 
-    .step h3{margin:0 0 6px}
-    .step p{margin:0;color:var(--muted);font-size:.93rem}
+    .step h3{margin:0 0 8px;font-size:1.08rem}
+    .step p{margin:0;color:var(--muted);font-size:.91rem}
 
-    .about{
+    .split{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:45px;
+      grid-template-columns:.94fr 1.06fr;
+      gap:54px;
       align-items:center;
     }
 
-    .about-card{
-      min-height:360px;
-      border-radius:24px;
-      background:
-        linear-gradient(145deg, rgba(229,57,53,.15), transparent 45%),
-        var(--panel);
-      border:1px solid var(--line);
+    .local-card{
+      min-height:430px;
       display:grid;
       place-items:center;
-      padding:30px;
+      padding:34px;
       text-align:center;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(145deg,rgba(228,58,53,.16),transparent 43%),
+        #141414;
+      overflow:hidden;
+      position:relative;
     }
 
-    .about-card strong{
-      font-size:2rem;
+    .local-card::before,
+    .local-card::after{
+      content:"";
+      position:absolute;
+      height:8px;
+      width:64%;
+      background:var(--red);
+      opacity:.5;
+      transform:rotate(-34deg);
+    }
+
+    .local-card::before{left:-28%;top:20%}
+    .local-card::after{right:-28%;bottom:18%}
+
+    .local-big{
+      position:relative;
+      z-index:1;
+      font-weight:1000;
+      font-size:clamp(2.3rem,5vw,4.6rem);
+      line-height:.9;
+      letter-spacing:-.05em;
+    }
+
+    .local-big .red{color:var(--red-bright)}
+    .local-big small{
       display:block;
-      margin-bottom:8px;
+      margin-top:14px;
+      font-size:.26em;
+      letter-spacing:.24em;
+      color:#bcbcbc;
     }
 
-    .about h2{
-      font-size:clamp(2rem,4vw,3.2rem);
-      margin:0 0 16px;
-      letter-spacing:-.035em;
+    .split-copy p{color:var(--muted)}
+    .split-copy .btn{margin-top:10px}
+
+    .faq{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
     }
 
-    .about p{color:var(--muted)}
+    details{
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:#121212;
+      padding:0 18px;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding:18px 0;
+      font-weight:800;
+    }
+
+    summary::-webkit-details-marker{display:none}
+
+    details p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
 
     .cta{
+      padding:72px 30px;
       text-align:center;
-      padding:70px 28px;
-      border-radius:28px;
-      background:
-        radial-gradient(circle at top, rgba(229,57,53,.18), transparent 40%),
-        #151515;
+      border-radius:30px;
       border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% -15%, rgba(228,58,53,.23), transparent 42%),
+        #141414;
     }
 
     .cta h2{
-      margin:0 0 12px;
-      font-size:clamp(2rem,4.5vw,3.4rem);
+      margin:0 0 13px;
+      font-size:clamp(2.2rem,5vw,4rem);
+      letter-spacing:-.055em;
     }
 
     .cta p{
-      margin:0 auto 24px;
+      margin:0 auto 27px;
       color:var(--muted);
-      max-width:620px;
+      max-width:650px;
     }
 
     footer{
-      padding:48px 0;
-      margin-top:40px;
+      margin-top:44px;
       border-top:1px solid var(--line);
+      padding:48px 0 38px;
       color:#8d8d8d;
+      font-size:.88rem;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:end;
+    }
+
+    .footer-brand{
+      color:#fff;
+      font-size:1.05rem;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:18px;
+    }
+
+    .footer-links a{
+      color:#aaa;
+      text-decoration:none;
+    }
+
+    .footer-links a:hover{color:white}
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:500;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(0,0,0,.82);
+      backdrop-filter:blur(8px);
+    }
+
+    .modal.open{display:flex}
+
+    .modal-card{
+      width:min(930px,100%);
+      max-height:90vh;
+      overflow:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-radius:24px;
+      border:1px solid var(--line-strong);
+      background:#111;
+      box-shadow:0 34px 100px rgba(0,0,0,.60);
+    }
+
+    .modal-preview{
+      min-height:520px;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 76% 20%, rgba(228,58,53,.14), transparent 30%),
+        #0b0b0b;
+    }
+
+    .modal-preview .shirt{width:300px}
+    .modal-preview .shirt-design{font-size:1.35rem}
+
+    .modal-body{
+      padding:38px;
+      position:relative;
+    }
+
+    .modal-close{
+      position:absolute;
+      right:18px;
+      top:18px;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      color:white;
+      background:#191919;
+      cursor:pointer;
+      font-size:1.25rem;
+    }
+
+    .modal-body h3{
+      margin:9px 0 12px;
+      font-size:2rem;
+      letter-spacing:-.035em;
+    }
+
+    .modal-body p{color:var(--muted)}
+    .modal-note{
+      margin:24px 0;
+      padding:15px;
+      border-radius:13px;
+      border:1px solid var(--line);
+      background:#171717;
+      color:#bcbcbc;
       font-size:.9rem;
     }
 
-    .footer-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
     }
 
-    .mobile-menu{display:none}
 
-    @media (max-width: 900px){
+    /* Official Rocket Print logo */
+    .brand-logo{
+      width:112px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
+    }
+
+    .official-logo{
+      width:min(470px,88%);
+      height:auto;
+      position:relative;
+      z-index:2;
+      filter:drop-shadow(0 28px 38px rgba(0,0,0,.48));
+    }
+
+    .logo-stage{
+      position:absolute;
+      inset:72px 28px 48px;
+      display:grid;
+      place-items:center;
+      z-index:1;
+    }
+
+    .about-logo{
+      width:min(440px,92%);
+      height:auto;
+      position:relative;
+      z-index:1;
+      filter:drop-shadow(0 22px 34px rgba(0,0,0,.45));
+    }
+
+    .footer-logo{
+      width:150px;
+      height:auto;
+      margin-bottom:12px;
+      filter:drop-shadow(0 5px 10px rgba(0,0,0,.25));
+    }
+
+    @media (max-width: 720px){
+      .brand-logo{width:94px}
+      .official-logo{width:min(390px,92%)}
+    }
+
+    @media (max-width: 980px){
       .nav-links{display:none}
-      .mobile-menu{display:inline-flex}
+      .menu-btn{display:inline-grid;place-items:center}
       .hero-grid,
-      .custom,
-      .about{grid-template-columns:1fr}
+      .custom-box,
+      .split{grid-template-columns:1fr}
+      .showcase{min-height:490px}
       .gallery{grid-template-columns:1fr 1fr}
       .steps{grid-template-columns:1fr 1fr}
-      .hero{padding-top:72px}
-      .hero-card{min-height:390px}
+      .stats-grid{grid-template-columns:1fr 1fr}
     }
 
-    @media (max-width: 620px){
+    @media (max-width: 720px){
+      .announcement{font-size:.74rem}
+      .nav{min-height:70px}
+      .brand-word{font-size:.95rem}
+      .nav-actions > .btn{display:none}
+
+      .hero{
+        min-height:auto;
+        padding:68px 0 56px;
+      }
+
+      h1{font-size:clamp(3rem,15vw,4.8rem)}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+      .showcase{min-height:410px}
+      .showcase .shirt{width:250px}
+
+      section{padding:70px 0}
+      .section-head{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:15px;
+      }
+
       .gallery,
       .steps,
-      .service-list{grid-template-columns:1fr}
-      .section-head{align-items:start;flex-direction:column}
-      .custom{padding:28px 22px}
-      section{padding:64px 0}
-      .hero-actions{flex-direction:column}
-      .btn{width:100%}
-      .hero-card{min-height:350px}
-      .shirt{transform:scale(.9)}
+      .service-grid,
+      .faq{grid-template-columns:1fr}
+
+      .custom-box{padding:30px 22px}
+      .local-card{min-height:340px}
+
+      .modal-card{grid-template-columns:1fr}
+      .modal-preview{min-height:340px}
+      .modal-preview .shirt{width:220px}
+      .modal-body{padding:28px 24px}
+
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+
+      .stats-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 430px){
+      .wrap{width:min(calc(100% - 26px), var(--max))}
+      .gallery{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr}
+      .design-preview{min-height:315px}
+      .hero-points{display:grid;gap:10px}
+      .showcase{min-height:370px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition:none!important;animation:none!important}
     }
   </style>
 </head>
 
 <body>
+  <div class="announcement">
+    <span><b>Rocket Print is launching.</b> Our Facebook storefront and ordering system are coming soon.</span>
+  </div>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Rocket Print home">
-      <span class="brand-mark">R</span>
-      <span>ROCKET <span>PRINT</span></span>
-    </a>
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="Rocket Print home">
+        <img class="brand-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
+      </a>
 
-    <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#designs">Designs</a>
+        <a href="#custom">Custom Printing</a>
+        <a href="#how">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Shop Coming Soon</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <div class="wrap">
       <a href="#designs">Designs</a>
       <a href="#custom">Custom Printing</a>
       <a href="#how">How It Works</a>
       <a href="#about">About</a>
-    </nav>
-
-    <a class="btn btn-primary btn-disabled" href="#" aria-disabled="true" title="Facebook store coming soon">
-      Facebook Store — Coming Soon
-    </a>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero">
-    <div class="wrap hero-grid">
-
-      <div>
-        <div class="eyebrow">Wellington, Texas</div>
-
-        <h1>
-          LOCAL DESIGNS.<br>
-          <span class="hero-red">PREMIUM APPAREL.</span>
-        </h1>
-
-        <p>
-          Rocket Print creates standout apparel for Wellington, schools, teams,
-          businesses, events and anyone who wants something made their own.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#designs">View Our Designs</a>
-          <a class="btn btn-secondary" href="#custom">Custom Printing</a>
-        </div>
-      </div>
-
-      <div class="hero-card" aria-label="Rocket Print shirt preview">
-        <div class="mini-label">Featured • Rocket Print</div>
-
-        <div class="mock-shirt">
-          <div class="shirt">
-            <div class="shirt-logo">
-              <span class="r">ROCKET</span><br>PRINT
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <a href="#faq">FAQ</a>
     </div>
-  </section>
+  </nav>
 
-  <section id="designs">
-    <div class="wrap">
-
-      <div class="section-head">
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Design Gallery</div>
-          <h2>Featured Designs</h2>
+          <div class="eyebrow">Wellington, Texas</div>
+          <h1>
+            <span class="hero-line">LOCAL DESIGNS.</span>
+            <span class="hero-line hero-red">PREMIUM APPAREL.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Rocket Print creates clean, standout apparel for Wellington, schools,
+            teams, businesses, events, and anyone who wants something made their own.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#designs" class="btn btn-primary">Browse Designs</a>
+            <a href="#custom" class="btn btn-secondary">Custom Printing</a>
+          </div>
+
+          <div class="hero-points">
+            <span><i class="check">✓</i> Local-first designs</span>
+            <span><i class="check">✓</i> Premium blanks</span>
+            <span><i class="check">✓</i> Custom projects welcome</span>
+          </div>
         </div>
 
-        <p>
-          Our first collections are being built now. This gallery will become
-          the place to browse Rocket Print designs before ordering through our Facebook storefront.
-        </p>
+        <div class="showcase">
+          <div class="showcase-top">
+            <span class="pill"><i class="pill-dot"></i> Featured Preview</span>
+            <span class="pill">Rocket Print</span>
+          </div>
+
+          <div class="logo-stage">
+            <img class="official-logo" src="assets/rocket-print-logo.png" alt="Official Rocket Print logo">
+          </div>
+
+          <div class="showcase-caption">Official Rocket Print brand mark • Wellington, Texas</div>
+        </div>
       </div>
+    </section>
 
-      <div class="gallery">
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                WELLINGTON<br><span class="r">SKYROCKETS</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Wellington Collection</span>
-            <h3>Skyrockets Signature</h3>
-            <p>Premium school-spirit style built for everyday wear.</p>
-          </div>
-        </article>
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                WELLINGTON<br><span class="r">TEXAS</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Local Collection</span>
-            <h3>Wellington TX</h3>
-            <p>Clean local apparel with a boutique, modern look.</p>
-          </div>
-        </article>
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                <span class="r">ROCKET</span><br>PRINT
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Rocket Print</span>
-            <h3>Brand Collection</h3>
-            <p>Official Rocket Print branded apparel and limited drops.</p>
-          </div>
-        </article>
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                TEAM<br><span class="r">CUSTOM</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Teams</span>
-            <h3>Team Apparel</h3>
-            <p>Custom shirts for teams, clubs and organizations.</p>
-          </div>
-        </article>
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                BUSINESS<br><span class="r">APPAREL</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Business</span>
-            <h3>Company Shirts</h3>
-            <p>Professional branded apparel for local businesses.</p>
-          </div>
-        </article>
-
-        <article class="design-card">
-          <div class="design-preview">
-            <div class="shirt">
-              <div class="shirt-logo">
-                YOUR<br><span class="r">IDEA</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="tag">Custom</span>
-            <h3>Your Design</h3>
-            <p>Have an idea? We can help turn it into something wearable.</p>
-          </div>
-        </article>
-
+    <div class="stats">
+      <div class="wrap stats-grid">
+        <div class="stat"><strong>Wellington, TX</strong><span>Locally focused</span></div>
+        <div class="stat"><strong>Custom Apparel</strong><span>Teams, business & events</span></div>
+        <div class="stat"><strong>New Designs</strong><span>Gallery growing regularly</span></div>
+        <div class="stat"><strong>Facebook Shop</strong><span>Launching soon</span></div>
       </div>
     </div>
-  </section>
 
-  <section id="custom">
-    <div class="wrap">
-
-      <div class="custom">
-        <div>
-          <div class="eyebrow">Custom Printing</div>
-          <h2>Have an idea? Let’s put it on a shirt.</h2>
-
+    <section id="designs">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Design Gallery</div>
+            <h2>Find your next favorite shirt.</h2>
+          </div>
           <p>
-            Rocket Print can help create apparel for schools, businesses,
-            teams, events and personal projects. Bring us your logo, your idea,
-            or just a rough concept.
-          </p>
-
-          <a class="btn btn-primary btn-disabled" href="#" aria-disabled="true">
-            Request Form Coming Soon
-          </a>
-        </div>
-
-        <div class="service-list">
-          <div class="service">Schools & Teams</div>
-          <div class="service">Local Businesses</div>
-          <div class="service">Events & Groups</div>
-          <div class="service">Family & Personal</div>
-          <div class="service">Boutique Designs</div>
-          <div class="service">Custom Logos</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="wrap">
-
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Simple Process</div>
-          <h2>How It Works</h2>
-        </div>
-      </div>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Browse</h3>
-          <p>Find a design you like in the Rocket Print gallery.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Choose</h3>
-          <p>Select your shirt style, size and available color.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Order</h3>
-          <p>Order through our Facebook storefront once it launches.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">4</div>
-          <h3>Wear It</h3>
-          <p>Get premium local apparel made to stand out.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap about">
-
-      <div class="about-card">
-        <div>
-          <strong>ROCKET PRINT</strong>
-          <span style="color:#ff6d68;font-weight:800;">Wellington, Texas</span>
-          <p style="margin-top:12px;color:#aaa;">
-            Local ideas. Premium apparel.
+            Browse the first Rocket Print collections. Click any design for a larger preview.
+            Real product images can replace these previews as samples are produced.
           </p>
         </div>
-      </div>
 
+        <div class="filters" aria-label="Filter designs">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="wellington">Wellington</button>
+          <button class="filter-btn" data-filter="school">School Spirit</button>
+          <button class="filter-btn" data-filter="local">Local</button>
+          <button class="filter-btn" data-filter="custom">Custom</button>
+        </div>
+
+        <div class="gallery" id="gallery">
+
+          <article class="design-card" tabindex="0"
+            data-category="school wellington"
+            data-title="Skyrockets Signature"
+            data-tag="Wellington Collection"
+            data-description="A premium, clean Wellington Skyrockets design made for school spirit without looking like a basic fan shirt."
+            data-design="WELLINGTON|SKYROCKETS">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design">WELLINGTON<br><span class="hero-red">SKYROCKETS</span></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Wellington Collection</span>
+                  <h3>Skyrockets Signature</h3>
+                </div>
+                <span class="coming">Soon</span>
+              </div>
+              <p>Elevated school spirit with a clean everyday look.</p>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="local wellington"
+            data-title="Wellington TX"
+            data-tag="Local Collection"
+            data-description="A simple, boutique-style Wellington, Texas design built around local pride and everyday wear."
+            data-design="WELLINGTON|TEXAS">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design">WELLINGTON<br><span class="hero-red">TEXAS</span></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Local Collection</span>
+                  <h3>Wellington TX</h3>
+                </div>
+                <span class="coming">Soon</span>
+              </div>
+              <p>Local apparel with a boutique, modern look.</p>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="local"
+            data-title="Rocket Print Brand"
+            data-tag="Rocket Print"
+            data-description="Official Rocket Print brand apparel and future limited releases."
+            data-design="ROCKET|PRINT">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design"><span class="speed">ROCKET</span><br>PRINT</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Rocket Print</span>
+                  <h3>Brand Collection</h3>
+                </div>
+                <span class="coming">Soon</span>
+              </div>
+              <p>Official branded apparel and limited drops.</p>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="custom school"
+            data-title="Team Apparel"
+            data-tag="Teams & Clubs"
+            data-description="Custom apparel for school teams, clubs, organizations, and group events."
+            data-design="YOUR TEAM|YOUR LOOK">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design">YOUR TEAM<br><span class="hero-red">YOUR LOOK</span></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Teams & Clubs</span>
+                  <h3>Team Apparel</h3>
+                </div>
+                <span class="coming">Custom</span>
+              </div>
+              <p>Made for teams, clubs and organizations.</p>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="custom"
+            data-title="Business Apparel"
+            data-tag="Local Business"
+            data-description="Professional branded shirts for local businesses, crews, staff, promotions, and events."
+            data-design="YOUR BRAND|YOUR CREW">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design">YOUR BRAND<br><span class="hero-red">YOUR CREW</span></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Local Business</span>
+                  <h3>Business Apparel</h3>
+                </div>
+                <span class="coming">Custom</span>
+              </div>
+              <p>Professional shirts for businesses and crews.</p>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="custom"
+            data-title="Your Idea"
+            data-tag="Custom Project"
+            data-description="Bring Rocket Print your logo, sketch, inspiration, or rough idea and we can turn it into a shirt-ready concept."
+            data-design="YOUR IDEA|STARTS HERE">
+            <div class="design-preview">
+              <div class="shirt">
+                <div class="shirt-design">YOUR IDEA<br><span class="hero-red">STARTS HERE</span></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Custom Project</span>
+                  <h3>Your Design</h3>
+                </div>
+                <span class="coming">Custom</span>
+              </div>
+              <p>Turn your concept into something wearable.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="custom">
+      <div class="wrap">
+        <div class="custom-box">
+          <div class="custom-copy">
+            <div class="eyebrow">Custom Printing</div>
+            <h2>Bring the idea. We’ll help build the shirt.</h2>
+            <p>
+              Need something unique? Rocket Print can help with apparel for schools,
+              businesses, teams, reunions, fundraisers, events, and personal projects.
+              Start with a logo, a sketch, an inspiration photo, or just an idea.
+            </p>
+            <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Custom Request Form Coming Soon</a>
+          </div>
+
+          <div class="service-grid">
+            <div class="service">Schools & Teams</div>
+            <div class="service">Businesses</div>
+            <div class="service">Events & Groups</div>
+            <div class="service">Family Reunions</div>
+            <div class="service">Boutique Designs</div>
+            <div class="service">Logo Apparel</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Simple Process</div>
+            <h2>From design to shirt.</h2>
+          </div>
+          <p>We’re keeping ordering simple while the business grows.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Browse</h3>
+            <p>Explore the Rocket Print gallery and find a design you like.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Choose</h3>
+            <p>Pick an available shirt style, color and size.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Order</h3>
+            <p>Order through the Rocket Print Facebook storefront once it launches.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Wear It</h3>
+            <p>Get quality local apparel you’ll actually want to wear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap split">
+        <div class="local-card">
+          <img class="about-logo" src="assets/rocket-print-logo.png" alt="Rocket Print Texas logo">
+        </div>
+
+        <div class="split-copy">
+          <div class="eyebrow">About Rocket Print</div>
+          <h2>Built local. Designed to look bigger.</h2>
+          <p>
+            Rocket Print is a Wellington, Texas apparel brand focused on clean design,
+            quality products, and local pride. The goal is simple: make shirts that
+            feel like something you would choose to wear — not just something with a logo on it.
+          </p>
+          <p>
+            As new samples are produced, this site will become the main gallery for
+            Rocket Print releases, school spirit designs, local collections, and custom work.
+          </p>
+          <a href="#designs" class="btn btn-secondary">Explore the Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2>Good to know.</h2>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Can I order online yet?</summary>
+            <p>Not yet. The Facebook storefront is being prepared and will become the first ordering option.</p>
+          </details>
+
+          <details>
+            <summary>Do you make custom designs?</summary>
+            <p>Yes. Rocket Print plans to offer custom apparel for schools, teams, businesses, events, and personal projects.</p>
+          </details>
+
+          <details>
+            <summary>Where is Rocket Print located?</summary>
+            <p>Rocket Print is based in Wellington, Texas.</p>
+          </details>
+
+          <details>
+            <summary>Are the designs on this site final products?</summary>
+            <p>Some are preview concepts. As physical samples are produced, the placeholder previews will be replaced with real product images.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <div class="eyebrow">Coming Soon</div>
+          <h2>Rocket Print on Facebook.</h2>
+          <p>
+            Our Facebook storefront will be the first place to order available designs,
+            choose sizes and colors, and keep up with new releases.
+          </p>
+          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Facebook Store Coming Soon</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
       <div>
-        <div class="eyebrow">About Us</div>
-        <h2>Made for our community.</h2>
-
-        <p>
-          Rocket Print is a Wellington, Texas apparel brand focused on quality,
-          clean design and local pride. We’re building a collection of apparel
-          people actually want to wear — while also helping schools, businesses,
-          teams and families create something custom.
-        </p>
-
-        <p>
-          Our online gallery will continue to grow as new designs are released.
-        </p>
+        <img class="footer-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
+        <div>© 2026 Rocket Print. All rights reserved.</div>
+        <div>Wellington, Texas • rocketprinttx.com</div>
       </div>
 
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="cta">
-        <div class="eyebrow">Coming Soon</div>
-        <h2>Shop Rocket Print on Facebook</h2>
-
-        <p>
-          Our Facebook storefront is being prepared. Soon you’ll be able to
-          browse available products, sizes and colors and place your order directly.
-        </p>
-
-        <a class="btn btn-primary btn-disabled" href="#" aria-disabled="true">
-          Facebook Store Coming Soon
-        </a>
+      <div class="footer-links">
+        <a href="#designs">Designs</a>
+        <a href="#custom">Custom Printing</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <div class="modal" id="designModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-preview">
+        <div class="shirt">
+          <div class="shirt-design" id="modalDesign">ROCKET<br><span class="hero-red">PRINT</span></div>
+        </div>
+      </div>
 
-<footer>
-  <div class="wrap footer-row">
-    <div>© 2026 Rocket Print. All rights reserved.</div>
-    <div>Wellington, Texas • rocketprinttx.com</div>
+      <div class="modal-body">
+        <button class="modal-close" id="modalClose" aria-label="Close design preview">×</button>
+        <span class="tag" id="modalTag">Rocket Print</span>
+        <h3 id="modalTitle">Design Preview</h3>
+        <p id="modalDescription">Design details.</p>
+
+        <div class="modal-note">
+          Ordering is not live yet. This preview will later include available shirt colors,
+          sizes, pricing, and a direct Facebook shop link.
+        </div>
+
+        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Order Coming Soon</a>
+      </div>
+    </div>
   </div>
-</footer>
 
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function closeMenu(){
+      mobileMenu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.textContent = '☰';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '×' : '☰';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.design-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        cards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          const show = filter === 'all' || categories.includes(filter);
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    const modal = document.getElementById('designModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalTag = document.getElementById('modalTag');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDesign = document.getElementById('modalDesign');
+
+    function openDesign(card){
+      modalTitle.textContent = card.dataset.title;
+      modalTag.textContent = card.dataset.tag;
+      modalDescription.textContent = card.dataset.description;
+
+      const parts = card.dataset.design.split('|');
+      modalDesign.innerHTML = parts.length > 1
+        ? `${parts[0]}<br><span class="hero-red">${parts[1]}</span>`
+        : parts[0];
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => openDesign(card));
+      card.addEventListener('keydown', event => {
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          openDesign(card);
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', event => {
+      if(event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if(event.key === 'Escape'){
+        if(modal.classList.contains('open')) closeModal();
+        if(mobileMenu.classList.contains('open')) closeMenu();
+      }
+    });
+  </script>
 </body>
 </html>
