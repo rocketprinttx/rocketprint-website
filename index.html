@@ -2213,6 +2213,61 @@
       }
     }
 
+
+    @media (max-width:520px){
+      #custom .wrap{
+        width:calc(100% - 20px);
+        margin-left:10px;
+        margin-right:10px;
+      }
+
+      #custom .custom-box{
+        width:100%;
+        margin:0;
+        padding:22px 12px 26px;
+        border-radius:24px;
+      }
+
+      #custom .custom-copy{
+        padding:0;
+        margin:0;
+      }
+
+      #custom .custom-copy .eyebrow,
+      #custom .custom-copy h2,
+      #custom .custom-copy p{
+        margin-left:0;
+        padding-left:0;
+        text-align:left;
+      }
+
+      #custom .custom-copy h2{
+        max-width:none;
+      }
+
+      #custom .custom-copy .btn{
+        margin-left:0;
+        justify-content:flex-start;
+        text-align:left;
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      #custom .service-grid{
+        margin:4px 0 0;
+        padding:0;
+        justify-content:flex-start;
+        align-content:flex-start;
+        width:100%;
+      }
+
+      #custom .service{
+        margin:0;
+        padding:10px 13px;
+        text-align:left;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -2232,8 +2287,8 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#featured">Featured Design</a>
         <a href="#collections">Collections</a>
+        <a href="#featured">Featured Collection</a>
         <a href="#designs">Designs</a>
         <a href="#custom">Custom Printing</a>
         <a href="#about">About</a>
@@ -2253,8 +2308,8 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="wrap">
-      <a href="#featured">Featured Design</a>
       <a href="#collections">Collections</a>
+      <a href="#featured">Featured Collection</a>
       <a href="#designs">Designs</a>
       <a href="#custom">Custom Printing</a>
       <a href="#about">About</a>
