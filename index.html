@@ -311,40 +311,6 @@
       filter:blur(8px);
     }
 
-    .showcase-top{
-      position:absolute;
-      top:22px;
-      left:22px;
-      right:22px;
-      z-index:2;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 11px;
-      min-height:34px;
-      border-radius:999px;
-      background:rgba(255,255,255,.055);
-      border:1px solid var(--line);
-      color:#dfdfdf;
-      font-size:.77rem;
-      font-weight:800;
-    }
-
-    .pill-dot{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--red-bright);
-      box-shadow:0 0 0 4px rgba(228,58,53,.12);
-    }
-
     .logo-stage{
       position:absolute;
       inset:78px 26px 42px;
@@ -354,18 +320,9 @@
     }
 
     .official-logo{
-      width:min(470px,88%);
+      width:min(520px,90%);
       height:auto;
       filter:drop-shadow(0 26px 40px rgba(0,0,0,.45));
-    }
-
-    .showcase-caption{
-      position:absolute;
-      left:26px;
-      bottom:24px;
-      z-index:2;
-      color:#9d9d9d;
-      font-size:.82rem;
     }
 
     .stats{padding:0 0 22px}
@@ -424,19 +381,6 @@
         radial-gradient(circle at top right, rgba(228,58,53,.18), transparent 28%),
         linear-gradient(145deg,#101010,#181818);
       box-shadow:var(--shadow);
-    }
-    .spotlight-box::before{
-      content:"WELLINGTON TEXAS";
-      position:absolute;
-      top:30px;
-      left:32px;
-      font-size:clamp(2rem,6vw,5.8rem);
-      line-height:.88;
-      font-weight:1000;
-      letter-spacing:-.06em;
-      color:rgba(255,255,255,.035);
-      pointer-events:none;
-      max-width:450px;
     }
 
     .spotlight-grid{
@@ -773,15 +717,15 @@
     }
 
     .local-card{
-      min-height:430px;
+      min-height:450px;
       display:grid;
       place-items:end start;
       padding:34px;
       border-radius:28px;
       border:1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(4,4,4,.12) 0%, rgba(4,4,4,.28) 45%, rgba(4,4,4,.84) 100%),
-        url('assets/wellington-downtown-about.jpg') center 56%/cover no-repeat;
+        linear-gradient(180deg, rgba(4,4,4,.02) 0%, rgba(4,4,4,.10) 28%, rgba(4,4,4,.52) 100%),
+        url('assets/wellington-about-bg.jpg') center 42%/cover no-repeat;
       overflow:hidden;
       position:relative;
       text-align:left;
@@ -792,7 +736,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(120deg, rgba(228,58,53,.10), transparent 42%);
+      background:linear-gradient(120deg, rgba(228,58,53,.06), transparent 42%);
       pointer-events:none;
     }
 
@@ -819,20 +763,6 @@
       letter-spacing:.18em;
       text-transform:uppercase;
       text-shadow:0 4px 12px rgba(0,0,0,.85);
-    }
-
-    .about-photo-credit{
-      position:absolute;
-      right:14px;
-      bottom:12px;
-      z-index:3;
-      padding:5px 8px;
-      border-radius:999px;
-      background:rgba(0,0,0,.56);
-      border:1px solid rgba(255,255,255,.13);
-      color:rgba(255,255,255,.78);
-      font-size:.64rem;
-      backdrop-filter:blur(4px);
     }
 
     .split-copy p{color:var(--muted)}
@@ -1003,6 +933,53 @@
       border:0;
     }
 
+
+    .collections{
+      padding: 18px 0 26px;
+    }
+
+    .collections-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .collection-card{
+      padding:22px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(228,58,53,.12), transparent 30%),
+        #111;
+      box-shadow:0 14px 36px rgba(0,0,0,.18);
+    }
+
+    .collection-card h3{
+      margin:0 0 8px;
+      font-size:1.08rem;
+      letter-spacing:-.02em;
+    }
+
+    .collection-card p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .collection-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .collection-link:hover{
+      color:#ff776f;
+    }
+
     @media (max-width: 980px){
       .nav-links{display:none}
       .menu-btn{display:inline-grid;place-items:center}
@@ -1013,6 +990,7 @@
       .gallery{grid-template-columns:1fr 1fr}
       .steps{grid-template-columns:1fr 1fr}
       .stats-grid{grid-template-columns:1fr 1fr}
+      .collections-grid{grid-template-columns:1fr 1fr}
       .spotlight-art{min-height:unset}
     }
 
@@ -1032,7 +1010,8 @@
       .gallery,
       .steps,
       .service-grid,
-      .faq{grid-template-columns:1fr}
+      .faq,
+      .collections-grid{grid-template-columns:1fr}
       .custom-box,
       .spotlight-grid{padding:30px 22px}
       .local-card{min-height:340px}
@@ -1072,10 +1051,10 @@
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#featured">Featured Design</a>
+        <a href="#collections">Collections</a>
         <a href="#designs">Designs</a>
         <a href="#custom">Custom Printing</a>
         <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="nav-actions">
@@ -1088,10 +1067,10 @@
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="wrap">
       <a href="#featured">Featured Design</a>
+      <a href="#collections">Collections</a>
       <a href="#designs">Designs</a>
       <a href="#custom">Custom Printing</a>
       <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
     </div>
   </nav>
 
@@ -1124,16 +1103,11 @@
         </div>
 
         <div class="showcase">
-          <div class="showcase-top">
-            <span class="pill"><i class="pill-dot"></i> Official Brand</span>
-            <span class="pill">Rocket Print</span>
-          </div>
 
           <div class="logo-stage">
             <img class="official-logo" src="assets/rocket-print-logo.png" alt="Official Rocket Print logo">
           </div>
 
-          <div class="showcase-caption">Official Rocket Print brand mark • Wellington, Texas</div>
         </div>
       </div>
     </section>
@@ -1146,6 +1120,48 @@
         <div class="stat"><strong>Facebook Shop</strong><span>Launching soon</span></div>
       </div>
     </div>
+
+    <section class="collections" id="collections">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Collections</div>
+            <h2>Where Rocket Print is headed next.</h2>
+          </div>
+          <p>
+            This is the next enhancement to the site: a cleaner collections overview so visitors can quickly
+            understand what Rocket Print offers beyond a single featured design.
+          </p>
+        </div>
+
+        <div class="collections-grid">
+          <article class="collection-card">
+            <h3>Wellington Collection</h3>
+            <p>Local-first designs inspired by Wellington and built to feel premium and timeless.</p>
+            <a class="collection-link" href="#featured">View featured design →</a>
+          </article>
+
+          <article class="collection-card">
+            <h3>School Spirit</h3>
+            <p>Skyrockets and other spirit designs that look elevated, not generic.</p>
+            <a class="collection-link" href="#designs">Browse gallery →</a>
+          </article>
+
+          <article class="collection-card">
+            <h3>Custom Printing</h3>
+            <p>Schools, teams, businesses, events and local organizations can all have something made their own.</p>
+            <a class="collection-link" href="#custom">See custom printing →</a>
+          </article>
+
+          <article class="collection-card">
+            <h3>About Rocket Print</h3>
+            <p>Small town. Big pride. The site now ties the apparel brand back to Wellington, Texas.</p>
+            <a class="collection-link" href="#about">See the story →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
 
     <section class="spotlight" id="featured">
       <div class="wrap">
@@ -1381,7 +1397,6 @@
             <strong>WELLINGTON<br><span class="hero-red">TEXAS</span></strong>
             <span class="pride">Small town. Big pride.</span>
           </div>
-          <div class="about-photo-credit">Photo: Tim Mansfield / MansfieldPhoto.com</div>
         </div>
 
         <div class="split-copy">
@@ -1459,10 +1474,10 @@
 
       <div class="footer-links">
         <a href="#featured">Featured Design</a>
+        <a href="#collections">Collections</a>
         <a href="#designs">Designs</a>
         <a href="#custom">Custom Printing</a>
         <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
       </div>
     </div>
   </footer>
