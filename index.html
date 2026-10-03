@@ -421,28 +421,10 @@
       border-radius:30px;
       border:1px solid var(--line);
       background:
-        linear-gradient(90deg, rgba(7,7,7,.88) 0%, rgba(7,7,7,.72) 44%, rgba(7,7,7,.50) 100%),
-        radial-gradient(circle at top right, rgba(228,58,53,.22), transparent 26%),
-        url('assets/wellington-downtown.jpg') center 46%/cover no-repeat,
+        radial-gradient(circle at top right, rgba(228,58,53,.18), transparent 28%),
         linear-gradient(145deg,#101010,#181818);
       box-shadow:var(--shadow);
     }
-
-    .photo-credit{
-      position:absolute;
-      left:18px;
-      bottom:14px;
-      z-index:3;
-      padding:6px 9px;
-      border-radius:999px;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.78);
-      font-size:.68rem;
-      letter-spacing:.02em;
-      backdrop-filter:blur(4px);
-    }
-
     .spotlight-box::before{
       content:"WELLINGTON TEXAS";
       position:absolute;
@@ -793,24 +775,64 @@
     .local-card{
       min-height:430px;
       display:grid;
-      place-items:center;
+      place-items:end start;
       padding:34px;
       border-radius:28px;
       border:1px solid var(--line);
       background:
-        linear-gradient(145deg,rgba(228,58,53,.16),transparent 43%),
-        #141414;
+        linear-gradient(180deg, rgba(4,4,4,.12) 0%, rgba(4,4,4,.28) 45%, rgba(4,4,4,.84) 100%),
+        url('assets/wellington-downtown-about.jpg') center 56%/cover no-repeat;
       overflow:hidden;
       position:relative;
-      text-align:center;
+      text-align:left;
+      box-shadow:var(--shadow);
     }
 
-    .about-logo{
-      width:min(440px,92%);
-      height:auto;
-      filter:drop-shadow(0 22px 34px rgba(0,0,0,.45));
+    .local-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, rgba(228,58,53,.10), transparent 42%);
+      pointer-events:none;
+    }
+
+    .about-place{
       position:relative;
-      z-index:1;
+      z-index:2;
+      max-width:90%;
+    }
+
+    .about-place strong{
+      display:block;
+      font-size:clamp(2.2rem,5vw,4.4rem);
+      line-height:.9;
+      letter-spacing:-.055em;
+      text-shadow:0 8px 24px rgba(0,0,0,.8);
+    }
+
+    .about-place .pride{
+      display:block;
+      margin-top:12px;
+      color:#fff;
+      font-size:.95rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-shadow:0 4px 12px rgba(0,0,0,.85);
+    }
+
+    .about-photo-credit{
+      position:absolute;
+      right:14px;
+      bottom:12px;
+      z-index:3;
+      padding:5px 8px;
+      border-radius:999px;
+      background:rgba(0,0,0,.56);
+      border:1px solid rgba(255,255,255,.13);
+      color:rgba(255,255,255,.78);
+      font-size:.64rem;
+      backdrop-filter:blur(4px);
     }
 
     .split-copy p{color:var(--muted)}
@@ -1128,21 +1150,19 @@
     <section class="spotlight" id="featured">
       <div class="wrap">
         <div class="spotlight-box">
-          <div class="photo-credit">Downtown Wellington photo: Tim Mansfield / MansfieldPhoto.com</div>
           <div class="spotlight-grid">
             <div class="spotlight-copy">
-              <span class="spotlight-kicker">Featured Design • First Drop</span>
+              <span class="spotlight-kicker">Featured Design • Timeless Collection</span>
               <h2>Wellington Skyrockets</h2>
               <p>
-                Our first Wellington Skyrockets design now sits against a real downtown Wellington backdrop,
-                tying the collection directly to the community that inspired it. This is the visual direction
-                we’ll use for local Rocket Print releases: premium apparel, unmistakably Wellington.
+                Our first Wellington Skyrockets release is a timeless wordmark-style design — clean, premium,
+                and made to work year after year instead of feeling tied to a single season or campaign.
               </p>
 
               <ul>
-                <li><span class="bullet">✓</span><span>Real Wellington downtown photography used as the collection backdrop.</span></li>
-                <li><span class="bullet">✓</span><span>Your first Skyrockets artwork is featured as the hero design for the collection.</span></li>
-                <li><span class="bullet">✓</span><span>The gallery is ready for additional Wellington and school-spirit drops.</span></li>
+                <li><span class="bullet">✓</span><span>Timeless Wellington Skyrockets identity with a premium, understated look.</span></li>
+                <li><span class="bullet">✓</span><span>The first real school-spirit design in the Rocket Print gallery.</span></li>
+                <li><span class="bullet">✓</span><span>The design stands on its own — separate from the website’s Wellington photography.</span></li>
               </ul>
 
               <a href="#designs" class="btn btn-primary">View the Gallery</a>
@@ -1186,7 +1206,7 @@
             data-category="school wellington"
             data-title="Skyrockets Signature"
             data-tag="Wellington Collection"
-            data-description="Your first real Wellington Skyrockets design is now featured on the site. This is the first live school-spirit design in the Rocket Print gallery."
+            data-description="Our first Wellington Skyrockets design is a timeless, premium wordmark built to stay relevant year after year."
             data-design-type="image"
             data-image="assets/wellington-skyrockets-design.png">
             <div class="design-preview">
@@ -1200,7 +1220,7 @@
                 </div>
                 <span class="coming">Featured</span>
               </div>
-              <p>Real design artwork added to the site as the first Wellington drop.</p>
+              <p>Our first timeless Wellington Skyrockets design — clean, classic and made for everyday wear.</p>
             </div>
           </article>
 
@@ -1356,17 +1376,21 @@
 
     <section id="about">
       <div class="wrap split">
-        <div class="local-card">
-          <img class="about-logo" src="assets/rocket-print-logo.png" alt="Rocket Print Texas logo">
+        <div class="local-card" aria-label="Downtown Wellington, Texas">
+          <div class="about-place">
+            <strong>WELLINGTON<br><span class="hero-red">TEXAS</span></strong>
+            <span class="pride">Small town. Big pride.</span>
+          </div>
+          <div class="about-photo-credit">Photo: Tim Mansfield / MansfieldPhoto.com</div>
         </div>
 
         <div class="split-copy">
           <div class="eyebrow">About Rocket Print</div>
-          <h2>Built local. Designed to look bigger.</h2>
+          <h2>Small town. Big pride.</h2>
           <p>
-            Rocket Print is a Wellington, Texas apparel brand focused on clean design,
-            quality products, and local pride. The goal is simple: make shirts that
-            feel like something you would choose to wear — not just something with a logo on it.
+            Rocket Print is a Wellington, Texas apparel brand built around small-town pride, clean design,
+            and quality products. We want every piece to feel intentional — something you would choose to wear,
+            not simply a shirt with a logo printed on it.
           </p>
           <p>
             As new samples are produced, this site will become the main gallery for
@@ -1403,8 +1427,8 @@
           </details>
 
           <details>
-            <summary>What is the Wellington backdrop?</summary>
-            <p>The featured Wellington collection uses the downtown Wellington image as its local backdrop, matching the community-focused marketing direction for Rocket Print.</p>
+            <summary>Why is downtown Wellington featured on the site?</summary>
+            <p>The downtown image is part of the Rocket Print brand story — small town, big pride. It represents where the business is from; it is not part of the Skyrockets design itself.</p>
           </details>
         </div>
       </div>
