@@ -1801,6 +1801,111 @@
       }
     }
 
+
+    .carousel-progress{
+      display:none;
+    }
+
+    @media (max-width:980px){
+      .carousel-progress{
+        display:block;
+        margin-top:4px;
+        padding:0 2px;
+      }
+
+      .carousel-progress-track{
+        width:100%;
+        height:5px;
+        overflow:hidden;
+        border-radius:999px;
+        background:rgba(255,255,255,.10);
+      }
+
+      .carousel-progress-thumb{
+        width:34%;
+        height:100%;
+        border-radius:999px;
+        background:linear-gradient(90deg,var(--red-bright),var(--red));
+        box-shadow:0 0 14px rgba(228,58,53,.38);
+        transform:translateX(0);
+        will-change:transform;
+      }
+
+      .carousel-progress span{
+        display:block;
+        margin-top:8px;
+        color:#878787;
+        font-size:.72rem;
+        font-weight:800;
+        letter-spacing:.04em;
+        text-align:center;
+        text-transform:uppercase;
+      }
+    }
+
+
+    .footer-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      gap:5px;
+    }
+
+    .footer-center .footer-logo{
+      width:170px;
+      margin:0 auto 14px;
+    }
+
+    .footer-copy{
+      color:#8d8d8d;
+      line-height:1.5;
+    }
+
+    .back-to-top{
+      width:48px;
+      height:48px;
+      margin-top:18px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:1px solid var(--line-strong);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      text-decoration:none;
+      font-size:1.4rem;
+      font-weight:900;
+      transition:.2s ease;
+    }
+
+    .back-to-top:hover{
+      transform:translateY(-3px);
+      border-color:rgba(228,58,53,.55);
+      background:rgba(228,58,53,.10);
+      color:#ff716c;
+    }
+
+    .back-to-top-label{
+      margin-top:4px;
+      color:#777;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width:720px){
+      .footer-center .footer-logo{
+        width:145px;
+      }
+
+      .back-to-top{
+        width:52px;
+        height:52px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -2137,6 +2242,13 @@
           </article>
 
         </div>
+
+        <div class="carousel-progress" id="designCarouselProgress" aria-hidden="true">
+          <div class="carousel-progress-track">
+            <div class="carousel-progress-thumb" id="designCarouselThumb"></div>
+          </div>
+          <span>Swipe to see more designs</span>
+        </div>
       </div>
     </section>
 
@@ -2211,7 +2323,7 @@
         <div class="faq">
           <details>
             <summary>How long does an order usually take?</summary>
-            <p>Turnaround depends on the garment, quantity, and whether the design is already print-ready. We confirm the expected turnaround before your order is finalized.</p>
+            <p>Most orders are ready in about two weeks. Turnaround can take longer depending on the garment, quantity, availability, and whether the artwork is already print-ready. We confirm the expected timeline before your order is finalized.</p>
           </details>
 
           <details>
@@ -2282,20 +2394,14 @@
   </main>
 
   <footer>
-    <div class="wrap footer-grid">
-      <div>
-        <img class="footer-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
-        <div>© 2026 Rocket Print. All rights reserved.</div>
-        <div>Wellington, Texas • rocketprinttx.com</div>
-      </div>
-
-      <div class="footer-links">
-        <a href="#featured">Featured Design</a>
-        <a href="#collections">Collections</a>
-        <a href="#designs">Designs</a>
-        <a href="#custom">Custom Printing</a>
-        <a href="#about">About</a>
-      </div>
+    <div class="wrap footer-center">
+      <img class="footer-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
+      <div class="footer-copy">© 2026 Rocket Print. All rights reserved.</div>
+      <div class="footer-copy">Wellington, Texas • rocketprinttx.com</div>
+      <a class="back-to-top" href="#top" aria-label="Back to top">
+        <span aria-hidden="true">↑</span>
+      </a>
+      <div class="back-to-top-label">Back to top</div>
     </div>
   </footer>
 
@@ -2396,6 +2502,28 @@
     document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
+
+    const designGallery = document.getElementById('gallery');
+    const designCarouselThumb = document.getElementById('designCarouselThumb');
+
+    function updateDesignCarouselProgress(){
+      if(!designGallery || !designCarouselThumb) return;
+
+      const maxScroll = Math.max(0, designGallery.scrollWidth - designGallery.clientWidth);
+      const visibleRatio = Math.min(1, designGallery.clientWidth / Math.max(designGallery.scrollWidth, 1));
+      const thumbPercent = Math.max(24, visibleRatio * 100);
+      designCarouselThumb.style.width = `${thumbPercent}%`;
+
+      const availableTrack = Math.max(0, 100 - thumbPercent);
+      const progress = maxScroll > 0 ? designGallery.scrollLeft / maxScroll : 0;
+      designCarouselThumb.style.transform = `translateX(${progress * availableTrack / (thumbPercent / 100)}%)`;
+    }
+
+    if(designGallery){
+      designGallery.addEventListener('scroll', updateDesignCarouselProgress, {passive:true});
+      window.addEventListener('resize', updateDesignCarouselProgress);
+      requestAnimationFrame(updateDesignCarouselProgress);
+    }
 
     const filterButtons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.design-card');
