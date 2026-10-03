@@ -465,44 +465,6 @@
       position:relative;
     }
 
-    .design-watermark{
-      position:absolute;
-      right:14px;
-      bottom:12px;
-      z-index:2;
-      padding:5px 9px;
-      border-radius:999px;
-      background:rgba(0,0,0,.58);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.84);
-      font-size:.68rem;
-      font-weight:800;
-      letter-spacing:.02em;
-      line-height:1;
-      backdrop-filter:blur(4px);
-      -webkit-backdrop-filter:blur(4px);
-    }
-
-    .gallery-watermark{
-      right:12px;
-      bottom:12px;
-      font-size:.64rem;
-      padding:5px 8px;
-    }
-
-    .modal-image-wrap{
-      position:relative;
-      width:100%;
-      display:grid;
-      place-items:center;
-    }
-
-    .modal-watermark{
-      right:16px;
-      bottom:14px;
-      font-size:.68rem;
-    }
-
     .design-card-feature img{
       width:100%;
       height:auto;
@@ -989,6 +951,9 @@
 
     .collection-card{
       padding:22px;
+      min-height:210px;
+      display:flex;
+      flex-direction:column;
       border-radius:18px;
       border:1px solid var(--line);
       background:
@@ -1013,6 +978,8 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
+      margin-top:auto;
+      padding-top:14px;
       color:#fff;
       text-decoration:none;
       font-weight:800;
@@ -1172,8 +1139,8 @@
             <h2>Where Rocket Print is headed next.</h2>
           </div>
           <p>
-            This is the next enhancement to the site: a cleaner collections overview so visitors can quickly
-            understand what Rocket Print offers beyond a single featured design.
+            Explore the core Rocket Print collections — local Wellington designs, school spirit,
+            custom printing, and the story behind the brand.
           </p>
         </div>
 
@@ -1230,7 +1197,6 @@
             <div class="spotlight-art">
               <div class="design-card-feature">
                 <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design">
-                <div class="design-watermark">&copy; Rocket Print</div>
               </div>
             </div>
           </div>
@@ -1270,7 +1236,6 @@
             data-image="assets/wellington-skyrockets-design.png">
             <div class="design-preview">
               <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design preview">
-              <div class="design-watermark gallery-watermark">&copy; Rocket Print</div>
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -1445,21 +1410,22 @@
 
         <div class="split-copy">
           <div class="eyebrow">About Rocket Print</div>
-          <h2>Small town. Big pride.</h2>
+          <h2>Rooted in Wellington. Made to stand out.</h2>
           <p>
-            Rocket Print is a Wellington, Texas apparel brand built around small-town pride, clean design,
-            and quality products. We want every piece to feel intentional — something you would choose to wear,
-            not simply a shirt with a logo printed on it.
+            Rocket Print is a Wellington, Texas apparel and custom printing company built for the people,
+            schools, teams, businesses, and events that make small towns feel like home. We focus on clean,
+            wearable design and quality apparel — from tees and hoodies to polos, crewnecks, and custom pieces.
           </p>
           <p>
-            As new samples are produced, this site will become the main gallery for
-            Rocket Print releases, school spirit designs, local collections, and custom work.
+            Our goal is simple: make local apparel feel premium, timeless, and worth wearing long after the
+            event, season, or game is over. Small town. Big pride.
           </p>
           <a href="#designs" class="btn btn-secondary">Explore the Gallery</a>
         </div>
       </div>
     </section>
 
+    
     
     <section id="faq">
       <div class="wrap">
@@ -1473,36 +1439,47 @@
         <div class="faq">
           <details>
             <summary>Can I order online yet?</summary>
-            <p>Not yet. The Facebook storefront is being prepared and will become the first ordering option.</p>
+            <p>Our online shop is coming soon. Once it launches, you’ll be able to browse available designs, garment options, sizes, and colors directly online.</p>
           </details>
 
           <details>
-            <summary>What can Rocket Print print on?</summary>
-            <p>Rocket Print plans to offer printing on t-shirts, hoodies, sweatshirts, polo shirts, long-sleeve shirts, crewnecks, and other apparel depending on the project.</p>
+            <summary>What does Rocket Print print on?</summary>
+            <p>We print on t-shirts, hoodies, sweatshirts, polo shirts, long-sleeve shirts, crewnecks, and other apparel based on the needs of the project.</p>
           </details>
 
           <details>
             <summary>Do you offer custom apparel?</summary>
-            <p>Yes. Rocket Print can help with custom apparel for schools, teams, businesses, clubs, events, reunions, and personal projects.</p>
+            <p>Yes. We create custom apparel for schools, teams, businesses, clubs, events, reunions, organizations, and personal projects.</p>
           </details>
 
           <details>
             <summary>Can you do business or organization apparel?</summary>
-            <p>Absolutely. We can create apparel for local businesses, staff shirts, event shirts, team gear, and other organization needs.</p>
+            <p>Yes. We produce branded apparel for businesses, employees, crews, teams, clubs, events, promotions, and community organizations.</p>
+          </details>
+
+          <details>
+            <summary>Do you create the design too?</summary>
+            <p>Yes. You can bring us a finished logo or design, or start with an idea, sketch, reference, or concept and we can help turn it into a print-ready design.</p>
           </details>
 
           <details>
             <summary>Why is downtown Wellington featured on the site?</summary>
-            <p>The downtown image helps tell the Rocket Print story — small town, big pride. It represents where the brand comes from, while the designs themselves stand on their own.</p>
+            <p>Wellington is home. The downtown image is part of the Rocket Print story and represents the small-town pride behind the brand. It is separate from the artwork used on our apparel.</p>
           </details>
 
           <details>
-            <summary>Will more designs be added?</summary>
-            <p>Yes. The site is set up to grow with new Wellington designs, school-spirit releases, custom work, and future product collections.</p>
+            <summary>Do you add new designs regularly?</summary>
+            <p>Yes. We add Wellington releases, school-spirit designs, local collections, seasonal ideas, and custom work as new designs are completed.</p>
+          </details>
+
+          <details>
+            <summary>Can I order for a group or event?</summary>
+            <p>Yes. We work with group orders for teams, businesses, schools, reunions, fundraisers, events, clubs, and other organizations.</p>
           </details>
         </div>
       </div>
     </section>
+
 
 
     <section>
@@ -1617,7 +1594,7 @@
     }
 
     function makeImagePreview(src, alt){
-      return `<div class="modal-image-wrap"><img src="${src}" alt="${alt}"><div class="design-watermark modal-watermark">&copy; Rocket Print</div></div>`;
+      return `<img src="${src}" alt="${alt}">`;
     }
 
     function openDesign(card){
