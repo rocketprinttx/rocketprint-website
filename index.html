@@ -1906,6 +1906,112 @@
       }
     }
 
+
+    @media (max-width:980px){
+      header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:260;
+        padding-top:env(safe-area-inset-top);
+        background:rgba(8,8,8,.96);
+      }
+
+      .announcement{
+        margin-top:calc(68px + env(safe-area-inset-top));
+      }
+
+      .mobile-menu{
+        inset:calc(72px + env(safe-area-inset-top)) 12px auto 12px;
+        z-index:270;
+      }
+
+      .mobile-scrim{
+        z-index:255;
+      }
+    }
+
+
+    .card-color-strip{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      margin-top:14px;
+      min-height:24px;
+    }
+
+    .card-color-strip-label{
+      margin-right:3px;
+      color:#858585;
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .card-color-dot{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.28);
+      box-shadow:0 0 0 2px rgba(255,255,255,.035);
+    }
+
+    .color-option{
+      min-height:44px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#111;
+      color:#eee;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .color-option:hover{
+      border-color:rgba(255,255,255,.28);
+      background:#171717;
+    }
+
+    .color-option.active{
+      border-color:rgba(255,76,70,.72);
+      box-shadow:0 0 0 2px rgba(255,76,70,.13);
+    }
+
+    .color-option .color-swatch{
+      width:20px;
+      height:20px;
+      flex:0 0 auto;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.36);
+      box-shadow:0 0 0 2px rgba(0,0,0,.15);
+    }
+
+    .modal-preview{
+      transition:background .22s ease;
+    }
+
+    .modal-preview img{
+      max-width:92%;
+      max-height:78%;
+      width:auto;
+      height:auto;
+    }
+
+    .design-preview{
+      transition:background .22s ease;
+    }
+
+    .design-preview img{
+      position:relative;
+      z-index:1;
+    }
+
+    .garment-choice-grid{
+      grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -2011,11 +2117,17 @@
     </section>
 
     <div class="stats">
-      <div class="wrap stats-grid">
+      <div class="wrap stats-grid" id="statsCarousel">
         <div class="stat"><strong>3 Timeless Designs</strong><span>Wellington heritage collection</span></div>
         <div class="stat"><strong>Wellington Heritage</strong><span>The inspiration behind the collection</span></div>
         <div class="stat"><strong>Custom Apparel</strong><span>School, team and business work</span></div>
         <div class="stat"><strong>Facebook Shop</strong><span>Launching soon</span></div>
+      </div>
+      <div class="wrap">
+        <div class="carousel-progress" data-carousel="statsCarousel" aria-hidden="true">
+          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
+          <span>Swipe for more</span>
+        </div>
       </div>
     </div>
 
@@ -2028,7 +2140,7 @@
           </div>
         </div>
 
-        <div class="collections-grid">
+        <div class="collections-grid" id="collectionsCarousel">
           <article class="collection-card">
             <h3>Timeless Collection</h3>
             <p>A heritage-inspired collection celebrating Wellington with clean, premium, timeless design.</p>
@@ -2053,6 +2165,10 @@
             <a class="collection-link" href="#about">See the story →</a>
           </article>
         </div>
+        <div class="carousel-progress" data-carousel="collectionsCarousel" aria-hidden="true">
+          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
+          <span>Swipe for more</span>
+        </div>
       </div>
     </section>
 
@@ -2065,7 +2181,7 @@
             <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
           </div>
 
-          <div class="timeless-values">
+          <div class="timeless-values" id="timelessValuesCarousel">
             <div class="timeless-value">
               <span class="value-mark">01</span>
               <strong>Heritage</strong>
@@ -2083,6 +2199,10 @@
               <strong>Everyday</strong>
               <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
             </div>
+          </div>
+          <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
+            <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
+            <span>Swipe for more</span>
           </div>
         </div>
       </div>
@@ -2104,22 +2224,24 @@
               </p>
 
               <div class="featured-price">
-                <strong>From $29.99</strong>
+                <strong>From $24.99</strong>
                 <span>Free local drop-off in Wellington • shipping available</span>
               </div>
 
               <div class="product-meta">
                 <span class="product-chip"><i class="color-dot color-black"></i> Black</span>
                 <span class="product-chip"><i class="color-dot color-gray"></i> Sport Grey</span>
-                <span class="product-chip">Gildan G500 Tee</span>
-                <span class="product-chip">Gildan G185 Adult Hoodie</span>
-                <span class="product-chip">Gildan G185B Youth Hoodie</span>
+                <span class="product-chip">G500 Adult Tee</span>
+                <span class="product-chip">G500B Youth Tee</span>
+                <span class="product-chip">G510P Toddler Tee</span>
+                <span class="product-chip">G185 Adult Hoodie</span>
+                <span class="product-chip">G185B Youth Hoodie</span>
               </div>
 
               <ul>
                 <li><span class="bullet">✓</span><span>Black and Sport Grey complement the white, cream and red timeless artwork.</span></li>
-                <li><span class="bullet">✓</span><span>Gildan G500 Heavy Cotton tee, G185 adult hoodie, and G185B youth hoodie.</span></li>
-                <li><span class="bullet">✓</span><span>Adult sizes S–5XL, subject to color and blank availability.</span></li>
+                <li><span class="bullet">✓</span><span>Adult, youth, and toddler tee options plus adult and youth hoodies.</span></li>
+                <li><span class="bullet">✓</span><span>Adult S–5XL • Youth XS–XL • Toddler 2T–6T, subject to color and blank availability.</span></li>
               </ul>
 
               <a href="#designs" class="btn btn-primary">View the Gallery</a>
@@ -2158,14 +2280,17 @@
 <article class="design-card" tabindex="0"
             data-category="timeless school wellington"
             data-title="Skyrockets Signature"
-            data-tag="Wellington Collection"
+            data-tag="Timeless Collection"
             data-description="Our first Wellington Skyrockets design is a timeless, premium wordmark built to stay relevant year after year."
             data-design-type="image"
             data-image="assets/wellington-skyrockets-design.png"
             data-product="true"
-            data-price="From $29.99"
+            data-price="From $24.99"
             data-colors="Black|Sport Grey"
+            data-default-color="Black"
             data-tee-sizes="S–XL|$29.99;2XL|$31.99;3XL|$34.99;4XL|$36.99;5XL|$36.99"
+            data-youth-tee-sizes="XS–XL|$24.99"
+            data-toddler-tee-sizes="2T–6T|$24.99"
             data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99" data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
               <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design preview">
@@ -2179,7 +2304,7 @@
                 
               </div>
               <p>Our first timeless Wellington Skyrockets design — clean, classic and made for everyday wear.</p>
-              <div class="card-price">Tee $29.99 • Adult Hoodie $39.99 • Youth Hoodie $34.99</div>
+              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
             </div>
           </article>
 
@@ -2191,9 +2316,12 @@
             data-design-type="image"
             data-image="assets/timeless-wellington-script.png"
             data-product="true"
-            data-price="From $29.99"
-            data-colors="Cream|Natural|Black"
+            data-price="From $24.99"
+            data-colors="Natural|Sport Grey|White"
+            data-default-color="Natural"
             data-tee-sizes="S–XL|$29.99;2XL|$31.99;3XL|$34.99;4XL|$36.99;5XL|$36.99"
+            data-youth-tee-sizes="XS–XL|$24.99"
+            data-toddler-tee-sizes="2T–6T|$24.99"
             data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99"
             data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
@@ -2208,7 +2336,7 @@
                 
               </div>
               <p>An elevated script design that celebrates Wellington heritage with a softer boutique look.</p>
-              <div class="card-price">Tee $29.99 • Adult Hoodie $39.99 • Youth Hoodie $34.99</div>
+              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
             </div>
           </article>
 
@@ -2220,9 +2348,12 @@
             data-design-type="image"
             data-image="assets/timeless-wellington-wordmark.png"
             data-product="true"
-            data-price="From $29.99"
-            data-colors="White|Cream|Sport Grey|Black"
+            data-price="From $24.99"
+            data-colors="White|Natural|Sport Grey"
+            data-default-color="White"
             data-tee-sizes="S–XL|$29.99;2XL|$31.99;3XL|$34.99;4XL|$36.99;5XL|$36.99"
+            data-youth-tee-sizes="XS–XL|$24.99"
+            data-toddler-tee-sizes="2T–6T|$24.99"
             data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99"
             data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
@@ -2237,16 +2368,14 @@
                 
               </div>
               <p>A minimal heritage wordmark designed to keep Wellington and Skyrockets pride front and center.</p>
-              <div class="card-price">Tee $29.99 • Adult Hoodie $39.99 • Youth Hoodie $34.99</div>
+              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
             </div>
           </article>
 
         </div>
 
-        <div class="carousel-progress" id="designCarouselProgress" aria-hidden="true">
-          <div class="carousel-progress-track">
-            <div class="carousel-progress-thumb" id="designCarouselThumb"></div>
-          </div>
+        <div class="carousel-progress" data-carousel="gallery" aria-hidden="true">
+          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
           <span>Swipe to see more designs</span>
         </div>
       </div>
@@ -2421,7 +2550,7 @@
 
         <div class="product-details" id="productDetails">
           <div class="modal-price" id="modalPrice">From $29.99</div>
-          <div class="modal-subprice">Gildan apparel • Black or Sport Grey</div>
+          <div class="modal-subprice" id="modalSubprice">Gildan apparel • select a color below</div>
 
           <div class="product-panel">
             <h4>Available Colors</h4>
@@ -2430,14 +2559,28 @@
 
           <div class="garment-choice-grid">
             <div class="garment-choice">
-              <h4>T-Shirt</h4>
+              <h4>Adult Tee</h4>
               <span class="garment-model">Gildan G500 Heavy Cotton</span>
               <span class="garment-start">From $29.99</span>
               <div class="mini-size-list" id="teeSizes"></div>
             </div>
 
             <div class="garment-choice">
-              <h4>Hoodie</h4>
+              <h4>Youth Tee</h4>
+              <span class="garment-model">Gildan G500B Youth Heavy Cotton</span>
+              <span class="garment-start">$24.99</span>
+              <div class="mini-size-list" id="youthTeeSizes"></div>
+            </div>
+
+            <div class="garment-choice">
+              <h4>Toddler Tee</h4>
+              <span class="garment-model">Gildan G510P Toddler Heavy Cotton</span>
+              <span class="garment-start">$24.99</span>
+              <div class="mini-size-list" id="toddlerTeeSizes"></div>
+            </div>
+
+            <div class="garment-choice">
+              <h4>Adult Hoodie</h4>
               <span class="garment-model">Gildan G185 Heavy Blend</span>
               <span class="garment-start">From $39.99</span>
               <div class="mini-size-list" id="hoodieSizes"></div>
@@ -2503,27 +2646,31 @@
       link.addEventListener('click', closeMenu);
     });
 
-    const designGallery = document.getElementById('gallery');
-    const designCarouselThumb = document.getElementById('designCarouselThumb');
+    function setupCarouselProgress(progressEl){
+      const carouselId = progressEl.dataset.carousel;
+      const scroller = document.getElementById(carouselId);
+      const thumb = progressEl.querySelector('.carousel-progress-thumb');
+      if(!scroller || !thumb) return;
 
-    function updateDesignCarouselProgress(){
-      if(!designGallery || !designCarouselThumb) return;
+      function update(){
+        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        const visibleRatio = Math.min(1, scroller.clientWidth / Math.max(scroller.scrollWidth, 1));
+        const thumbPercent = Math.max(22, visibleRatio * 100);
+        thumb.style.width = `${thumbPercent}%`;
 
-      const maxScroll = Math.max(0, designGallery.scrollWidth - designGallery.clientWidth);
-      const visibleRatio = Math.min(1, designGallery.clientWidth / Math.max(designGallery.scrollWidth, 1));
-      const thumbPercent = Math.max(24, visibleRatio * 100);
-      designCarouselThumb.style.width = `${thumbPercent}%`;
+        const progress = maxScroll > 0 ? scroller.scrollLeft / maxScroll : 0;
+        const maxTranslatePx = Math.max(0, progressEl.querySelector('.carousel-progress-track').clientWidth - thumb.offsetWidth);
+        thumb.style.transform = `translateX(${progress * maxTranslatePx}px)`;
 
-      const availableTrack = Math.max(0, 100 - thumbPercent);
-      const progress = maxScroll > 0 ? designGallery.scrollLeft / maxScroll : 0;
-      designCarouselThumb.style.transform = `translateX(${progress * availableTrack / (thumbPercent / 100)}%)`;
+        progressEl.style.opacity = maxScroll > 2 ? '1' : '.35';
+      }
+
+      scroller.addEventListener('scroll', update, {passive:true});
+      window.addEventListener('resize', update);
+      requestAnimationFrame(update);
     }
 
-    if(designGallery){
-      designGallery.addEventListener('scroll', updateDesignCarouselProgress, {passive:true});
-      window.addEventListener('resize', updateDesignCarouselProgress);
-      requestAnimationFrame(updateDesignCarouselProgress);
-    }
+    document.querySelectorAll('.carousel-progress[data-carousel]').forEach(setupCarouselProgress);
 
     const filterButtons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.design-card');
@@ -2551,11 +2698,65 @@
     const modalPreview = document.getElementById('modalPreview');
     const productDetails = document.getElementById('productDetails');
     const modalPrice = document.getElementById('modalPrice');
+    const modalSubprice = document.getElementById('modalSubprice');
     const modalColors = document.getElementById('modalColors');
     const teeSizes = document.getElementById('teeSizes');
+    const youthTeeSizes = document.getElementById('youthTeeSizes');
+    const toddlerTeeSizes = document.getElementById('toddlerTeeSizes');
     const hoodieSizes = document.getElementById('hoodieSizes');
     const youthHoodieSizes = document.getElementById('youthHoodieSizes');
     const genericModalNote = document.getElementById('genericModalNote');
+
+    const shirtColors = {
+      'Black':'#111111',
+      'Sport Grey':'#9b9b9b',
+      'White':'#f5f5f2',
+      'Natural':'#e5d9bb',
+      'Cream':'#eadcb9',
+      'Charcoal':'#424242',
+      'Red':'#a9161c',
+      'Navy':'#172033'
+    };
+
+    function getShirtColor(name){
+      return shirtColors[name] || '#171717';
+    }
+
+    function previewBackground(color){
+      const hex = getShirtColor(color);
+      return `radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), ${hex}`;
+    }
+
+    function setModalColor(color, button){
+      modalPreview.style.background = previewBackground(color);
+      modalColors.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('active'));
+      if(button) button.classList.add('active');
+      if(modalSubprice) modalSubprice.textContent = `Gildan apparel • ${color}`;
+    }
+
+    function decorateProductCards(){
+      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
+        const colors = (card.dataset.colors || '').split('|').filter(Boolean);
+        const defaultColor = card.dataset.defaultColor || colors[0] || 'Black';
+        const preview = card.querySelector('.design-preview');
+        const body = card.querySelector('.card-body');
+        const price = card.querySelector('.card-price');
+
+        if(preview) preview.style.background = previewBackground(defaultColor);
+
+        if(body && colors.length && !body.querySelector('.card-color-strip')){
+          const strip = document.createElement('div');
+          strip.className = 'card-color-strip';
+          strip.innerHTML = `<span class="card-color-strip-label">Colors</span>` +
+            colors.map(color => `<span class="card-color-dot" title="${color}" aria-label="${color}" style="background:${getShirtColor(color)}"></span>`).join('');
+          if(price) body.insertBefore(strip, price);
+          else body.appendChild(strip);
+        }
+      });
+    }
+
+    decorateProductCards();
+
 
     function makeTextPreview(design){
       const parts = (design || '').split('|');
@@ -2587,31 +2788,40 @@
         modalPrice.textContent = card.dataset.price || '$29.99';
 
         const colors = (card.dataset.colors || '').split('|').filter(Boolean);
-        modalColors.innerHTML = colors.map(color => {
-          const colorClass = color.toLowerCase().includes('gray') ? 'color-gray' : 'color-black';
-          return `<span class="color-option"><i class="color-dot ${colorClass}"></i>${color}</span>`;
+        const defaultColor = card.dataset.defaultColor || colors[0] || 'Black';
+
+        modalColors.innerHTML = colors.map((color, index) => {
+          const active = color === defaultColor || (!card.dataset.defaultColor && index === 0);
+          return `<button type="button" class="color-option${active ? ' active' : ''}" data-color="${color}">
+            <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
+            <span>${color}</span>
+          </button>`;
         }).join('');
 
-        const teeSizeData = (card.dataset.teeSizes || '').split(';').filter(Boolean);
-        teeSizes.innerHTML = teeSizeData.map(item => {
-          const parts = item.split('|');
-          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
-        }).join('');
+        modalColors.querySelectorAll('.color-option').forEach(button => {
+          button.addEventListener('click', () => setModalColor(button.dataset.color, button));
+        });
 
-        const hoodieSizeData = (card.dataset.hoodieSizes || '').split(';').filter(Boolean);
-        hoodieSizes.innerHTML = hoodieSizeData.map(item => {
-          const parts = item.split('|');
-          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
-        }).join('');
+        const initialButton = modalColors.querySelector('.color-option.active') || modalColors.querySelector('.color-option');
+        setModalColor(defaultColor, initialButton);
 
-        const youthHoodieSizeData = (card.dataset.youthHoodieSizes || '').split(';').filter(Boolean);
-        youthHoodieSizes.innerHTML = youthHoodieSizeData.map(item => {
-          const parts = item.split('|');
-          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
-        }).join('');
+        const renderSizes = (target, raw) => {
+          const data = (raw || '').split(';').filter(Boolean);
+          target.innerHTML = data.map(item => {
+            const parts = item.split('|');
+            return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
+          }).join('');
+        };
+
+        renderSizes(teeSizes, card.dataset.teeSizes);
+        renderSizes(youthTeeSizes, card.dataset.youthTeeSizes);
+        renderSizes(toddlerTeeSizes, card.dataset.toddlerTeeSizes);
+        renderSizes(hoodieSizes, card.dataset.hoodieSizes);
+        renderSizes(youthHoodieSizes, card.dataset.youthHoodieSizes);
       } else {
         productDetails.classList.remove('visible');
         genericModalNote.style.display = 'block';
+        modalPreview.style.background = '';
       }
 
       modal.classList.add('open');
