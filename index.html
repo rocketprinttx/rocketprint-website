@@ -460,6 +460,49 @@
       backdrop-filter:blur(2px);
     }
 
+
+    .design-card-feature{
+      position:relative;
+    }
+
+    .design-watermark{
+      position:absolute;
+      right:14px;
+      bottom:12px;
+      z-index:2;
+      padding:5px 9px;
+      border-radius:999px;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.84);
+      font-size:.68rem;
+      font-weight:800;
+      letter-spacing:.02em;
+      line-height:1;
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+    }
+
+    .gallery-watermark{
+      right:12px;
+      bottom:12px;
+      font-size:.64rem;
+      padding:5px 8px;
+    }
+
+    .modal-image-wrap{
+      position:relative;
+      width:100%;
+      display:grid;
+      place-items:center;
+    }
+
+    .modal-watermark{
+      right:16px;
+      bottom:14px;
+      font-size:.68rem;
+    }
+
     .design-card-feature img{
       width:100%;
       height:auto;
@@ -724,8 +767,8 @@
       border-radius:28px;
       border:1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(4,4,4,.02) 0%, rgba(4,4,4,.10) 28%, rgba(4,4,4,.52) 100%),
-        url('assets/wellington-about-bg.jpg') center 42%/cover no-repeat;
+        linear-gradient(180deg, rgba(4,4,4,.03) 0%, rgba(4,4,4,.12) 28%, rgba(4,4,4,.50) 100%),
+        url('assets/wellington-about-bg-v2.jpg') center 50%/cover no-repeat;
       overflow:hidden;
       position:relative;
       text-align:left;
@@ -1187,7 +1230,7 @@
             <div class="spotlight-art">
               <div class="design-card-feature">
                 <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design">
-                <small>First Wellington Skyrockets design • Wellington, Texas</small>
+                <div class="design-watermark">&copy; Rocket Print</div>
               </div>
             </div>
           </div>
@@ -1227,6 +1270,7 @@
             data-image="assets/wellington-skyrockets-design.png">
             <div class="design-preview">
               <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design preview">
+              <div class="design-watermark gallery-watermark">&copy; Rocket Print</div>
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -1416,6 +1460,7 @@
       </div>
     </section>
 
+    
     <section id="faq">
       <div class="wrap">
         <div class="section-head">
@@ -1432,22 +1477,33 @@
           </details>
 
           <details>
-            <summary>Do you make custom designs?</summary>
-            <p>Yes. Rocket Print plans to offer custom apparel for schools, teams, businesses, events, and personal projects.</p>
+            <summary>What can Rocket Print print on?</summary>
+            <p>Rocket Print plans to offer printing on t-shirts, hoodies, sweatshirts, polo shirts, long-sleeve shirts, crewnecks, and other apparel depending on the project.</p>
           </details>
 
           <details>
-            <summary>Where is Rocket Print located?</summary>
-            <p>Rocket Print is based in Wellington, Texas.</p>
+            <summary>Do you offer custom apparel?</summary>
+            <p>Yes. Rocket Print can help with custom apparel for schools, teams, businesses, clubs, events, reunions, and personal projects.</p>
+          </details>
+
+          <details>
+            <summary>Can you do business or organization apparel?</summary>
+            <p>Absolutely. We can create apparel for local businesses, staff shirts, event shirts, team gear, and other organization needs.</p>
           </details>
 
           <details>
             <summary>Why is downtown Wellington featured on the site?</summary>
-            <p>The downtown image is part of the Rocket Print brand story — small town, big pride. It represents where the business is from; it is not part of the Skyrockets design itself.</p>
+            <p>The downtown image helps tell the Rocket Print story — small town, big pride. It represents where the brand comes from, while the designs themselves stand on their own.</p>
+          </details>
+
+          <details>
+            <summary>Will more designs be added?</summary>
+            <p>Yes. The site is set up to grow with new Wellington designs, school-spirit releases, custom work, and future product collections.</p>
           </details>
         </div>
       </div>
     </section>
+
 
     <section>
       <div class="wrap">
@@ -1561,7 +1617,7 @@
     }
 
     function makeImagePreview(src, alt){
-      return `<img src="${src}" alt="${alt}">`;
+      return `<div class="modal-image-wrap"><img src="${src}" alt="${alt}"><div class="design-watermark modal-watermark">&copy; Rocket Print</div></div>`;
     }
 
     function openDesign(card){
