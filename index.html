@@ -1930,9 +1930,6 @@
         background:rgba(8,8,8,.96);
       }
 
-      .announcement{
-        margin-top:calc(68px + env(safe-area-inset-top));
-      }
 
       .mobile-menu{
         inset:calc(72px + env(safe-area-inset-top)) 12px auto 12px;
@@ -2024,6 +2021,198 @@
       grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
     }
 
+
+    .mobile-announcement{
+      display:none;
+    }
+
+    @media (max-width:980px){
+      :root{
+        --mobile-header-h:68px;
+        --mobile-banner-h:48px;
+      }
+
+      .desktop-announcement{
+        display:none;
+      }
+
+      header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:300;
+        padding-top:env(safe-area-inset-top);
+        background:rgba(8,8,8,.97);
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+
+      .nav{
+        min-height:var(--mobile-header-h);
+      }
+
+      .mobile-announcement{
+        position:fixed;
+        top:calc(var(--mobile-header-h) + env(safe-area-inset-top));
+        left:0;
+        right:0;
+        z-index:290;
+        min-height:var(--mobile-banner-h);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:7px;
+        padding:8px 14px;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        background:
+          linear-gradient(90deg, rgba(228,58,53,.14), rgba(228,58,53,.05)),
+          #111;
+        color:#d8d8d8;
+        font-size:.72rem;
+        line-height:1.25;
+        text-align:center;
+      }
+
+      .mobile-announcement strong{
+        flex:0 0 auto;
+        color:#ff716c;
+        font-size:.70rem;
+        font-weight:950;
+        letter-spacing:.07em;
+        text-transform:uppercase;
+      }
+
+      .mobile-announcement span{
+        min-width:0;
+      }
+
+      main{
+        padding-top:calc(var(--mobile-header-h) + var(--mobile-banner-h) + env(safe-area-inset-top));
+      }
+
+      html{
+        scroll-padding-top:calc(var(--mobile-header-h) + var(--mobile-banner-h) + 14px + env(safe-area-inset-top));
+      }
+
+      .mobile-menu{
+        inset:calc(var(--mobile-header-h) + env(safe-area-inset-top) + 6px) 12px auto 12px;
+        z-index:310;
+      }
+
+      .mobile-scrim{
+        z-index:295;
+      }
+
+      /* Mobile sections should read from the left edge instead of feeling centered. */
+      .custom-box,
+      .custom-copy,
+      .spotlight-copy,
+      .split-copy,
+      .section-head{
+        text-align:left;
+      }
+
+      .custom-copy,
+      .spotlight-copy,
+      .split-copy{
+        width:100%;
+        justify-self:start;
+        align-items:flex-start;
+      }
+
+      .custom-copy p,
+      .spotlight-copy p,
+      .split-copy p{
+        margin-left:0;
+        margin-right:0;
+      }
+
+      .custom-copy .eyebrow,
+      .spotlight-copy .eyebrow,
+      .split-copy .eyebrow,
+      .section-head .eyebrow{
+        justify-content:flex-start;
+      }
+
+      .custom-copy .btn{
+        width:auto;
+        max-width:100%;
+        justify-self:start;
+        align-self:flex-start;
+      }
+
+      /* Turn the service cards into left-aligned mobile chips/bubbles. */
+      .service-grid{
+        display:flex !important;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        align-items:flex-start;
+        gap:9px;
+        width:100%;
+      }
+
+      .service{
+        min-height:0 !important;
+        width:auto;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:flex-start;
+        padding:11px 14px;
+        border-radius:999px;
+        text-align:left;
+        line-height:1.2;
+        font-size:.87rem;
+        white-space:nowrap;
+      }
+
+      .service::before{
+        width:34px;
+        height:34px;
+        top:-17px;
+        right:-10px;
+      }
+
+      /* Keep other mobile pill groups left-aligned too. */
+      .product-meta,
+      .hero-points,
+      .filters,
+      .color-options{
+        justify-content:flex-start;
+        text-align:left;
+      }
+    }
+
+    @media (max-width:520px){
+      .mobile-announcement{
+        min-height:52px;
+        padding:7px 10px;
+        gap:3px;
+        flex-direction:column;
+      }
+
+      :root{
+        --mobile-banner-h:52px;
+      }
+
+      .mobile-announcement strong{
+        line-height:1;
+      }
+
+      .mobile-announcement span{
+        font-size:.69rem;
+      }
+
+      .custom-box{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .service{
+        font-size:.82rem;
+        padding:10px 12px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -2032,7 +2221,7 @@
 </head>
 
 <body>
-  <div class="announcement">
+  <div class="announcement desktop-announcement">
     <span><b>Timeless Collection:</b> three Wellington heritage designs are now featured on RocketPrintTX.com.</span>
   </div>
 
@@ -2056,6 +2245,11 @@
       </div>
     </div>
   </header>
+
+  <div class="mobile-announcement" role="status" aria-label="Timeless Collection announcement">
+    <strong>Timeless Collection</strong>
+    <span>3 Wellington heritage designs now featured</span>
+  </div>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="wrap">
