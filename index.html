@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rocket Print — premium custom apparel, local designs, and custom printing from Wellington, Texas." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
   <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
   <link rel="preload" href="assets/wellington-skyrockets-design.png" as="image" />
@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/timeless-wellington-wordmark.png" as="image" />
 
   <meta property="og:title" content="Rocket Print | Wellington, Texas" />
-  <meta property="og:description" content="Local designs. Premium apparel. Custom printing from Wellington, Texas." />
+  <meta property="og:description" content="Explore Rocket Print’s Timeless Collection — premium Wellington heritage apparel and custom printing from Wellington, Texas." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
 
@@ -1247,6 +1247,558 @@
       .showcase{min-height:370px}
     }
 
+
+    /* ---------- V19 mobile-first polish ---------- */
+    :focus-visible{
+      outline:3px solid rgba(255,76,70,.82);
+      outline-offset:3px;
+    }
+
+    body{
+      padding-bottom:0;
+    }
+
+    .timeless-story{
+      padding:34px 0 26px;
+    }
+
+    .timeless-story-shell{
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:34px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(228,58,53,.11), transparent 30%),
+        linear-gradient(145deg,#141414,#0e0e0e);
+      box-shadow:0 22px 60px rgba(0,0,0,.20);
+    }
+
+    .timeless-story-intro{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .timeless-story-intro .eyebrow{
+      margin-bottom:0;
+      flex:0 0 auto;
+    }
+
+    .timeless-story-intro h2{
+      margin:0;
+      max-width:720px;
+      font-size:clamp(1.8rem,4vw,3rem);
+      letter-spacing:-.045em;
+      text-align:right;
+    }
+
+    .timeless-values{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .timeless-value{
+      min-height:150px;
+      padding:20px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+    }
+
+    .value-mark{
+      display:block;
+      margin-bottom:22px;
+      color:#ff6f69;
+      font-size:.74rem;
+      font-weight:950;
+      letter-spacing:.14em;
+    }
+
+    .timeless-value strong{
+      display:block;
+      margin-bottom:7px;
+      font-size:1.05rem;
+    }
+
+    .timeless-value p{
+      margin:0;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .mobile-scrim,
+    .mobile-bottom-nav{
+      display:none;
+    }
+
+    .design-card{
+      isolation:isolate;
+    }
+
+    .design-preview{
+      aspect-ratio:1 / 1;
+      min-height:0;
+    }
+
+    .design-preview img{
+      width:min(88%,460px);
+      max-height:86%;
+      object-fit:contain;
+    }
+
+    .card-body{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .card-price{
+      margin-top:auto;
+      padding-top:12px;
+    }
+
+    @media (hover:none){
+      .design-preview::after{
+        opacity:1;
+        transform:none;
+      }
+
+      .design-card:hover{
+        transform:none;
+        box-shadow:none;
+      }
+    }
+
+    @media (max-width:980px){
+      body{
+        padding-bottom:calc(74px + env(safe-area-inset-bottom));
+      }
+
+      header{
+        top:0;
+      }
+
+      .nav{
+        min-height:68px;
+      }
+
+      .brand-logo{
+        width:92px;
+      }
+
+      .menu-btn{
+        min-width:48px;
+        min-height:48px;
+        border-radius:14px;
+        font-size:1.1rem;
+      }
+
+      .mobile-menu{
+        inset:calc(105px + env(safe-area-inset-top)) 12px auto 12px;
+        border:1px solid var(--line-strong);
+        border-radius:20px;
+        background:rgba(12,12,12,.97);
+        box-shadow:0 30px 90px rgba(0,0,0,.58);
+        overflow:hidden;
+      }
+
+      .mobile-menu .wrap{
+        width:100%;
+        padding:10px 14px 16px;
+      }
+
+      .mobile-menu a{
+        display:flex;
+        align-items:center;
+        min-height:54px;
+        padding:14px 10px;
+        font-size:1rem;
+      }
+
+      .mobile-scrim{
+        position:fixed;
+        inset:0;
+        z-index:180;
+        background:rgba(0,0,0,.58);
+        backdrop-filter:blur(3px);
+      }
+
+      .mobile-scrim.open{
+        display:block;
+      }
+
+      .mobile-bottom-nav{
+        position:fixed;
+        left:10px;
+        right:10px;
+        bottom:calc(8px + env(safe-area-inset-bottom));
+        z-index:220;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        padding:7px;
+        border:1px solid rgba(255,255,255,.13);
+        border-radius:20px;
+        background:rgba(14,14,14,.93);
+        box-shadow:0 18px 60px rgba(0,0,0,.55);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+      }
+
+      .mobile-bottom-nav a{
+        min-height:52px;
+        display:grid;
+        place-items:center;
+        align-content:center;
+        gap:2px;
+        border-radius:14px;
+        text-decoration:none;
+        color:#c9c9c9;
+        font-size:.68rem;
+        font-weight:800;
+      }
+
+      .mobile-bottom-nav a:active{
+        background:rgba(228,58,53,.14);
+        color:#fff;
+      }
+
+      .mobile-nav-icon{
+        color:#ff6c67;
+        font-size:1.04rem;
+        line-height:1;
+      }
+
+      .stats-grid{
+        display:flex;
+        gap:10px;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding-bottom:4px;
+      }
+
+      .stats-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .stat{
+        min-width:72vw;
+        scroll-snap-align:start;
+      }
+
+      .collections-grid{
+        display:flex;
+        overflow-x:auto;
+        gap:12px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding-bottom:5px;
+      }
+
+      .collections-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .collection-card{
+        flex:0 0 min(82vw,360px);
+        min-height:190px;
+        scroll-snap-align:start;
+      }
+
+      .timeless-story-intro{
+        display:block;
+      }
+
+      .timeless-story-intro h2{
+        margin-top:10px;
+        text-align:left;
+      }
+
+      .timeless-values{
+        display:flex;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        gap:10px;
+        scrollbar-width:none;
+      }
+
+      .timeless-values::-webkit-scrollbar{
+        display:none;
+      }
+
+      .timeless-value{
+        flex:0 0 min(78vw,330px);
+        scroll-snap-align:start;
+      }
+
+      .spotlight-grid{
+        display:flex;
+        flex-direction:column;
+      }
+
+      .spotlight-art{
+        order:-1;
+      }
+
+      .design-card-feature{
+        padding:16px;
+      }
+
+      .gallery{
+        display:flex;
+        overflow-x:auto;
+        gap:14px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding:4px 1px 14px;
+      }
+
+      .gallery::-webkit-scrollbar{
+        display:none;
+      }
+
+      .design-card{
+        flex:0 0 min(86vw,420px);
+        scroll-snap-align:center;
+      }
+
+      .filters{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        scrollbar-width:none;
+        padding-bottom:4px;
+      }
+
+      .filters::-webkit-scrollbar{
+        display:none;
+      }
+
+      .filter-btn{
+        min-height:44px;
+        flex:0 0 auto;
+      }
+
+      .modal{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .modal-card{
+        width:100%;
+        max-height:94dvh;
+        border-radius:26px 26px 0 0;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+        overflow:auto;
+        overscroll-behavior:contain;
+      }
+
+      .modal-preview{
+        min-height:0;
+        height:min(34dvh,330px);
+        padding:18px;
+      }
+
+      .modal-preview img{
+        max-height:100%;
+        width:auto;
+        max-width:92%;
+      }
+
+      .modal-body{
+        padding:26px 20px calc(32px + env(safe-area-inset-bottom));
+      }
+
+      .modal-close{
+        position:sticky;
+        float:right;
+        top:10px;
+        width:48px;
+        height:48px;
+        z-index:3;
+      }
+
+      .garment-choice-grid{
+        display:block;
+      }
+
+      .garment-choice{
+        margin-bottom:10px;
+      }
+
+      details summary{
+        min-height:52px;
+        display:flex;
+        align-items:center;
+      }
+    }
+
+    @media (max-width:720px){
+      .announcement{
+        min-height:32px;
+        padding:6px 14px;
+      }
+
+      .hero{
+        padding:44px 0 38px;
+      }
+
+      .hero-grid{
+        gap:30px;
+      }
+
+      h1{
+        font-size:clamp(2.65rem,14vw,4.15rem);
+        letter-spacing:-.06em;
+      }
+
+      .hero-copy{
+        font-size:1rem;
+      }
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .hero-actions .btn{
+        min-height:52px;
+      }
+
+      .showcase{
+        min-height:315px;
+        border-radius:24px;
+      }
+
+      .logo-stage{
+        inset:44px 18px 26px;
+      }
+
+      section{
+        padding:54px 0;
+      }
+
+      .section-head{
+        margin-bottom:24px;
+      }
+
+      .section-head h2,
+      .split-copy h2,
+      .spotlight-copy h2,
+      .custom-copy h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+
+      .timeless-story{
+        padding:20px 0;
+      }
+
+      .timeless-story-shell{
+        padding:24px 18px;
+        border-radius:22px;
+      }
+
+      .spotlight-grid{
+        padding:22px 18px;
+        gap:20px;
+      }
+
+      .spotlight-copy p{
+        font-size:.95rem;
+      }
+
+      .featured-price{
+        display:block;
+      }
+
+      .featured-price strong{
+        display:block;
+        margin-bottom:4px;
+      }
+
+      .product-meta{
+        gap:8px;
+      }
+
+      .product-chip{
+        min-height:40px;
+      }
+
+      .design-preview{
+        aspect-ratio:1 / .95;
+      }
+
+      .card-body{
+        padding:18px;
+      }
+
+      .custom-box{
+        padding:28px 18px;
+      }
+
+      .service{
+        min-height:74px;
+      }
+
+      .split{
+        gap:28px;
+      }
+
+      .local-card{
+        min-height:300px;
+      }
+
+      .faq{
+        gap:10px;
+      }
+
+      details{
+        padding:0 16px;
+      }
+
+      .cta{
+        padding:48px 20px;
+      }
+
+      footer{
+        padding-bottom:100px;
+      }
+    }
+
+    @media (max-width:430px){
+      .wrap{
+        width:min(calc(100% - 22px), var(--max));
+      }
+
+      .stat{
+        min-width:82vw;
+      }
+
+      .collection-card{
+        flex-basis:86vw;
+      }
+
+      .timeless-value{
+        flex-basis:84vw;
+      }
+
+      .design-card{
+        flex-basis:90vw;
+      }
+
+      .mobile-bottom-nav{
+        left:7px;
+        right:7px;
+      }
+
+      .mobile-bottom-nav a{
+        font-size:.64rem;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -1256,7 +1808,7 @@
 
 <body>
   <div class="announcement">
-    <span><b>New featured design:</b> our first Wellington Skyrockets design is now live on the site.</span>
+    <span><b>Timeless Collection:</b> three Wellington heritage designs are now featured on RocketPrintTX.com.</span>
   </div>
 
   <header>
@@ -1290,6 +1842,28 @@
     </div>
   </nav>
 
+
+  <div class="mobile-scrim" id="mobileScrim" aria-hidden="true"></div>
+
+  <nav class="mobile-bottom-nav" aria-label="Quick navigation">
+    <a href="#top">
+      <span class="mobile-nav-icon">⌂</span>
+      <span>Home</span>
+    </a>
+    <a href="#designs">
+      <span class="mobile-nav-icon">◆</span>
+      <span>Timeless</span>
+    </a>
+    <a href="#custom">
+      <span class="mobile-nav-icon">＋</span>
+      <span>Custom</span>
+    </a>
+    <a href="#about">
+      <span class="mobile-nav-icon">◎</span>
+      <span>About</span>
+    </a>
+  </nav>
+
   <main id="top">
     <section class="hero">
       <div class="wrap hero-grid">
@@ -1303,17 +1877,17 @@
           <p class="hero-copy">
             Rocket Print creates clean, standout apparel for Wellington, schools,
             teams, businesses, events, and anyone who wants something made their own.
-            Our first drop is the <strong>Timeless Collection</strong> - a heritage-inspired release
+            Our debut collection is the <strong>Timeless Collection</strong> - a heritage-inspired release
             built around celebrating Wellington with clean, premium design.
           </p>
 
           <div class="hero-actions">
-            <a href="#featured" class="btn btn-primary">See Featured Design</a>
-            <a href="#designs" class="btn btn-secondary">Browse Designs</a>
+            <a href="#designs" class="btn btn-primary">Explore Timeless Collection</a>
+            <a href="#custom" class="btn btn-secondary">Custom Printing</a>
           </div>
 
           <div class="hero-points">
-            <span><i class="check">✓</i> Timeless Collection - First Drop</span>
+            <span><i class="check">✓</i> Timeless Collection</span>
             <span><i class="check">✓</i> Celebrating Wellington heritage</span>
             <span><i class="check">✓</i> Custom projects welcome</span>
           </div>
@@ -1376,6 +1950,38 @@
     </section>
 
 
+    <section class="timeless-story" aria-labelledby="timelessStoryTitle">
+      <div class="wrap">
+        <div class="timeless-story-shell">
+          <div class="timeless-story-intro">
+            <div class="eyebrow">The Timeless Idea</div>
+            <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
+          </div>
+
+          <div class="timeless-values">
+            <div class="timeless-value">
+              <span class="value-mark">01</span>
+              <strong>Heritage</strong>
+              <p>Rooted in Wellington pride without feeling tied to a single season.</p>
+            </div>
+
+            <div class="timeless-value">
+              <span class="value-mark">02</span>
+              <strong>Premium</strong>
+              <p>Clean typography and restrained details that feel elevated on apparel.</p>
+            </div>
+
+            <div class="timeless-value">
+              <span class="value-mark">03</span>
+              <strong>Everyday</strong>
+              <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <section class="spotlight" id="featured">
       <div class="wrap">
         <div class="spotlight-box">
@@ -1384,7 +1990,7 @@
               <span class="spotlight-kicker">Featured Design • Timeless Collection</span>
               <h2>Wellington Skyrockets</h2>
               <p>
-                This featured design is part of the first Timeless Collection drop - a Wellington heritage release
+                This featured design is part of the Timeless Collection - a Wellington heritage release
                 built to feel clean, premium, and wearable year after year. The collection opens with three designs,
                 starting with this Wellington Skyrockets signature piece. It is available on a Gildan Heavy Cotton
                 T-Shirt, Adult Heavy Blend Hoodie, or Youth Heavy Blend Hoodie in Black and Sport Grey.
@@ -1474,7 +2080,7 @@
             data-category="timeless local wellington"
             data-title="Wellington Heritage Script"
             data-tag="Timeless Collection"
-            data-description="An elegant script-based Wellington heritage design with a refined boutique feel. Part of the Timeless Collection first drop celebrating Wellington."
+            data-description="An elegant script-based Wellington heritage design with a refined boutique feel. Part of the Timeless Collection celebrating Wellington."
             data-design-type="image"
             data-image="assets/timeless-wellington-script.png"
             data-product="true"
@@ -1484,7 +2090,7 @@
             data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99"
             data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
-              <img src="assets/timeless-wellington-script.png" alt="Wellington Heritage Script design preview">
+              <img src="assets/timeless-wellington-script.png" alt="Wellington Heritage Script design preview" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -1503,7 +2109,7 @@
             data-category="timeless local wellington"
             data-title="Wellington Heritage Wordmark"
             data-tag="Timeless Collection"
-            data-description="A clean black wordmark design built around Wellington and Skyrockets pride. Part of the Timeless Collection first drop celebrating Wellington heritage."
+            data-description="A clean black wordmark design built around Wellington and Skyrockets pride. Part of the Timeless Collection celebrating Wellington heritage."
             data-design-type="image"
             data-image="assets/timeless-wellington-wordmark.png"
             data-product="true"
@@ -1513,7 +2119,7 @@
             data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99"
             data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
-              <img src="assets/timeless-wellington-wordmark.png" alt="Wellington Heritage Wordmark design preview">
+              <img src="assets/timeless-wellington-wordmark.png" alt="Wellington Heritage Wordmark design preview" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -1759,9 +2365,12 @@
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const mobileScrim = document.getElementById('mobileScrim');
 
     function closeMenu(){
       mobileMenu.classList.remove('open');
+      mobileScrim.classList.remove('open');
+      mobileScrim.setAttribute('aria-hidden','true');
       document.body.classList.remove('menu-open');
       menuBtn.setAttribute('aria-expanded','false');
       menuBtn.textContent = '☰';
@@ -1769,12 +2378,20 @@
 
     menuBtn.addEventListener('click', () => {
       const isOpen = mobileMenu.classList.toggle('open');
+      mobileScrim.classList.toggle('open', isOpen);
+      mobileScrim.setAttribute('aria-hidden', String(!isOpen));
       document.body.classList.toggle('menu-open', isOpen);
       menuBtn.setAttribute('aria-expanded', String(isOpen));
       menuBtn.textContent = isOpen ? '×' : '☰';
     });
 
+    mobileScrim.addEventListener('click', closeMenu);
+
     mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
