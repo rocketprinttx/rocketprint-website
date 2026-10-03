@@ -990,6 +990,210 @@
       color:#ff776f;
     }
 
+
+    .product-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 22px;
+    }
+
+    .product-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:36px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.045);
+      color:#e6e6e6;
+      font-size:.8rem;
+      font-weight:800;
+    }
+
+    .color-dot{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.30);
+      box-shadow:0 0 0 2px rgba(255,255,255,.04);
+    }
+
+    .color-black{background:#111}
+    .color-gray{background:#777}
+
+    .featured-price{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      margin:8px 0 18px;
+    }
+
+    .featured-price strong{
+      font-size:2rem;
+      letter-spacing:-.04em;
+    }
+
+    .featured-price span{
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .product-details{
+      display:none;
+      margin-top:20px;
+    }
+
+    .product-details.visible{
+      display:block;
+    }
+
+    .product-panel{
+      padding:18px;
+      border-radius:15px;
+      border:1px solid var(--line);
+      background:#171717;
+      margin-bottom:16px;
+    }
+
+    .product-panel h4{
+      margin:0 0 12px;
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#ff756f;
+    }
+
+    .color-options{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .color-option{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#eee;
+      font-weight:750;
+      font-size:.9rem;
+    }
+
+    .size-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+
+    .size-price{
+      padding:10px 8px;
+      text-align:center;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#111;
+    }
+
+    .size-price strong{
+      display:block;
+      font-size:.88rem;
+      color:#fff;
+    }
+
+    .size-price span{
+      display:block;
+      margin-top:3px;
+      color:#aaa;
+      font-size:.76rem;
+    }
+
+    .shipping-note{
+      color:#bdbdbd;
+      font-size:.87rem;
+      line-height:1.45;
+    }
+
+    .modal-price{
+      font-size:2rem;
+      font-weight:950;
+      letter-spacing:-.04em;
+      margin:8px 0 2px;
+    }
+
+    .modal-subprice{
+      color:#969696;
+      font-size:.82rem;
+      margin-bottom:14px;
+    }
+
+    .card-price{
+      margin-top:10px;
+      color:#fff;
+      font-weight:900;
+      font-size:.95rem;
+    }
+
+    @media (max-width: 600px){
+      .size-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+
+    .garment-choice-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .garment-choice{
+      padding:16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#111;
+    }
+
+    .garment-choice h4{
+      margin:0 0 5px;
+      color:#fff;
+      font-size:1rem;
+      letter-spacing:-.01em;
+      text-transform:none;
+    }
+
+    .garment-choice .garment-model{
+      display:block;
+      margin-bottom:10px;
+      color:#9c9c9c;
+      font-size:.76rem;
+    }
+
+    .garment-choice .garment-start{
+      display:block;
+      margin-bottom:12px;
+      color:#fff;
+      font-size:1.35rem;
+      font-weight:950;
+    }
+
+    .garment-choice .mini-size-list{
+      display:grid;
+      gap:6px;
+      color:#bdbdbd;
+      font-size:.79rem;
+    }
+
+    .garment-choice .mini-size-list span{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:6px;
+    }
+
+    @media (max-width: 900px){
+      .garment-choice-grid{grid-template-columns:1fr}
+    }
+
     @media (max-width: 980px){
       .nav-links{display:none}
       .menu-btn{display:inline-grid;place-items:center}
@@ -1183,12 +1387,26 @@
               <p>
                 Our first Wellington Skyrockets release is a timeless wordmark-style design — clean, premium,
                 and made to work year after year instead of feeling tied to a single season or campaign.
+                It is available on a Gildan Heavy Cotton T-Shirt, Adult Heavy Blend Hoodie, or Youth Heavy Blend Hoodie in Black and Sport Grey.
               </p>
 
+              <div class="featured-price">
+                <strong>From $29.99</strong>
+                <span>supplier shipping built into our pricing • home shipping extra</span>
+              </div>
+
+              <div class="product-meta">
+                <span class="product-chip"><i class="color-dot color-black"></i> Black</span>
+                <span class="product-chip"><i class="color-dot color-gray"></i> Sport Grey</span>
+                <span class="product-chip">Gildan G500 Tee</span>
+                <span class="product-chip">Gildan G185 Adult Hoodie</span>
+                <span class="product-chip">Gildan G185B Youth Hoodie</span>
+              </div>
+
               <ul>
-                <li><span class="bullet">✓</span><span>Timeless Wellington Skyrockets identity with a premium, understated look.</span></li>
-                <li><span class="bullet">✓</span><span>The first real school-spirit design in the Rocket Print gallery.</span></li>
-                <li><span class="bullet">✓</span><span>The design stands on its own — separate from the website’s Wellington photography.</span></li>
+                <li><span class="bullet">✓</span><span>Black and Sport Grey complement the white, cream and red timeless artwork.</span></li>
+                <li><span class="bullet">✓</span><span>Gildan G500 Heavy Cotton tee, G185 adult hoodie, and G185B youth hoodie.</span></li>
+                <li><span class="bullet">✓</span><span>Adult sizes S–5XL, subject to color and blank availability.</span></li>
               </ul>
 
               <a href="#designs" class="btn btn-primary">View the Gallery</a>
@@ -1233,7 +1451,12 @@
             data-tag="Wellington Collection"
             data-description="Our first Wellington Skyrockets design is a timeless, premium wordmark built to stay relevant year after year."
             data-design-type="image"
-            data-image="assets/wellington-skyrockets-design.png">
+            data-image="assets/wellington-skyrockets-design.png"
+            data-product="true"
+            data-price="From $29.99"
+            data-colors="Black|Sport Grey"
+            data-tee-sizes="S–XL|$29.99;2XL|$31.99;3XL|$34.99;4XL|$36.99;5XL|$36.99"
+            data-hoodie-sizes="S–XL|$39.99;2XL|$42.99;3XL|$45.99;4XL|$47.99;5XL|$49.99" data-youth-hoodie-sizes="XS–XL|$34.99">
             <div class="design-preview">
               <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design preview">
             </div>
@@ -1246,6 +1469,7 @@
                 <span class="coming">Featured</span>
               </div>
               <p>Our first timeless Wellington Skyrockets design — clean, classic and made for everyday wear.</p>
+              <div class="card-price">Tee $29.99 • Adult Hoodie $39.99 • Youth Hoodie $34.99</div>
             </div>
           </article>
 
@@ -1427,6 +1651,7 @@
 
     
     
+    
     <section id="faq">
       <div class="wrap">
         <div class="section-head">
@@ -1439,12 +1664,32 @@
         <div class="faq">
           <details>
             <summary>Can I order online yet?</summary>
-            <p>Our online shop is coming soon. Once it launches, you’ll be able to browse available designs, garment options, sizes, and colors directly online.</p>
+            <p>Our online shop is coming soon. Once it launches, you’ll be able to select the design, garment type, color, size, and home-shipping option online.</p>
           </details>
 
           <details>
             <summary>What does Rocket Print print on?</summary>
             <p>We print on t-shirts, hoodies, sweatshirts, polo shirts, long-sleeve shirts, crewnecks, and other apparel based on the needs of the project.</p>
+          </details>
+
+          <details>
+            <summary>What shirts and hoodies do you use for the Timeless Wellington design?</summary>
+            <p>The Timeless Wellington Skyrockets design is offered on the Gildan G500 Heavy Cotton T-Shirt and the Gildan G185 Heavy Blend Hoodie in Black and Sport Grey.</p>
+          </details>
+
+          <details>
+            <summary>What sizes are available?</summary>
+            <p>The Gildan G500 tee and G185 hoodie are offered in adult sizes S through 5XL, subject to blank and color availability.</p>
+          </details>
+
+          <details>
+            <summary>How much does the Timeless Wellington design cost?</summary>
+            <p>T-shirts start at $29.99 for S–XL, adult hoodies start at $39.99 for S–XL, and youth hoodies are $34.99 for XS–XL. Larger adult sizes cost more because Gildan’s blank cost increases at extended sizes.</p>
+          </details>
+
+          <details>
+            <summary>How does pickup and shipping work?</summary>
+            <p>Supplier shipping and production overhead are already built into our garment prices. Local pickup has no additional charge. Home shipping is $11.99 per order.</p>
           </details>
 
           <details>
@@ -1463,22 +1708,13 @@
           </details>
 
           <details>
-            <summary>Why is downtown Wellington featured on the site?</summary>
-            <p>Wellington is home. The downtown image is part of the Rocket Print story and represents the small-town pride behind the brand. It is separate from the artwork used on our apparel.</p>
-          </details>
-
-          <details>
-            <summary>Do you add new designs regularly?</summary>
-            <p>Yes. We add Wellington releases, school-spirit designs, local collections, seasonal ideas, and custom work as new designs are completed.</p>
-          </details>
-
-          <details>
             <summary>Can I order for a group or event?</summary>
             <p>Yes. We work with group orders for teams, businesses, schools, reunions, fundraisers, events, clubs, and other organizations.</p>
           </details>
         </div>
       </div>
     </section>
+
 
 
 
@@ -1529,12 +1765,53 @@
         <h3 id="modalTitle">Design Preview</h3>
         <p id="modalDescription">Design details.</p>
 
-        <div class="modal-note">
-          Ordering is not live yet. This preview will later include available shirt colors,
-          sizes, pricing, and a direct Facebook shop link.
+        <div class="product-details" id="productDetails">
+          <div class="modal-price" id="modalPrice">From $29.99</div>
+          <div class="modal-subprice">Gildan apparel • Black or Sport Grey</div>
+
+          <div class="product-panel">
+            <h4>Available Colors</h4>
+            <div class="color-options" id="modalColors"></div>
+          </div>
+
+          <div class="garment-choice-grid">
+            <div class="garment-choice">
+              <h4>T-Shirt</h4>
+              <span class="garment-model">Gildan G500 Heavy Cotton</span>
+              <span class="garment-start">From $29.99</span>
+              <div class="mini-size-list" id="teeSizes"></div>
+            </div>
+
+            <div class="garment-choice">
+              <h4>Hoodie</h4>
+              <span class="garment-model">Gildan G185 Heavy Blend</span>
+              <span class="garment-start">From $39.99</span>
+              <div class="mini-size-list" id="hoodieSizes"></div>
+            </div>
+
+            <div class="garment-choice">
+              <h4>Youth Hoodie</h4>
+              <span class="garment-model">Gildan G185B Heavy Blend</span>
+              <span class="garment-start">From $34.99</span>
+              <div class="mini-size-list" id="youthHoodieSizes"></div>
+            </div>
+          </div>
+
+          <div class="product-panel" style="margin-top:16px;">
+            <h4>Delivery</h4>
+            <div class="shipping-note">
+              Supplier shipping and production overhead are already built into the garment price.
+              Local pickup has no additional charge. Home shipping is <strong>$11.99 per order</strong>.
+              Our online shop is coming soon.
+            </div>
+          </div>
         </div>
 
-        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Order Coming Soon</a>
+        <div class="modal-note" id="genericModalNote">
+          This design is part of the Rocket Print gallery. Product details and ordering will be added as each release becomes available.
+        </div>
+
+        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Shop Coming Soon</a>
       </div>
     </div>
   </div>
@@ -1585,6 +1862,13 @@
     const modalTag = document.getElementById('modalTag');
     const modalDescription = document.getElementById('modalDescription');
     const modalPreview = document.getElementById('modalPreview');
+    const productDetails = document.getElementById('productDetails');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalColors = document.getElementById('modalColors');
+    const teeSizes = document.getElementById('teeSizes');
+    const hoodieSizes = document.getElementById('hoodieSizes');
+    const youthHoodieSizes = document.getElementById('youthHoodieSizes');
+    const genericModalNote = document.getElementById('genericModalNote');
 
     function makeTextPreview(design){
       const parts = (design || '').split('|');
@@ -1606,6 +1890,41 @@
         modalPreview.innerHTML = makeImagePreview(card.dataset.image, card.dataset.title);
       } else {
         modalPreview.innerHTML = makeTextPreview(card.dataset.design);
+      }
+
+      const isProduct = card.dataset.product === 'true';
+
+      if(isProduct){
+        productDetails.classList.add('visible');
+        genericModalNote.style.display = 'none';
+        modalPrice.textContent = card.dataset.price || '$29.99';
+
+        const colors = (card.dataset.colors || '').split('|').filter(Boolean);
+        modalColors.innerHTML = colors.map(color => {
+          const colorClass = color.toLowerCase().includes('gray') ? 'color-gray' : 'color-black';
+          return `<span class="color-option"><i class="color-dot ${colorClass}"></i>${color}</span>`;
+        }).join('');
+
+        const teeSizeData = (card.dataset.teeSizes || '').split(';').filter(Boolean);
+        teeSizes.innerHTML = teeSizeData.map(item => {
+          const parts = item.split('|');
+          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
+        }).join('');
+
+        const hoodieSizeData = (card.dataset.hoodieSizes || '').split(';').filter(Boolean);
+        hoodieSizes.innerHTML = hoodieSizeData.map(item => {
+          const parts = item.split('|');
+          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
+        }).join('');
+
+        const youthHoodieSizeData = (card.dataset.youthHoodieSizes || '').split(';').filter(Boolean);
+        youthHoodieSizes.innerHTML = youthHoodieSizeData.map(item => {
+          const parts = item.split('|');
+          return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
+        }).join('');
+      } else {
+        productDetails.classList.remove('visible');
+        genericModalNote.style.display = 'block';
       }
 
       modal.classList.add('open');
