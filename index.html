@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://rocketprinttx.com/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
   <link rel="preload" href="assets/wellington-skyrockets-design.png" as="image" />
   <link rel="preload" href="assets/timeless-wellington-script.png" as="image" />
@@ -13,9 +17,15 @@
   <meta property="og:title" content="Rocket Print | Wellington, Texas" />
   <meta property="og:description" content="Explore Rocket Print’s Timeless Collection — premium Wellington heritage apparel and custom printing from Wellington, Texas." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rocketprinttx.com/" />
   <meta property="og:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rocket Print | Wellington, Texas" />
+  <meta name="twitter:description" content="Premium Wellington heritage apparel and custom printing from Rocket Print." />
+  <meta name="twitter:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
 
   <title>Rocket Print | Wellington, Texas</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://rocketprinttx.com/#business","name":"Rocket Print","url":"https://rocketprinttx.com/","image":"https://rocketprinttx.com/assets/rocket-print-logo.png","description":"Wellington, Texas apparel and custom printing company offering local designs, school spirit apparel, and custom printing.","address":{"@type":"PostalAddress","addressLocality":"Wellington","addressRegion":"TX","addressCountry":"US"},"areaServed":"Wellington, Texas","priceRange":"$$"},{"@type":"WebSite","@id":"https://rocketprinttx.com/#website","url":"https://rocketprinttx.com/","name":"Rocket Print","publisher":{"@id":"https://rocketprinttx.com/#business"}}]}</script>
 
   <style>
     :root{
@@ -2268,6 +2278,483 @@
       }
     }
 
+
+    /* ===== V27 PRODUCT EXPERIENCE ===== */
+    .credibility-strip{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.018);
+    }
+
+    .credibility-grid{
+      min-height:86px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+
+    .credibility-grid > div{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:16px 24px;
+      border-right:1px solid var(--line);
+    }
+
+    .credibility-grid > div:last-child{border-right:0}
+    .credibility-grid strong{font-size:.94rem}
+    .credibility-grid span{color:var(--muted-2);font-size:.78rem;margin-top:2px}
+
+    .collection-intro{padding:54px 0 28px}
+    .collection-shell{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:54px;
+      align-items:center;
+      padding:44px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(228,58,53,.16), transparent 32%),
+        linear-gradient(145deg,#151515,#0d0d0d);
+      box-shadow:var(--shadow);
+    }
+
+    .collection-lockup{
+      min-height:300px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:24px;
+      background:#090909;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .collection-lockup::after{
+      content:"";
+      position:absolute;
+      inset:auto 12% 22% 12%;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--red-bright),transparent);
+      opacity:.7;
+    }
+
+    .lockup-overline{
+      color:#ff706b;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-weight:900;
+      font-size:.68rem;
+      margin-bottom:12px;
+    }
+
+    .collection-lockup strong{
+      font-size:clamp(3.5rem,8vw,7rem);
+      line-height:.85;
+      letter-spacing:-.07em;
+    }
+
+    .lockup-location{
+      margin-top:20px;
+      color:#e8e8e8;
+      font-size:.88rem;
+      font-weight:900;
+      letter-spacing:.34em;
+    }
+
+    .collection-intro-copy p{
+      color:var(--muted);
+      max-width:560px;
+      margin:14px 0 24px;
+    }
+
+    .hero-product-showcase{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+      padding:22px;
+    }
+
+    .hero-product-badge{
+      position:absolute;
+      top:20px;
+      left:22px;
+      z-index:3;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid var(--line-strong);
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      font-size:.72rem;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    .hero-product-caption{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:18px;
+      z-index:4;
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:15px;
+      background:rgba(0,0,0,.67);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-product-caption div{display:flex;flex-direction:column}
+    .hero-product-caption span{font-size:.77rem;color:#aaa}
+    .hero-product-caption strong{font-size:1rem}
+    .hero-product-caption a{font-size:.8rem;font-weight:900;text-decoration:none;color:#ff756f}
+
+    .garment-mockup{
+      --garment-color:#111111;
+      position:relative;
+      width:min(100%,420px);
+      aspect-ratio:.88;
+      display:grid;
+      place-items:center;
+      margin:auto;
+      filter:drop-shadow(0 28px 36px rgba(0,0,0,.42));
+    }
+
+    .garment-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      overflow:visible;
+    }
+
+    .garment-fill{fill:var(--garment-color);stroke:rgba(255,255,255,.10);stroke-width:3}
+    .garment-shadow{fill:#000;opacity:.3;transform:translateY(8px)}
+    .garment-neck{fill:rgba(0,0,0,.22);stroke:rgba(255,255,255,.08);stroke-width:2}
+    .hood-fill{fill:var(--garment-color);stroke:rgba(255,255,255,.12);stroke-width:3}
+
+    .garment-art{
+      position:absolute;
+      top:36%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:58%;
+      max-height:26%;
+      object-fit:contain;
+      filter:drop-shadow(0 3px 5px rgba(0,0,0,.20));
+      pointer-events:none;
+    }
+
+    .garment-mockup.is-hoodie .garment-art{
+      top:42%;
+      width:52%;
+      max-height:23%;
+    }
+
+    .garment-mockup.is-youth{width:90%}
+    .garment-mockup.is-toddler{width:82%}
+    .garment-hero{width:min(86%,430px);transform:translateY(-10px)}
+
+    .design-preview{
+      min-height:370px;
+      padding:18px;
+    }
+
+    .design-preview .garment-mockup{
+      width:min(88%,300px);
+    }
+
+    .card-body{
+      min-height:220px;
+    }
+
+    .card-price{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      margin-top:auto;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+    }
+
+    .card-price strong{font-size:.92rem}
+    .card-price span{font-size:.76rem;color:#929292}
+
+    .card-color-strip button{
+      appearance:none;
+      border:0;
+      padding:0;
+      background:none;
+      cursor:pointer;
+    }
+
+    .card-color-dot.active{
+      outline:2px solid var(--red-bright);
+      outline-offset:2px;
+    }
+
+    /* Product configurator */
+    .product-modal-card{
+      width:min(1260px,96vw);
+      height:min(86vh,790px);
+      grid-template-columns:minmax(0,1.1fr) minmax(420px,.9fr);
+    }
+
+    .product-preview-stage{
+      padding:28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 60% 15%, rgba(228,58,53,.09), transparent 32%),
+        #101010;
+    }
+
+    .modal-garment-preview{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+    }
+
+    .modal-garment-preview .garment-mockup{
+      width:min(88%,560px);
+    }
+
+    .product-config-body{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      padding:30px 30px 0;
+      overflow:auto;
+    }
+
+    .product-config-body > p{margin-top:0}
+
+    .config-price-row{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0 16px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .config-price-row .modal-price{
+      display:block;
+      margin:2px 0 0;
+    }
+
+    .config-label,.action-small{
+      color:#828282;
+      font-size:.68rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .config-selection{
+      max-width:48%;
+      color:#aaa;
+      text-align:right;
+      font-size:.82rem;
+    }
+
+    .config-step{
+      padding:17px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .config-step-head{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:11px;
+    }
+
+    .config-step-head span{
+      width:24px;
+      height:24px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(228,58,53,.14);
+      color:#ff6f69;
+      font-size:.7rem;
+      font-weight:950;
+    }
+
+    .garment-selector{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+    }
+
+    .garment-select-btn,
+    .size-select-btn{
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#131313;
+      color:#ddd;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .garment-select-btn{
+      min-height:66px;
+      padding:10px 12px;
+      text-align:left;
+    }
+
+    .garment-select-btn strong{display:block;font-size:.86rem}
+    .garment-select-btn span{display:block;color:#8d8d8d;font-size:.7rem;margin-top:2px}
+
+    .garment-select-btn.active,
+    .size-select-btn.active{
+      border-color:rgba(255,76,70,.65);
+      background:rgba(228,58,53,.10);
+      box-shadow:0 0 0 2px rgba(228,58,53,.08);
+      color:#fff;
+    }
+
+    .size-selector{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .size-select-btn{
+      min-width:48px;
+      min-height:42px;
+      padding:8px 10px;
+      font-weight:850;
+      font-size:.78rem;
+    }
+
+    .delivery-mini{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px 14px;
+      padding:16px 0 18px;
+      color:#9d9d9d;
+      font-size:.72rem;
+    }
+
+    .modal-action-bar{
+      position:sticky;
+      bottom:0;
+      z-index:4;
+      margin:0 -30px;
+      padding:14px 30px calc(14px + env(safe-area-inset-bottom));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      border-top:1px solid var(--line);
+      background:rgba(15,15,15,.97);
+      backdrop-filter:blur(14px);
+    }
+
+    .modal-action-bar > div{display:flex;flex-direction:column}
+    .modal-action-bar strong{font-size:1.18rem}
+
+    @media (max-width:980px){
+      .credibility-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+      .credibility-grid > div{
+        border-bottom:1px solid var(--line);
+      }
+      .credibility-grid > div:nth-child(2n){border-right:0}
+      .credibility-grid > div:nth-last-child(-n+2){border-bottom:0}
+
+      .collection-shell{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:24px 18px;
+      }
+
+      .collection-lockup{min-height:230px}
+      .collection-lockup strong{font-size:clamp(3.6rem,19vw,6rem)}
+      .lockup-location{font-size:.72rem;letter-spacing:.25em}
+
+      .hero-product-caption{
+        left:14px;
+        right:14px;
+        bottom:14px;
+      }
+
+      .design-preview .garment-mockup{
+        width:min(86%,285px);
+      }
+
+      .product-modal-card{
+        width:100%;
+        height:94dvh;
+        display:flex;
+        flex-direction:column;
+      }
+
+      .product-preview-stage{
+        flex:0 0 min(36dvh,330px);
+        height:auto;
+        min-height:0;
+      }
+
+      .modal-garment-preview .garment-mockup{
+        width:min(76%,300px);
+      }
+
+      .product-config-body{
+        flex:1 1 auto;
+        padding:22px 18px 0;
+      }
+
+      .garment-selector{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .modal-action-bar{
+        margin:0 -18px;
+        padding-left:18px;
+        padding-right:18px;
+      }
+    }
+
+    @media (max-width:520px){
+      .credibility-grid{
+        grid-template-columns:1fr;
+      }
+      .credibility-grid > div{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+        padding:12px 14px;
+      }
+      .credibility-grid > div:last-child{border-bottom:0}
+
+      .collection-lockup{min-height:200px}
+      .collection-lockup strong{font-size:17vw}
+      .lockup-location{font-size:.62rem}
+
+      .hero-product-caption{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:4px;
+      }
+
+      .garment-selector{grid-template-columns:1fr 1fr}
+      .garment-select-btn{min-height:62px}
+      .config-selection{max-width:56%;font-size:.75rem}
+      .delivery-mini{display:grid;gap:5px}
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -2367,167 +2854,68 @@
           </div>
         </div>
 
-        <div class="showcase">
-
-          <div class="logo-stage">
-            <img class="official-logo" src="assets/rocket-print-logo.png" alt="Official Rocket Print logo">
+        <div class="showcase hero-product-showcase">
+          <div class="hero-product-badge">Timeless Collection</div>
+          <div class="garment-mockup garment-hero" style="--garment-color:#111111" aria-label="Skyrockets Signature on a black t-shirt">
+            <svg class="garment-svg tee-svg" viewBox="0 0 420 480" aria-hidden="true">
+              <path class="garment-shadow" d="M118 55 165 26c12 20 78 20 90 0l47 29 84 57-49 74-32-21v280H115V165l-32 21-49-74z"/>
+              <path class="garment-fill" d="M118 48 165 20c13 25 77 25 90 0l47 28 84 57-49 74-32-21v280H115V158l-32 21-49-74z"/>
+              <path class="garment-neck" d="M165 20c11 27 79 27 90 0-4 43-20 66-45 66s-41-23-45-66z"/>
+            </svg>
+            <img class="garment-art" src="assets/wellington-skyrockets-design.png" alt="">
           </div>
-
+          <div class="hero-product-caption">
+            <div>
+              <span>Skyrockets Signature</span>
+              <strong>Adult tee from $29.99</strong>
+            </div>
+            <a href="#designs">View collection →</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="stats">
-      <div class="wrap stats-grid" id="statsCarousel">
-        <div class="stat"><strong>3 Timeless Designs</strong><span>Wellington heritage collection</span></div>
-        <div class="stat"><strong>Wellington Heritage</strong><span>The inspiration behind the collection</span></div>
-        <div class="stat"><strong>Custom Apparel</strong><span>School, team and business work</span></div>
-        <div class="stat"><strong>Facebook Shop</strong><span>Launching soon</span></div>
-      </div>
-      <div class="wrap">
-        <div class="carousel-progress" data-carousel="statsCarousel" aria-hidden="true">
-          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-          <span>Swipe for more</span>
-        </div>
+    <div class="credibility-strip" aria-label="Rocket Print service highlights">
+      <div class="wrap credibility-grid">
+        <div><strong>Wellington, Texas</strong><span>Designed & pressed locally</span></div>
+        <div><strong>Free Local Drop-Off</strong><span>Wellington orders</span></div>
+        <div><strong>About 2 Weeks</strong><span>Typical turnaround</span></div>
+        <div><strong>Custom Orders</strong><span>No minimum for most projects</span></div>
       </div>
     </div>
 
-    <section class="collections" id="collections">
+    <section class="collections collection-intro" id="collections">
+      <div class="wrap">
+        <div class="collection-shell">
+          <div class="collection-lockup" aria-label="Timeless Collection, Wellington Texas">
+            <span class="lockup-overline">Rocket Print presents</span>
+            <strong>TIMELESS</strong>
+            <span class="lockup-location">WELLINGTON, TEXAS</span>
+          </div>
+
+          <div class="collection-intro-copy">
+            <div class="eyebrow">Debut Collection</div>
+            <h2>Wellington heritage, made wearable.</h2>
+            <p>
+              The Timeless Collection turns local pride into clean, premium apparel designed to work
+              year after year — not just for one season.
+            </p>
+            <a class="btn btn-primary" href="#designs">Shop the Collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="designs">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Collections</div>
-            <h2>Where Rocket Print is headed next.</h2>
-          </div>
-        </div>
-
-        <div class="collections-grid" id="collectionsCarousel">
-          <article class="collection-card">
-            <h3>Timeless Collection</h3>
-            <p>A heritage-inspired collection celebrating Wellington with clean, premium, timeless design.</p>
-            <a class="collection-link" href="#designs">View collection →</a>
-          </article>
-
-          <article class="collection-card">
-            <h3>School Spirit</h3>
-            <p>Skyrockets and other spirit designs that look elevated, not generic.</p>
-            <a class="collection-link" href="#designs">Browse gallery →</a>
-          </article>
-
-          <article class="collection-card">
-            <h3>Custom Printing</h3>
-            <p>Schools, teams, businesses, events and local organizations can all have something made their own.</p>
-            <a class="collection-link" href="#custom">See custom printing →</a>
-          </article>
-
-          <article class="collection-card">
-            <h3>About Rocket Print</h3>
-            <p>Small town. Big pride. The site now ties the apparel brand back to Wellington, Texas.</p>
-            <a class="collection-link" href="#about">See the story →</a>
-          </article>
-        </div>
-        <div class="carousel-progress" data-carousel="collectionsCarousel" aria-hidden="true">
-          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-          <span>Swipe for more</span>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="timeless-story" aria-labelledby="timelessStoryTitle">
-      <div class="wrap">
-        <div class="timeless-story-shell">
-          <div class="timeless-story-intro">
-            <div class="eyebrow">The Timeless Idea</div>
-            <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
-          </div>
-
-          <div class="timeless-values" id="timelessValuesCarousel">
-            <div class="timeless-value">
-              <span class="value-mark">01</span>
-              <strong>Heritage</strong>
-              <p>Rooted in Wellington pride without feeling tied to a single season.</p>
-            </div>
-
-            <div class="timeless-value">
-              <span class="value-mark">02</span>
-              <strong>Premium</strong>
-              <p>Clean typography and restrained details that feel elevated on apparel.</p>
-            </div>
-
-            <div class="timeless-value">
-              <span class="value-mark">03</span>
-              <strong>Everyday</strong>
-              <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
-            </div>
-          </div>
-          <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
-            <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-            <span>Swipe for more</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="spotlight" id="featured">
-      <div class="wrap">
-        <div class="spotlight-box">
-          <div class="spotlight-grid">
-            <div class="spotlight-copy">
-              <span class="spotlight-kicker">Featured Design • Timeless Collection</span>
-              <h2>Wellington Skyrockets</h2>
-              <p>
-                This featured design is part of the Timeless Collection - a Wellington heritage release
-                built to feel clean, premium, and wearable year after year. The collection opens with three designs,
-                starting with this Wellington Skyrockets signature piece. It is available on a Gildan Heavy Cotton
-                T-Shirt, Adult Heavy Blend Hoodie, or Youth Heavy Blend Hoodie in Black and Sport Grey.
-              </p>
-
-              <div class="featured-price">
-                <strong>From $24.99</strong>
-                <span>Free local drop-off in Wellington • shipping available</span>
-              </div>
-
-              <div class="product-meta">
-                <span class="product-chip"><i class="color-dot color-black"></i> Black</span>
-                <span class="product-chip"><i class="color-dot color-gray"></i> Sport Grey</span>
-                <span class="product-chip">G500 Adult Tee</span>
-                <span class="product-chip">G500B Youth Tee</span>
-                <span class="product-chip">G510P Toddler Tee</span>
-                <span class="product-chip">G185 Adult Hoodie</span>
-                <span class="product-chip">G185B Youth Hoodie</span>
-              </div>
-
-              <ul>
-                <li><span class="bullet">✓</span><span>Black and Sport Grey complement the white, cream and red timeless artwork.</span></li>
-                <li><span class="bullet">✓</span><span>Adult, youth, and toddler tee options plus adult and youth hoodies.</span></li>
-                <li><span class="bullet">✓</span><span>Adult S–5XL • Youth XS–XL • Toddler 2T–6T, subject to color and blank availability.</span></li>
-              </ul>
-
-              <a href="#designs" class="btn btn-primary">View the Gallery</a>
-            </div>
-
-            <div class="spotlight-art">
-              <div class="design-card-feature">
-                <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="designs">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Design Gallery</div>
-            <h2>The Timeless Collection.</h2>
+            <div class="eyebrow">Timeless Collection</div>
+            <h2>Choose your design.</h2>
           </div>
           <p>
-            A Rocket Print series centered on Wellington heritage, premium typography,
-            and clean small-town pride. Click any design for a larger preview.
+            Pick a design, then choose the garment, color, and size. Every product preview updates
+            so you can see the combination before the Facebook shop goes live.
           </p>
         </div>
 
@@ -2565,7 +2953,7 @@
                 
               </div>
               <p>Our first timeless Wellington Skyrockets design — clean, classic and made for everyday wear.</p>
-              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
+              <div class="card-price"><strong>Adult Tee $29.99</strong><span>Youth / Toddler $24.99 • Hoodies from $34.99</span></div>
             </div>
           </article>
 
@@ -2597,7 +2985,7 @@
                 
               </div>
               <p>An elevated script design that celebrates Wellington heritage with a softer boutique look.</p>
-              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
+              <div class="card-price"><strong>Adult Tee $29.99</strong><span>Youth / Toddler $24.99 • Hoodies from $34.99</span></div>
             </div>
           </article>
 
@@ -2629,7 +3017,7 @@
                 
               </div>
               <p>A minimal heritage wordmark designed to keep Wellington and Skyrockets pride front and center.</p>
-              <div class="card-price">Tees from $24.99 • Hoodies from $34.99</div>
+              <div class="card-price"><strong>Adult Tee $29.99</strong><span>Youth / Toddler $24.99 • Hoodies from $34.99</span></div>
             </div>
           </article>
 
@@ -2641,6 +3029,95 @@
         </div>
       </div>
     </section>
+
+<section class="timeless-story" aria-labelledby="timelessStoryTitle">
+      <div class="wrap">
+        <div class="timeless-story-shell">
+          <div class="timeless-story-intro">
+            <div class="eyebrow">The Timeless Idea</div>
+            <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
+          </div>
+
+          <div class="timeless-values" id="timelessValuesCarousel">
+            <div class="timeless-value">
+              <span class="value-mark">01</span>
+              <strong>Heritage</strong>
+              <p>Rooted in Wellington pride without feeling tied to a single season.</p>
+            </div>
+
+            <div class="timeless-value">
+              <span class="value-mark">02</span>
+              <strong>Premium</strong>
+              <p>Clean typography and restrained details that feel elevated on apparel.</p>
+            </div>
+
+            <div class="timeless-value">
+              <span class="value-mark">03</span>
+              <strong>Everyday</strong>
+              <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
+            </div>
+          </div>
+          <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
+            <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
+            <span>Swipe for more</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="spotlight" id="featured">
+      <div class="wrap">
+        <div class="spotlight-box">
+          <div class="spotlight-grid">
+            <div class="spotlight-copy">
+              <span class="spotlight-kicker">Featured Collection • Signature Piece</span>
+              <h2>Wellington Skyrockets</h2>
+              <p>
+                The Skyrockets Signature is the anchor of the Timeless Collection — understated school spirit
+                built for everyday wear. Choose tees or hoodies in the product selector above.
+              </p>
+
+              <div class="featured-price">
+                <strong>From $24.99</strong>
+                <span>Free local drop-off in Wellington • shipping available</span>
+              </div>
+
+              <div class="product-meta">
+                <span class="product-chip"><i class="color-dot color-black"></i> Black</span>
+                <span class="product-chip"><i class="color-dot color-gray"></i> Sport Grey</span>
+                <span class="product-chip">G500 Adult Tee</span>
+                <span class="product-chip">G500B Youth Tee</span>
+                <span class="product-chip">G510P Toddler Tee</span>
+                <span class="product-chip">G185 Adult Hoodie</span>
+                <span class="product-chip">G185B Youth Hoodie</span>
+              </div>
+
+              <ul>
+                <li><span class="bullet">✓</span><span>Black and Sport Grey complement the white, cream and red timeless artwork.</span></li>
+                <li><span class="bullet">✓</span><span>Adult, youth, and toddler tee options plus adult and youth hoodies.</span></li>
+                <li><span class="bullet">✓</span><span>Adult S–5XL • Youth XS–XL • Toddler 2T–6T, subject to color and blank availability.</span></li>
+              </ul>
+
+              <a href="#designs" class="btn btn-primary">Configure This Design</a>
+            </div>
+
+            <div class="spotlight-art">
+              <div class="design-card-feature">
+                <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+
+    
+
+    
 
     <section id="custom">
       <div class="wrap">
@@ -2777,7 +3254,7 @@
             Our Facebook storefront will be the first place to order available designs,
             choose sizes and colors, and keep up with new releases.
           </p>
-          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Facebook Store Coming Soon</a>
+          <a href="#" class="btn btn-primary btn-disabled shop-link" data-shop-link aria-disabled="true">Facebook Store Coming Soon</a>
         </div>
       </div>
     </section>
@@ -2796,85 +3273,61 @@
   </footer>
 
   <div class="modal" id="designModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <div class="modal-preview" id="modalPreview">
-        <div class="shirt">
-          <div class="shirt-design" id="modalDesign">ROCKET<br><span class="hero-red">PRINT</span></div>
-        </div>
+    <div class="modal-card product-modal-card">
+      <div class="modal-preview product-preview-stage" id="modalPreview">
+        <div id="modalGarmentPreview" class="modal-garment-preview"></div>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body product-config-body">
         <button class="modal-close" id="modalClose" aria-label="Close design preview">×</button>
-        <span class="tag" id="modalTag">Rocket Print</span>
+        <span class="tag" id="modalTag">Timeless Collection</span>
         <h3 id="modalTitle">Design Preview</h3>
         <p id="modalDescription">Design details.</p>
 
-        <div class="product-details" id="productDetails">
-          <div class="modal-price" id="modalPrice">From $29.99</div>
-          <div class="modal-subprice" id="modalSubprice">Gildan apparel • select a color below</div>
-
-          <div class="product-panel">
-            <h4>Available Colors</h4>
-            <div class="color-options" id="modalColors"></div>
+        <div class="config-price-row">
+          <div>
+            <span class="config-label">Your selection</span>
+            <strong class="modal-price" id="modalPrice">$29.99</strong>
           </div>
-
-          <div class="garment-choice-grid">
-            <div class="garment-choice">
-              <h4>Adult Tee</h4>
-              <span class="garment-model">Gildan G500 Heavy Cotton</span>
-              <span class="garment-start">From $29.99</span>
-              <div class="mini-size-list" id="teeSizes"></div>
-            </div>
-
-            <div class="garment-choice">
-              <h4>Youth Tee</h4>
-              <span class="garment-model">Gildan G500B Youth Heavy Cotton</span>
-              <span class="garment-start">$24.99</span>
-              <div class="mini-size-list" id="youthTeeSizes"></div>
-            </div>
-
-            <div class="garment-choice">
-              <h4>Toddler Tee</h4>
-              <span class="garment-model">Gildan G510P Toddler Heavy Cotton</span>
-              <span class="garment-start">$24.99</span>
-              <div class="mini-size-list" id="toddlerTeeSizes"></div>
-            </div>
-
-            <div class="garment-choice">
-              <h4>Adult Hoodie</h4>
-              <span class="garment-model">Gildan G185 Heavy Blend</span>
-              <span class="garment-start">From $39.99</span>
-              <div class="mini-size-list" id="hoodieSizes"></div>
-            </div>
-
-            <div class="garment-choice">
-              <h4>Youth Hoodie</h4>
-              <span class="garment-model">Gildan G185B Heavy Blend</span>
-              <span class="garment-start">From $34.99</span>
-              <div class="mini-size-list" id="youthHoodieSizes"></div>
-            </div>
-          </div>
-
-          <div class="product-panel" style="margin-top:16px;">
-            <h4>Delivery</h4>
-            <div class="shipping-note">
-              <strong>Free local drop-off in Wellington.</strong>
-              Shipping is <strong>$11.99 per order</strong>.
-              Our online shop is coming soon.
-            </div>
-          </div>
+          <div class="config-selection" id="configSelection">Adult Tee • Black • S</div>
         </div>
 
-        <div class="modal-note" id="genericModalNote">
-          This design is part of the Rocket Print gallery. Product details and ordering will be added as each release becomes available.
+        <div class="config-step">
+          <div class="config-step-head"><span>1</span><strong>Garment</strong></div>
+          <div class="garment-selector" id="garmentSelector"></div>
         </div>
 
-        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Shop Coming Soon</a>
+        <div class="config-step">
+          <div class="config-step-head"><span>2</span><strong>Color</strong></div>
+          <div class="color-options" id="modalColors"></div>
+        </div>
+
+        <div class="config-step">
+          <div class="config-step-head"><span>3</span><strong>Size</strong></div>
+          <div class="size-selector" id="sizeSelector"></div>
+        </div>
+
+        <div class="delivery-mini">
+          <span>✓ Free Wellington drop-off</span>
+          <span>✓ Shipping $11.99 / order</span>
+          <span>✓ Typical turnaround ~2 weeks</span>
+        </div>
+
+        <div class="modal-action-bar">
+          <div>
+            <span class="action-small">Selected price</span>
+            <strong id="stickyPrice">$29.99</strong>
+          </div>
+          <a href="#" class="btn btn-primary btn-disabled shop-link" data-shop-link aria-disabled="true">Shop Coming Soon</a>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    // Set this once your Facebook shop is live. Every shop button on the site will activate automatically.
+    const FACEBOOK_SHOP_URL = "";
+
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileScrim = document.getElementById('mobileScrim');
@@ -2898,31 +3351,41 @@
     });
 
     mobileScrim.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.querySelectorAll('.mobile-bottom-nav a').forEach(link => link.addEventListener('click', closeMenu));
 
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    function wireShopLinks(){
+      document.querySelectorAll('[data-shop-link]').forEach(link => {
+        if(FACEBOOK_SHOP_URL){
+          link.href = FACEBOOK_SHOP_URL;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.classList.remove('btn-disabled');
+          link.removeAttribute('aria-disabled');
+          link.textContent = 'Shop Now';
+        }else{
+          link.href = '#';
+          link.classList.add('btn-disabled');
+          link.setAttribute('aria-disabled','true');
+        }
+      });
+    }
+    wireShopLinks();
 
     function setupCarouselProgress(progressEl){
-      const carouselId = progressEl.dataset.carousel;
-      const scroller = document.getElementById(carouselId);
+      const scroller = document.getElementById(progressEl.dataset.carousel);
       const thumb = progressEl.querySelector('.carousel-progress-thumb');
-      if(!scroller || !thumb) return;
+      const track = progressEl.querySelector('.carousel-progress-track');
+      if(!scroller || !thumb || !track) return;
 
       function update(){
         const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
         const visibleRatio = Math.min(1, scroller.clientWidth / Math.max(scroller.scrollWidth, 1));
         const thumbPercent = Math.max(22, visibleRatio * 100);
         thumb.style.width = `${thumbPercent}%`;
-
         const progress = maxScroll > 0 ? scroller.scrollLeft / maxScroll : 0;
-        const maxTranslatePx = Math.max(0, progressEl.querySelector('.carousel-progress-track').clientWidth - thumb.offsetWidth);
+        const maxTranslatePx = Math.max(0, track.clientWidth - thumb.offsetWidth);
         thumb.style.transform = `translateX(${progress * maxTranslatePx}px)`;
-
         progressEl.style.opacity = maxScroll > 2 ? '1' : '.35';
       }
 
@@ -2930,43 +3393,7 @@
       window.addEventListener('resize', update);
       requestAnimationFrame(update);
     }
-
     document.querySelectorAll('.carousel-progress[data-carousel]').forEach(setupCarouselProgress);
-
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.design-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const filter = button.dataset.filter;
-
-        cards.forEach(card => {
-          const categories = card.dataset.category.split(' ');
-          const show = filter === 'all' || categories.includes(filter);
-          card.classList.toggle('hidden', !show);
-        });
-      });
-    });
-
-    const modal = document.getElementById('designModal');
-    const modalClose = document.getElementById('modalClose');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalTag = document.getElementById('modalTag');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalPreview = document.getElementById('modalPreview');
-    const productDetails = document.getElementById('productDetails');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalSubprice = document.getElementById('modalSubprice');
-    const modalColors = document.getElementById('modalColors');
-    const teeSizes = document.getElementById('teeSizes');
-    const youthTeeSizes = document.getElementById('youthTeeSizes');
-    const toddlerTeeSizes = document.getElementById('toddlerTeeSizes');
-    const hoodieSizes = document.getElementById('hoodieSizes');
-    const youthHoodieSizes = document.getElementById('youthHoodieSizes');
-    const genericModalNote = document.getElementById('genericModalNote');
 
     const shirtColors = {
       'Black':'#111111',
@@ -2979,21 +3406,68 @@
       'Navy':'#172033'
     };
 
-    function getShirtColor(name){
-      return shirtColors[name] || '#171717';
+    const garmentCatalog = {
+      'adult-tee': {
+        label:'Adult Tee', model:'Gildan G500', kind:'tee', audience:'adult',
+        sizes:[['S','$29.99'],['M','$29.99'],['L','$29.99'],['XL','$29.99'],['2XL','$31.99'],['3XL','$34.99'],['4XL','$36.99'],['5XL','$36.99']]
+      },
+      'youth-tee': {
+        label:'Youth Tee', model:'Gildan G500B', kind:'tee', audience:'youth',
+        sizes:[['XS','$24.99'],['S','$24.99'],['M','$24.99'],['L','$24.99'],['XL','$24.99']]
+      },
+      'toddler-tee': {
+        label:'Toddler Tee', model:'Gildan G510P', kind:'tee', audience:'toddler',
+        sizes:[['2T','$24.99'],['3T','$24.99'],['4T','$24.99'],['5T','$24.99'],['6T','$24.99']]
+      },
+      'adult-hoodie': {
+        label:'Adult Hoodie', model:'Gildan G185', kind:'hoodie', audience:'adult',
+        sizes:[['S','$39.99'],['M','$39.99'],['L','$39.99'],['XL','$39.99'],['2XL','$42.99'],['3XL','$45.99'],['4XL','$47.99'],['5XL','$49.99']]
+      },
+      'youth-hoodie': {
+        label:'Youth Hoodie', model:'Gildan G185B', kind:'hoodie', audience:'youth',
+        sizes:[['XS','$34.99'],['S','$34.99'],['M','$34.99'],['L','$34.99'],['XL','$34.99']]
+      }
+    };
+
+    function getShirtColor(name){ return shirtColors[name] || '#171717'; }
+
+    function garmentMarkup(image, alt, garmentKey, color){
+      const garment = garmentCatalog[garmentKey] || garmentCatalog['adult-tee'];
+      const audienceClass = garment.audience === 'youth' ? ' is-youth' : garment.audience === 'toddler' ? ' is-toddler' : '';
+      const hoodieClass = garment.kind === 'hoodie' ? ' is-hoodie' : '';
+      const svg = garment.kind === 'hoodie'
+        ? `<svg class="garment-svg hoodie-svg" viewBox="0 0 420 500" aria-hidden="true">
+             <path class="garment-shadow" d="M118 82 158 53c16 17 88 17 104 0l40 29 83 60-49 76-31-22v266H115V196l-31 22-49-76z"/>
+             <path class="garment-fill" d="M118 74 158 47c17 19 87 19 104 0l40 27 83 60-49 76-31-22v266H115V188l-31 22-49-76z"/>
+             <path class="hood-fill" d="M158 50c5-35 27-48 52-48s47 13 52 48c-11 26-26 43-52 43s-41-17-52-43z"/>
+             <path class="garment-neck" d="M171 48c12 14 66 14 78 0-6 26-19 40-39 40s-33-14-39-40z"/>
+           </svg>`
+        : `<svg class="garment-svg tee-svg" viewBox="0 0 420 480" aria-hidden="true">
+             <path class="garment-shadow" d="M118 55 165 26c12 20 78 20 90 0l47 29 84 57-49 74-32-21v280H115V165l-32 21-49-74z"/>
+             <path class="garment-fill" d="M118 48 165 20c13 25 77 25 90 0l47 28 84 57-49 74-32-21v280H115V158l-32 21-49-74z"/>
+             <path class="garment-neck" d="M165 20c11 27 79 27 90 0-4 43-20 66-45 66s-41-23-45-66z"/>
+           </svg>`;
+
+      return `<div class="garment-mockup${hoodieClass}${audienceClass}" style="--garment-color:${getShirtColor(color)}">
+                ${svg}
+                <img class="garment-art" src="${image}" alt="${alt}">
+              </div>`;
     }
 
-    function previewBackground(color){
-      const hex = getShirtColor(color);
-      return `radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), ${hex}`;
-    }
+    const cards = document.querySelectorAll('.design-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
 
-    function setModalColor(color, button){
-      modalPreview.style.background = previewBackground(color);
-      modalColors.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('active'));
-      if(button) button.classList.add('active');
-      if(modalSubprice) modalSubprice.textContent = `Gildan apparel • ${color}`;
-    }
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        cards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          card.classList.toggle('hidden', !(filter === 'all' || categories.includes(filter)));
+        });
+      });
+    });
 
     function decorateProductCards(){
       document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
@@ -3003,87 +3477,140 @@
         const body = card.querySelector('.card-body');
         const price = card.querySelector('.card-price');
 
-        if(preview) preview.style.background = previewBackground(defaultColor);
+        if(preview){
+          preview.innerHTML = garmentMarkup(card.dataset.image, card.dataset.title, 'adult-tee', defaultColor);
+          preview.dataset.currentColor = defaultColor;
+        }
 
-        if(body && colors.length && !body.querySelector('.card-color-strip')){
-          const strip = document.createElement('div');
-          strip.className = 'card-color-strip';
+        if(body && colors.length){
+          let strip = body.querySelector('.card-color-strip');
+          if(!strip){
+            strip = document.createElement('div');
+            strip.className = 'card-color-strip';
+            if(price) body.insertBefore(strip, price); else body.appendChild(strip);
+          }
+
           strip.innerHTML = `<span class="card-color-strip-label">Colors</span>` +
-            colors.map(color => `<span class="card-color-dot" title="${color}" aria-label="${color}" style="background:${getShirtColor(color)}"></span>`).join('');
-          if(price) body.insertBefore(strip, price);
-          else body.appendChild(strip);
+            colors.map(color => `<button type="button" title="${color}" aria-label="Preview ${color}" data-card-color="${color}">
+              <span class="card-color-dot${color === defaultColor ? ' active' : ''}" style="background:${getShirtColor(color)}"></span>
+            </button>`).join('');
+
+          strip.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', event => {
+              event.stopPropagation();
+              const color = button.dataset.cardColor;
+              preview.innerHTML = garmentMarkup(card.dataset.image, card.dataset.title, 'adult-tee', color);
+              strip.querySelectorAll('.card-color-dot').forEach(dot => dot.classList.remove('active'));
+              button.querySelector('.card-color-dot').classList.add('active');
+            });
+          });
         }
       });
     }
-
     decorateProductCards();
 
+    const modal = document.getElementById('designModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalTag = document.getElementById('modalTag');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPreview = document.getElementById('modalGarmentPreview');
+    const modalPrice = document.getElementById('modalPrice');
+    const stickyPrice = document.getElementById('stickyPrice');
+    const configSelection = document.getElementById('configSelection');
+    const garmentSelector = document.getElementById('garmentSelector');
+    const modalColors = document.getElementById('modalColors');
+    const sizeSelector = document.getElementById('sizeSelector');
 
-    function makeTextPreview(design){
-      const parts = (design || '').split('|');
-      const line1 = parts[0] || 'ROCKET';
-      const line2 = parts[1] ? `<br><span class="hero-red">${parts[1]}</span>` : '';
-      return `<div class="shirt"><div class="shirt-design">${line1}${line2}</div></div>`;
+    let activeCard = null;
+    let selectedGarment = 'adult-tee';
+    let selectedColor = 'Black';
+    let selectedSize = 'S';
+
+    function currentPrice(){
+      const garment = garmentCatalog[selectedGarment];
+      const match = garment.sizes.find(item => item[0] === selectedSize) || garment.sizes[0];
+      return match[1];
     }
 
-    function makeImagePreview(src, alt){
-      return `<img src="${src}" alt="${alt}">`;
+    function updateConfigurator(){
+      if(!activeCard) return;
+      const garment = garmentCatalog[selectedGarment];
+      modalPreview.innerHTML = garmentMarkup(activeCard.dataset.image, activeCard.dataset.title, selectedGarment, selectedColor);
+      const price = currentPrice();
+      modalPrice.textContent = price;
+      stickyPrice.textContent = price;
+      configSelection.textContent = `${garment.label} • ${selectedColor} • ${selectedSize}`;
+
+      garmentSelector.querySelectorAll('.garment-select-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.garment === selectedGarment);
+      });
+
+      modalColors.querySelectorAll('.color-option').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.color === selectedColor);
+      });
+
+      sizeSelector.innerHTML = garment.sizes.map(([size, price]) =>
+        `<button type="button" class="size-select-btn${size === selectedSize ? ' active' : ''}" data-size="${size}" aria-label="${size}, ${price}">${size}</button>`
+      ).join('');
+
+      sizeSelector.querySelectorAll('.size-select-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedSize = btn.dataset.size;
+          updateConfigurator();
+        });
+      });
+    }
+
+    function renderGarments(){
+      garmentSelector.innerHTML = Object.entries(garmentCatalog).map(([key, item]) => {
+        const fromPrice = item.sizes[0][1];
+        return `<button type="button" class="garment-select-btn${key === selectedGarment ? ' active' : ''}" data-garment="${key}">
+                  <strong>${item.label}</strong>
+                  <span>${item.model} • ${fromPrice}</span>
+                </button>`;
+      }).join('');
+
+      garmentSelector.querySelectorAll('.garment-select-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedGarment = btn.dataset.garment;
+          selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
+          updateConfigurator();
+        });
+      });
+    }
+
+    function renderColors(){
+      const colors = (activeCard.dataset.colors || '').split('|').filter(Boolean);
+      modalColors.innerHTML = colors.map(color =>
+        `<button type="button" class="color-option${color === selectedColor ? ' active' : ''}" data-color="${color}">
+          <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
+          <span>${color}</span>
+        </button>`
+      ).join('');
+
+      modalColors.querySelectorAll('.color-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedColor = btn.dataset.color;
+          updateConfigurator();
+        });
+      });
     }
 
     function openDesign(card){
+      activeCard = card;
+      selectedGarment = 'adult-tee';
+      const colors = (card.dataset.colors || '').split('|').filter(Boolean);
+      selectedColor = card.dataset.defaultColor || colors[0] || 'Black';
+      selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
+
       modalTitle.textContent = card.dataset.title;
       modalTag.textContent = card.dataset.tag;
       modalDescription.textContent = card.dataset.description;
 
-      if(card.dataset.designType === 'image'){
-        modalPreview.innerHTML = makeImagePreview(card.dataset.image, card.dataset.title);
-      } else {
-        modalPreview.innerHTML = makeTextPreview(card.dataset.design);
-      }
-
-      const isProduct = card.dataset.product === 'true';
-
-      if(isProduct){
-        productDetails.classList.add('visible');
-        genericModalNote.style.display = 'none';
-        modalPrice.textContent = card.dataset.price || '$29.99';
-
-        const colors = (card.dataset.colors || '').split('|').filter(Boolean);
-        const defaultColor = card.dataset.defaultColor || colors[0] || 'Black';
-
-        modalColors.innerHTML = colors.map((color, index) => {
-          const active = color === defaultColor || (!card.dataset.defaultColor && index === 0);
-          return `<button type="button" class="color-option${active ? ' active' : ''}" data-color="${color}">
-            <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
-            <span>${color}</span>
-          </button>`;
-        }).join('');
-
-        modalColors.querySelectorAll('.color-option').forEach(button => {
-          button.addEventListener('click', () => setModalColor(button.dataset.color, button));
-        });
-
-        const initialButton = modalColors.querySelector('.color-option.active') || modalColors.querySelector('.color-option');
-        setModalColor(defaultColor, initialButton);
-
-        const renderSizes = (target, raw) => {
-          const data = (raw || '').split(';').filter(Boolean);
-          target.innerHTML = data.map(item => {
-            const parts = item.split('|');
-            return `<span><b>${parts[0]}</b><em>${parts[1] || ''}</em></span>`;
-          }).join('');
-        };
-
-        renderSizes(teeSizes, card.dataset.teeSizes);
-        renderSizes(youthTeeSizes, card.dataset.youthTeeSizes);
-        renderSizes(toddlerTeeSizes, card.dataset.toddlerTeeSizes);
-        renderSizes(hoodieSizes, card.dataset.hoodieSizes);
-        renderSizes(youthHoodieSizes, card.dataset.youthHoodieSizes);
-      } else {
-        productDetails.classList.remove('visible');
-        genericModalNote.style.display = 'block';
-        modalPreview.style.background = '';
-      }
+      renderGarments();
+      renderColors();
+      updateConfigurator();
 
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
@@ -3108,10 +3635,7 @@
     });
 
     modalClose.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', event => {
-      if(event.target === modal) closeModal();
-    });
+    modal.addEventListener('click', event => { if(event.target === modal) closeModal(); });
 
     document.addEventListener('keydown', event => {
       if(event.key === 'Escape'){
