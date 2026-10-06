@@ -3491,6 +3491,347 @@
       }
     }
 
+  
+    /* ===== Redesign V2: realistic hanging shirts ===== */
+    .selector-header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:11px;
+      flex-wrap:wrap;
+    }
+
+    .selector-header-row .selector-title{
+      margin-bottom:0;
+    }
+
+    .preview-mode-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px;
+      border-radius:999px;
+      background:#121212;
+      border:1px solid var(--line);
+    }
+
+    .preview-mode-btn{
+      min-height:34px;
+      padding:0 12px;
+      border:0;
+      border-radius:999px;
+      background:transparent;
+      color:#959595;
+      font-size:.72rem;
+      font-weight:900;
+      letter-spacing:.03em;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .preview-mode-btn.active{
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      box-shadow:0 0 0 1px rgba(255,255,255,.08) inset;
+    }
+
+    .preview-mode-btn:hover{
+      color:#fff;
+    }
+
+    .design-preview,
+    .design-color-preview{
+      background:
+        radial-gradient(circle at 76% 18%, rgba(228,58,53,.10), transparent 28%),
+        linear-gradient(180deg,#1b1d20 0%, #121315 58%, #0a0a0a 100%);
+    }
+
+    .shirt-scene{
+      position:relative;
+      width:min(100%,560px);
+      height:min(100%,100%);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:30px;
+      isolation:isolate;
+    }
+
+    .card-shirt-scene{
+      width:min(88%,440px);
+      height:100%;
+      min-height:285px;
+      padding-top:18px;
+    }
+
+    .modal-shirt-scene{
+      width:min(100%,760px);
+      min-height:min(100%,610px);
+      padding-top:26px;
+    }
+
+    .hanger-hook{
+      position:absolute;
+      top:0;
+      left:50%;
+      width:28px;
+      height:38px;
+      transform:translateX(-50%);
+      border:4px solid #0f0f10;
+      border-bottom:0;
+      border-left-color:transparent;
+      border-radius:18px 18px 0 0;
+      z-index:2;
+    }
+
+    .hanger-body{
+      position:absolute;
+      top:24px;
+      left:50%;
+      width:min(46%,190px);
+      height:54px;
+      transform:translateX(-50%);
+      border:4px solid #0f0f10;
+      border-top:0;
+      border-radius:0 0 140px 140px;
+      z-index:2;
+      opacity:.98;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.30));
+    }
+
+    .shirt-mockup{
+      --shirt-base:#151515;
+      --shirt-shadow:#090909;
+      --shirt-highlight:#2a2a2a;
+      --shirt-collar:#101010;
+      position:relative;
+      width:min(66%,340px);
+      aspect-ratio:.84;
+      margin-top:46px;
+      border-radius:22px 22px 16px 16px;
+      background:
+        linear-gradient(180deg,var(--shirt-highlight) 0%, var(--shirt-base) 20%, var(--shirt-base) 68%, var(--shirt-shadow) 100%);
+      box-shadow:
+        0 28px 36px rgba(0,0,0,.34),
+        0 10px 18px rgba(0,0,0,.18),
+        inset 0 1px 1px rgba(255,255,255,.20),
+        inset 0 -6px 14px rgba(0,0,0,.10);
+      z-index:3;
+      overflow:hidden;
+    }
+
+    .shirt-mockup::before,
+    .shirt-mockup::after{
+      content:"";
+      position:absolute;
+      top:42px;
+      width:39%;
+      height:30%;
+      background:
+        linear-gradient(180deg,var(--shirt-highlight) 0%, var(--shirt-base) 28%, var(--shirt-shadow) 100%);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.16),
+        0 10px 16px rgba(0,0,0,.10);
+      z-index:1;
+    }
+
+    .shirt-mockup::before{
+      left:-17%;
+      border-radius:22px 14px 18px 18px;
+      transform:rotate(34deg);
+      transform-origin:top right;
+    }
+
+    .shirt-mockup::after{
+      right:-17%;
+      border-radius:14px 22px 18px 18px;
+      transform:rotate(-34deg);
+      transform-origin:top left;
+    }
+
+    .shirt-neck{
+      position:absolute;
+      top:0;
+      left:50%;
+      width:33%;
+      height:78px;
+      transform:translateX(-50%);
+      background:linear-gradient(180deg,rgba(255,255,255,.22), rgba(255,255,255,.03));
+      clip-path:polygon(12% 0,88% 0,70% 58%,50% 88%,30% 58%);
+      opacity:.26;
+      z-index:4;
+    }
+
+    .shirt-collar{
+      position:absolute;
+      top:18px;
+      left:50%;
+      width:31%;
+      height:58px;
+      transform:translateX(-50%);
+      border-bottom-left-radius:55px 34px;
+      border-bottom-right-radius:55px 34px;
+      background:var(--shirt-collar);
+      box-shadow:
+        inset 0 2px 3px rgba(255,255,255,.18),
+        0 7px 10px rgba(0,0,0,.12);
+      z-index:5;
+    }
+
+    .shirt-collar::after{
+      content:"";
+      position:absolute;
+      inset:7px 7px auto;
+      height:40px;
+      border-bottom-left-radius:46px 28px;
+      border-bottom-right-radius:46px 28px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.16), rgba(255,255,255,.02));
+      opacity:.55;
+    }
+
+    .shirt-fold{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(92deg,rgba(255,255,255,.10), rgba(255,255,255,0) 17%),
+        linear-gradient(268deg,rgba(0,0,0,.10), rgba(0,0,0,0) 18%),
+        radial-gradient(ellipse at center 38%, rgba(255,255,255,.08), transparent 48%);
+      opacity:.65;
+      mix-blend-mode:soft-light;
+      z-index:3;
+      pointer-events:none;
+    }
+
+    .shirt-print{
+      position:absolute;
+      top:var(--print-top, 36%);
+      left:50%;
+      width:var(--print-width, 60%);
+      transform:translateX(-50%);
+      height:auto;
+      object-fit:contain;
+      z-index:6;
+      filter:
+        drop-shadow(0 7px 12px rgba(0,0,0,.16))
+        drop-shadow(0 1px 2px rgba(255,255,255,.08));
+    }
+
+    .shirt-print-wordmark{
+      filter:
+        drop-shadow(0 6px 10px rgba(0,0,0,.14))
+        drop-shadow(0 1px 2px rgba(255,255,255,.04));
+    }
+
+    .design-preview .shirt-mockup{
+      width:min(68%,290px);
+      margin-top:36px;
+    }
+
+    .design-preview .shirt-print{
+      max-width:none;
+    }
+
+    .design-color-preview.shirt-view{
+      background:
+        radial-gradient(circle at 72% 18%, rgba(228,58,53,.12), transparent 28%),
+        linear-gradient(180deg,#1c1d21 0%, #121316 60%, #0b0b0b 100%);
+    }
+
+    .design-color-preview.logo-view-light{
+      background:
+        linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:
+        radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%),
+        #0b0b0b !important;
+    }
+
+    .design-color-preview.logo-view-light img{
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.12));
+    }
+
+    .design-color-preview.logo-view-dark img{
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.35));
+    }
+
+    @media (max-width:980px){
+      .modal-shirt-scene{
+        min-height:360px;
+        padding-top:18px;
+      }
+
+      .design-color-preview.shirt-view{
+        padding-top:26px;
+      }
+
+      .shirt-mockup{
+        width:min(68%,320px);
+      }
+    }
+
+    @media (max-width:720px){
+      .selector-header-row{
+        align-items:flex-start;
+      }
+
+      .preview-mode-toggle{
+        width:100%;
+        justify-content:space-between;
+      }
+
+      .preview-mode-btn{
+        flex:1 1 0;
+        min-height:38px;
+      }
+
+      .card-shirt-scene{
+        width:min(92%,360px);
+        min-height:250px;
+        padding-top:14px;
+      }
+
+      .design-preview .shirt-mockup{
+        width:min(72%,250px);
+        margin-top:30px;
+      }
+
+      .design-color-preview.shirt-view{
+        padding-top:calc(72px + env(safe-area-inset-top));
+      }
+
+      .modal-shirt-scene{
+        min-height:310px;
+        padding-top:0;
+      }
+
+      .modal-shirt-scene .shirt-mockup{
+        width:min(78%,280px);
+        margin-top:28px;
+      }
+
+      .modal-shirt-scene .hanger-body{
+        width:min(52%,170px);
+      }
+    }
+
+    @media (max-width:430px){
+      .design-preview .shirt-mockup{
+        width:min(74%,232px);
+      }
+
+      .card-shirt-scene{
+        min-height:232px;
+      }
+
+      .modal-shirt-scene .shirt-mockup{
+        width:min(82%,252px);
+      }
+    }
+
   </style>
 </head>
 
@@ -3881,9 +4222,7 @@
     <div class="modal-card design-config-modal">
       <button class="modal-close" id="modalClose" aria-label="Close product options"><span aria-hidden="true">×</span></button>
 
-      <div class="modal-preview design-color-preview" id="modalPreview">
-        <img id="modalDesignImage" src="" alt="">
-      </div>
+      <div class="modal-preview design-color-preview" id="modalPreview"></div>
 
       <div class="modal-body design-config-body">
         <span class="tag" id="modalTag">Timeless Collection</span>
@@ -3904,7 +4243,13 @@
         </div>
 
         <div class="selector-section">
-          <div class="selector-title"><span>2</span><strong>Color</strong></div>
+          <div class="selector-header-row">
+            <div class="selector-title"><span>2</span><strong>Color</strong></div>
+            <div class="preview-mode-toggle" id="previewModeToggle" aria-label="Preview mode">
+              <button type="button" class="preview-mode-btn active" data-view="shirt">Shirt View</button>
+              <button type="button" class="preview-mode-btn" data-view="logo">Logo View</button>
+            </div>
+          </div>
           <div class="color-options" id="modalColors"></div>
         </div>
 
@@ -3991,7 +4336,18 @@
         button.classList.add('active');
         const filter = button.dataset.filter;
 
-        cards.forEach(card => {
+        if(previewModeToggle){
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          previewMode = button.dataset.view;
+          updateSelection();
+        });
+      });
+    }
+
+    initializeShirtViews();
+
+    cards.forEach(card => {
           const categories = card.dataset.category.split(' ');
           const show = filter === 'all' || categories.includes(filter);
           card.classList.toggle('hidden', !show);
@@ -4075,23 +4431,118 @@
     const modalTag = document.getElementById('modalTag');
     const modalDescription = document.getElementById('modalDescription');
     const modalPreview = document.getElementById('modalPreview');
-    const modalDesignImage = document.getElementById('modalDesignImage');
     const selectedPrice = document.getElementById('selectedPrice');
     const stickyPrice = document.getElementById('stickyPrice');
     const selectedSummary = document.getElementById('selectedSummary');
     const garmentSelector = document.getElementById('garmentSelector');
     const modalColors = document.getElementById('modalColors');
+    const previewModeToggle = document.getElementById('previewModeToggle');
     const sizeSelector = document.getElementById('sizeSelector');
 
     let activeCard = null;
     let selectedGarment = 'adult-tee';
     let selectedColor = 'Black';
     let selectedSize = 'S';
+    let previewMode = 'shirt';
 
     function currentPrice(){
       const garment = garmentCatalog[selectedGarment];
       const match = garment.sizes.find(([size]) => size === selectedSize) || garment.sizes[0];
       return match[1];
+    }
+
+
+    function getShirtTone(color){
+      const tones = {
+        'Black': {base:'#161616', shadow:'#080808', highlight:'#303030', collar:'#0f0f0f'},
+        'Sport Grey': {base:'#b3b3b3', shadow:'#909090', highlight:'#dddddd', collar:'#9e9e9e'},
+        'White': {base:'#f7f7f3', shadow:'#deded7', highlight:'#ffffff', collar:'#efefea'},
+        'Red': {base:'#b12128', shadow:'#8b161d', highlight:'#d03b44', collar:'#94181f'}
+      };
+      return tones[color] || tones['Black'];
+    }
+
+    function getArtPlacement(title, context){
+      const key = (title || '').toLowerCase();
+      if(key.includes('wordmark')){
+        return context === 'modal'
+          ? {width:'72%', top:'37%', className:' shirt-print-wordmark'}
+          : {width:'70%', top:'36%', className:' shirt-print-wordmark'};
+      }
+      if(key.includes('heritage')){
+        return context === 'modal'
+          ? {width:'71%', top:'34%', className:''}
+          : {width:'69%', top:'33%', className:''};
+      }
+      return context === 'modal'
+        ? {width:'60%', top:'39%', className:''}
+        : {width:'58%', top:'38%', className:''};
+    }
+
+    function getStudioPreviewBackground(){
+      return 'radial-gradient(circle at 76% 18%, rgba(228,58,53,.10), transparent 28%), linear-gradient(180deg,#1b1d20 0%, #121315 58%, #0a0a0a 100%)';
+    }
+
+    function getLogoPreviewBackground(card, color){
+      const preferredSurface = card?.dataset?.previewSurface || '';
+      if(preferredSurface === 'light'){
+        return 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)';
+      }
+      return previewBackground(color);
+    }
+
+    function buildShirtMockupHTML(imageSrc, title, color, context = 'card'){
+      const tone = getShirtTone(color);
+      const art = getArtPlacement(title, context);
+      return `
+        <div class="shirt-scene ${context === 'modal' ? 'modal-shirt-scene' : 'card-shirt-scene'}">
+          <div class="hanger-hook" aria-hidden="true"></div>
+          <div class="hanger-body" aria-hidden="true"></div>
+          <div class="shirt-mockup" style="--shirt-base:${tone.base}; --shirt-shadow:${tone.shadow}; --shirt-highlight:${tone.highlight}; --shirt-collar:${tone.collar};">
+            <div class="shirt-neck" aria-hidden="true"></div>
+            <div class="shirt-collar" aria-hidden="true"></div>
+            <div class="shirt-fold" aria-hidden="true"></div>
+            <img class="shirt-print${art.className}" src="${imageSrc}" alt="${title} on ${color} t-shirt" style="--print-width:${art.width}; --print-top:${art.top};">
+          </div>
+        </div>`;
+    }
+
+    function setPreviewModeButtons(){
+      if(!previewModeToggle) return;
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.view === previewMode);
+      });
+    }
+
+    function renderModalPreview(){
+      if(!activeCard) return;
+
+      if(previewMode === 'shirt'){
+        modalPreview.classList.remove('logo-view-light','logo-view-dark');
+        modalPreview.classList.add('shirt-view');
+        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.image, activeCard.dataset.title, selectedColor, 'modal');
+        modalPreview.style.background = '';
+      } else {
+        const preferredSurface = activeCard.dataset.previewSurface || '';
+        modalPreview.classList.remove('shirt-view');
+        modalPreview.classList.toggle('logo-view-light', preferredSurface === 'light');
+        modalPreview.classList.toggle('logo-view-dark', preferredSurface !== 'light');
+        modalPreview.innerHTML = `<img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">`;
+        modalPreview.style.background = getLogoPreviewBackground(activeCard, selectedColor);
+      }
+
+      setPreviewModeButtons();
+    }
+
+    function initializeShirtViews(){
+      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
+        const preview = card.querySelector('.design-preview');
+        const defaultColor = card.dataset.defaultColor || 'Black';
+        if(!preview) return;
+        preview.classList.remove('preview-surface-light');
+        preview.style.background = getStudioPreviewBackground();
+        preview.innerHTML = buildShirtMockupHTML(card.dataset.image, card.dataset.title, defaultColor, 'card');
+      });
     }
 
     function updateSelection(){
@@ -4100,9 +4551,7 @@
       const garment = garmentCatalog[selectedGarment];
       const price = currentPrice();
 
-      modalPreview.style.background = previewBackground(selectedColor);
-      modalDesignImage.src = activeCard.dataset.image;
-      modalDesignImage.alt = activeCard.dataset.title;
+      renderModalPreview();
 
       selectedPrice.textContent = price;
       stickyPrice.textContent = price;
@@ -4166,6 +4615,7 @@
     function openDesign(card){
       activeCard = card;
       selectedGarment = 'adult-tee';
+      previewMode = 'shirt';
 
       const colors = (card.dataset.colors || '').split('|').filter(Boolean);
       selectedColor = card.dataset.defaultColor || colors[0] || 'Black';
