@@ -561,7 +561,7 @@
     }
 
     .design-preview::after{
-      content:"View design";
+      content:"View shirt";
       position:absolute;
       right:16px;
       bottom:16px;
@@ -3832,6 +3832,360 @@
       }
     }
 
+  
+    /* ===== Redesign V3: improved realistic hanging shirt mockups ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,.06), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(228,58,53,.08), transparent 24%),
+        linear-gradient(180deg,#1d1f22 0%, #141518 58%, #0d0d0f 100%) !important;
+    }
+
+    .photo-shirt-wrap{
+      position:relative;
+      width:min(92%, 520px);
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+    }
+
+    .photo-shirt-wrap svg{
+      width:100%;
+      height:auto;
+      display:block;
+      overflow:visible;
+      filter:drop-shadow(0 26px 30px rgba(0,0,0,.24));
+    }
+
+    .card-photo-wrap{
+      width:min(82%, 410px);
+      transform:translateY(6px);
+    }
+
+    .modal-photo-wrap{
+      width:min(100%, 720px);
+      transform:translateY(4px);
+    }
+
+    .logo-view-stage{
+      width:min(92%, 760px);
+      min-height:min(100%, 520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%, 760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%, 420px);
+      max-height:78%;
+    }
+
+    @media (max-width:980px){
+      .modal-photo-wrap{
+        width:min(100%, 620px);
+      }
+    }
+
+    @media (max-width:720px){
+      .card-photo-wrap{
+        width:min(86%, 340px);
+      }
+
+      .modal-photo-wrap{
+        width:min(100%, 420px);
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+  
+    /* ===== Redesign V4: real mockup overrides ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:none !important;
+    }
+
+    .design-preview{
+      min-height:380px;
+    }
+
+    .real-shirt-stage{
+      position:relative;
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .card-real-shirt{
+      min-height:380px;
+      padding:0;
+    }
+
+    .modal-real-shirt{
+      width:min(100%, 920px);
+      min-height:min(100%, 640px);
+      margin:0 auto;
+      padding:0;
+    }
+
+    .real-shirt-base{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .real-shirt-art{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      height:auto;
+      z-index:2;
+      filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));
+      pointer-events:none;
+    }
+
+    .real-shirt-art-skyrockets{
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.26));
+    }
+
+    .real-shirt-art-heritage{
+      filter:drop-shadow(0 7px 14px rgba(0,0,0,.14));
+    }
+
+    .real-shirt-art-wordmark{
+      filter:drop-shadow(0 7px 14px rgba(0,0,0,.16));
+    }
+
+    .logo-view-stage{
+      width:min(92%,760px);
+      min-height:min(100%,520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%,760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+      padding:18px;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%,420px);
+      max-height:78%;
+    }
+
+    .design-color-preview.logo-view-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), #0b0b0b !important;
+    }
+
+    @media (max-width:980px){
+      .design-preview{
+        min-height:340px;
+      }
+
+      .card-real-shirt{
+        min-height:340px;
+      }
+
+      .modal-real-shirt{
+        width:min(100%, 640px);
+        min-height:500px;
+      }
+    }
+
+    @media (max-width:720px){
+      .design-preview{
+        min-height:300px;
+      }
+
+      .card-real-shirt{
+        min-height:300px;
+      }
+
+      .modal-real-shirt{
+        width:min(100%, 430px);
+        min-height:360px;
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      .design-preview{
+        min-height:272px;
+      }
+
+      .card-real-shirt{
+        min-height:272px;
+      }
+
+      .modal-real-shirt{
+        min-height:330px;
+      }
+    }
+
+  
+    /* ===== Redesign V5: static real mockup image switching ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:none !important;
+    }
+
+    .static-shirt-stage{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card-static-shirt{
+      min-height:380px;
+    }
+
+    .modal-static-shirt{
+      min-height:560px;
+      padding:0;
+    }
+
+    .static-shirt-img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      border-radius:22px;
+      user-select:none;
+      -webkit-user-drag:none;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    .logo-view-stage{
+      width:min(92%,760px);
+      min-height:min(100%,520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%,760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+      padding:18px;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%,420px);
+      max-height:78%;
+    }
+
+    .design-color-preview.logo-view-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), #0b0b0b !important;
+    }
+
+    @media (max-width:980px){
+      .card-static-shirt{
+        min-height:340px;
+      }
+
+      .modal-static-shirt{
+        min-height:460px;
+      }
+    }
+
+    @media (max-width:720px){
+      .card-static-shirt{
+        min-height:300px;
+      }
+
+      .modal-static-shirt{
+        min-height:340px;
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      .card-static-shirt{
+        min-height:272px;
+      }
+
+      .modal-static-shirt{
+        min-height:300px;
+      }
+    }
+
   </style>
 </head>
 
@@ -4335,8 +4689,102 @@
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         const filter = button.dataset.filter;
+    /* ===== Redesign V4: real image-based hanging shirt mockups ===== */
+    function getStudioPreviewBackground(){
+      return 'transparent';
+    }
 
-        if(previewModeToggle){
+    function getLogoPreviewBackground(card, color){
+      const preferredSurface = card?.dataset?.previewSurface || '';
+      if(preferredSurface === 'light'){
+        return 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)';
+      }
+      return previewBackground(color);
+    }
+
+    function getMockupImage(color){
+      const mockups = {
+        'Black':'assets/mockups/tee-black.png',
+        'Sport Grey':'assets/mockups/tee-sport-grey.png',
+        'White':'assets/mockups/tee-white.png',
+        'Red':'assets/mockups/tee-black.png'
+      };
+      return mockups[color] || mockups['Black'];
+    }
+
+    function getArtPlacement(title, context){
+      const key = (title || '').toLowerCase();
+      if(key.includes('wordmark')){
+        return context === 'modal'
+          ? {width:'57%', top:'35.5%'}
+          : {width:'56%', top:'35.7%'};
+      }
+      if(key.includes('heritage')){
+        return context === 'modal'
+          ? {width:'59%', top:'34.4%'}
+          : {width:'58%', top:'34.6%'};
+      }
+      return context === 'modal'
+        ? {width:'48%', top:'35.2%'}
+        : {width:'47%', top:'35.4%'};
+    }
+
+    function buildShirtMockupHTML(imageSrc, title, color, context = 'card'){
+      const art = getArtPlacement(title, context);
+      const mockupSrc = getMockupImage(color);
+      const artClass = (title || '').toLowerCase().includes('wordmark')
+        ? ' real-shirt-art-wordmark'
+        : ((title || '').toLowerCase().includes('heritage') ? ' real-shirt-art-heritage' : ' real-shirt-art-skyrockets');
+
+      return `
+        <div class="real-shirt-stage ${context === 'modal' ? 'modal-real-shirt' : 'card-real-shirt'}">
+          <img class="real-shirt-base" src="${mockupSrc}" alt="${title} ${color} t-shirt mockup">
+          <img class="real-shirt-art${artClass}" src="${imageSrc}" alt="${title} on ${color} t-shirt" style="width:${art.width}; top:${art.top};">
+        </div>`;
+    }
+
+    function setPreviewModeButtons(){
+      if(!previewModeToggle) return;
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.view === previewMode);
+      });
+    }
+
+    function renderModalPreview(){
+      if(!activeCard) return;
+      const preferredSurface = activeCard.dataset.previewSurface || '';
+
+      if(previewMode === 'shirt'){
+        modalPreview.classList.remove('logo-view-light','logo-view-dark');
+        modalPreview.classList.add('shirt-view');
+        modalPreview.style.background = 'transparent';
+        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.image, activeCard.dataset.title, selectedColor, 'modal');
+      } else {
+        modalPreview.classList.remove('shirt-view');
+        modalPreview.classList.toggle('logo-view-light', preferredSurface === 'light');
+        modalPreview.classList.toggle('logo-view-dark', preferredSurface !== 'light');
+        modalPreview.style.background = getLogoPreviewBackground(activeCard, selectedColor);
+        modalPreview.innerHTML = `
+          <div class="logo-view-stage">
+            <img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">
+          </div>`;
+      }
+
+      setPreviewModeButtons();
+    }
+
+    function initializeShirtViews(){
+      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
+        const preview = card.querySelector('.design-preview');
+        const defaultColor = card.dataset.defaultColor || 'Black';
+        if(!preview) return;
+        preview.classList.remove('preview-surface-light');
+        preview.style.background = 'transparent';
+        preview.innerHTML = buildShirtMockupHTML(card.dataset.image, card.dataset.title, defaultColor, 'card');
+      });
+    }
+
+    if(previewModeToggle){
       previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
         button.addEventListener('click', () => {
           previewMode = button.dataset.view;
@@ -4346,6 +4794,7 @@
     }
 
     initializeShirtViews();
+
 
     cards.forEach(card => {
           const categories = card.dataset.category.split(' ');
@@ -4452,36 +4901,6 @@
     }
 
 
-    function getShirtTone(color){
-      const tones = {
-        'Black': {base:'#161616', shadow:'#080808', highlight:'#303030', collar:'#0f0f0f'},
-        'Sport Grey': {base:'#b3b3b3', shadow:'#909090', highlight:'#dddddd', collar:'#9e9e9e'},
-        'White': {base:'#f7f7f3', shadow:'#deded7', highlight:'#ffffff', collar:'#efefea'},
-        'Red': {base:'#b12128', shadow:'#8b161d', highlight:'#d03b44', collar:'#94181f'}
-      };
-      return tones[color] || tones['Black'];
-    }
-
-    function getArtPlacement(title, context){
-      const key = (title || '').toLowerCase();
-      if(key.includes('wordmark')){
-        return context === 'modal'
-          ? {width:'72%', top:'37%', className:' shirt-print-wordmark'}
-          : {width:'70%', top:'36%', className:' shirt-print-wordmark'};
-      }
-      if(key.includes('heritage')){
-        return context === 'modal'
-          ? {width:'71%', top:'34%', className:''}
-          : {width:'69%', top:'33%', className:''};
-      }
-      return context === 'modal'
-        ? {width:'60%', top:'39%', className:''}
-        : {width:'58%', top:'38%', className:''};
-    }
-
-    function getStudioPreviewBackground(){
-      return 'radial-gradient(circle at 76% 18%, rgba(228,58,53,.10), transparent 28%), linear-gradient(180deg,#1b1d20 0%, #121315 58%, #0a0a0a 100%)';
-    }
 
     function getLogoPreviewBackground(card, color){
       const preferredSurface = card?.dataset?.previewSurface || '';
@@ -4491,19 +4910,29 @@
       return previewBackground(color);
     }
 
-    function buildShirtMockupHTML(imageSrc, title, color, context = 'card'){
-      const tone = getShirtTone(color);
-      const art = getArtPlacement(title, context);
+    function getProductMockupImage(title, color){
+      const key = (title || '').toLowerCase();
+      const normalizedColor = (color || '').toLowerCase();
+
+      if(key.includes('wordmark')){
+        if(normalizedColor.includes('sport')) return 'assets/mockups/wordmark-sport-grey.png';
+        return 'assets/mockups/wordmark-white.png';
+      }
+
+      if(key.includes('heritage') && !key.includes('wordmark')){
+        if(normalizedColor.includes('sport')) return 'assets/mockups/heritage-sport-grey.png';
+        return 'assets/mockups/heritage-white.png';
+      }
+
+      if(normalizedColor.includes('sport')) return 'assets/mockups/skyrockets-sport-grey.png';
+      return 'assets/mockups/skyrockets-black.png';
+    }
+
+    function buildShirtMockupHTML(title, color, context = 'card'){
+      const mockupSrc = getProductMockupImage(title, color);
       return `
-        <div class="shirt-scene ${context === 'modal' ? 'modal-shirt-scene' : 'card-shirt-scene'}">
-          <div class="hanger-hook" aria-hidden="true"></div>
-          <div class="hanger-body" aria-hidden="true"></div>
-          <div class="shirt-mockup" style="--shirt-base:${tone.base}; --shirt-shadow:${tone.shadow}; --shirt-highlight:${tone.highlight}; --shirt-collar:${tone.collar};">
-            <div class="shirt-neck" aria-hidden="true"></div>
-            <div class="shirt-collar" aria-hidden="true"></div>
-            <div class="shirt-fold" aria-hidden="true"></div>
-            <img class="shirt-print${art.className}" src="${imageSrc}" alt="${title} on ${color} t-shirt" style="--print-width:${art.width}; --print-top:${art.top};">
-          </div>
+        <div class="static-shirt-stage ${context === 'modal' ? 'modal-static-shirt' : 'card-static-shirt'}">
+          <img class="static-shirt-img" src="${mockupSrc}" alt="${title} ${color} t-shirt mockup">
         </div>`;
     }
 
@@ -4520,14 +4949,17 @@
       if(previewMode === 'shirt'){
         modalPreview.classList.remove('logo-view-light','logo-view-dark');
         modalPreview.classList.add('shirt-view');
-        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.image, activeCard.dataset.title, selectedColor, 'modal');
-        modalPreview.style.background = '';
+        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.title, selectedColor, 'modal');
+        modalPreview.style.background = 'transparent';
       } else {
         const preferredSurface = activeCard.dataset.previewSurface || '';
         modalPreview.classList.remove('shirt-view');
         modalPreview.classList.toggle('logo-view-light', preferredSurface === 'light');
         modalPreview.classList.toggle('logo-view-dark', preferredSurface !== 'light');
-        modalPreview.innerHTML = `<img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">`;
+        modalPreview.innerHTML = `
+          <div class="logo-view-stage">
+            <img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">
+          </div>`;
         modalPreview.style.background = getLogoPreviewBackground(activeCard, selectedColor);
       }
 
@@ -4540,8 +4972,8 @@
         const defaultColor = card.dataset.defaultColor || 'Black';
         if(!preview) return;
         preview.classList.remove('preview-surface-light');
-        preview.style.background = getStudioPreviewBackground();
-        preview.innerHTML = buildShirtMockupHTML(card.dataset.image, card.dataset.title, defaultColor, 'card');
+        preview.style.background = 'transparent';
+        preview.innerHTML = buildShirtMockupHTML(card.dataset.title, defaultColor, 'card');
       });
     }
 
