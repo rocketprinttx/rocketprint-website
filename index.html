@@ -4307,6 +4307,120 @@
       }
     }
 
+  
+    /* ===== Redesign V7 — clean static mockup implementation ===== */
+    #designs .design-preview{
+      aspect-ratio:4 / 4.5 !important;
+      min-height:0 !important;
+      padding:0 !important;
+      overflow:hidden;
+      background:#111 !important;
+      display:block !important;
+    }
+
+    #designs .design-preview::after{
+      z-index:3;
+    }
+
+    #designs .design-preview .card-mockup-image{
+      width:100% !important;
+      height:100% !important;
+      max-width:none !important;
+      max-height:none !important;
+      object-fit:cover !important;
+      object-position:center center;
+      display:block;
+      filter:none !important;
+      transform:none !important;
+    }
+
+    .final-shirt-preview,
+    .final-logo-preview{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .final-shirt-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+    }
+
+    .design-color-preview.logo-view{
+      padding:34px !important;
+    }
+
+    .final-logo-preview img{
+      width:min(92%,820px) !important;
+      height:auto !important;
+      max-height:calc(86vh - 100px) !important;
+      object-fit:contain !important;
+      display:block;
+      filter:none !important;
+    }
+
+    .preview-mode-btn{
+      position:relative;
+      z-index:8;
+    }
+
+    @media (max-width:980px){
+      #designs .design-preview{
+        aspect-ratio:4 / 4.65 !important;
+      }
+
+      .final-shirt-preview img{
+        max-height:100%;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs .gallery{
+        gap:20px;
+      }
+
+      #designs .design-preview{
+        aspect-ratio:4 / 5 !important;
+      }
+
+      #designs .design-preview .card-mockup-image{
+        width:112% !important;
+        height:112% !important;
+        margin-left:-6%;
+        margin-top:-4%;
+        object-fit:cover !important;
+      }
+
+      .design-color-preview.logo-view{
+        min-height:340px !important;
+        padding:calc(68px + env(safe-area-inset-top)) 16px 18px !important;
+      }
+
+      .final-logo-preview img{
+        width:min(98%,560px) !important;
+        max-height:38dvh !important;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs .design-preview{
+        aspect-ratio:4 / 5.15 !important;
+      }
+
+      #designs .design-preview .card-mockup-image{
+        width:118% !important;
+        height:118% !important;
+        margin-left:-9%;
+        margin-top:-7%;
+      }
+    }
+
   </style>
 </head>
 
@@ -4423,7 +4537,7 @@
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
             <div class="design-preview">
-              <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets Signature design preview" loading="lazy" decoding="async">
+              <img class="card-mockup-image" src="assets/mockups/skyrockets-black.png" alt="Skyrockets Signature on black T-shirt" loading="eager" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -4455,8 +4569,8 @@
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
-            <div class="design-preview preview-surface-light">
-              <img src="assets/timeless-wellington-script.png" alt="Wellington Heritage design preview" loading="lazy" decoding="async">
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/heritage-white.png" alt="Wellington Heritage on white T-shirt" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -4488,8 +4602,8 @@
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
-            <div class="design-preview preview-surface-light">
-              <img src="assets/timeless-wellington-wordmark.png" alt="Wellington Heritage Wordmark design preview" loading="lazy" decoding="async">
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/wordmark-white.png" alt="Wellington Heritage Wordmark on white T-shirt" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -4756,6 +4870,7 @@
     const mobileScrim = document.getElementById('mobileScrim');
 
     function closeMenu(){
+      if(!mobileMenu || !mobileScrim || !menuBtn) return;
       mobileMenu.classList.remove('open');
       mobileScrim.classList.remove('open');
       mobileScrim.setAttribute('aria-hidden','true');
@@ -4764,244 +4879,46 @@
       menuBtn.textContent = '☰';
     }
 
-    menuBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      mobileScrim.classList.toggle('open', isOpen);
-      mobileScrim.setAttribute('aria-hidden', String(!isOpen));
-      document.body.classList.toggle('menu-open', isOpen);
-      menuBtn.setAttribute('aria-expanded', String(isOpen));
-      menuBtn.textContent = isOpen ? '×' : '☰';
-    });
-
-    mobileScrim.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-    document.querySelectorAll('.mobile-bottom-nav a').forEach(link => link.addEventListener('click', closeMenu));
-
-    function setupCarouselProgress(progressEl){
-      const carouselId = progressEl.dataset.carousel;
-      const scroller = document.getElementById(carouselId);
-      const thumb = progressEl.querySelector('.carousel-progress-thumb');
-      const track = progressEl.querySelector('.carousel-progress-track');
-      if(!scroller || !thumb || !track) return;
-
-      function update(){
-        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-        const visibleRatio = Math.min(1, scroller.clientWidth / Math.max(scroller.scrollWidth, 1));
-        const thumbPercent = Math.max(22, visibleRatio * 100);
-        thumb.style.width = `${thumbPercent}%`;
-        const progress = maxScroll > 0 ? scroller.scrollLeft / maxScroll : 0;
-        const maxTranslatePx = Math.max(0, track.clientWidth - thumb.offsetWidth);
-        thumb.style.transform = `translateX(${progress * maxTranslatePx}px)`;
-        progressEl.style.opacity = maxScroll > 2 ? '1' : '.35';
-      }
-
-      scroller.addEventListener('scroll', update, {passive:true});
-      window.addEventListener('resize', update);
-      requestAnimationFrame(update);
-    }
-
-    document.querySelectorAll('.carousel-progress[data-carousel]').forEach(setupCarouselProgress);
-
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.design-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.dataset.filter;
-    /* ===== Redesign V4: real image-based hanging shirt mockups ===== */
-    function getStudioPreviewBackground(){
-      return 'transparent';
-    }
-
-    function getLogoPreviewBackground(card, color){
-      const preferredSurface = card?.dataset?.previewSurface || '';
-      if(preferredSurface === 'light'){
-        return 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)';
-      }
-      return previewBackground(color);
-    }
-
-    function getMockupImage(color){
-      const mockups = {
-        'Black':'assets/mockups/tee-black.png',
-        'Sport Grey':'assets/mockups/tee-sport-grey.png',
-        'White':'assets/mockups/tee-white.png',
-        'Red':'assets/mockups/tee-black.png'
-      };
-      return mockups[color] || mockups['Black'];
-    }
-
-    function getArtPlacement(title, context){
-      const key = (title || '').toLowerCase();
-      if(key.includes('wordmark')){
-        return context === 'modal'
-          ? {width:'57%', top:'35.5%'}
-          : {width:'56%', top:'35.7%'};
-      }
-      if(key.includes('heritage')){
-        return context === 'modal'
-          ? {width:'59%', top:'34.4%'}
-          : {width:'58%', top:'34.6%'};
-      }
-      return context === 'modal'
-        ? {width:'48%', top:'35.2%'}
-        : {width:'47%', top:'35.4%'};
-    }
-
-    function buildShirtMockupHTML(imageSrc, title, color, context = 'card'){
-      const art = getArtPlacement(title, context);
-      const mockupSrc = getMockupImage(color);
-      const artClass = (title || '').toLowerCase().includes('wordmark')
-        ? ' real-shirt-art-wordmark'
-        : ((title || '').toLowerCase().includes('heritage') ? ' real-shirt-art-heritage' : ' real-shirt-art-skyrockets');
-
-      return `
-        <div class="real-shirt-stage ${context === 'modal' ? 'modal-real-shirt' : 'card-real-shirt'}">
-          <img class="real-shirt-base" src="${mockupSrc}" alt="${title} ${color} t-shirt mockup">
-          <img class="real-shirt-art${artClass}" src="${imageSrc}" alt="${title} on ${color} t-shirt" style="width:${art.width}; top:${art.top};">
-        </div>`;
-    }
-
-    function setPreviewModeButtons(){
-      if(!previewModeToggle) return;
-      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
-        button.classList.toggle('active', button.dataset.view === previewMode);
+    if(menuBtn && mobileMenu && mobileScrim){
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        mobileScrim.classList.toggle('open', isOpen);
+        mobileScrim.setAttribute('aria-hidden', String(!isOpen));
+        document.body.classList.toggle('menu-open', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.textContent = isOpen ? '×' : '☰';
       });
+
+      mobileScrim.addEventListener('click', closeMenu);
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.querySelectorAll('.mobile-bottom-nav a').forEach(link => link.addEventListener('click', closeMenu));
     }
-
-    function renderModalPreview(){
-      if(!activeCard) return;
-      const preferredSurface = activeCard.dataset.previewSurface || '';
-
-      if(previewMode === 'shirt'){
-        modalPreview.classList.remove('logo-view-light','logo-view-dark');
-        modalPreview.classList.add('shirt-view');
-        modalPreview.style.background = 'transparent';
-        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.image, activeCard.dataset.title, selectedColor, 'modal');
-      } else {
-        modalPreview.classList.remove('shirt-view');
-        modalPreview.classList.toggle('logo-view-light', preferredSurface === 'light');
-        modalPreview.classList.toggle('logo-view-dark', preferredSurface !== 'light');
-        modalPreview.style.background = getLogoPreviewBackground(activeCard, selectedColor);
-        modalPreview.innerHTML = `
-          <div class="logo-view-stage">
-            <img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">
-          </div>`;
-      }
-
-      setPreviewModeButtons();
-    }
-
-    function initializeShirtViews(){
-      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
-        const preview = card.querySelector('.design-preview');
-        const defaultColor = card.dataset.defaultColor || 'Black';
-        if(!preview) return;
-        preview.classList.remove('preview-surface-light');
-        preview.style.background = 'transparent';
-        preview.innerHTML = buildShirtMockupHTML(card.dataset.image, card.dataset.title, defaultColor, 'card');
-      });
-    }
-
-    if(previewModeToggle){
-      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          previewMode = button.dataset.view;
-          updateSelection();
-        });
-      });
-    }
-
-    initializeShirtViews();
-
-
-    if(previewModeToggle){
-      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          previewMode = button.dataset.view;
-          updateSelection();
-        });
-      });
-    }
-
-    initializeShirtViews();
-
-    cards.forEach(card => {
-          const categories = card.dataset.category.split(' ');
-          const show = filter === 'all' || categories.includes(filter);
-          card.classList.toggle('hidden', !show);
-        });
-      });
-    });
 
     const shirtColors = {
       'Black':'#111111',
       'Sport Grey':'#9b9b9b',
       'White':'#f5f5f2',
-      'Natural':'#e5d9bb',
-      'Cream':'#eadcb9',
-      'Charcoal':'#424242',
-      'Red':'#a9161c',
-      'Navy':'#172033'
+      'Red':'#a9161c'
     };
 
     function getShirtColor(name){
       return shirtColors[name] || '#171717';
     }
 
-    function previewBackground(color){
-      const hex = getShirtColor(color);
-      return `radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), ${hex}`;
-    }
-
-    function decorateProductCards(){
-      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
-        const colors = (card.dataset.colors || '').split('|').filter(Boolean);
-        const defaultColor = card.dataset.defaultColor || colors[0] || 'Black';
-        const preview = card.querySelector('.design-preview');
-        const body = card.querySelector('.card-body');
-        const price = card.querySelector('.card-price');
-
-        if(preview){
-          const preferredSurface = card.dataset.previewSurface || '';
-          if(preferredSurface === 'light') preview.classList.add('preview-surface-light');
-          else preview.classList.remove('preview-surface-light');
-          preview.style.background = preferredSurface === 'light'
-            ? 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)'
-            : previewBackground(defaultColor);
-        }
-
-        if(body && colors.length && !body.querySelector('.card-color-strip')){
-          const strip = document.createElement('div');
-          strip.className = 'card-color-strip';
-          strip.innerHTML = `<span class="card-color-strip-label">Colors</span>` +
-            colors.map(color => `<span class="card-color-dot" title="${color}" aria-label="${color}" style="background:${getShirtColor(color)}"></span>`).join('');
-
-          if(price) body.insertBefore(strip, price);
-          else body.appendChild(strip);
-        }
-      });
-    }
-
-    // Product cards use labeled color options in the HTML; modal still reads data-colors.
-
-
     const garmentCatalog = {
       'adult-tee': {
         label:'Adult Tee',
-        model:'',
-        sizes:[['S','$24.99'],['M','$24.99'],['L','$24.99'],['XL','$24.99'],['2XL','$28.99'],['3XL','$28.99'],['4XL','$28.99'],['5XL','$28.99']]
+        sizes:[
+          ['S','$24.99'],['M','$24.99'],['L','$24.99'],['XL','$24.99'],
+          ['2XL','$28.99'],['3XL','$28.99'],['4XL','$28.99'],['5XL','$28.99']
+        ]
       },
       'youth-tee': {
         label:'Youth Tee',
-        model:'',
         sizes:[['XS','$19.99'],['S','$19.99'],['M','$19.99'],['L','$19.99'],['XL','$19.99']]
       },
       'toddler-tee': {
         label:'Toddler Tee',
-        model:'',
         sizes:[['2T','$19.99'],['3T','$19.99'],['4T','$19.99'],['5T','$19.99'],['6T','$19.99']]
       }
     };
@@ -5020,6 +4937,8 @@
     const previewModeToggle = document.getElementById('previewModeToggle');
     const sizeSelector = document.getElementById('sizeSelector');
 
+    const productCards = document.querySelectorAll('.design-card[data-product="true"]');
+
     let activeCard = null;
     let selectedGarment = 'adult-tee';
     let selectedColor = 'Black';
@@ -5032,90 +4951,132 @@
       return match[1];
     }
 
-
-
-    function getLogoPreviewBackground(card, color){
-      const preferredSurface = card?.dataset?.previewSurface || '';
-      if(preferredSurface === 'light'){
-        return 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)';
-      }
-      return previewBackground(color);
-    }
-
     function getProductMockupImage(title, color){
       const key = (title || '').toLowerCase();
-      const normalizedColor = (color || '').toLowerCase();
+      const grey = (color || '').toLowerCase().includes('sport');
 
       if(key.includes('wordmark')){
-        if(normalizedColor.includes('sport')) return 'assets/mockups/wordmark-sport-grey.png';
-        return 'assets/mockups/wordmark-white.png';
+        return grey
+          ? 'assets/mockups/wordmark-sport-grey.png'
+          : 'assets/mockups/wordmark-white.png';
       }
 
-      if(key.includes('heritage') && !key.includes('wordmark')){
-        if(normalizedColor.includes('sport')) return 'assets/mockups/heritage-sport-grey.png';
-        return 'assets/mockups/heritage-white.png';
+      if(key.includes('heritage')){
+        return grey
+          ? 'assets/mockups/heritage-sport-grey.png'
+          : 'assets/mockups/heritage-white.png';
       }
 
-      if(normalizedColor.includes('sport')) return 'assets/mockups/skyrockets-sport-grey.png';
-      return 'assets/mockups/skyrockets-black.png';
+      return grey
+        ? 'assets/mockups/skyrockets-sport-grey.png'
+        : 'assets/mockups/skyrockets-black.png';
     }
 
-    function buildShirtMockupHTML(title, color, context = 'card'){
-      const mockupSrc = getProductMockupImage(title, color);
-      return `
-        <div class="static-shirt-stage ${context === 'modal' ? 'modal-static-shirt' : 'card-static-shirt'}">
-          <img class="static-shirt-img" src="${mockupSrc}" alt="${title} ${color} t-shirt mockup">
-        </div>`;
+    function logoBackground(card){
+      return card && card.dataset.previewSurface === 'light'
+        ? 'linear-gradient(180deg,#ffffff 0%,#f4f2ee 100%)'
+        : 'linear-gradient(180deg,#151515 0%,#090909 100%)';
     }
 
     function setPreviewModeButtons(){
       if(!previewModeToggle) return;
       previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
         button.classList.toggle('active', button.dataset.view === previewMode);
+        button.setAttribute('aria-pressed', String(button.dataset.view === previewMode));
       });
     }
 
-    function renderModalPreview(){
-      if(!activeCard) return;
+    function renderPreview(){
+      if(!activeCard || !modalPreview) return;
 
       if(previewMode === 'shirt'){
-        modalPreview.classList.remove('logo-view-light','logo-view-dark');
-        modalPreview.classList.add('shirt-view');
-        modalPreview.innerHTML = buildShirtMockupHTML(activeCard.dataset.title, selectedColor, 'modal');
-        modalPreview.style.background = 'transparent';
-      } else {
-        const preferredSurface = activeCard.dataset.previewSurface || '';
-        modalPreview.classList.remove('shirt-view');
-        modalPreview.classList.toggle('logo-view-light', preferredSurface === 'light');
-        modalPreview.classList.toggle('logo-view-dark', preferredSurface !== 'light');
+        const mockup = getProductMockupImage(activeCard.dataset.title, selectedColor);
+        modalPreview.className = 'modal-preview design-color-preview shirt-view';
+        modalPreview.style.background = '#111';
         modalPreview.innerHTML = `
-          <div class="logo-view-stage">
-            <img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo preview">
+          <div class="final-shirt-preview">
+            <img src="${mockup}" alt="${activeCard.dataset.title} on ${selectedColor} T-shirt">
           </div>`;
-        modalPreview.style.background = getLogoPreviewBackground(activeCard, selectedColor);
+      } else {
+        modalPreview.className = 'modal-preview design-color-preview logo-view';
+        modalPreview.style.background = logoBackground(activeCard);
+        modalPreview.innerHTML = `
+          <div class="final-logo-preview">
+            <img src="${activeCard.dataset.image}" alt="${activeCard.dataset.title} logo">
+          </div>`;
       }
 
       setPreviewModeButtons();
     }
 
-    function initializeShirtViews(){
-      document.querySelectorAll('.design-card[data-product="true"]').forEach(card => {
-        const preview = card.querySelector('.design-preview');
-        const defaultColor = card.dataset.defaultColor || 'Black';
-        if(!preview) return;
-        preview.classList.remove('preview-surface-light');
-        preview.style.background = 'transparent';
-        preview.innerHTML = buildShirtMockupHTML(card.dataset.title, defaultColor, 'card');
+    function renderGarments(){
+      garmentSelector.innerHTML = Object.entries(garmentCatalog).map(([key, garment]) =>
+        `<button type="button"
+          class="garment-select-btn${key === selectedGarment ? ' active' : ''}"
+          data-garment="${key}">
+          <strong>${garment.label}</strong>
+          <span>From ${garment.sizes[0][1]}</span>
+        </button>`
+      ).join('');
+
+      garmentSelector.querySelectorAll('.garment-select-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedGarment = button.dataset.garment;
+          selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
+          updateSelection();
+        });
+      });
+    }
+
+    function renderColors(){
+      const colors = (activeCard.dataset.colors || '').split('|').filter(Boolean);
+
+      modalColors.innerHTML = colors.map(color =>
+        `<button type="button"
+          class="color-option${color === selectedColor ? ' active' : ''}"
+          data-color="${color}">
+          <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
+          <span>${color}</span>
+        </button>`
+      ).join('');
+
+      modalColors.querySelectorAll('.color-option').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedColor = button.dataset.color;
+          previewMode = 'shirt';
+          updateSelection();
+        });
+      });
+    }
+
+    function renderSizes(){
+      const garment = garmentCatalog[selectedGarment];
+
+      sizeSelector.innerHTML = garment.sizes.map(([size, price]) =>
+        `<button type="button"
+          class="size-select-btn${size === selectedSize ? ' active' : ''}"
+          data-size="${size}"
+          aria-label="${size}, ${price}">
+          ${size}
+        </button>`
+      ).join('');
+
+      sizeSelector.querySelectorAll('.size-select-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedSize = button.dataset.size;
+          updateSelection();
+        });
       });
     }
 
     function updateSelection(){
       if(!activeCard) return;
 
-      const garment = garmentCatalog[selectedGarment];
       const price = currentPrice();
-
-      renderModalPreview();
+      const garment = garmentCatalog[selectedGarment];
 
       selectedPrice.textContent = price;
       stickyPrice.textContent = price;
@@ -5129,65 +5090,20 @@
         button.classList.toggle('active', button.dataset.color === selectedColor);
       });
 
-      sizeSelector.innerHTML = garment.sizes.map(([size, price]) =>
-        `<button type="button" class="size-select-btn${size === selectedSize ? ' active' : ''}" data-size="${size}" aria-label="${size}, ${price}">${size}</button>`
-      ).join('');
-
-      sizeSelector.querySelectorAll('.size-select-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          selectedSize = button.dataset.size;
-          updateSelection();
-        });
-      });
-    }
-
-    function renderGarments(){
-      garmentSelector.innerHTML = Object.entries(garmentCatalog).map(([key, garment]) =>
-        `<button type="button" class="garment-select-btn${key === selectedGarment ? ' active' : ''}" data-garment="${key}">
-          <strong>${garment.label}</strong>
-          <span>From ${garment.sizes[0][1]}</span>
-        </button>`
-      ).join('');
-
-      garmentSelector.querySelectorAll('.garment-select-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          selectedGarment = button.dataset.garment;
-          selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
-          updateSelection();
-        });
-      });
-    }
-
-    function renderColors(){
-      const colors = (activeCard.dataset.colors || '').split('|').filter(Boolean);
-
-      modalColors.innerHTML = colors.map(color =>
-        `<button type="button" class="color-option${color === selectedColor ? ' active' : ''}" data-color="${color}">
-          <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
-          <span>${color}</span>
-        </button>`
-      ).join('');
-
-      modalColors.querySelectorAll('.color-option').forEach(button => {
-        button.addEventListener('click', () => {
-          selectedColor = button.dataset.color;
-          updateSelection();
-        });
-      });
+      renderSizes();
+      renderPreview();
     }
 
     function openDesign(card){
       activeCard = card;
       selectedGarment = 'adult-tee';
+      selectedSize = 'S';
+      selectedColor = card.dataset.defaultColor || (card.dataset.colors || 'Black').split('|')[0];
       previewMode = 'shirt';
 
-      const colors = (card.dataset.colors || '').split('|').filter(Boolean);
-      selectedColor = card.dataset.defaultColor || colors[0] || 'Black';
-      selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
-
-      modalTag.textContent = card.dataset.tag;
-      modalTitle.textContent = card.dataset.title;
-      modalDescription.textContent = card.dataset.description;
+      modalTag.textContent = card.dataset.tag || 'Timeless Collection';
+      modalTitle.textContent = card.dataset.title || 'Design';
+      modalDescription.textContent = card.dataset.description || '';
 
       renderGarments();
       renderColors();
@@ -5196,7 +5112,7 @@
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
-      modalClose.focus();
+      requestAnimationFrame(() => modalClose.focus());
     }
 
     function closeModal(){
@@ -5205,7 +5121,17 @@
       document.body.style.overflow = '';
     }
 
-    cards.forEach(card => {
+    if(previewModeToggle){
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          previewMode = button.dataset.view;
+          renderPreview();
+        });
+      });
+    }
+
+    productCards.forEach(card => {
       card.addEventListener('click', () => openDesign(card));
       card.addEventListener('keydown', event => {
         if(event.key === 'Enter' || event.key === ' '){
@@ -5215,15 +5141,22 @@
       });
     });
 
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', event => {
-      if(event.target === modal) closeModal();
+    if(modalClose) modalClose.addEventListener('click', closeModal);
+
+    if(modal){
+      modal.addEventListener('click', event => {
+        if(event.target === modal) closeModal();
+      });
+    }
+
+    document.querySelectorAll('a[aria-disabled="true"]').forEach(link => {
+      link.addEventListener('click', event => event.preventDefault());
     });
 
     document.addEventListener('keydown', event => {
       if(event.key === 'Escape'){
-        if(modal.classList.contains('open')) closeModal();
-        if(mobileMenu.classList.contains('open')) closeMenu();
+        if(modal && modal.classList.contains('open')) closeModal();
+        closeMenu();
       }
     });
   </script>
