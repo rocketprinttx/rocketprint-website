@@ -2282,6 +2282,93 @@
     }
 
 
+    /* ===== V37: Combined Timeless story + true white Heritage previews ===== */
+    .timeless-combined-section{
+      padding-top:72px;
+      padding-bottom:42px;
+    }
+
+    .timeless-combined-shell{
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 8% 6%, rgba(228,58,53,.13), transparent 31%),
+        radial-gradient(circle at 94% 92%, rgba(228,58,53,.07), transparent 28%),
+        linear-gradient(145deg,#141414,#0d0d0d);
+      box-shadow:0 24px 70px rgba(0,0,0,.24);
+    }
+
+    .timeless-combined-shell .timeless-lockup-feature{
+      margin:0;
+      padding:0;
+      border:0;
+      border-radius:0;
+      background:none;
+      box-shadow:none;
+    }
+
+    .timeless-combined-story{
+      margin-top:24px;
+      padding-top:28px;
+      border-top:1px solid var(--line);
+    }
+
+    .timeless-combined-story .timeless-story-intro{
+      margin-bottom:20px;
+    }
+
+    #designs .design-card[data-preview-surface="light"] .design-preview,
+    #designs .design-preview.preview-surface-light{
+      background:#ffffff !important;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.055);
+    }
+
+    #designs .design-card[data-preview-surface="light"] .design-preview::after,
+    #designs .design-preview.preview-surface-light::after{
+      background:rgba(255,255,255,.94);
+      color:#151515;
+      border:1px solid rgba(0,0,0,.10);
+    }
+
+    @media (max-width:980px){
+      .timeless-combined-section{
+        padding-top:52px;
+        padding-bottom:28px;
+      }
+
+      .timeless-combined-shell{
+        padding:18px;
+        border-radius:24px;
+      }
+
+      .timeless-combined-story{
+        margin-top:20px;
+        padding-top:22px;
+      }
+    }
+
+    @media (max-width:520px){
+      .timeless-combined-section{
+        padding-top:38px;
+        padding-bottom:22px;
+      }
+
+      .timeless-combined-shell{
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .timeless-combined-story{
+        margin-top:18px;
+        padding-top:20px;
+      }
+
+      .timeless-combined-story .timeless-story-intro{
+        margin-bottom:16px;
+      }
+    }
+
     /* ===== V28: Timeless identity + design-only configurator ===== */
     .timeless-lockup-feature{
       display:grid;
@@ -3082,6 +3169,154 @@
       }
     }
 
+    /* ---------- V36 mobile-first hero polish ---------- */
+    .hero-headline-line:first-child{
+      letter-spacing:-.025em;
+    }
+
+    .hero-headline-line + .hero-headline-line{
+      margin-top:.06em;
+      letter-spacing:-.038em;
+    }
+
+    @media (max-width:720px){
+      .hero{
+        padding:30px 0 34px;
+      }
+
+      .hero-grid{
+        gap:20px;
+      }
+
+      .hero .eyebrow{
+        margin-bottom:12px;
+        font-size:.7rem;
+        letter-spacing:.16em;
+      }
+
+      .hero h1{
+        margin-bottom:16px;
+        font-size:clamp(2.75rem,13vw,4rem);
+        line-height:.92;
+      }
+
+      .hero-headline-line:first-child{
+        letter-spacing:-.015em;
+      }
+
+      .hero-headline-line + .hero-headline-line{
+        margin-top:.085em;
+        letter-spacing:-.028em;
+      }
+
+      .hero-copy{
+        max-width:35rem;
+        margin-bottom:20px;
+        font-size:.96rem;
+        line-height:1.52;
+      }
+
+      .hero-actions{
+        gap:9px;
+        margin-bottom:18px;
+      }
+
+      .hero-actions .btn{
+        min-height:50px;
+        border-radius:14px;
+        font-size:.92rem;
+        justify-content:center;
+      }
+
+      .hero-points{
+        display:flex;
+        gap:8px 12px;
+        margin:0;
+        font-size:.78rem;
+        line-height:1.25;
+      }
+
+      .hero-points > span{
+        display:inline-flex;
+        align-items:center;
+        min-height:30px;
+      }
+
+      .hero-points .check{
+        width:16px;
+        height:16px;
+        flex:0 0 16px;
+        margin-right:6px;
+        font-size:.64rem;
+      }
+
+      .showcase{
+        min-height:240px;
+        border-radius:22px;
+      }
+
+      .logo-stage{
+        inset:28px 14px 22px;
+      }
+
+      .official-logo{
+        width:min(320px,84%);
+        filter:drop-shadow(0 18px 28px rgba(0,0,0,.42));
+      }
+    }
+
+    @media (max-width:430px){
+      .hero{
+        padding-top:24px;
+        padding-bottom:28px;
+      }
+
+      .hero h1{
+        font-size:clamp(2.55rem,13.2vw,3.55rem);
+        margin-bottom:14px;
+      }
+
+      .hero-copy{
+        font-size:.92rem;
+        margin-bottom:18px;
+      }
+
+      .hero-actions .btn{
+        min-height:48px;
+      }
+
+      .hero-points{
+        display:flex;
+        gap:6px 11px;
+      }
+
+      .showcase{
+        min-height:205px;
+      }
+
+      .official-logo{
+        width:min(285px,82%);
+      }
+    }
+
+    @media (max-width:360px){
+      .hero h1{
+        font-size:clamp(2.3rem,12.7vw,3rem);
+      }
+
+      .hero-copy{
+        font-size:.88rem;
+      }
+
+      .hero-points{
+        font-size:.74rem;
+      }
+
+      .showcase{
+        min-height:188px;
+      }
+    }
+
   </style>
 </head>
 
@@ -3151,21 +3386,19 @@
           </h1>
 
           <p class="hero-copy">
-            Rocket Print creates clean, standout apparel for Wellington, schools,
-            teams, businesses, events, and anyone who wants something made their own.
-            Our debut collection is the <strong>Timeless Collection</strong> - a heritage-inspired release
-            built around celebrating Wellington with clean, premium design.
+            Premium local apparel inspired by Wellington and made for everyday wear.
+            Shop the <strong>Timeless Collection</strong> or bring us an idea for a custom project.
           </p>
 
           <div class="hero-actions">
-            <a href="#designs" class="btn btn-primary">Explore Timeless Collection</a>
+            <a href="#designs" class="btn btn-primary">Shop Timeless Collection</a>
             <a href="#custom" class="btn btn-secondary">Custom Printing</a>
           </div>
 
           <div class="hero-points">
-            <span><i class="check">✓</i> Timeless Collection</span>
-            <span><i class="check">✓</i> Celebrating Wellington heritage</span>
-            <span><i class="check">✓</i> Custom projects welcome</span>
+            <span><i class="check">✓</i> Wellington inspired</span>
+            <span><i class="check">✓</i> Adult, youth &amp; toddler</span>
+            <span><i class="check">✓</i> Custom printing</span>
           </div>
         </div>
 
@@ -3194,66 +3427,55 @@
       </div>
     </div>
 
-    <section class="collections" id="collections">
+    <section class="collections timeless-combined-section" id="collections" aria-labelledby="timelessStoryTitle">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Collections</div>
-            <h2>Where Rocket Print is headed next.</h2>
-          </div>
-        </div>
-
-        <div class="timeless-lockup-feature">
-          <div class="timeless-lockup">
-            <span class="timeless-overline">Rocket Print presents</span>
-            <strong>TIMELESS</strong>
-            <span class="timeless-location">WELLINGTON, TEXAS</span>
-          </div>
-
-          <div class="timeless-lockup-copy">
-            <div class="eyebrow">Debut Collection</div>
-            <h3>Wellington heritage, made wearable.</h3>
-            <p>
-              Clean, premium pieces built around local pride and designed to work year after year.
-            </p>
-            <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <section class="timeless-story" aria-labelledby="timelessStoryTitle">
-      <div class="wrap">
-        <div class="timeless-story-shell">
-          <div class="timeless-story-intro">
-            <div class="eyebrow">The Timeless Idea</div>
-            <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
-          </div>
-
-          <div class="timeless-values" id="timelessValuesCarousel">
-            <div class="timeless-value">
-              <span class="value-mark">01</span>
-              <strong>Heritage</strong>
-              <p>Rooted in Wellington pride without feeling tied to a single season.</p>
+        <div class="timeless-combined-shell">
+          <div class="timeless-lockup-feature">
+            <div class="timeless-lockup">
+              <span class="timeless-overline">Rocket Print presents</span>
+              <strong>TIMELESS</strong>
+              <span class="timeless-location">WELLINGTON, TEXAS</span>
             </div>
 
-            <div class="timeless-value">
-              <span class="value-mark">02</span>
-              <strong>Premium</strong>
-              <p>Clean typography and restrained details that feel elevated on apparel.</p>
-            </div>
-
-            <div class="timeless-value">
-              <span class="value-mark">03</span>
-              <strong>Everyday</strong>
-              <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
+            <div class="timeless-lockup-copy">
+              <div class="eyebrow">Debut Collection</div>
+              <h3>Wellington heritage, made wearable.</h3>
+              <p>
+                Clean, premium pieces built around local pride and designed to work year after year.
+              </p>
+              <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
             </div>
           </div>
-          <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
-            <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-            <span>Swipe for more</span>
+
+          <div class="timeless-combined-story">
+            <div class="timeless-story-intro">
+              <div class="eyebrow">The Timeless Idea</div>
+              <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
+            </div>
+
+            <div class="timeless-values" id="timelessValuesCarousel">
+              <div class="timeless-value">
+                <span class="value-mark">01</span>
+                <strong>Heritage</strong>
+                <p>Rooted in Wellington pride without feeling tied to a single season.</p>
+              </div>
+
+              <div class="timeless-value">
+                <span class="value-mark">02</span>
+                <strong>Premium</strong>
+                <p>Clean typography and restrained details that feel elevated on apparel.</p>
+              </div>
+
+              <div class="timeless-value">
+                <span class="value-mark">03</span>
+                <strong>Everyday</strong>
+                <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
+              </div>
+            </div>
+            <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
+              <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
+              <span>Swipe for more</span>
+            </div>
           </div>
         </div>
       </div>
@@ -3322,7 +3544,7 @@
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
-            <div class="design-preview">
+            <div class="design-preview preview-surface-light">
               <img src="assets/timeless-wellington-script.png" alt="Wellington Heritage design preview" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
@@ -3355,7 +3577,7 @@
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
-            <div class="design-preview">
+            <div class="design-preview preview-surface-light">
               <img src="assets/timeless-wellington-wordmark.png" alt="Wellington Heritage Wordmark design preview" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
