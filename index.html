@@ -261,9 +261,14 @@
     h1{
       margin:0 0 22px;
       font-size:clamp(3.15rem,7.1vw,6.5rem);
-      letter-spacing:-.065em;
+      letter-spacing:-.048em;
+      line-height:.96;
       max-width:780px;
+      text-rendering:optimizeLegibility;
+      font-kerning:normal;
     }
+
+    .hero-headline-line{display:block}
 
     .hero-red{color:var(--red-bright)}
     .hero-copy{
@@ -1672,7 +1677,8 @@
 
       h1{
         font-size:clamp(2.65rem,14vw,4.15rem);
-        letter-spacing:-.06em;
+        letter-spacing:-.04em;
+        line-height:.95;
       }
 
       .hero-copy{
@@ -2705,6 +2711,17 @@
       content:"View options";
     }
 
+    #designs .design-preview.preview-surface-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);
+    }
+
+    #designs .design-preview.preview-surface-light::after{
+      background:rgba(255,255,255,.92);
+      color:#151515;
+      border:1px solid rgba(0,0,0,.08);
+    }
+
     #designs .card-body{
       flex:1 1 auto;
       padding:22px 22px 24px;
@@ -3129,8 +3146,8 @@
         <div>
           <div class="eyebrow">Wellington, Texas</div>
           <h1>
-            LOCAL DESIGNS.<br>
-            <span class="hero-red">PREMIUM APPAREL.</span>
+            <span class="hero-headline-line">LOCAL DESIGNS.</span>
+            <span class="hero-headline-line hero-red">PREMIUM APPAREL.</span>
           </h1>
 
           <p class="hero-copy">
@@ -3291,6 +3308,7 @@
 
 <article class="design-card" tabindex="0"
             data-category="timeless local wellington"
+            data-preview-surface="light"
             data-title="Wellington Heritage"
             data-tag="Timeless Collection"
             data-description="An elegant script-based Wellington heritage design with a refined boutique feel. Part of the Timeless Collection celebrating Wellington."
@@ -3323,6 +3341,7 @@
 
 <article class="design-card" tabindex="0"
             data-category="timeless local wellington"
+            data-preview-surface="light"
             data-title="Wellington Heritage Wordmark"
             data-tag="Timeless Collection"
             data-description="A clean black wordmark design built around Wellington and Skyrockets pride. Part of the Timeless Collection celebrating Wellington heritage."
@@ -3665,7 +3684,14 @@
         const body = card.querySelector('.card-body');
         const price = card.querySelector('.card-price');
 
-        if(preview) preview.style.background = previewBackground(defaultColor);
+        if(preview){
+          const preferredSurface = card.dataset.previewSurface || '';
+          if(preferredSurface === 'light') preview.classList.add('preview-surface-light');
+          else preview.classList.remove('preview-surface-light');
+          preview.style.background = preferredSurface === 'light'
+            ? 'linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%)'
+            : previewBackground(defaultColor);
+        }
 
         if(body && colors.length && !body.querySelector('.card-color-strip')){
           const strip = document.createElement('div');
