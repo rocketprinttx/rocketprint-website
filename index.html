@@ -336,6 +336,8 @@
     .official-logo{
       width:min(520px,90%);
       height:auto;
+      max-height:100%;
+      object-fit:contain;
       filter:drop-shadow(0 26px 40px rgba(0,0,0,.45));
     }
 
@@ -3289,16 +3291,18 @@
       }
 
       .showcase{
-        min-height:240px;
+        min-height:250px;
         border-radius:22px;
       }
 
       .logo-stage{
-        inset:28px 14px 22px;
+        inset:22px 14px 22px;
       }
 
       .official-logo{
-        width:min(320px,84%);
+        width:min(290px,76%);
+        max-height:calc(100% - 4px);
+        object-fit:contain;
         filter:drop-shadow(0 18px 28px rgba(0,0,0,.42));
       }
     }
@@ -3329,11 +3333,16 @@
       }
 
       .showcase{
-        min-height:205px;
+        min-height:225px;
+      }
+
+      .logo-stage{
+        inset:18px 12px 18px;
       }
 
       .official-logo{
-        width:min(285px,82%);
+        width:min(250px,72%);
+        max-height:calc(100% - 2px);
       }
     }
 
@@ -3351,7 +3360,11 @@
       }
 
       .showcase{
-        min-height:188px;
+        min-height:210px;
+      }
+
+      .official-logo{
+        width:min(230px,70%);
       }
     }
 
