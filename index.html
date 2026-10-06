@@ -4186,6 +4186,127 @@
       }
     }
 
+  
+    /* ===== Redesign V6 fixes: initialize shirt cards, working logo view, larger mobile shirt cards ===== */
+    #designs .design-preview{
+      min-height:420px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      background:none !important;
+    }
+
+    #designs .card-static-shirt{
+      min-height:420px;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    #designs .card-static-shirt .static-shirt-img{
+      width:112%;
+      max-width:none;
+      transform:translateY(4px);
+      box-shadow:none;
+    }
+
+    .modal-static-shirt{
+      min-height:580px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .modal-static-shirt .static-shirt-img{
+      width:100%;
+      max-width:900px;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    .design-color-preview.logo-view-light,
+    .design-color-preview.logo-view-dark{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .logo-view-stage img{
+      width:min(92%, 760px);
+      max-height:76vh;
+      object-fit:contain;
+      display:block;
+      margin:0 auto;
+    }
+
+    @media (max-width:980px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:370px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:116%;
+      }
+
+      .modal-static-shirt{
+        min-height:470px;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:340px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:126%;
+        transform:translateY(8px);
+      }
+
+      .modal-static-shirt{
+        min-height:360px;
+      }
+
+      .logo-view-stage{
+        padding:16px;
+      }
+
+      .logo-view-stage img{
+        width:min(96%, 520px);
+        max-height:42dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:320px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:132%;
+        transform:translateY(10px);
+      }
+
+      .modal-static-shirt{
+        min-height:320px;
+      }
+    }
+
   </style>
 </head>
 
@@ -4795,6 +4916,17 @@
 
     initializeShirtViews();
 
+
+    if(previewModeToggle){
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          previewMode = button.dataset.view;
+          updateSelection();
+        });
+      });
+    }
+
+    initializeShirtViews();
 
     cards.forEach(card => {
           const categories = card.dataset.category.split(' ');
