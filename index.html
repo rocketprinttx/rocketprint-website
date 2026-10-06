@@ -10,9 +10,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
-  <link rel="preload" href="assets/wellington-skyrockets-design.png" as="image" />
-  <link rel="preload" href="assets/timeless-wellington-script.png" as="image" />
-  <link rel="preload" href="assets/timeless-wellington-wordmark.png" as="image" />
 
   <meta property="og:title" content="Rocket Print | Wellington, Texas" />
   <meta property="og:description" content="Explore Rocket Print’s Timeless Collection — premium Wellington heritage apparel and custom printing from Wellington, Texas." />
@@ -2640,6 +2637,434 @@
       html{scroll-behavior:auto}
       *,*::before,*::after{transition:none!important;animation:none!important}
     }
+  
+
+    /* ==========================================================
+       V34 MOBILE-FIRST STOREFRONT POLISH
+       ========================================================== */
+    .collection-shop-head{
+      align-items:center;
+      margin-bottom:30px;
+    }
+
+    .collection-shop-head p{
+      max-width:520px;
+      font-size:1rem;
+      line-height:1.7;
+    }
+
+    .collection-shop-head p strong{
+      color:#fff;
+      font-weight:850;
+    }
+
+    #designs .gallery{
+      gap:22px;
+    }
+
+    #designs .design-card{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      border-color:rgba(255,255,255,.10);
+      background:linear-gradient(180deg,#121212 0%,#101010 100%);
+      box-shadow:0 10px 34px rgba(0,0,0,.18);
+    }
+
+    #designs .design-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+      box-shadow:inset 0 0 0 1px transparent;
+      transition:.22s ease;
+    }
+
+    #designs .design-card:hover{
+      transform:translateY(-7px) scale(1.008);
+      border-color:rgba(228,58,53,.42);
+      box-shadow:0 22px 56px rgba(0,0,0,.34),0 0 0 1px rgba(228,58,53,.06);
+    }
+
+    #designs .design-card:hover::after{
+      box-shadow:inset 0 0 0 1px rgba(228,58,53,.16);
+    }
+
+    #designs .design-preview{
+      min-height:0;
+      aspect-ratio:1 / .86;
+    }
+
+    #designs .design-preview img{
+      width:min(91%,480px);
+      max-height:89%;
+    }
+
+    #designs .design-preview::after{
+      content:"View options";
+    }
+
+    #designs .card-body{
+      flex:1 1 auto;
+      padding:22px 22px 24px;
+    }
+
+    #designs .card-body h3{
+      margin-top:7px;
+      font-size:1.15rem;
+      letter-spacing:-.025em;
+    }
+
+    #designs .card-body p{
+      margin:8px 0 15px;
+      color:#c8c8c8;
+      line-height:1.55;
+    }
+
+    .card-color-strip{display:none!important}
+
+    .card-color-names{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:7px;
+      color:#bdbdbd;
+      font-size:.82rem;
+      font-weight:760;
+    }
+
+    .mini-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      flex:0 0 auto;
+      background:var(--dot);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 0 0 2px rgba(255,255,255,.04);
+    }
+
+    .dot-sep{
+      color:#5f5f5f;
+      margin:0 1px;
+    }
+
+    .card-link{
+      margin-top:auto;
+      padding-top:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:#fff;
+      font-size:.88rem;
+      font-weight:900;
+      letter-spacing:.01em;
+    }
+
+    .card-link span{
+      color:#ff5f59;
+      font-size:1.15rem;
+      transition:transform .18s ease;
+    }
+
+    .design-card:hover .card-link span{transform:translateX(4px)}
+
+    .shop-reassurance{
+      margin-top:26px;
+      padding:16px 18px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px 28px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+      color:#d2d2d2;
+      font-size:.86rem;
+      font-weight:720;
+    }
+
+    .shop-reassurance span::first-letter{color:#ff655f}
+
+    @media (max-width:980px){
+      body{
+        padding-bottom:calc(76px + env(safe-area-inset-bottom));
+      }
+
+      .mobile-bottom-nav{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      #designs .gallery{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:18px;
+        overflow:visible;
+        padding:0;
+      }
+
+      #designs .design-card{
+        width:100%;
+        max-width:none;
+        flex:none;
+        scroll-snap-align:none;
+      }
+
+      #designs .design-card:hover{
+        transform:none;
+        box-shadow:0 10px 34px rgba(0,0,0,.18);
+      }
+
+      #designs .design-preview::after{
+        right:14px;
+        bottom:14px;
+        opacity:1;
+        transform:none;
+        background:rgba(0,0,0,.72);
+        backdrop-filter:blur(8px);
+      }
+
+      .shop-reassurance{
+        justify-content:flex-start;
+        gap:9px;
+      }
+
+      .shop-reassurance span{
+        width:100%;
+      }
+
+      /* Product selection behaves like a dedicated mobile product screen. */
+      .modal{
+        align-items:stretch;
+        padding:0;
+      }
+
+      .modal-card.design-config-modal{
+        width:100%;
+        height:100dvh;
+        max-height:100dvh;
+        border:0;
+        border-radius:0;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+        background:#111;
+      }
+
+      .design-color-preview{
+        flex:0 0 clamp(255px,36dvh,350px);
+        min-height:0;
+        height:auto;
+        padding:20px 18px 14px;
+        border-bottom:1px solid var(--line);
+      }
+
+      .design-color-preview img{
+        max-width:94%;
+        max-height:94%;
+        width:auto;
+        height:auto;
+      }
+
+      .design-config-body{
+        position:relative;
+        flex:1 1 auto;
+        min-height:0;
+        overflow-y:auto;
+        overscroll-behavior:contain;
+        padding:22px 18px 0;
+        -webkit-overflow-scrolling:touch;
+      }
+
+      .design-config-body > .tag{
+        margin-top:0;
+      }
+
+      .design-config-body #modalTitle{
+        padding-right:48px;
+        font-size:clamp(1.85rem,8vw,2.35rem);
+        line-height:1.05;
+      }
+
+      .design-config-body > p{
+        max-width:42rem;
+        font-size:.96rem;
+        line-height:1.55;
+      }
+
+      .modal-close{
+        position:fixed;
+        top:calc(12px + env(safe-area-inset-top));
+        right:12px;
+        float:none;
+        width:48px;
+        height:48px;
+        z-index:999;
+        background:rgba(16,16,16,.84);
+        backdrop-filter:blur(12px);
+      }
+
+      .selection-summary-row{
+        margin-top:18px;
+      }
+
+      .garment-selector{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .garment-select-btn,
+      .color-option,
+      .size-select-btn{
+        min-height:48px;
+      }
+
+      .config-action-bar{
+        position:sticky;
+        bottom:0;
+        z-index:8;
+        margin-left:-18px;
+        margin-right:-18px;
+        padding:13px 18px calc(13px + env(safe-area-inset-bottom));
+        box-shadow:0 -18px 36px rgba(0,0,0,.30);
+      }
+
+      .config-action-bar .btn{
+        min-width:170px;
+        min-height:50px;
+      }
+    }
+
+    @media (max-width:720px){
+      .collection-shop-head{
+        display:block;
+        margin-bottom:22px;
+      }
+
+      .collection-shop-head h2{
+        font-size:clamp(2.25rem,11vw,3.3rem);
+        line-height:.98;
+      }
+
+      .collection-shop-head p{
+        margin-top:18px;
+        font-size:.95rem;
+      }
+
+      #designs .design-card{
+        border-radius:20px;
+      }
+
+      #designs .design-preview{
+        aspect-ratio:1 / .82;
+      }
+
+      #designs .card-body{
+        padding:19px 18px 21px;
+      }
+
+      #designs .card-body h3{
+        font-size:1.28rem;
+      }
+
+      #designs .card-body p{
+        font-size:.96rem;
+      }
+
+      .card-color-names{
+        font-size:.88rem;
+      }
+
+      .card-link{
+        min-height:44px;
+        padding-top:14px;
+        font-size:.94rem;
+      }
+
+      .shop-reassurance{
+        margin-top:20px;
+        padding:15px 16px;
+        font-size:.84rem;
+      }
+
+      .garment-selector{
+        grid-template-columns:1fr;
+      }
+
+      .garment-select-btn{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        text-align:left;
+      }
+
+      .selector-section{
+        padding-top:17px;
+        margin-top:17px;
+      }
+
+      .delivery-summary{
+        font-size:.82rem;
+      }
+    }
+
+    @media (max-width:430px){
+      .wrap{
+        width:min(calc(100% - 32px), var(--max));
+      }
+
+      #designs .gallery{gap:16px}
+
+      .design-color-preview{
+        flex-basis:clamp(235px,33dvh,305px);
+        padding-left:12px;
+        padding-right:12px;
+      }
+
+      .design-config-body{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .config-action-bar{
+        margin-left:-16px;
+        margin-right:-16px;
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .config-action-bar .btn{
+        min-width:0;
+        padding-left:15px;
+        padding-right:15px;
+        font-size:.84rem;
+      }
+    }
+
+    @media (max-width:360px){
+      .wrap{width:min(calc(100% - 24px), var(--max))}
+      #designs .card-body{padding:17px 15px 19px}
+      .design-color-preview{flex-basis:225px}
+      .selected-summary{font-size:.72rem}
+      .config-action-bar{gap:10px}
+      .config-action-bar strong{font-size:1.05rem}
+      .config-action-bar .btn{font-size:.77rem;padding:11px 12px}
+    }
+
+
+    /* 320px safety: prevent long custom CTA text from widening the page. */
+    @media (max-width:520px){
+      #custom .custom-copy{min-width:0}
+      #custom .custom-copy .btn{
+        width:100%;
+        white-space:normal;
+        justify-content:center;
+        text-align:center;
+        line-height:1.25;
+      }
+    }
+
   </style>
 </head>
 
@@ -2655,14 +3080,13 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#collections">Collections</a>
-        <a href="#designs">Designs</a>
-        <a href="#custom">Custom Printing</a>
+        <a href="#designs">Shop</a>
+        <a href="#custom">Custom</a>
         <a href="#about">About</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Shop Coming Soon</a>
+        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Ordering Coming Soon</a>
         <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </div>
@@ -2675,10 +3099,9 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="wrap">
-      <a href="#collections">Collections</a>
-      <a href="#designs">Designs</a>
+      <a href="#designs">Shop Timeless</a>
       <a href="#custom">Custom Printing</a>
-      <a href="#about">About</a>
+      <a href="#about">About Rocket Print</a>
     </div>
   </nav>
 
@@ -2686,13 +3109,9 @@
   <div class="mobile-scrim" id="mobileScrim" aria-hidden="true"></div>
 
   <nav class="mobile-bottom-nav" aria-label="Quick navigation">
-    <a href="#top">
-      <span class="mobile-nav-icon">⌂</span>
-      <span>Home</span>
-    </a>
     <a href="#designs">
       <span class="mobile-nav-icon">◆</span>
-      <span>Timeless</span>
+      <span>Shop</span>
     </a>
     <a href="#custom">
       <span class="mobile-nav-icon">＋</span>
@@ -2825,20 +3244,15 @@
 
     <section id="designs">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head collection-shop-head">
           <div>
-            <div class="eyebrow">Design Gallery</div>
-            <h2>The Timeless Collection.</h2>
+            <div class="eyebrow">The Timeless Collection</div>
+            <h2>Made for Wellington.<br>Designed to last.</h2>
           </div>
           <p>
-            A Rocket Print collection built around Wellington pride, elevated small-town style,
-            and premium designs made to feel timeless. Click any design for a larger preview.
+            <strong>Built in Wellington. Made to be worn anywhere.</strong><br>
+            Timeless local apparel inspired by the town we call home.
           </p>
-        </div>
-
-        <div class="filters" aria-label="Filter designs">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="timeless">Timeless Collection</button>
         </div>
 
         <div class="gallery" id="gallery">
@@ -2859,7 +3273,7 @@
             data-toddler-tee-sizes="2T–6T|$19.99"
 >
             <div class="design-preview">
-              <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets design preview">
+              <img src="assets/wellington-skyrockets-design.png" alt="Wellington Skyrockets Signature design preview" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
               <div class="card-row">
@@ -2869,7 +3283,9 @@
                 </div>
                 
               </div>
-              <p>Our first timeless Wellington Skyrockets design — clean, classic and made for everyday wear.</p>
+              <p>Classic Wellington spirit. Clean enough for every day.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#111111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -2899,7 +3315,9 @@
                 </div>
                 
               </div>
-              <p>An elevated script design that celebrates Wellington heritage with a softer boutique look.</p>
+              <p>An elevated script inspired by Wellington’s roots.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -2929,15 +3347,18 @@
                 </div>
                 
               </div>
-              <p>A minimal heritage wordmark designed to keep Wellington and Skyrockets pride front and center.</p>
+              <p>Minimal, timeless, unmistakably Wellington.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
         </div>
 
-        <div class="carousel-progress" data-carousel="gallery" aria-hidden="true">
-          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-          <span>Swipe to see more designs</span>
+        <div class="shop-reassurance" aria-label="Ordering information">
+          <span>✓ Free Wellington delivery</span>
+          <span>✓ $11.99 shipping outside Wellington</span>
+          <span>✓ Adult, Youth &amp; Toddler sizes</span>
         </div>
       </div>
     </section>
@@ -3141,7 +3562,7 @@
             <span class="selector-kicker">Your Price</span>
             <strong id="stickyPrice">$24.99</strong>
           </div>
-          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Shop Coming Soon</a>
+          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Ordering Coming Soon</a>
         </div>
       </div>
     </div>
@@ -3258,7 +3679,8 @@
       });
     }
 
-    decorateProductCards();
+    // Product cards use labeled color options in the HTML; modal still reads data-colors.
+
 
     const garmentCatalog = {
       'adult-tee': {
