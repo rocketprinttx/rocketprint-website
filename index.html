@@ -230,11 +230,15 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:54px;
+      grid-template-columns:1fr;
+      gap:0;
       align-items:center;
       position:relative;
       z-index:1;
+    }
+
+    .hero-grid > div:first-child{
+      width:min(100%, 940px);
     }
 
     .eyebrow{
@@ -263,7 +267,7 @@
       font-size:clamp(3.15rem,7.1vw,6.5rem);
       letter-spacing:-.048em;
       line-height:.96;
-      max-width:780px;
+      max-width:900px;
       text-rendering:optimizeLegibility;
       font-kerning:normal;
     }
@@ -272,7 +276,7 @@
 
     .hero-red{color:var(--red-bright)}
     .hero-copy{
-      max-width:620px;
+      max-width:700px;
       color:var(--muted);
       font-size:clamp(1.03rem,1.7vw,1.23rem);
       margin:0 0 30px;
@@ -3368,6 +3372,125 @@
       }
     }
 
+  
+    /* ===== REDESIGN FINAL: products first + simplified Timeless story ===== */
+    #designs{
+      padding-top:50px;
+      padding-bottom:62px;
+    }
+
+    #designs .collection-shop-head{
+      margin-bottom:28px;
+    }
+
+    #designs .collection-shop-head h2{
+      max-width:760px;
+    }
+
+    .timeless-combined-section{
+      padding-top:20px;
+      padding-bottom:54px;
+    }
+
+    .timeless-combined-shell{
+      padding:24px;
+    }
+
+    .timeless-lockup-copy p{
+      max-width:640px;
+    }
+
+    .timeless-lockup-copy p strong{
+      display:block;
+      margin-bottom:8px;
+      color:#fff;
+      font-weight:850;
+    }
+
+    @media (max-width:980px){
+      #designs{
+        padding-top:38px;
+        padding-bottom:46px;
+      }
+
+      #designs .collection-shop-head{
+        margin-bottom:22px;
+      }
+
+      .timeless-combined-section{
+        padding-top:4px;
+        padding-bottom:38px;
+      }
+
+      .timeless-combined-shell{
+        padding:18px;
+      }
+
+      .timeless-lockup-feature{
+        gap:18px;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs{
+        padding-top:30px;
+        padding-bottom:38px;
+      }
+
+      #designs .collection-shop-head h2{
+        font-size:clamp(2rem,10vw,2.85rem);
+        line-height:1;
+      }
+
+      .timeless-combined-section{
+        padding-top:0;
+        padding-bottom:32px;
+      }
+
+      .timeless-combined-shell{
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .timeless-lockup-feature{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .timeless-lockup{
+        min-height:188px;
+      }
+
+      .timeless-lockup-copy{
+        padding:4px 2px 8px;
+      }
+
+      .timeless-lockup-copy h3{
+        font-size:clamp(1.65rem,8vw,2.3rem);
+        line-height:1.02;
+      }
+
+      .timeless-lockup-copy p{
+        font-size:.96rem;
+        line-height:1.6;
+      }
+
+      .timeless-lockup-copy .btn{
+        width:100%;
+        min-height:50px;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs{
+        padding-top:26px;
+      }
+
+      .timeless-lockup{
+        min-height:170px;
+      }
+    }
+
   </style>
 </head>
 
@@ -3389,7 +3512,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Ordering Coming Soon</a>
+        <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Facebook Shop Coming Soon</a>
         <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </div>
@@ -3453,91 +3576,16 @@
           </div>
         </div>
 
-        <div class="showcase">
-
-          <div class="logo-stage">
-            <img class="official-logo" src="assets/rocket-print-logo.png" alt="Official Rocket Print logo">
-          </div>
-
-        </div>
       </div>
     </section>
 
-    <div class="stats">
-      <div class="wrap stats-grid" id="statsCarousel">
-        <div class="stat"><strong>3 Timeless Designs</strong><span>Wellington heritage collection</span></div>
-        <div class="stat"><strong>Wellington Heritage</strong><span>The inspiration behind the collection</span></div>
-        <div class="stat"><strong>Custom Apparel</strong><span>School, team and business work</span></div>
-        <div class="stat"><strong>Facebook Shop</strong><span>Launching soon</span></div>
-      </div>
-      <div class="wrap">
-        <div class="carousel-progress" data-carousel="statsCarousel" aria-hidden="true">
-          <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-          <span>Swipe for more</span>
-        </div>
-      </div>
-    </div>
-
-    <section class="collections timeless-combined-section" id="collections" aria-labelledby="timelessStoryTitle">
-      <div class="wrap">
-        <div class="timeless-combined-shell">
-          <div class="timeless-lockup-feature">
-            <div class="timeless-lockup">
-              <span class="timeless-overline">Rocket Print presents</span>
-              <strong>TIMELESS</strong>
-              <span class="timeless-location">WELLINGTON, TEXAS</span>
-            </div>
-
-            <div class="timeless-lockup-copy">
-              <div class="eyebrow">Debut Collection</div>
-              <h3>Wellington heritage, made wearable.</h3>
-              <p>
-                Clean, premium pieces built around local pride and designed to work year after year.
-              </p>
-              <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
-            </div>
-          </div>
-
-          <div class="timeless-combined-story">
-            <div class="timeless-story-intro">
-              <div class="eyebrow">The Timeless Idea</div>
-              <h2 id="timelessStoryTitle">Made for Wellington. Designed to last.</h2>
-            </div>
-
-            <div class="timeless-values" id="timelessValuesCarousel">
-              <div class="timeless-value">
-                <span class="value-mark">01</span>
-                <strong>Heritage</strong>
-                <p>Rooted in Wellington pride without feeling tied to a single season.</p>
-              </div>
-
-              <div class="timeless-value">
-                <span class="value-mark">02</span>
-                <strong>Premium</strong>
-                <p>Clean typography and restrained details that feel elevated on apparel.</p>
-              </div>
-
-              <div class="timeless-value">
-                <span class="value-mark">03</span>
-                <strong>Everyday</strong>
-                <p>Pieces designed to look good at the game, around town, or anywhere else.</p>
-              </div>
-            </div>
-            <div class="carousel-progress" data-carousel="timelessValuesCarousel" aria-hidden="true">
-              <div class="carousel-progress-track"><div class="carousel-progress-thumb"></div></div>
-              <span>Swipe for more</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section id="designs">
       <div class="wrap">
         <div class="section-head collection-shop-head">
           <div>
             <div class="eyebrow">The Timeless Collection</div>
-            <h2>Made for Wellington.<br>Designed to last.</h2>
+            <h2>Shop the collection.</h2>
           </div>
         </div>
 
@@ -3647,6 +3695,31 @@
           <span>✓ Free Wellington delivery</span>
           <span>✓ $11.99 shipping outside Wellington</span>
           <span>✓ Adult, Youth &amp; Toddler sizes</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections timeless-combined-section" id="collections" aria-labelledby="debutCollectionTitle">
+      <div class="wrap">
+        <div class="timeless-combined-shell">
+          <div class="timeless-lockup-feature">
+            <div class="timeless-lockup">
+              <span class="timeless-overline">Rocket Print presents</span>
+              <strong>TIMELESS</strong>
+              <span class="timeless-location">WELLINGTON, TEXAS</span>
+            </div>
+
+            <div class="timeless-lockup-copy">
+              <div class="eyebrow">Debut Collection</div>
+              <h3 id="debutCollectionTitle">Wellington heritage, made wearable.</h3>
+              <p>
+                <strong>Made for Wellington. Designed to last.</strong>
+                Rooted in Wellington heritage, the Timeless Collection pairs clean, premium typography
+                with everyday pieces made for the game, around town, and anywhere else.
+              </p>
+              <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -3851,7 +3924,7 @@
             <span class="selector-kicker">Your Price</span>
             <strong id="stickyPrice">$24.99</strong>
           </div>
-          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Ordering Coming Soon</a>
+          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Facebook Shop Coming Soon</a>
         </div>
       </div>
     </div>
