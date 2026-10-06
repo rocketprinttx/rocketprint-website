@@ -873,6 +873,7 @@
     .modal.open{display:flex}
 
     .modal-card{
+      position:relative;
       width:min(1320px,96vw);
       height:min(86vh,820px);
       overflow:hidden;
@@ -916,14 +917,30 @@
       position:absolute;
       right:18px;
       top:18px;
-      width:40px;
-      height:40px;
+      width:44px;
+      height:44px;
       border-radius:50%;
-      border:1px solid var(--line);
-      color:white;
-      background:#191919;
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      background:rgba(18,18,18,.94);
       cursor:pointer;
-      font-size:1.25rem;
+      font-size:1.55rem;
+      font-weight:500;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      z-index:30;
+      box-shadow:0 8px 28px rgba(0,0,0,.38);
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus-visible{
+      border-color:rgba(255,255,255,.55);
+      background:#252525;
+      outline:none;
     }
 
     .modal-body h3{
@@ -1638,12 +1655,7 @@
       }
 
       .modal-close{
-        position:sticky;
-        float:right;
-        top:10px;
-        width:48px;
-        height:48px;
-        z-index:3;
+        float:none;
       }
 
       .garment-choice-grid{
@@ -2964,7 +2976,7 @@
         flex:0 0 clamp(255px,36dvh,350px);
         min-height:0;
         height:auto;
-        padding:20px 18px 14px;
+        padding:calc(64px + env(safe-area-inset-top)) 18px 14px;
         border-bottom:1px solid var(--line);
       }
 
@@ -3003,14 +3015,36 @@
 
       .modal-close{
         position:fixed;
-        top:calc(12px + env(safe-area-inset-top));
+        top:calc(10px + env(safe-area-inset-top));
         right:12px;
         float:none;
-        width:48px;
+        width:auto;
+        min-width:92px;
         height:48px;
-        z-index:999;
-        background:rgba(16,16,16,.84);
-        backdrop-filter:blur(12px);
+        padding:0 14px;
+        border-radius:999px;
+        z-index:2000;
+        background:rgba(10,10,10,.96);
+        border:1px solid rgba(255,255,255,.34);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
+        box-shadow:0 10px 30px rgba(0,0,0,.48);
+        gap:8px;
+        color:#fff;
+      }
+
+      .modal-close::before{
+        content:"Close";
+        font-size:.8rem;
+        font-weight:800;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+      }
+
+      .modal-close span{
+        font-size:1.55rem;
+        line-height:1;
+        transform:translateY(-1px);
       }
 
       .selection-summary-row{
@@ -3125,7 +3159,7 @@
       #designs .gallery{gap:16px}
 
       .design-color-preview{
-        flex-basis:clamp(235px,33dvh,305px);
+        flex-basis:clamp(255px,35dvh,325px);
         padding-left:12px;
         padding-right:12px;
       }
@@ -3759,12 +3793,13 @@
 
   <div class="modal" id="designModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card design-config-modal">
+      <button class="modal-close" id="modalClose" aria-label="Close product options"><span aria-hidden="true">×</span></button>
+
       <div class="modal-preview design-color-preview" id="modalPreview">
         <img id="modalDesignImage" src="" alt="">
       </div>
 
       <div class="modal-body design-config-body">
-        <button class="modal-close" id="modalClose" aria-label="Close design preview">×</button>
         <span class="tag" id="modalTag">Timeless Collection</span>
         <h3 id="modalTitle">Design Preview</h3>
         <p id="modalDescription">Design details.</p>
