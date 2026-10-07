@@ -4900,45 +4900,6 @@
       font-size:.68rem;
     }
 
-    .checkout-security-note{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      margin-top:14px;
-      padding:12px 13px;
-      border:1px solid rgba(120,211,145,.13);
-      border-radius:11px;
-      background:rgba(78,186,108,.055);
-    }
-
-    .mini-shield{
-      flex:0 0 22px;
-      width:22px;
-      height:22px;
-      display:grid;
-      place-items:center;
-      margin-top:1px;
-      border-radius:50%;
-      background:rgba(78,186,108,.16);
-      color:#8ad59d;
-      font-size:.72rem;
-      font-weight:950;
-    }
-
-    .checkout-security-note strong{
-      display:block;
-      color:#e9e9e9;
-      font-size:.75rem;
-      margin-bottom:3px;
-    }
-
-    .checkout-security-note span{
-      display:block;
-      color:#858585;
-      font-size:.68rem;
-      line-height:1.5;
-    }
-
     .checkout-primary{
       width:100%;
       margin-top:16px;
@@ -4949,14 +4910,17 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
+      gap:9px;
       font-size:.9rem;
       letter-spacing:.01em;
     }
 
-    .button-lock{
-      font-size:.72rem;
-      opacity:.9;
+    .paypal-button-mark{
+      display:block;
+      width:24px;
+      height:24px;
+      object-fit:contain;
+      flex:0 0 24px;
     }
 
     .checkout-button-note{
@@ -5844,7 +5808,6 @@
           <div class="checkout-section">
             <div class="checkout-section-heading">
               <h3>Delivery address</h3>
-              <span>No address-verification service is used at launch.</span>
             </div>
             <div class="field-grid">
               <div class="checkout-field field-span-2">
@@ -5929,21 +5892,14 @@
                 </div>
               </div>
 
-              <div class="checkout-security-note">
-                <div class="mini-shield" aria-hidden="true">✓</div>
-                <div>
-                  <strong>Secure total verification</strong>
-                  <span>
-                    Your displayed total is calculated instantly. Before payment,
-                    Rocket Print securely recalculates the order on the server and PayPal
-                    receives only that verified amount.
-                  </span>
-                </div>
-              </div>
-
               <button type="button" class="btn btn-primary checkout-primary secure-continue-btn" id="quoteBtn">
-                <span class="button-lock" aria-hidden="true">▣</span>
-                Checkout Through PayPal
+                <img
+                  class="paypal-button-mark"
+                  src="https://www.paypalobjects.com/webstatic/icon/pp258.png"
+                  alt=""
+                  aria-hidden="true"
+                >
+                <span>Checkout Through PayPal</span>
               </button>
 
               <div class="checkout-button-note">
@@ -6854,7 +6810,7 @@
       quoteBtn.disabled = false;
       quoteBtn.classList.remove('is-busy');
       quoteBtn.innerHTML =
-        '<span class="button-lock" aria-hidden="true">▣</span>Checkout Through PayPal';
+        '<img class="paypal-button-mark" src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="" aria-hidden="true"><span>Checkout Through PayPal</span>';
 
       if(message){
         setPaymentStatus(message);
