@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
   <meta name="robots" content="index,follow" />
@@ -4496,6 +4497,58 @@
       letter-spacing:-.03em;
     }
 
+    .checkout-head-main{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      min-width:0;
+    }
+
+    .checkout-shield{
+      flex:0 0 42px;
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(120,211,145,.24);
+      border-radius:12px;
+      background:rgba(78,186,108,.10);
+      color:#8ad59d;
+    }
+
+    .checkout-head-security{
+      margin-top:4px;
+      color:#8f8f8f;
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+
+    .checkout-section-heading{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .checkout-section-heading h3{
+      margin:0;
+    }
+
+    .checkout-section-heading > span{
+      color:#777;
+      font-size:.69rem;
+      line-height:1.4;
+      text-align:right;
+    }
+
+    .field-help{
+      color:#777;
+      font-weight:650;
+      letter-spacing:0;
+    }
+
     .icon-close{
       width:42px;
       height:42px;
@@ -4665,6 +4718,15 @@
       background:#121212;
     }
 
+    @media (min-width:981px){
+      .checkout-summary-pane{
+        position:sticky;
+        top:0;
+        align-self:start;
+        min-height:100%;
+      }
+    }
+
     .checkout-section{
       margin-bottom:26px;
     }
@@ -4777,9 +4839,10 @@
 
     .quote-card{
       padding:18px;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.12);
       border-radius:15px;
       background:#0e0e0e;
+      box-shadow:0 12px 34px rgba(0,0,0,.16);
     }
 
     .quote-row.total{
@@ -4837,9 +4900,71 @@
       font-size:.68rem;
     }
 
+    .checkout-security-note{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-top:14px;
+      padding:12px 13px;
+      border:1px solid rgba(120,211,145,.13);
+      border-radius:11px;
+      background:rgba(78,186,108,.055);
+    }
+
+    .mini-shield{
+      flex:0 0 22px;
+      width:22px;
+      height:22px;
+      display:grid;
+      place-items:center;
+      margin-top:1px;
+      border-radius:50%;
+      background:rgba(78,186,108,.16);
+      color:#8ad59d;
+      font-size:.72rem;
+      font-weight:950;
+    }
+
+    .checkout-security-note strong{
+      display:block;
+      color:#e9e9e9;
+      font-size:.75rem;
+      margin-bottom:3px;
+    }
+
+    .checkout-security-note span{
+      display:block;
+      color:#858585;
+      font-size:.68rem;
+      line-height:1.5;
+    }
+
     .checkout-primary{
       width:100%;
       margin-top:16px;
+    }
+
+    .secure-continue-btn{
+      min-height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-size:.9rem;
+      letter-spacing:.01em;
+    }
+
+    .button-lock{
+      font-size:.72rem;
+      opacity:.9;
+    }
+
+    .checkout-button-note{
+      margin-top:9px;
+      color:#767676;
+      font-size:.66rem;
+      line-height:1.45;
+      text-align:center;
     }
 
     .payment-panel{
@@ -4853,11 +4978,36 @@
       display:block;
     }
 
+    .payment-panel{
+      border-top-color:rgba(255,255,255,.11);
+    }
+
+    .payment-panel-head{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      margin-bottom:16px;
+    }
+
+    .payment-shield{
+      flex-basis:36px;
+      width:36px;
+      height:36px;
+      border-radius:10px;
+    }
+
     .payment-label{
-      margin-bottom:11px;
+      margin-bottom:4px;
       color:#fff;
-      font-size:.84rem;
+      font-size:.9rem;
       font-weight:900;
+    }
+
+    .payment-security-copy{
+      max-width:460px;
+      color:#8c8c8c;
+      font-size:.7rem;
+      line-height:1.5;
     }
 
     .wallet-grid{
@@ -5124,6 +5274,21 @@
     }
 
     @media (max-width:620px){
+      .checkout-section-heading{
+        display:block;
+      }
+
+      .checkout-section-heading > span{
+        display:block;
+        margin-top:4px;
+        text-align:left;
+      }
+
+      .checkout-head-security{
+        max-width:245px;
+        line-height:1.4;
+      }
+
       .field-grid,
       .fulfillment-grid,
       .card-field-row{
@@ -5627,9 +5792,22 @@
   <div class="checkout-overlay" id="checkoutOverlay" aria-hidden="true">
     <div class="checkout-shell" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
       <div class="checkout-head">
-        <div>
-          <div class="tag">Secure Checkout</div>
-          <h2 id="checkoutTitle">Complete your order</h2>
+        <div class="checkout-head-main">
+          <div class="checkout-shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" role="img" aria-hidden="true">
+              <path d="M12 2.4 19 5v5.6c0 4.7-2.8 8.8-7 10.9-4.2-2.1-7-6.2-7-10.9V5l7-2.6Z"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="m8.8 11.8 2 2 4.5-4.6"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tag">Secure Checkout</div>
+            <h2 id="checkoutTitle">Complete your order</h2>
+            <div class="checkout-head-security">
+              Encrypted checkout • Payments securely processed by PayPal
+            </div>
+          </div>
         </div>
         <button type="button" class="icon-close" id="checkoutClose" aria-label="Close checkout">×</button>
       </div>
@@ -5641,7 +5819,10 @@
           </div>
 
           <div class="checkout-section">
-            <h3>Contact</h3>
+            <div class="checkout-section-heading">
+              <h3>Contact information</h3>
+              <span>We'll send your receipt and order updates here.</span>
+            </div>
             <div class="field-grid">
               <div class="checkout-field field-span-2">
                 <label for="checkoutName">Full name</label>
@@ -5654,14 +5835,17 @@
               </div>
 
               <div class="checkout-field">
-                <label for="checkoutPhone">Phone</label>
+                <label for="checkoutPhone">Phone <span class="field-help">(delivery updates only)</span></label>
                 <input id="checkoutPhone" type="tel" autocomplete="tel" required>
               </div>
             </div>
           </div>
 
           <div class="checkout-section">
-            <h3>Delivery address</h3>
+            <div class="checkout-section-heading">
+              <h3>Delivery address</h3>
+              <span>No address-verification service is used at launch.</span>
+            </div>
             <div class="field-grid">
               <div class="checkout-field field-span-2">
                 <label for="checkoutAddress">Street address</label>
@@ -5691,7 +5875,10 @@
           </div>
 
           <div class="checkout-section">
-            <h3>Delivery method</h3>
+            <div class="checkout-section-heading">
+              <h3>Delivery method</h3>
+              <span>Shipping is selected by default.</span>
+            </div>
 
             <div class="fulfillment-grid">
               <label class="fulfillment-option selected" id="shippingOption">
@@ -5715,11 +5902,15 @@
 
         <aside class="checkout-summary-pane">
           <div id="checkoutSummaryNormal">
-            <div class="checkout-section">
-              <h3>Order</h3>
+            <div class="checkout-section checkout-order-section">
+              <div class="checkout-section-heading">
+                <h3>Order summary</h3>
+                <span>Your cart total updates instantly.</span>
+              </div>
+
               <div class="checkout-cart-mini" id="checkoutMiniItems"></div>
 
-              <div class="quote-card">
+              <div class="quote-card" aria-label="Order total">
                 <div class="quote-row">
                   <span>Subtotal</span>
                   <strong id="quoteSubtotal">—</strong>
@@ -5729,7 +5920,7 @@
                   <strong id="quoteShipping">—</strong>
                 </div>
                 <div class="quote-row">
-                  <span>Tax</span>
+                  <span>Estimated tax</span>
                   <strong id="quoteTax">—</strong>
                 </div>
                 <div class="quote-row total">
@@ -5738,37 +5929,68 @@
                 </div>
               </div>
 
-              <div class="server-badge">Final amount verified by Rocket Print server</div>
-
-              <div class="server-badge" style="margin-top:14px;">
-                Totals update automatically as your cart, address, or delivery method changes.
+              <div class="checkout-security-note">
+                <div class="mini-shield" aria-hidden="true">✓</div>
+                <div>
+                  <strong>Secure total verification</strong>
+                  <span>
+                    Your displayed total is calculated instantly. Before payment,
+                    Rocket Print securely recalculates the order on the server and PayPal
+                    receives only that verified amount.
+                  </span>
+                </div>
               </div>
 
-              <button type="button" class="btn btn-primary checkout-primary" id="quoteBtn">
-                Calculate Total &amp; Checkout Through PayPal
+              <button type="button" class="btn btn-primary checkout-primary secure-continue-btn" id="quoteBtn">
+                <span class="button-lock" aria-hidden="true">▣</span>
+                Checkout Through PayPal
               </button>
+
+              <div class="checkout-button-note">
+                You will review and approve your payment before any charge is completed.
+              </div>
             </div>
 
             <div class="payment-panel" id="paymentPanel">
-              <div class="payment-label">Pay securely</div>
+              <div class="payment-panel-head">
+                <div class="checkout-shield payment-shield" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" role="img" aria-hidden="true">
+                    <path d="M12 2.4 19 5v5.6c0 4.7-2.8 8.8-7 10.9-4.2-2.1-7-6.2-7-10.9V5l7-2.6Z"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="m8.8 11.8 2 2 4.5-4.6"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="payment-label">Secure payment</div>
+                  <div class="payment-security-copy">
+                    Card numbers and security codes are entered directly into PayPal-hosted fields.
+                    Rocket Print does not receive or store your full card number or CVV.
+                  </div>
+                </div>
+              </div>
 
               <div class="wallet-grid">
                 <div class="wallet-slot" id="applePayContainer"></div>
                 <div class="wallet-slot" id="googlePayContainer"></div>
               </div>
 
-              <div class="pay-divider">or pay by card</div>
+              <div class="pay-divider">or pay securely by card</div>
 
               <div id="cardPaymentArea">
                 <div class="secure-card-box">
                   <div class="secure-card-head">
-                    <div class="secure-lock" aria-hidden="true">🔒</div>
+                    <div class="secure-lock" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="17" height="17" role="img" aria-hidden="true">
+                        <rect x="5" y="10" width="14" height="10" rx="2"
+                              fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10"
+                              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                      </svg>
+                    </div>
                     <div>
-                      <strong>Secure card checkout</strong>
-                      <span>
-                        Card details are entered in PayPal-hosted secure fields.
-                        Rocket Print never receives your full card number or CVV.
-                      </span>
+                      <strong>Credit or debit card</strong>
+                      <span>Secure fields are provided and isolated by PayPal.</span>
                     </div>
                   </div>
 
@@ -5802,9 +6024,9 @@
                   </div>
 
                   <div class="payment-trust-row">
-                    <span>Encrypted connection</span>
+                    <span>Encrypted checkout</span>
                     <span>Processed by PayPal</span>
-                    <span>Server-verified total</span>
+                    <span>Card data not stored by Rocket Print</span>
                   </div>
 
                   <button type="button" class="btn btn-primary checkout-primary" id="cardPayBtn">
@@ -6179,10 +6401,10 @@
     function saveCart(){
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
       renderCart();
-      invalidateQuote();
 
       if(checkoutOverlay && checkoutOverlay.classList.contains('open')){
-        scheduleAutoQuote(250);
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
       }
     }
 
@@ -6375,8 +6597,14 @@
     const applePayContainer = document.getElementById('applePayContainer');
     const googlePayContainer = document.getElementById('googlePayContainer');
 
+    const CLIENT_TEXAS_TAX_RATE = 0.0825;
+    const CLIENT_SHIPPING_1_TO_2 = 12.00;
+    const CLIENT_SHIPPING_3_PLUS = 16.00;
+
     let currentQuote = null;
     let currentQuoteFingerprint = '';
+    let preparedPayPalOrderId = '';
+
     let paypalSdk = null;
     let paypalEligibility = null;
     let paypalInitPromise = null;
@@ -6388,10 +6616,6 @@
     let googlePaySession = null;
     let googlePaymentsClient = null;
     let googlePayConfig = null;
-
-    let autoQuoteTimer = null;
-    let quoteRequestSequence = 0;
-    let lastAppliedQuoteSequence = 0;
 
     function escapeHtml(value){
       return String(value ?? '')
@@ -6435,11 +6659,12 @@
       const localRadio = localDropOption.querySelector('input');
       const shippingRadio = shippingOption.querySelector('input');
       const eligible = isWellingtonCheckoutAddress();
+      const wasLocal = localRadio.checked;
 
       localRadio.disabled = !eligible;
       localDropOption.classList.toggle('disabled', !eligible);
 
-      if(!eligible && localRadio.checked){
+      if(!eligible && wasLocal){
         shippingRadio.checked = true;
       }
 
@@ -6448,6 +6673,11 @@
         : 'Enter a Wellington, TX 79095 address to unlock free local drop-off.';
 
       updateFulfillmentVisuals();
+
+      if(wasLocal && !eligible){
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+      }
     }
 
     function updateFulfillmentVisuals(){
@@ -6537,23 +6767,76 @@
       }
     }
 
-    function invalidateQuote(){
-      currentQuote = null;
-      currentQuoteFingerprint = '';
+    function roundClientMoney(value){
+      return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
+    }
 
-      const estimate = cartMerchandiseEstimate();
+    function localCheckoutEstimate(){
+      const subtotal = roundClientMoney(cartMerchandiseEstimate());
+      const quantity = cartQuantity();
+
+      const shipping =
+        selectedFulfillment() === 'Local Drop Off'
+          ? 0
+          : (
+              quantity <= 2
+                ? CLIENT_SHIPPING_1_TO_2
+                : CLIENT_SHIPPING_3_PLUS
+            );
+
+      /*
+       * This is only the browser display estimate.
+       * The Apps Script backend independently recalculates every amount.
+       *
+       * The State field defaults to TX. If a buyer changes State, this
+       * estimate changes locally with no API call.
+       */
+      const state = checkoutState.value.trim().toUpperCase();
+
+      const tax =
+        state === 'TX'
+          ? roundClientMoney(
+              (subtotal + shipping) *
+              CLIENT_TEXAS_TAX_RATE
+            )
+          : 0;
+
+      return {
+        subtotal,
+        shipping,
+        tax,
+        total: roundClientMoney(subtotal + shipping + tax)
+      };
+    }
+
+    function renderQuoteValues(quote){
+      if(!quote) return;
+
       quoteSubtotal.textContent =
-        cart.length > 0
-          ? `$${estimate.toFixed(2)}`
-          : '—';
+        `$${Number(quote.subtotal).toFixed(2)}`;
 
-      quoteShipping.textContent = '—';
-      quoteTax.textContent = '—';
-      quoteTotal.textContent = '—';
+      quoteShipping.textContent =
+        Number(quote.shipping) === 0
+          ? 'FREE'
+          : `$${Number(quote.shipping).toFixed(2)}`;
 
-      quoteSubtotal.closest('.quote-card')?.classList.remove('quote-updating');
-      paymentPanel.classList.remove('visible');
-      setPaymentStatus('');
+      quoteTax.textContent =
+        `$${Number(quote.tax).toFixed(2)}`;
+
+      quoteTotal.textContent =
+        `$${Number(quote.total).toFixed(2)}`;
+    }
+
+    function renderLocalCheckoutTotals(){
+      if(cart.length === 0){
+        quoteSubtotal.textContent = '—';
+        quoteShipping.textContent = '—';
+        quoteTax.textContent = '—';
+        quoteTotal.textContent = '—';
+        return;
+      }
+
+      renderQuoteValues(localCheckoutEstimate());
     }
 
     function setPaymentStatus(message, type=''){
@@ -6561,47 +6844,23 @@
       paymentStatus.className = 'payment-status' + (type ? ` ${type}` : '');
     }
 
-    function canAutoQuote(){
-      if(!checkoutOverlay.classList.contains('open')) return false;
-      if(cart.length === 0) return false;
+    function invalidatePreparedCheckout(message=''){
+      currentQuote = null;
+      currentQuoteFingerprint = '';
+      preparedPayPalOrderId = '';
 
-      if(!checkoutName.value.trim()) return false;
-      if(!checkoutEmail.value.trim()) return false;
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.value.trim())) return false;
-      if(!checkoutPhone.value.trim()) return false;
-      if(!checkoutAddress.value.trim()) return false;
-      if(!checkoutCity.value.trim()) return false;
-      if(!checkoutState.value.trim()) return false;
-      if(!checkoutZip.value.trim()) return false;
+      paymentPanel.classList.remove('visible');
 
-      if(
-        selectedFulfillment() === 'Local Drop Off' &&
-        !isWellingtonCheckoutAddress()
-      ){
-        return false;
+      quoteBtn.disabled = false;
+      quoteBtn.classList.remove('is-busy');
+      quoteBtn.innerHTML =
+        '<span class="button-lock" aria-hidden="true">▣</span>Checkout Through PayPal';
+
+      if(message){
+        setPaymentStatus(message);
+      }else{
+        setPaymentStatus('');
       }
-
-      return true;
-    }
-
-    function scheduleAutoQuote(delay = 450){
-      clearTimeout(autoQuoteTimer);
-
-      if(!canAutoQuote()){
-        return;
-      }
-
-      autoQuoteTimer = setTimeout(() => {
-        getServerQuote({
-          auto:true
-        }).catch(error => {
-          console.error('Automatic quote failed:', error);
-          setPaymentStatus(
-            'We could not refresh the secure total automatically. Use the button above to retry.',
-            'error'
-          );
-        });
-      }, delay);
     }
 
     async function apiPost(payload){
@@ -6611,14 +6870,15 @@
           'Content-Type':'text/plain;charset=utf-8'
         },
         body:JSON.stringify(payload),
-        redirect:'follow'
+        redirect:'follow',
+        cache:'no-store'
       });
 
-      const text = await response.text();
+      const responseText = await response.text();
       let data;
 
       try{
-        data = JSON.parse(text);
+        data = JSON.parse(responseText);
       }catch(error){
         throw new Error('Rocket Print checkout returned an invalid response.');
       }
@@ -6630,135 +6890,112 @@
       return data;
     }
 
-    async function getServerQuote(options = {}){
-      const isAuto = Boolean(options.auto);
-
-      if(isAuto){
-        if(!canAutoQuote()){
-          return null;
-        }
-      }else{
-        validateCheckoutFields();
-      }
+    async function prepareSecureCheckout(){
+      validateCheckoutFields();
 
       const payload = checkoutPayload();
-      const fingerprintAtRequest = payloadFingerprint(payload);
-      const requestSequence = ++quoteRequestSequence;
+      const fingerprint = payloadFingerprint(payload);
 
-      if(!isAuto){
-        quoteBtn.classList.add('is-busy');
-        quoteBtn.disabled = true;
-      }
+      quoteBtn.classList.add('is-busy');
+      quoteBtn.disabled = true;
+      quoteBtn.textContent = 'Verifying Order Securely…';
 
-      quoteSubtotal.closest('.quote-card')?.classList.add('quote-updating');
-
-      if(isAuto){
-        setPaymentStatus('Updating secure total…');
-      }else{
-        setPaymentStatus('Calculating secure total…');
-      }
+      setPaymentStatus(
+        'Verifying prices, shipping, tax, and order details on the Rocket Print server…'
+      );
 
       try{
+        /*
+         * This is intentionally the first authoritative server call for the order.
+         * The backend:
+         *   1) ignores all browser-supplied prices,
+         *   2) recalculates the order from the server catalog,
+         *   3) validates fulfillment,
+         *   4) creates the PayPal order for the server-approved total.
+         *
+         * Pre-creating the PayPal order here also removes one network round-trip
+         * after the buyer opens Apple Pay / Google Pay / card payment.
+         */
         const result = await apiPost({
-          action:'quote',
+          action:'createPayPalOrder',
           ...payload
         });
 
-        /*
-         * Ignore an older response if the customer changed the cart/address
-         * while this request was still in flight.
-         */
-        if(
-          requestSequence < quoteRequestSequence ||
-          fingerprintAtRequest !== payloadFingerprint()
-        ){
-          return null;
+        if(!result.paypalOrderId || !result.quote){
+          throw new Error('Secure checkout could not prepare the payment order.');
         }
 
-        lastAppliedQuoteSequence = requestSequence;
+        /*
+         * If the form changed while the request was running, do not expose a
+         * payment order tied to stale customer/order details.
+         */
+        if(fingerprint !== payloadFingerprint()){
+          throw new Error('Order details changed while the secure total was being verified. Please continue again.');
+        }
+
         currentQuote = result.quote;
-        currentQuoteFingerprint = fingerprintAtRequest;
+        currentQuoteFingerprint = fingerprint;
+        preparedPayPalOrderId = result.paypalOrderId;
 
-        quoteSubtotal.textContent =
-          `$${Number(currentQuote.subtotal).toFixed(2)}`;
-
-        quoteShipping.textContent =
-          Number(currentQuote.shipping) === 0
-            ? 'FREE'
-            : `$${Number(currentQuote.shipping).toFixed(2)}`;
-
-        quoteTax.textContent =
-          `$${Number(currentQuote.tax).toFixed(2)}`;
-
-        quoteTotal.textContent =
-          `$${Number(currentQuote.total).toFixed(2)}`;
+        /*
+         * Replace the local estimate with the authoritative server amount.
+         * This is the amount PayPal will use.
+         */
+        renderQuoteValues(currentQuote);
 
         if(!billingZip.value.trim()){
           billingZip.value = checkoutZip.value.trim();
         }
 
         paymentPanel.classList.add('visible');
-        setPaymentStatus('Secure total updated. Loading payment options…');
 
-        /*
-         * Payment SDK setup happens in the background.
-         * The customer sees the total immediately.
-         */
-        setupPaymentMethods()
-          .then(() => {
-            if(
-              currentQuote &&
-              currentQuoteFingerprint === payloadFingerprint()
-            ){
-              setPaymentStatus(
-                'Secure payment methods are ready below.',
-                'success'
-              );
-            }
-          })
-          .catch(error => {
-            console.error(error);
-            setPaymentStatus(
-              'Your total is ready, but secure payment methods could not load. Refresh the page and try again.',
-              'error'
-            );
-          });
+        quoteBtn.classList.remove('is-busy');
+        quoteBtn.disabled = true;
+        quoteBtn.textContent = 'Order Verified ✓';
 
-        return currentQuote;
+        setPaymentStatus(
+          'Order total verified. Loading secure payment methods…'
+        );
 
+        await setupPaymentMethods();
+
+        setPaymentStatus(
+          'Secure payment methods are ready. Your verified total will not change unless you edit the order.',
+          'success'
+        );
+
+        paymentPanel.scrollIntoView({
+          behavior:'smooth',
+          block:'nearest'
+        });
+
+      }catch(error){
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+        throw error;
       }finally{
-        quoteSubtotal.closest('.quote-card')?.classList.remove('quote-updating');
+        quoteBtn.classList.remove('is-busy');
 
-        if(!isAuto){
-          quoteBtn.classList.remove('is-busy');
+        if(!preparedPayPalOrderId){
           quoteBtn.disabled = false;
         }
       }
     }
 
-    async function createPayPalOrder(){
+    function requirePreparedPayPalOrder(){
       validateCheckoutFields();
 
-      if(!currentQuote || currentQuoteFingerprint !== payloadFingerprint()){
-        throw new Error('Order details changed. Recalculate your total before paying.');
-      }
-
-      const payload = checkoutPayload();
-      const result = await apiPost({
-        action:'createPayPalOrder',
-        ...payload
-      });
-
       if(
-        !result.quote ||
-        Math.abs(Number(result.quote.total) - Number(currentQuote.total)) > 0.004
+        !preparedPayPalOrderId ||
+        !currentQuote ||
+        currentQuoteFingerprint !== payloadFingerprint()
       ){
-        currentQuote = result.quote || null;
-        invalidateQuote();
-        throw new Error('Your order total changed. Please calculate the total again.');
+        throw new Error(
+          'Your order needs to be securely verified. Click Checkout Through PayPal before choosing a payment method.'
+        );
       }
 
-      return result.paypalOrderId;
+      return preparedPayPalOrderId;
     }
 
     async function capturePayPalOrder(orderId){
@@ -6776,7 +7013,16 @@
 
     function showCheckoutSuccess(result){
       cart = [];
-      saveCart();
+
+      /*
+       * Persist the empty cart without running the normal checkout invalidation UI.
+       */
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      renderCart();
+
+      currentQuote = null;
+      currentQuoteFingerprint = '';
+      preparedPayPalOrderId = '';
 
       successOrderNumber.textContent = result.orderNumber;
       checkoutSummaryNormal.style.display = 'none';
@@ -6797,17 +7043,22 @@
       checkoutSuccess.classList.remove('visible');
       renderCheckoutMiniItems();
       updateLocalDropEligibility();
-      invalidateQuote();
+      invalidatePreparedCheckout();
+      renderLocalCheckoutTotals();
 
       checkoutOverlay.classList.add('open');
       checkoutOverlay.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
 
-      requestAnimationFrame(() => checkoutName.focus());
+      /*
+       * Prime PayPal in the background so payment methods load faster after the
+       * deliberate secure verification step. This does not create or charge an order.
+       */
+      initializePayPalSdk().catch(error => {
+        console.error('PayPal SDK preload failed:', error);
+      });
 
-      // Browser autofill can populate the form without firing every input event,
-      // so check once shortly after the checkout opens.
-      scheduleAutoQuote(700);
+      requestAnimationFrame(() => checkoutName.focus());
     }
 
     function closeCheckout(){
@@ -6825,16 +7076,12 @@
     });
 
     quoteBtn.addEventListener('click', async () => {
-      clearTimeout(autoQuoteTimer);
-
       try{
-        await getServerQuote({
-          auto:false
-        });
+        await prepareSecureCheckout();
       }catch(error){
         console.error(error);
         setPaymentStatus(
-          error.message || 'Unable to calculate your order.',
+          error.message || 'Unable to prepare secure checkout.',
           'error'
         );
       }
@@ -6850,30 +7097,44 @@
       checkoutZip,
       checkoutNotes
     ].forEach(field => {
-      field.addEventListener('input', () => {
-        if(field === checkoutCity || field === checkoutState || field === checkoutZip){
+      const handleOrderDetailEdit = () => {
+        /*
+         * Normal form typing never calls Apps Script and never creates a PayPal order.
+         * If a payment order was already prepared, editing any order detail invalidates
+         * it so stale customer/order data can never be paid.
+         */
+        if(preparedPayPalOrderId){
+          invalidatePreparedCheckout(
+            'Order details changed. Continue through PayPal again to securely verify the updated order.'
+          );
+        }
+
+        if(
+          field === checkoutCity ||
+          field === checkoutState ||
+          field === checkoutZip
+        ){
           updateLocalDropEligibility();
         }
 
-        invalidateQuote();
-        scheduleAutoQuote();
-      });
-
-      field.addEventListener('change', () => {
-        if(field === checkoutCity || field === checkoutState || field === checkoutZip){
-          updateLocalDropEligibility();
+        /*
+         * State affects the local tax estimate. This is browser-only math; there is
+         * no network request. All other contact/address typing leaves totals alone.
+         */
+        if(field === checkoutState){
+          renderLocalCheckoutTotals();
         }
+      };
 
-        invalidateQuote();
-        scheduleAutoQuote(250);
-      });
+      field.addEventListener('input', handleOrderDetailEdit);
+      field.addEventListener('change', handleOrderDetailEdit);
     });
 
     document.querySelectorAll('input[name="fulfillment"]').forEach(radio => {
       radio.addEventListener('change', () => {
         updateFulfillmentVisuals();
-        invalidateQuote();
-        scheduleAutoQuote(150);
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
       });
     });
 
@@ -6887,13 +7148,17 @@
     window.onPayPalWebSdkLoaded = function(){
       initializePayPalSdk()
         .then(() => {
-          if(currentQuote && paymentPanel.classList.contains('visible')){
+          if(
+            preparedPayPalOrderId &&
+            currentQuote &&
+            paymentPanel.classList.contains('visible')
+          ){
             return setupPaymentMethods();
           }
         })
         .catch(error => {
           console.error('PayPal SDK initialization failed:', error);
-          if(currentQuote){
+          if(preparedPayPalOrderId){
             setPaymentStatus(
               'Secure payment methods could not load. Refresh the page and try again.',
               'error'
@@ -6904,14 +7169,22 @@
 
     window.onGooglePayLoaded = function(){
       googlePayReady = true;
-      if(currentQuote && paymentPanel.classList.contains('visible')){
+      if(
+        preparedPayPalOrderId &&
+        currentQuote &&
+        paymentPanel.classList.contains('visible')
+      ){
         setupPaymentMethods().catch(console.error);
       }
     };
 
     window.onApplePayLoaded = function(){
       applePayReady = true;
-      if(currentQuote && paymentPanel.classList.contains('visible')){
+      if(
+        preparedPayPalOrderId &&
+        currentQuote &&
+        paymentPanel.classList.contains('visible')
+      ){
         setupPaymentMethods().catch(console.error);
       }
     };
@@ -7113,7 +7386,7 @@
       setPaymentStatus('Starting secure card payment…');
 
       try{
-        const orderId = await createPayPalOrder();
+        const orderId = requirePreparedPayPalOrder();
 
         const {data, state} = await cardSession.submit(orderId, {
           billingAddress:{
@@ -7195,8 +7468,12 @@
         try{
           validateCheckoutFields();
 
-          if(!currentQuote || currentQuoteFingerprint !== payloadFingerprint()){
-            throw new Error('Recalculate your order total before using Apple Pay.');
+          if(
+            !preparedPayPalOrderId ||
+            !currentQuote ||
+            currentQuoteFingerprint !== payloadFingerprint()
+          ){
+            throw new Error('Click Checkout Through PayPal to securely verify your order before using Apple Pay.');
           }
 
           const request = {
@@ -7242,7 +7519,7 @@
               setPaymentStatus('Authorizing Apple Pay…');
 
               const orderId =
-                await createPayPalOrder();
+                requirePreparedPayPalOrder();
 
               await paypalAppleSession.confirmOrder({
                 orderId,
@@ -7338,7 +7615,7 @@
                 setPaymentStatus('Authorizing Google Pay…');
 
                 const orderId =
-                  await createPayPalOrder();
+                  requirePreparedPayPalOrder();
 
                 const confirmResult =
                   await googlePaySession.confirmOrder({
@@ -7418,8 +7695,12 @@
             try{
               validateCheckoutFields();
 
-              if(!currentQuote || currentQuoteFingerprint !== payloadFingerprint()){
-                throw new Error('Recalculate your order total before using Google Pay.');
+              if(
+                !preparedPayPalOrderId ||
+                !currentQuote ||
+                currentQuoteFingerprint !== payloadFingerprint()
+              ){
+                throw new Error('Click Checkout Through PayPal to securely verify your order before using Google Pay.');
               }
 
               const googlePaymentRequest = {
@@ -7492,6 +7773,7 @@
 
     renderCart();
     updateLocalDropEligibility();
+    renderLocalCheckoutTotals();
   </script>
 
   <script
