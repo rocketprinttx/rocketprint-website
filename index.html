@@ -5648,7 +5648,7 @@
               <div class="server-badge">Final amount verified by Rocket Print server</div>
 
               <button type="button" class="btn btn-primary checkout-primary" id="quoteBtn">
-                Calculate total &amp; continue
+                Calculate Total &amp; Checkout Through PayPal
               </button>
             </div>
 
@@ -6910,9 +6910,12 @@
               );
 
             }catch(error){
-              console.error(error);
+              console.error('Apple Pay merchant validation failed for host:', window.location.hostname, error);
               session.abort();
-              setPaymentStatus('Apple Pay merchant validation failed.', 'error');
+              setPaymentStatus(
+                `Apple Pay merchant validation failed for ${window.location.hostname}. Confirm this exact hostname is registered in PayPal Sandbox.`,
+                'error'
+              );
             }
           };
 
