@@ -5032,6 +5032,10 @@
       color:#83d69a;
     }
 
+    .quote-updating{
+      opacity:.62;
+    }
+
     .sandbox-banner{
       margin-bottom:18px;
       padding:10px 12px;
@@ -5736,6 +5740,10 @@
 
               <div class="server-badge">Final amount verified by Rocket Print server</div>
 
+              <div class="server-badge" style="margin-top:14px;">
+                Totals update automatically as your cart, address, or delivery method changes.
+              </div>
+
               <button type="button" class="btn btn-primary checkout-primary" id="quoteBtn">
                 Calculate Total &amp; Checkout Through PayPal
               </button>
@@ -6172,6 +6180,10 @@
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
       renderCart();
       invalidateQuote();
+
+      if(checkoutOverlay && checkoutOverlay.classList.contains('open')){
+        scheduleAutoQuote(250);
+      }
     }
 
     function cartKey(item){
@@ -6377,6 +6389,10 @@
     let googlePaymentsClient = null;
     let googlePayConfig = null;
 
+    let autoQuoteTimer = null;
+    let quoteRequestSequence = 0;
+    let lastAppliedQuoteSequence = 0;
+
     function escapeHtml(value){
       return String(value ?? '')
         .replace(/&/g,'&amp;')
@@ -6524,10 +6540,18 @@
     function invalidateQuote(){
       currentQuote = null;
       currentQuoteFingerprint = '';
-      quoteSubtotal.textContent = '—';
+
+      const estimate = cartMerchandiseEstimate();
+      quoteSubtotal.textContent =
+        cart.length > 0
+          ? `$${estimate.toFixed(2)}`
+          : '—';
+
       quoteShipping.textContent = '—';
       quoteTax.textContent = '—';
       quoteTotal.textContent = '—';
+
+      quoteSubtotal.closest('.quote-card')?.classList.remove('quote-updating');
       paymentPanel.classList.remove('visible');
       setPaymentStatus('');
     }
@@ -6535,6 +6559,49 @@
     function setPaymentStatus(message, type=''){
       paymentStatus.textContent = message || '';
       paymentStatus.className = 'payment-status' + (type ? ` ${type}` : '');
+    }
+
+    function canAutoQuote(){
+      if(!checkoutOverlay.classList.contains('open')) return false;
+      if(cart.length === 0) return false;
+
+      if(!checkoutName.value.trim()) return false;
+      if(!checkoutEmail.value.trim()) return false;
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.value.trim())) return false;
+      if(!checkoutPhone.value.trim()) return false;
+      if(!checkoutAddress.value.trim()) return false;
+      if(!checkoutCity.value.trim()) return false;
+      if(!checkoutState.value.trim()) return false;
+      if(!checkoutZip.value.trim()) return false;
+
+      if(
+        selectedFulfillment() === 'Local Drop Off' &&
+        !isWellingtonCheckoutAddress()
+      ){
+        return false;
+      }
+
+      return true;
+    }
+
+    function scheduleAutoQuote(delay = 450){
+      clearTimeout(autoQuoteTimer);
+
+      if(!canAutoQuote()){
+        return;
+      }
+
+      autoQuoteTimer = setTimeout(() => {
+        getServerQuote({
+          auto:true
+        }).catch(error => {
+          console.error('Automatic quote failed:', error);
+          setPaymentStatus(
+            'We could not refresh the secure total automatically. Use the button above to retry.',
+            'error'
+          );
+        });
+      }, delay);
     }
 
     async function apiPost(payload){
@@ -6563,55 +6630,109 @@
       return data;
     }
 
-    async function getServerQuote(){
-      validateCheckoutFields();
+    async function getServerQuote(options = {}){
+      const isAuto = Boolean(options.auto);
 
-      quoteBtn.classList.add('is-busy');
-      quoteBtn.disabled = true;
-      setPaymentStatus('');
+      if(isAuto){
+        if(!canAutoQuote()){
+          return null;
+        }
+      }else{
+        validateCheckoutFields();
+      }
+
+      const payload = checkoutPayload();
+      const fingerprintAtRequest = payloadFingerprint(payload);
+      const requestSequence = ++quoteRequestSequence;
+
+      if(!isAuto){
+        quoteBtn.classList.add('is-busy');
+        quoteBtn.disabled = true;
+      }
+
+      quoteSubtotal.closest('.quote-card')?.classList.add('quote-updating');
+
+      if(isAuto){
+        setPaymentStatus('Updating secure total…');
+      }else{
+        setPaymentStatus('Calculating secure total…');
+      }
 
       try{
-        const payload = checkoutPayload();
         const result = await apiPost({
           action:'quote',
           ...payload
         });
 
-        currentQuote = result.quote;
-        currentQuoteFingerprint = payloadFingerprint(payload);
+        /*
+         * Ignore an older response if the customer changed the cart/address
+         * while this request was still in flight.
+         */
+        if(
+          requestSequence < quoteRequestSequence ||
+          fingerprintAtRequest !== payloadFingerprint()
+        ){
+          return null;
+        }
 
-        quoteSubtotal.textContent = `$${Number(currentQuote.subtotal).toFixed(2)}`;
+        lastAppliedQuoteSequence = requestSequence;
+        currentQuote = result.quote;
+        currentQuoteFingerprint = fingerprintAtRequest;
+
+        quoteSubtotal.textContent =
+          `$${Number(currentQuote.subtotal).toFixed(2)}`;
+
         quoteShipping.textContent =
           Number(currentQuote.shipping) === 0
             ? 'FREE'
             : `$${Number(currentQuote.shipping).toFixed(2)}`;
-        quoteTax.textContent = `$${Number(currentQuote.tax).toFixed(2)}`;
-        quoteTotal.textContent = `$${Number(currentQuote.total).toFixed(2)}`;
+
+        quoteTax.textContent =
+          `$${Number(currentQuote.tax).toFixed(2)}`;
+
+        quoteTotal.textContent =
+          `$${Number(currentQuote.total).toFixed(2)}`;
 
         if(!billingZip.value.trim()){
           billingZip.value = checkoutZip.value.trim();
         }
 
         paymentPanel.classList.add('visible');
-        setPaymentStatus('Loading secure payment options…');
+        setPaymentStatus('Secure total updated. Loading payment options…');
 
-        // Do not make the customer wait for Apple Pay / Google Pay / card setup
-        // before showing the authoritative server total.
+        /*
+         * Payment SDK setup happens in the background.
+         * The customer sees the total immediately.
+         */
         setupPaymentMethods()
           .then(() => {
-            setPaymentStatus('Secure payment methods are ready below.', 'success');
+            if(
+              currentQuote &&
+              currentQuoteFingerprint === payloadFingerprint()
+            ){
+              setPaymentStatus(
+                'Secure payment methods are ready below.',
+                'success'
+              );
+            }
           })
           .catch(error => {
             console.error(error);
             setPaymentStatus(
-              'Secure payment methods could not load. Refresh the page and try again.',
+              'Your total is ready, but secure payment methods could not load. Refresh the page and try again.',
               'error'
             );
           });
 
+        return currentQuote;
+
       }finally{
-        quoteBtn.classList.remove('is-busy');
-        quoteBtn.disabled = false;
+        quoteSubtotal.closest('.quote-card')?.classList.remove('quote-updating');
+
+        if(!isAuto){
+          quoteBtn.classList.remove('is-busy');
+          quoteBtn.disabled = false;
+        }
       }
     }
 
@@ -6683,6 +6804,10 @@
       document.body.style.overflow = 'hidden';
 
       requestAnimationFrame(() => checkoutName.focus());
+
+      // Browser autofill can populate the form without firing every input event,
+      // so check once shortly after the checkout opens.
+      scheduleAutoQuote(700);
     }
 
     function closeCheckout(){
@@ -6700,11 +6825,18 @@
     });
 
     quoteBtn.addEventListener('click', async () => {
+      clearTimeout(autoQuoteTimer);
+
       try{
-        await getServerQuote();
+        await getServerQuote({
+          auto:false
+        });
       }catch(error){
         console.error(error);
-        setPaymentStatus(error.message || 'Unable to calculate your order.', 'error');
+        setPaymentStatus(
+          error.message || 'Unable to calculate your order.',
+          'error'
+        );
       }
     });
 
@@ -6722,7 +6854,18 @@
         if(field === checkoutCity || field === checkoutState || field === checkoutZip){
           updateLocalDropEligibility();
         }
+
         invalidateQuote();
+        scheduleAutoQuote();
+      });
+
+      field.addEventListener('change', () => {
+        if(field === checkoutCity || field === checkoutState || field === checkoutZip){
+          updateLocalDropEligibility();
+        }
+
+        invalidateQuote();
+        scheduleAutoQuote(250);
       });
     });
 
@@ -6730,6 +6873,7 @@
       radio.addEventListener('change', () => {
         updateFulfillmentVisuals();
         invalidateQuote();
+        scheduleAutoQuote(150);
       });
     });
 
