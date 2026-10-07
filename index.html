@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
+  <link rel="preconnect" href="https://challenges.cloudflare.com" />
 
   <meta property="og:title" content="Rocket Print | Wellington, Texas" />
   <meta property="og:description" content="Explore Rocket Print’s Timeless Collection — premium Wellington heritage apparel and custom printing from Wellington, Texas." />
@@ -4931,6 +4932,25 @@
       text-align:center;
     }
 
+    .turnstile-wrap{
+      width:100%;
+      min-height:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    #turnstileCheckout{
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
+
+    #turnstileCheckout iframe{
+      max-width:100%;
+    }
+
     .payment-panel{
       display:none;
       margin-top:22px;
@@ -5902,6 +5922,10 @@
                 <span>Checkout Through PayPal</span>
               </button>
 
+              <div class="turnstile-wrap" id="turnstileWrap">
+                <div id="turnstileCheckout"></div>
+              </div>
+
               <div class="checkout-button-note">
                 You will review and approve your payment before any charge is completed.
               </div>
@@ -6546,6 +6570,7 @@
     const quoteTax = document.getElementById('quoteTax');
     const quoteTotal = document.getElementById('quoteTotal');
     const quoteBtn = document.getElementById('quoteBtn');
+    const turnstileCheckout = document.getElementById('turnstileCheckout');
     const paymentPanel = document.getElementById('paymentPanel');
     const paymentStatus = document.getElementById('paymentStatus');
     const cardPayBtn = document.getElementById('cardPayBtn');
@@ -6556,6 +6581,14 @@
     const CLIENT_TEXAS_TAX_RATE = 0.0825;
     const CLIENT_SHIPPING_1_TO_2 = 12.00;
     const CLIENT_SHIPPING_3_PLUS = 16.00;
+
+    const TURNSTILE_SITE_KEY = '0x4AAAAAAFQkG9ZPeZkpU6Pq';
+    const TURNSTILE_ACTION = 'rocket_print_checkout';
+
+    let turnstileWidgetId = null;
+    let turnstileInitPromise = null;
+    let turnstilePendingResolve = null;
+    let turnstilePendingReject = null;
 
     let currentQuote = null;
     let currentQuoteFingerprint = '';
@@ -6819,6 +6852,129 @@
       }
     }
 
+    function settleTurnstilePending(error, token=''){
+      const resolve = turnstilePendingResolve;
+      const reject = turnstilePendingReject;
+
+      turnstilePendingResolve = null;
+      turnstilePendingReject = null;
+
+      if(error){
+        if(reject) reject(error);
+        return;
+      }
+
+      if(resolve) resolve(token);
+    }
+
+    async function ensureTurnstileWidget(){
+      if(turnstileWidgetId !== null){
+        return turnstileWidgetId;
+      }
+
+      if(turnstileInitPromise){
+        return turnstileInitPromise;
+      }
+
+      turnstileInitPromise = (async () => {
+        const started = Date.now();
+
+        while(
+          (!window.turnstile || typeof window.turnstile.render !== 'function') &&
+          (Date.now() - started < 12000)
+        ){
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        if(!window.turnstile || typeof window.turnstile.render !== 'function'){
+          throw new Error('Security verification could not load. Check your connection and try again.');
+        }
+
+        turnstileWidgetId = window.turnstile.render('#turnstileCheckout', {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark',
+          size: 'flexible',
+          execution: 'execute',
+          appearance: 'interaction-only',
+          action: TURNSTILE_ACTION,
+
+          callback(token){
+            settleTurnstilePending(null, token);
+          },
+
+          'error-callback'(errorCode){
+            console.error('Turnstile error:', errorCode);
+            settleTurnstilePending(
+              new Error('Security verification failed. Please try again.')
+            );
+          },
+
+          'expired-callback'(){
+            settleTurnstilePending(
+              new Error('Security verification expired. Please try again.')
+            );
+          },
+
+          'timeout-callback'(){
+            settleTurnstilePending(
+              new Error('Security verification timed out. Please try again.')
+            );
+          }
+        });
+
+        return turnstileWidgetId;
+      })();
+
+      try{
+        return await turnstileInitPromise;
+      }finally{
+        turnstileInitPromise = null;
+      }
+    }
+
+    function resetTurnstileWidget(){
+      if(
+        turnstileWidgetId !== null &&
+        window.turnstile &&
+        typeof window.turnstile.reset === 'function'
+      ){
+        try{
+          window.turnstile.reset(turnstileWidgetId);
+        }catch(error){
+          console.error('Unable to reset Turnstile:', error);
+        }
+      }
+    }
+
+    async function getFreshTurnstileToken(){
+      const widgetId = await ensureTurnstileWidget();
+
+      if(turnstilePendingResolve || turnstilePendingReject){
+        throw new Error('Security verification is already running.');
+      }
+
+      resetTurnstileWidget();
+
+      return await new Promise((resolve, reject) => {
+        turnstilePendingResolve = resolve;
+        turnstilePendingReject = reject;
+
+        try{
+          window.turnstile.execute(widgetId);
+        }catch(error){
+          settleTurnstilePending(
+            new Error('Security verification could not start. Please try again.')
+          );
+        }
+      });
+    }
+
+    function onTurnstileLoaded(){
+      ensureTurnstileWidget().catch(error => {
+        console.error('Turnstile preload failed:', error);
+      });
+    }
+
     async function apiPost(payload){
       const response = await fetch(ROCKET_API, {
         method:'POST',
@@ -6854,26 +7010,34 @@
 
       quoteBtn.classList.add('is-busy');
       quoteBtn.disabled = true;
-      quoteBtn.textContent = 'Verifying Order Securely…';
+      quoteBtn.textContent = 'Security Check…';
 
       setPaymentStatus(
-        'Verifying prices, shipping, tax, and order details on the Rocket Print server…'
+        'Running a quick security check before payment…'
       );
 
+      let turnstileToken = '';
+
       try{
+        turnstileToken = await getFreshTurnstileToken();
+
+        if(fingerprint !== payloadFingerprint()){
+          throw new Error('Order details changed during the security check. Please continue again.');
+        }
+
+        quoteBtn.textContent = 'Verifying Order Securely…';
+
+        setPaymentStatus(
+          'Verifying prices, shipping, tax, and order details on the Rocket Print server…'
+        );
+
         /*
-         * This is intentionally the first authoritative server call for the order.
-         * The backend:
-         *   1) ignores all browser-supplied prices,
-         *   2) recalculates the order from the server catalog,
-         *   3) validates fulfillment,
-         *   4) creates the PayPal order for the server-approved total.
-         *
-         * Pre-creating the PayPal order here also removes one network round-trip
-         * after the buyer opens Apple Pay / Google Pay / card payment.
+         * The backend validates the single-use Cloudflare Turnstile token
+         * before it reprices the cart and creates the PayPal order.
          */
         const result = await apiPost({
           action:'createPayPalOrder',
+          turnstileToken,
           ...payload
         });
 
@@ -6930,6 +7094,8 @@
         renderLocalCheckoutTotals();
         throw error;
       }finally{
+        resetTurnstileWidget();
+
         quoteBtn.classList.remove('is-busy');
 
         if(!preparedPayPalOrderId){
@@ -7012,6 +7178,10 @@
        */
       initializePayPalSdk().catch(error => {
         console.error('PayPal SDK preload failed:', error);
+      });
+
+      ensureTurnstileWidget().catch(error => {
+        console.error('Turnstile preload failed:', error);
       });
 
       requestAnimationFrame(() => checkoutName.focus());
@@ -7730,6 +7900,11 @@
     renderCart();
     updateLocalDropEligibility();
     renderLocalCheckoutTotals();
+  </script>
+
+  <script
+    defer
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoaded">
   </script>
 
   <script
