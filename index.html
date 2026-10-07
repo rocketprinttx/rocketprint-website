@@ -4904,17 +4904,83 @@
       background:var(--line);
     }
 
+    .secure-card-box{
+      padding:16px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:15px;
+      background:#151515;
+      box-shadow:0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .secure-card-head{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .secure-lock{
+      flex:0 0 34px;
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:rgba(228,58,53,.13);
+      color:#ff716c;
+      font-size:1rem;
+    }
+
+    .secure-card-head strong{
+      display:block;
+      color:#fff;
+      font-size:.9rem;
+      margin-bottom:3px;
+    }
+
+    .secure-card-head span{
+      display:block;
+      color:#929292;
+      font-size:.72rem;
+      line-height:1.45;
+    }
+
     .card-fields{
       display:grid;
       gap:10px;
     }
 
+    .card-field-group{
+      display:grid;
+      gap:6px;
+    }
+
+    .card-field-label{
+      color:#d7d7d7;
+      font-size:.72rem;
+      font-weight:850;
+      letter-spacing:.02em;
+    }
+
     .card-field-shell{
+      height:50px;
       min-height:50px;
+      max-height:50px;
       overflow:hidden;
-      border:1px solid var(--line-strong);
-      border-radius:11px;
+      border:1px solid #cfcfcf;
+      border-radius:10px;
       background:#fff;
+      box-shadow:inset 0 1px 2px rgba(0,0,0,.05);
+    }
+
+    .card-field-shell > *,
+    .card-field-shell iframe{
+      display:block !important;
+      width:100% !important;
+      height:50px !important;
+      min-height:50px !important;
+      max-height:50px !important;
+      border:0 !important;
     }
 
     .card-field-row{
@@ -4925,6 +4991,29 @@
 
     .billing-zip{
       margin-top:10px;
+    }
+
+    .payment-trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px 14px;
+      margin-top:12px;
+      color:#858585;
+      font-size:.68rem;
+      font-weight:750;
+    }
+
+    .payment-trust-row span{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+    }
+
+    .payment-trust-row span::before{
+      content:"✓";
+      color:#75c98d;
+      font-weight:950;
     }
 
     .payment-status{
@@ -5663,24 +5752,57 @@
               <div class="pay-divider">or pay by card</div>
 
               <div id="cardPaymentArea">
-                <div class="card-fields">
-                  <div class="card-field-shell" id="paypal-card-fields-name"></div>
-                  <div class="card-field-shell" id="paypal-card-fields-number"></div>
-
-                  <div class="card-field-row">
-                    <div class="card-field-shell" id="paypal-card-fields-expiry"></div>
-                    <div class="card-field-shell" id="paypal-card-fields-cvv"></div>
+                <div class="secure-card-box">
+                  <div class="secure-card-head">
+                    <div class="secure-lock" aria-hidden="true">🔒</div>
+                    <div>
+                      <strong>Secure card checkout</strong>
+                      <span>
+                        Card details are entered in PayPal-hosted secure fields.
+                        Rocket Print never receives your full card number or CVV.
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div class="checkout-field billing-zip">
-                  <label for="billingZip">Billing ZIP</label>
-                  <input id="billingZip" inputmode="numeric" autocomplete="postal-code">
-                </div>
+                  <div class="card-fields">
+                    <div class="card-field-group">
+                      <div class="card-field-label">Name on card</div>
+                      <div class="card-field-shell" id="paypal-card-fields-name"></div>
+                    </div>
 
-                <button type="button" class="btn btn-primary checkout-primary" id="cardPayBtn">
-                  Pay by Card
-                </button>
+                    <div class="card-field-group">
+                      <div class="card-field-label">Card number</div>
+                      <div class="card-field-shell" id="paypal-card-fields-number"></div>
+                    </div>
+
+                    <div class="card-field-row">
+                      <div class="card-field-group">
+                        <div class="card-field-label">Expiration</div>
+                        <div class="card-field-shell" id="paypal-card-fields-expiry"></div>
+                      </div>
+
+                      <div class="card-field-group">
+                        <div class="card-field-label">Security code</div>
+                        <div class="card-field-shell" id="paypal-card-fields-cvv"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="checkout-field billing-zip">
+                    <label for="billingZip">Billing ZIP</label>
+                    <input id="billingZip" inputmode="numeric" autocomplete="postal-code">
+                  </div>
+
+                  <div class="payment-trust-row">
+                    <span>Encrypted connection</span>
+                    <span>Processed by PayPal</span>
+                    <span>Server-verified total</span>
+                  </div>
+
+                  <button type="button" class="btn btn-primary checkout-primary" id="cardPayBtn">
+                    Pay Securely by Card
+                  </button>
+                </div>
               </div>
 
               <div class="payment-status" id="paymentStatus" aria-live="polite"></div>
@@ -6246,6 +6368,7 @@
     let paypalSdk = null;
     let paypalEligibility = null;
     let paypalInitPromise = null;
+    let paypalEnvironment = 'sandbox';
     let cardSession = null;
     let cardFieldsMounted = false;
     let applePayReady = false;
@@ -6470,8 +6593,21 @@
         }
 
         paymentPanel.classList.add('visible');
-        setPaymentStatus('Secure payment methods are ready below.');
-        await setupPaymentMethods();
+        setPaymentStatus('Loading secure payment options…');
+
+        // Do not make the customer wait for Apple Pay / Google Pay / card setup
+        // before showing the authoritative server total.
+        setupPaymentMethods()
+          .then(() => {
+            setPaymentStatus('Secure payment methods are ready below.', 'success');
+          })
+          .catch(error => {
+            console.error(error);
+            setPaymentStatus(
+              'Secure payment methods could not load. Refresh the page and try again.',
+              'error'
+            );
+          });
 
       }finally{
         quoteBtn.classList.remove('is-busy');
@@ -6652,18 +6788,47 @@
           throw new Error('This browser is not supported for secure checkout. Try a current version of Chrome, Safari, Edge, or Firefox.');
         }
 
-        const tokenResult = await apiPost({
-          action:'clientToken'
-        });
+        let configResult;
 
-        paypalSdk = await window.paypal.createInstance({
-          clientToken:tokenResult.clientToken,
+        // New backend action is preferred because PayPal recommends clientId
+        // authentication for standard one-time checkout, cards, Apple Pay, and Google Pay.
+        try{
+          configResult = await apiPost({
+            action:'clientConfig'
+          });
+        }catch(error){
+          // Backward-compatible fallback until the Apps Script deployment is updated.
+          configResult = await apiPost({
+            action:'clientToken'
+          });
+        }
+
+        paypalEnvironment =
+          String(configResult.environment || 'sandbox').toLowerCase();
+
+        const sdkOptions = {
           components:[
             'card-fields',
             'applepay-payments',
             'googlepay-payments'
           ],
           pageType:'checkout'
+        };
+
+        if(configResult.clientId){
+          sdkOptions.clientId = configResult.clientId;
+        }else if(configResult.clientToken){
+          sdkOptions.clientToken = configResult.clientToken;
+        }else{
+          throw new Error('PayPal checkout configuration is incomplete.');
+        }
+
+        paypalSdk = await window.paypal.createInstance(sdkOptions);
+
+        // Prime eligibility early so checkout feels immediate after the quote returns.
+        paypalEligibility = await paypalSdk.findEligibleMethods({
+          currencyCode:'USD',
+          countryCode:'US'
         });
 
         return paypalSdk;
@@ -6683,11 +6848,12 @@
       try{
         const sdk = await initializePayPalSdk();
 
-        paypalEligibility = await sdk.findEligibleMethods({
-          currencyCode:'USD',
-          countryCode:'US',
-          amount:Number(currentQuote.total).toFixed(2)
-        });
+        if(!paypalEligibility){
+          paypalEligibility = await sdk.findEligibleMethods({
+            currencyCode:'USD',
+            countryCode:'US'
+          });
+        }
 
         if(paypalEligibility.isEligible('advanced_cards')){
           await setupCardFields(sdk);
@@ -6744,8 +6910,16 @@
         input:{
           fontSize:'16px',
           fontFamily:'Arial, sans-serif',
+          fontWeight:'600',
           color:'#111111',
-          padding:'13px'
+          background:'#ffffff',
+          height:'50px',
+          lineHeight:'22px',
+          padding:'14px'
+        },
+        ':focus':{
+          color:'#000000',
+          outline:'none'
         },
         '.invalid':{
           color:'#b42318'
@@ -6754,25 +6928,25 @@
 
       const nameField = cardSession.createCardFieldsComponent({
         type:'name',
-        placeholder:'Name on card',
+        placeholder:'',
         style:fieldStyle
       });
 
       const numberField = cardSession.createCardFieldsComponent({
         type:'number',
-        placeholder:'Card number',
+        placeholder:'',
         style:fieldStyle
       });
 
       const expiryField = cardSession.createCardFieldsComponent({
         type:'expiry',
-        placeholder:'MM/YY',
+        placeholder:'',
         style:fieldStyle
       });
 
       const cvvField = cardSession.createCardFieldsComponent({
         type:'cvv',
-        placeholder:'CVV',
+        placeholder:'',
         style:fieldStyle
       });
 
@@ -6998,14 +7172,22 @@
       googlePaySession =
         sdk.createGooglePayOneTimePaymentSession();
 
-      googlePayConfig =
-        googlePaySession.formatConfigForPaymentRequest(
-          details.config
-        );
+      if(typeof googlePaySession.getGooglePayConfig === 'function'){
+        googlePayConfig =
+          await googlePaySession.getGooglePayConfig();
+      }else{
+        googlePayConfig =
+          googlePaySession.formatConfigForPaymentRequest(
+            details.config
+          );
+      }
 
       googlePaymentsClient =
         new google.payments.api.PaymentsClient({
-          environment:'TEST',
+          environment:
+            paypalEnvironment === 'live'
+              ? 'PRODUCTION'
+              : 'TEST',
           paymentDataCallbacks:{
             onPaymentAuthorized:async paymentData => {
               try{
@@ -7096,18 +7278,26 @@
                 throw new Error('Recalculate your order total before using Google Pay.');
               }
 
-              await googlePaymentsClient.loadPaymentData({
-                ...googlePayConfig,
+              const googlePaymentRequest = {
+                apiVersion:googlePayConfig.apiVersion,
+                apiVersionMinor:googlePayConfig.apiVersionMinor,
+                allowedPaymentMethods:googlePayConfig.allowedPaymentMethods,
+                merchantInfo:googlePayConfig.merchantInfo,
                 transactionInfo:{
                   countryCode:googlePayConfig.countryCode || 'US',
                   currencyCode:'USD',
                   totalPriceStatus:'FINAL',
-                  totalPrice:Number(currentQuote.total).toFixed(2)
+                  totalPrice:Number(currentQuote.total).toFixed(2),
+                  totalPriceLabel:'Rocket Print'
                 },
                 callbackIntents:[
                   'PAYMENT_AUTHORIZATION'
                 ]
-              });
+              };
+
+              await googlePaymentsClient.loadPaymentData(
+                googlePaymentRequest
+              );
 
             }catch(error){
               if(error?.statusCode === 'CANCELED'){
