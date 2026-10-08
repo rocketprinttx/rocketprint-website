@@ -1,0 +1,7263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
+  <meta name="theme-color" content="#080808" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://rocketprinttx.com/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/rocket-print-logo.png" as="image" />
+  <link rel="preconnect" href="https://challenges.cloudflare.com" />
+
+  <meta property="og:title" content="Rocket Print | Wellington, Texas" />
+  <meta property="og:description" content="Explore Rocket Print’s Timeless Collection — premium Wellington heritage apparel and custom printing from Wellington, Texas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rocketprinttx.com/" />
+  <meta property="og:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rocket Print | Wellington, Texas" />
+  <meta name="twitter:description" content="Premium Wellington heritage apparel and custom printing from Rocket Print." />
+  <meta name="twitter:image" content="https://rocketprinttx.com/assets/rocket-print-logo.png" />
+
+  <!-- Rocket Print Stripe Sandbox Test Page: no real payments -->
+  <title>Rocket Print | Wellington, Texas</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://rocketprinttx.com/#business","name":"Rocket Print","url":"https://rocketprinttx.com/","image":"https://rocketprinttx.com/assets/rocket-print-logo.png","description":"Wellington, Texas apparel and custom printing company offering local designs, school spirit apparel, and custom printing.","address":{"@type":"PostalAddress","addressLocality":"Wellington","addressRegion":"TX","addressCountry":"US"},"areaServed":"Wellington, Texas","priceRange":"$$"},{"@type":"WebSite","@id":"https://rocketprinttx.com/#website","url":"https://rocketprinttx.com/","name":"Rocket Print","publisher":{"@id":"https://rocketprinttx.com/#business"}}]}</script>
+
+  <style>
+    :root{
+      --bg:#080808;
+      --panel:#121212;
+      --panel-2:#171717;
+      --panel-3:#1c1c1c;
+      --text:#ffffff;
+      --muted:#b7b7b7;
+      --muted-2:#8b8b8b;
+      --red:#e43a35;
+      --red-bright:#ff4c46;
+      --red-dark:#a91412;
+      --cream:#f1e4b8;
+      --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.16);
+      --radius:22px;
+      --shadow:0 24px 70px rgba(0,0,0,.42);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 95% 3%, rgba(228,58,53,.15), transparent 23%),
+        radial-gradient(circle at 12% 34%, rgba(228,58,53,.06), transparent 23%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    button,input,textarea,select{font:inherit}
+
+    .wrap{width:min(calc(100% - 34px), var(--max));margin-inline:auto}
+
+    .announcement{
+      padding:8px 16px;
+      min-height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:#111;
+      border-bottom:1px solid var(--line);
+      font-size:.82rem;
+      color:#efefef;
+    }
+
+    .announcement b{color:#ff726d}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:200;
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      background:rgba(8,8,8,.82);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-logo{
+      width:118px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#d8d8d8;
+      font-size:.94rem;
+      font-weight:650;
+      transition:.2s;
+    }
+
+    .nav-links a:hover{color:#fff}
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#111;
+      color:white;
+      cursor:pointer;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:46px;
+      padding:12px 20px;
+      text-decoration:none;
+      border-radius:13px;
+      font-weight:850;
+      border:1px solid transparent;
+      transition:.2s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--red-bright),var(--red));
+      box-shadow:0 12px 28px rgba(228,58,53,.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 17px 36px rgba(228,58,53,.30);
+    }
+
+    .btn-secondary{
+      color:#fff;
+      background:rgba(255,255,255,.035);
+      border-color:var(--line-strong);
+    }
+
+    .btn-secondary:hover{background:rgba(255,255,255,.07)}
+
+    .btn-disabled{
+      opacity:.48;
+      cursor:not-allowed;
+      pointer-events:none;
+      filter:saturate(.55);
+    }
+
+    .mobile-menu{
+      position:fixed;
+      inset:114px 0 auto 0;
+      z-index:190;
+      display:none;
+      background:rgba(8,8,8,.98);
+      border-bottom:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .mobile-menu.open{display:block}
+    .mobile-menu .wrap{padding:18px 0 24px;display:grid;gap:4px}
+    .mobile-menu a{
+      text-decoration:none;
+      color:#ddd;
+      font-weight:750;
+      padding:15px 6px;
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .hero{
+      position:relative;
+      min-height:calc(100vh - 112px);
+      display:grid;
+      align-items:center;
+      padding:86px 0 72px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:-180px;
+      top:40px;
+      width:460px;
+      height:460px;
+      border-radius:50%;
+      background:var(--red);
+      opacity:.14;
+      filter:blur(105px);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:0;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-grid > div:first-child{
+      width:min(100%, 940px);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:16px;
+      color:#ff6c67;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.76rem;
+      font-weight:900;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:24px;
+      height:2px;
+      background:var(--red);
+      border-radius:20px;
+    }
+
+    h1,h2,h3{line-height:1.04}
+    h1{
+      margin:0 0 22px;
+      font-size:clamp(3.15rem,7.1vw,6.5rem);
+      letter-spacing:-.048em;
+      line-height:.96;
+      max-width:900px;
+      text-rendering:optimizeLegibility;
+      font-kerning:normal;
+    }
+
+    .hero-headline-line{display:block}
+
+    .hero-red{color:var(--red-bright)}
+    .hero-copy{
+      max-width:700px;
+      color:var(--muted);
+      font-size:clamp(1.03rem,1.7vw,1.23rem);
+      margin:0 0 30px;
+    }
+
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+    .hero-points{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:#d0d0d0;
+      font-size:.9rem;
+    }
+
+    .check{
+      width:18px;
+      height:18px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(228,58,53,.18);
+      color:#ff6d68;
+      font-size:.72rem;
+      font-weight:900;
+      margin-right:7px;
+    }
+
+    .showcase{
+      position:relative;
+      min-height:560px;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 45%),
+        #121212;
+      box-shadow:var(--shadow);
+    }
+
+    .showcase::after{
+      content:"";
+      position:absolute;
+      right:-90px;
+      bottom:-100px;
+      width:290px;
+      height:290px;
+      border-radius:50%;
+      background:var(--red);
+      opacity:.15;
+      filter:blur(8px);
+    }
+
+    .logo-stage{
+      position:absolute;
+      inset:78px 26px 42px;
+      display:grid;
+      place-items:center;
+      z-index:1;
+    }
+
+    .official-logo{
+      width:min(520px,90%);
+      height:auto;
+      max-height:100%;
+      object-fit:contain;
+      filter:drop-shadow(0 26px 40px rgba(0,0,0,.45));
+    }
+
+    .stats{padding:0 0 22px}
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+    .stat{
+      text-align:center;
+      border-radius:16px;
+      padding:20px 18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+    }
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.04rem;
+      margin-bottom:4px;
+    }
+    .stat span{
+      color:var(--muted-2);
+      font-size:.84rem;
+    }
+
+    section{padding:92px 0}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:26px;
+      margin-bottom:34px;
+    }
+    .section-head h2,
+    .split-copy h2,
+    .spotlight-copy h2,
+    .custom-copy h2{
+      margin:0;
+      font-size:clamp(2.2rem,4.8vw,3.8rem);
+      letter-spacing:-.052em;
+    }
+    .section-head p{margin:0;max-width:580px;color:var(--muted)}
+
+    .spotlight{
+      position:relative;
+      padding:0;
+    }
+
+    .spotlight-box{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(228,58,53,.18), transparent 28%),
+        linear-gradient(145deg,#101010,#181818);
+      box-shadow:var(--shadow);
+    }
+
+    .spotlight-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:36px;
+      align-items:center;
+      padding:42px;
+    }
+
+    .spotlight-copy p{
+      color:#d4d4d4;
+      margin:16px 0 24px;
+      max-width:520px;
+    }
+
+    .spotlight-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      color:#f1f1f1;
+      font-size:.78rem;
+      font-weight:850;
+      margin-bottom:18px;
+    }
+
+    .spotlight-copy ul{
+      padding:0;
+      margin:0 0 26px;
+      list-style:none;
+      display:grid;
+      gap:10px;
+      color:#dfdfdf;
+      font-size:.95rem;
+    }
+
+    .spotlight-copy li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .bullet{
+      width:20px;
+      height:20px;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(228,58,53,.2);
+      color:#ff716c;
+      font-size:.78rem;
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .spotlight-art{
+      position:relative;
+      min-height:470px;
+      display:grid;
+      place-items:center;
+    }
+
+    .design-card-feature{
+      width:min(560px,100%);
+      padding:26px;
+      border-radius:26px;
+      background:rgba(0,0,0,.42);
+      border:1px solid rgba(255,255,255,.09);
+      box-shadow:0 26px 50px rgba(0,0,0,.38);
+      backdrop-filter:blur(2px);
+    }
+
+
+    .design-card-feature{
+      position:relative;
+    }
+
+    .design-card-feature img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 18px 28px rgba(0,0,0,.40));
+    }
+
+    .design-card-feature small{
+      display:block;
+      margin-top:14px;
+      color:#b8b8b8;
+      text-align:center;
+      font-size:.84rem;
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-bottom:24px;
+    }
+
+    .filter-btn{
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#121212;
+      color:#c9c9c9;
+      cursor:pointer;
+      font-size:.86rem;
+      font-weight:750;
+      transition:.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      color:#fff;
+      border-color:rgba(228,58,53,.5);
+      background:rgba(228,58,53,.12);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:19px;
+    }
+
+    .design-card{
+      min-width:0;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:.22s ease;
+      cursor:pointer;
+    }
+
+    .design-card.hidden{display:none}
+    .design-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,255,255,.18);
+      box-shadow:var(--shadow);
+    }
+
+    .design-preview{
+      position:relative;
+      min-height:350px;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(228,58,53,.12), transparent 27%),
+        linear-gradient(150deg,#161616,#0d0d0d);
+    }
+
+    .design-preview::after{
+      content:"View shirt";
+      position:absolute;
+      right:16px;
+      bottom:16px;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.13);
+      color:#f0f0f0;
+      font-size:.76rem;
+      font-weight:800;
+      opacity:0;
+      transform:translateY(6px);
+      transition:.2s;
+    }
+
+    .design-card:hover .design-preview::after{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .design-preview img{
+      width:min(86%, 460px);
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.40));
+    }
+
+    .shirt{
+      position:relative;
+      width:210px;
+      aspect-ratio:.84;
+      background:linear-gradient(145deg,#080808,#111);
+      clip-path:polygon(25% 0,37% 8%,63% 8%,75% 0,100% 14%,83% 34%,78% 28%,78% 100%,22% 100%,22% 28%,17% 34%,0 14%);
+      filter:drop-shadow(0 24px 24px rgba(0,0,0,.42));
+    }
+
+    .shirt-design{
+      position:absolute;
+      top:34%;
+      left:50%;
+      transform:translateX(-50%);
+      width:54%;
+      text-align:center;
+      font-weight:1000;
+      letter-spacing:.05em;
+      line-height:1;
+      font-size:1rem;
+    }
+
+    .speed{color:var(--red-bright);position:relative}
+    .speed::before{
+      content:"";
+      position:absolute;
+      left:-28%;
+      top:42%;
+      width:24%;
+      height:3px;
+      background:var(--red-bright);
+      box-shadow:0 -7px 0 rgba(228,58,53,.7),0 7px 0 rgba(228,58,53,.45);
+      transform:skewX(-20deg);
+    }
+
+    .card-body{padding:20px}
+    .card-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .tag{
+      display:inline-block;
+      margin-bottom:7px;
+      color:#ff6d68;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:.71rem;
+      font-weight:900;
+    }
+
+    .card-body h3{margin:0 0 6px;font-size:1.16rem;letter-spacing:-.015em}
+    .card-body p{margin:0;color:var(--muted);font-size:.91rem}
+    .coming{
+      padding:5px 8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      color:#9b9b9b;
+      font-size:.69rem;
+      font-weight:800;
+      flex:0 0 auto;
+    }
+
+    .custom-box{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:50px;
+      align-items:center;
+      padding:52px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(228,58,53,.13), transparent 32%),
+        linear-gradient(145deg,#181818,#101010);
+      box-shadow:0 28px 80px rgba(0,0,0,.22);
+    }
+
+    .custom-copy p{
+      color:var(--muted);
+      max-width:640px;
+      margin:17px 0 26px;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .service{
+      min-height:92px;
+      display:flex;
+      align-items:flex-end;
+      padding:17px;
+      border-radius:15px;
+      border:1px solid var(--line);
+      background:#111;
+      position:relative;
+      overflow:hidden;
+      font-weight:800;
+    }
+
+    .service::before{
+      content:"";
+      position:absolute;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      top:-27px;
+      right:-24px;
+      background:rgba(228,58,53,.15);
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .step{
+      min-height:190px;
+      padding:23px;
+      border:1px solid var(--line);
+      border-radius:17px;
+      background:var(--panel);
+    }
+
+    .step-num{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      margin-bottom:20px;
+      border-radius:12px;
+      background:linear-gradient(145deg,var(--red-bright),var(--red-dark));
+      font-weight:1000;
+      box-shadow:0 10px 22px rgba(228,58,53,.18);
+    }
+
+    .step h3{margin:0 0 8px;font-size:1.08rem}
+    .step p{margin:0;color:var(--muted);font-size:.91rem}
+
+    .split{
+      display:grid;
+      grid-template-columns:.94fr 1.06fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .local-card{
+      min-height:450px;
+      display:grid;
+      place-items:end start;
+      padding:34px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(4,4,4,.03) 0%, rgba(4,4,4,.12) 28%, rgba(4,4,4,.50) 100%),
+        url('assets/wellington-about-bg-v2.jpg') center 50%/cover no-repeat;
+      overflow:hidden;
+      position:relative;
+      text-align:left;
+      box-shadow:var(--shadow);
+    }
+
+    .local-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, rgba(228,58,53,.06), transparent 42%);
+      pointer-events:none;
+    }
+
+    .about-place{
+      position:relative;
+      z-index:2;
+      max-width:90%;
+    }
+
+    .about-place strong{
+      display:block;
+      font-size:clamp(2.2rem,5vw,4.4rem);
+      line-height:.9;
+      letter-spacing:-.055em;
+      text-shadow:0 8px 24px rgba(0,0,0,.8);
+    }
+
+    .about-place .pride{
+      display:block;
+      margin-top:12px;
+      color:#fff;
+      font-size:.95rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-shadow:0 4px 12px rgba(0,0,0,.85);
+    }
+
+    .split-copy p{color:var(--muted)}
+    .faq{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    details{
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:#121212;
+      padding:0 18px;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding:18px 0;
+      font-weight:800;
+    }
+
+    summary::-webkit-details-marker{display:none}
+    details p{margin:0 0 18px;color:var(--muted);font-size:.92rem}
+
+    .cta{
+      padding:72px 30px;
+      text-align:center;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% -15%, rgba(228,58,53,.23), transparent 42%),
+        #141414;
+    }
+
+    .cta h2{
+      margin:0 0 13px;
+      font-size:clamp(2.2rem,5vw,4rem);
+      letter-spacing:-.055em;
+    }
+
+    .cta p{margin:0 auto 27px;color:var(--muted);max-width:650px}
+
+    footer{
+      margin-top:44px;
+      border-top:1px solid var(--line);
+      padding:48px 0 38px;
+      color:#8d8d8d;
+      font-size:.88rem;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:end;
+    }
+
+    .footer-logo{
+      width:150px;
+      height:auto;
+      margin-bottom:12px;
+      filter:drop-shadow(0 5px 10px rgba(0,0,0,.25));
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:18px;
+    }
+
+    .footer-links a{text-decoration:none;color:#aaa}
+    .footer-links a:hover{color:#fff}
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:500;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(0,0,0,.82);
+      backdrop-filter:blur(8px);
+    }
+
+    .modal.open{display:flex}
+
+    .modal-card{
+      position:relative;
+      width:min(1320px,96vw);
+      height:min(86vh,820px);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:minmax(0,1.28fr) minmax(370px,.92fr);
+      border-radius:24px;
+      border:1px solid var(--line-strong);
+      background:#111;
+      box-shadow:0 34px 100px rgba(0,0,0,.60);
+    }
+
+    .modal-preview{
+      min-height:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 76% 20%, rgba(228,58,53,.14), transparent 30%),
+        #0b0b0b;
+      padding:34px;
+    }
+
+    .modal-preview img{
+      width:min(98%, 840px);
+      max-height:calc(86vh - 84px);
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.35));
+    }
+
+    .modal-preview .shirt{width:300px}
+    .modal-preview .shirt-design{font-size:1.35rem}
+
+    .modal-body{
+      padding:34px 34px 38px;
+      position:relative;
+      overflow:auto;
+    }
+
+    .modal-close{
+      position:absolute;
+      right:18px;
+      top:18px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      background:rgba(18,18,18,.94);
+      cursor:pointer;
+      font-size:1.55rem;
+      font-weight:500;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      z-index:30;
+      box-shadow:0 8px 28px rgba(0,0,0,.38);
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus-visible{
+      border-color:rgba(255,255,255,.55);
+      background:#252525;
+      outline:none;
+    }
+
+    .modal-body h3{
+      margin:9px 0 12px;
+      font-size:2rem;
+      letter-spacing:-.035em;
+    }
+
+    .modal-body p{color:var(--muted)}
+
+    @media (min-width: 1100px){
+      .modal-card{
+        grid-template-columns:minmax(0,1.38fr) minmax(390px,.82fr);
+      }
+      .modal-preview img{
+        width:min(100%, 900px);
+      }
+    }
+    .modal-note{
+      margin:24px 0;
+      padding:15px;
+      border-radius:13px;
+      border:1px solid var(--line);
+      background:#171717;
+      color:#bcbcbc;
+      font-size:.9rem;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+
+    .collections{
+      padding: 18px 0 26px;
+    }
+
+    .collections-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .collection-card{
+      padding:22px;
+      min-height:210px;
+      display:flex;
+      flex-direction:column;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(228,58,53,.12), transparent 30%),
+        #111;
+      box-shadow:0 14px 36px rgba(0,0,0,.18);
+    }
+
+    .collection-card h3{
+      margin:0 0 8px;
+      font-size:1.08rem;
+      letter-spacing:-.02em;
+    }
+
+    .collection-card p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .collection-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:auto;
+      padding-top:14px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .collection-link:hover{
+      color:#ff776f;
+    }
+
+
+    .product-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 22px;
+    }
+
+    .product-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:36px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.045);
+      color:#e6e6e6;
+      font-size:.8rem;
+      font-weight:800;
+    }
+
+    .color-dot{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.30);
+      box-shadow:0 0 0 2px rgba(255,255,255,.04);
+    }
+
+    .color-black{background:#111}
+    .color-gray{background:#777}
+
+    .featured-price{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      margin:8px 0 18px;
+    }
+
+    .featured-price strong{
+      font-size:2rem;
+      letter-spacing:-.04em;
+    }
+
+    .featured-price span{
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .product-details{
+      display:none;
+      margin-top:20px;
+    }
+
+    .product-details.visible{
+      display:block;
+    }
+
+    .product-panel{
+      padding:18px;
+      border-radius:15px;
+      border:1px solid var(--line);
+      background:#171717;
+      margin-bottom:16px;
+    }
+
+    .product-panel h4{
+      margin:0 0 12px;
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#ff756f;
+    }
+
+    .color-options{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .color-option{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#eee;
+      font-weight:750;
+      font-size:.9rem;
+    }
+
+    .size-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+
+    .size-price{
+      padding:10px 8px;
+      text-align:center;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#111;
+    }
+
+    .size-price strong{
+      display:block;
+      font-size:.88rem;
+      color:#fff;
+    }
+
+    .size-price span{
+      display:block;
+      margin-top:3px;
+      color:#aaa;
+      font-size:.76rem;
+    }
+
+    .shipping-note{
+      color:#bdbdbd;
+      font-size:.87rem;
+      line-height:1.45;
+    }
+
+    .modal-price{
+      font-size:2rem;
+      font-weight:950;
+      letter-spacing:-.04em;
+      margin:8px 0 2px;
+    }
+
+    .modal-subprice{
+      color:#969696;
+      font-size:.82rem;
+      margin-bottom:14px;
+    }
+
+    .card-price{
+      margin-top:10px;
+      color:#fff;
+      font-weight:900;
+      font-size:.95rem;
+    }
+
+    @media (max-width: 600px){
+      .size-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+
+    .garment-choice-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .garment-choice{
+      padding:16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#111;
+    }
+
+    .garment-choice h4{
+      margin:0 0 5px;
+      color:#fff;
+      font-size:1rem;
+      letter-spacing:-.01em;
+      text-transform:none;
+    }
+
+    .garment-choice .garment-model{
+      display:block;
+      margin-bottom:10px;
+      color:#9c9c9c;
+      font-size:.76rem;
+    }
+
+    .garment-choice .garment-start{
+      display:block;
+      margin-bottom:12px;
+      color:#fff;
+      font-size:1.35rem;
+      font-weight:950;
+    }
+
+    .garment-choice .mini-size-list{
+      display:grid;
+      gap:6px;
+      color:#bdbdbd;
+      font-size:.79rem;
+    }
+
+    .garment-choice .mini-size-list span{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:6px;
+    }
+
+    @media (max-width: 900px){
+      .garment-choice-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 980px){
+      .nav-links{display:none}
+      .menu-btn{display:inline-grid;place-items:center}
+      .hero-grid,
+      .spotlight-grid,
+      .custom-box,
+      .split{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .collections-grid{grid-template-columns:1fr 1fr}
+      .spotlight-art{min-height:unset}
+    }
+
+    @media (max-width: 720px){
+      .announcement{font-size:.74rem}
+      .nav{min-height:70px}
+      .brand-logo{width:98px}
+      .nav-actions > .btn{display:none}
+      .hero{min-height:auto;padding:68px 0 56px}
+      h1{font-size:clamp(3rem,14vw,4.8rem)}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+      .showcase{min-height:410px}
+      .official-logo{width:min(390px,92%)}
+      section{padding:70px 0}
+      .section-head{align-items:flex-start;flex-direction:column;gap:15px}
+      .gallery,
+      .steps,
+      .service-grid,
+      .faq,
+      .collections-grid{grid-template-columns:1fr}
+      .custom-box,
+      .spotlight-grid{padding:30px 22px}
+      .local-card{min-height:340px}
+      .modal-card{grid-template-columns:1fr}
+      .modal-preview{min-height:340px}
+      .modal-body{padding:28px 24px}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      .stats-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 430px){
+      .wrap{width:min(calc(100% - 26px), var(--max))}
+      .gallery{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr}
+      .hero-points{display:grid;gap:10px}
+      .showcase{min-height:370px}
+    }
+
+
+    /* ---------- V19 mobile-first polish ---------- */
+    :focus-visible{
+      outline:3px solid rgba(255,76,70,.82);
+      outline-offset:3px;
+    }
+
+    body{
+      padding-bottom:0;
+    }
+
+    .timeless-story{
+      padding:34px 0 26px;
+    }
+
+    .timeless-story-shell{
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:34px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(228,58,53,.11), transparent 30%),
+        linear-gradient(145deg,#141414,#0e0e0e);
+      box-shadow:0 22px 60px rgba(0,0,0,.20);
+    }
+
+    .timeless-story-intro{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .timeless-story-intro .eyebrow{
+      margin-bottom:0;
+      flex:0 0 auto;
+    }
+
+    .timeless-story-intro h2{
+      margin:0;
+      max-width:none;
+      font-size:clamp(1.75rem,3.1vw,2.65rem);
+      letter-spacing:-.045em;
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .timeless-values{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .timeless-value{
+      min-height:150px;
+      padding:20px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+    }
+
+    .value-mark{
+      display:block;
+      margin-bottom:22px;
+      color:#ff6f69;
+      font-size:.74rem;
+      font-weight:950;
+      letter-spacing:.14em;
+    }
+
+    .timeless-value strong{
+      display:block;
+      margin-bottom:7px;
+      font-size:1.05rem;
+    }
+
+    .timeless-value p{
+      margin:0;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .mobile-scrim,
+    .mobile-bottom-nav{
+      display:none;
+    }
+
+    .design-card{
+      isolation:isolate;
+    }
+
+    .design-preview{
+      aspect-ratio:1 / 1;
+      min-height:0;
+    }
+
+    .design-preview img{
+      width:min(88%,460px);
+      max-height:86%;
+      object-fit:contain;
+    }
+
+    .card-body{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .card-price{
+      margin-top:auto;
+      padding-top:12px;
+    }
+
+    @media (hover:none){
+      .design-preview::after{
+        opacity:1;
+        transform:none;
+      }
+
+      .design-card:hover{
+        transform:none;
+        box-shadow:none;
+      }
+    }
+
+    @media (max-width:980px){
+      body{
+        padding-bottom:calc(74px + env(safe-area-inset-bottom));
+      }
+
+      header{
+        top:0;
+      }
+
+      .nav{
+        min-height:68px;
+      }
+
+      .brand-logo{
+        width:92px;
+      }
+
+      .menu-btn{
+        min-width:48px;
+        min-height:48px;
+        border-radius:14px;
+        font-size:1.1rem;
+      }
+
+      .mobile-menu{
+        inset:calc(105px + env(safe-area-inset-top)) 12px auto 12px;
+        border:1px solid var(--line-strong);
+        border-radius:20px;
+        background:rgba(12,12,12,.97);
+        box-shadow:0 30px 90px rgba(0,0,0,.58);
+        overflow:hidden;
+      }
+
+      .mobile-menu .wrap{
+        width:100%;
+        padding:10px 14px 16px;
+      }
+
+      .mobile-menu a{
+        display:flex;
+        align-items:center;
+        min-height:54px;
+        padding:14px 10px;
+        font-size:1rem;
+      }
+
+      .mobile-scrim{
+        position:fixed;
+        inset:0;
+        z-index:180;
+        background:rgba(0,0,0,.58);
+        backdrop-filter:blur(3px);
+      }
+
+      .mobile-scrim.open{
+        display:block;
+      }
+
+      .mobile-bottom-nav{
+        position:fixed;
+        left:10px;
+        right:10px;
+        bottom:calc(8px + env(safe-area-inset-bottom));
+        z-index:220;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        padding:7px;
+        border:1px solid rgba(255,255,255,.13);
+        border-radius:20px;
+        background:rgba(14,14,14,.93);
+        box-shadow:0 18px 60px rgba(0,0,0,.55);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+      }
+
+      .mobile-bottom-nav a{
+        min-height:52px;
+        display:grid;
+        place-items:center;
+        align-content:center;
+        gap:2px;
+        border-radius:14px;
+        text-decoration:none;
+        color:#c9c9c9;
+        font-size:.68rem;
+        font-weight:800;
+      }
+
+      .mobile-bottom-nav a:active{
+        background:rgba(228,58,53,.14);
+        color:#fff;
+      }
+
+      .mobile-nav-icon{
+        color:#ff6c67;
+        font-size:1.04rem;
+        line-height:1;
+      }
+
+      .stats-grid{
+        display:flex;
+        gap:10px;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding-bottom:4px;
+      }
+
+      .stats-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .stat{
+        min-width:72vw;
+        scroll-snap-align:start;
+      }
+
+      .collections-grid{
+        display:flex;
+        overflow-x:auto;
+        gap:12px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding-bottom:5px;
+      }
+
+      .collections-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .collection-card{
+        flex:0 0 min(82vw,360px);
+        min-height:190px;
+        scroll-snap-align:start;
+      }
+
+      .timeless-story-intro{
+        display:block;
+      }
+
+      .timeless-story-intro h2{
+        margin-top:10px;
+        text-align:left;
+        white-space:normal;
+      }
+
+      .timeless-values{
+        display:flex;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        gap:10px;
+        scrollbar-width:none;
+      }
+
+      .timeless-values::-webkit-scrollbar{
+        display:none;
+      }
+
+      .timeless-value{
+        flex:0 0 min(78vw,330px);
+        scroll-snap-align:start;
+      }
+
+      .spotlight-grid{
+        display:flex;
+        flex-direction:column;
+      }
+
+      .spotlight-art{
+        order:-1;
+      }
+
+      .design-card-feature{
+        padding:16px;
+      }
+
+      .gallery{
+        display:flex;
+        overflow-x:auto;
+        gap:14px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        padding:4px 1px 14px;
+      }
+
+      .gallery::-webkit-scrollbar{
+        display:none;
+      }
+
+      .design-card{
+        flex:0 0 min(86vw,420px);
+        scroll-snap-align:center;
+      }
+
+      .filters{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        scrollbar-width:none;
+        padding-bottom:4px;
+      }
+
+      .filters::-webkit-scrollbar{
+        display:none;
+      }
+
+      .filter-btn{
+        min-height:44px;
+        flex:0 0 auto;
+      }
+
+      .modal{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .modal-card{
+        width:100%;
+        max-height:94dvh;
+        border-radius:26px 26px 0 0;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+        overflow:auto;
+        overscroll-behavior:contain;
+      }
+
+      .modal-preview{
+        min-height:0;
+        height:min(34dvh,330px);
+        padding:18px;
+      }
+
+      .modal-preview img{
+        max-height:100%;
+        width:auto;
+        max-width:92%;
+      }
+
+      .modal-body{
+        padding:26px 20px calc(32px + env(safe-area-inset-bottom));
+      }
+
+      .modal-close{
+        float:none;
+      }
+
+      .garment-choice-grid{
+        display:block;
+      }
+
+      .garment-choice{
+        margin-bottom:10px;
+      }
+
+      details summary{
+        min-height:52px;
+        display:flex;
+        align-items:center;
+      }
+    }
+
+    @media (max-width:720px){
+      .announcement{
+        min-height:32px;
+        padding:6px 14px;
+      }
+
+      .hero{
+        padding:44px 0 38px;
+      }
+
+      .hero-grid{
+        gap:30px;
+      }
+
+      h1{
+        font-size:clamp(2.65rem,14vw,4.15rem);
+        letter-spacing:-.04em;
+        line-height:.95;
+      }
+
+      .hero-copy{
+        font-size:1rem;
+      }
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .hero-actions .btn{
+        min-height:52px;
+      }
+
+      .showcase{
+        min-height:315px;
+        border-radius:24px;
+      }
+
+      .logo-stage{
+        inset:44px 18px 26px;
+      }
+
+      section{
+        padding:54px 0;
+      }
+
+      .section-head{
+        margin-bottom:24px;
+      }
+
+      .section-head h2,
+      .split-copy h2,
+      .spotlight-copy h2,
+      .custom-copy h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+
+      .timeless-story{
+        padding:20px 0;
+      }
+
+      .timeless-story-shell{
+        padding:24px 18px;
+        border-radius:22px;
+      }
+
+      .spotlight-grid{
+        padding:22px 18px;
+        gap:20px;
+      }
+
+      .spotlight-copy p{
+        font-size:.95rem;
+      }
+
+      .featured-price{
+        display:block;
+      }
+
+      .featured-price strong{
+        display:block;
+        margin-bottom:4px;
+      }
+
+      .product-meta{
+        gap:8px;
+      }
+
+      .product-chip{
+        min-height:40px;
+      }
+
+      .design-preview{
+        aspect-ratio:1 / .95;
+      }
+
+      .card-body{
+        padding:18px;
+      }
+
+      .custom-box{
+        padding:28px 18px;
+      }
+
+      .service{
+        min-height:74px;
+      }
+
+      .split{
+        gap:28px;
+      }
+
+      .local-card{
+        min-height:300px;
+      }
+
+      .faq{
+        gap:10px;
+      }
+
+      details{
+        padding:0 16px;
+      }
+
+      .cta{
+        padding:48px 20px;
+      }
+
+      footer{
+        padding-bottom:100px;
+      }
+    }
+
+    @media (max-width:430px){
+      .wrap{
+        width:min(calc(100% - 22px), var(--max));
+      }
+
+      .stat{
+        min-width:82vw;
+      }
+
+      .collection-card{
+        flex-basis:86vw;
+      }
+
+      .timeless-value{
+        flex-basis:84vw;
+      }
+
+      .design-card{
+        flex-basis:90vw;
+      }
+
+      .mobile-bottom-nav{
+        left:7px;
+        right:7px;
+      }
+
+      .mobile-bottom-nav a{
+        font-size:.64rem;
+      }
+    }
+
+
+    .carousel-progress{
+      display:none;
+    }
+
+    @media (max-width:980px){
+      .carousel-progress{
+        display:block;
+        margin-top:4px;
+        padding:0 2px;
+      }
+
+      .carousel-progress-track{
+        width:100%;
+        height:5px;
+        overflow:hidden;
+        border-radius:999px;
+        background:rgba(255,255,255,.10);
+      }
+
+      .carousel-progress-thumb{
+        width:34%;
+        height:100%;
+        border-radius:999px;
+        background:linear-gradient(90deg,var(--red-bright),var(--red));
+        box-shadow:0 0 14px rgba(228,58,53,.38);
+        transform:translateX(0);
+        will-change:transform;
+      }
+
+      .carousel-progress span{
+        display:block;
+        margin-top:8px;
+        color:#878787;
+        font-size:.72rem;
+        font-weight:800;
+        letter-spacing:.04em;
+        text-align:center;
+        text-transform:uppercase;
+      }
+    }
+
+
+    .footer-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      gap:5px;
+    }
+
+    .footer-center .footer-logo{
+      width:170px;
+      margin:0 auto 14px;
+    }
+
+    .footer-copy{
+      color:#8d8d8d;
+      line-height:1.5;
+    }
+
+    .back-to-top{
+      width:48px;
+      height:48px;
+      margin-top:18px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:1px solid var(--line-strong);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      text-decoration:none;
+      font-size:1.4rem;
+      font-weight:900;
+      transition:.2s ease;
+    }
+
+    .back-to-top:hover{
+      transform:translateY(-3px);
+      border-color:rgba(228,58,53,.55);
+      background:rgba(228,58,53,.10);
+      color:#ff716c;
+    }
+
+    .back-to-top-label{
+      margin-top:4px;
+      color:#777;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width:720px){
+      .footer-center .footer-logo{
+        width:145px;
+      }
+
+      .back-to-top{
+        width:52px;
+        height:52px;
+      }
+    }
+
+
+    @media (max-width:980px){
+      header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:260;
+        padding-top:env(safe-area-inset-top);
+        background:rgba(8,8,8,.96);
+      }
+
+
+      .mobile-menu{
+        inset:calc(72px + env(safe-area-inset-top)) 12px auto 12px;
+        z-index:270;
+      }
+
+      .mobile-scrim{
+        z-index:255;
+      }
+    }
+
+
+    .card-color-strip{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      margin-top:14px;
+      min-height:24px;
+    }
+
+    .card-color-strip-label{
+      margin-right:3px;
+      color:#858585;
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .card-color-dot{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.28);
+      box-shadow:0 0 0 2px rgba(255,255,255,.035);
+    }
+
+    .color-option{
+      min-height:44px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#111;
+      color:#eee;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .color-option:hover{
+      border-color:rgba(255,255,255,.28);
+      background:#171717;
+    }
+
+    .color-option.active{
+      border-color:rgba(255,76,70,.72);
+      box-shadow:0 0 0 2px rgba(255,76,70,.13);
+    }
+
+    .color-option .color-swatch{
+      width:20px;
+      height:20px;
+      flex:0 0 auto;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.36);
+      box-shadow:0 0 0 2px rgba(0,0,0,.15);
+    }
+
+    .modal-preview{
+      transition:background .22s ease;
+    }
+
+    .modal-preview img{
+      max-width:92%;
+      max-height:78%;
+      width:auto;
+      height:auto;
+    }
+
+    .design-preview{
+      transition:background .22s ease;
+    }
+
+    .design-preview img{
+      position:relative;
+      z-index:1;
+    }
+
+    .garment-choice-grid{
+      grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
+    }
+
+
+    .mobile-announcement{
+      display:none;
+    }
+
+    @media (max-width:980px){
+      :root{
+        --mobile-header-h:68px;
+        --mobile-banner-h:48px;
+      }
+
+      .desktop-announcement{
+        display:none;
+      }
+
+      header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:300;
+        padding-top:env(safe-area-inset-top);
+        background:rgba(8,8,8,.97);
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+
+      .nav{
+        min-height:var(--mobile-header-h);
+      }
+
+      .mobile-announcement{
+        position:fixed;
+        top:calc(var(--mobile-header-h) + env(safe-area-inset-top));
+        left:0;
+        right:0;
+        z-index:290;
+        min-height:var(--mobile-banner-h);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:7px;
+        padding:8px 14px;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        background:
+          linear-gradient(90deg, rgba(228,58,53,.14), rgba(228,58,53,.05)),
+          #111;
+        color:#d8d8d8;
+        font-size:.72rem;
+        line-height:1.25;
+        text-align:center;
+      }
+
+      .mobile-announcement strong{
+        flex:0 0 auto;
+        color:#ff716c;
+        font-size:.70rem;
+        font-weight:950;
+        letter-spacing:.07em;
+        text-transform:uppercase;
+      }
+
+      .mobile-announcement span{
+        min-width:0;
+      }
+
+      main{
+        padding-top:calc(var(--mobile-header-h) + var(--mobile-banner-h) + env(safe-area-inset-top));
+      }
+
+      html{
+        scroll-padding-top:calc(var(--mobile-header-h) + var(--mobile-banner-h) + 14px + env(safe-area-inset-top));
+      }
+
+      .mobile-menu{
+        inset:calc(var(--mobile-header-h) + env(safe-area-inset-top) + 6px) 12px auto 12px;
+        z-index:310;
+      }
+
+      .mobile-scrim{
+        z-index:295;
+      }
+
+      /* Mobile sections should read from the left edge instead of feeling centered. */
+      .custom-box,
+      .custom-copy,
+      .spotlight-copy,
+      .split-copy,
+      .section-head{
+        text-align:left;
+      }
+
+      .custom-copy,
+      .spotlight-copy,
+      .split-copy{
+        width:100%;
+        justify-self:start;
+        align-items:flex-start;
+      }
+
+      .custom-copy p,
+      .spotlight-copy p,
+      .split-copy p{
+        margin-left:0;
+        margin-right:0;
+      }
+
+      .custom-copy .eyebrow,
+      .spotlight-copy .eyebrow,
+      .split-copy .eyebrow,
+      .section-head .eyebrow{
+        justify-content:flex-start;
+      }
+
+      .custom-copy .btn{
+        width:auto;
+        max-width:100%;
+        justify-self:start;
+        align-self:flex-start;
+      }
+
+      /* Turn the service cards into left-aligned mobile chips/bubbles. */
+      .service-grid{
+        display:flex !important;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        align-items:flex-start;
+        gap:9px;
+        width:100%;
+      }
+
+      .service{
+        min-height:0 !important;
+        width:auto;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:flex-start;
+        padding:11px 14px;
+        border-radius:999px;
+        text-align:left;
+        line-height:1.2;
+        font-size:.87rem;
+        white-space:nowrap;
+      }
+
+      .service::before{
+        width:34px;
+        height:34px;
+        top:-17px;
+        right:-10px;
+      }
+
+      /* Keep other mobile pill groups left-aligned too. */
+      .product-meta,
+      .hero-points,
+      .filters,
+      .color-options{
+        justify-content:flex-start;
+        text-align:left;
+      }
+    }
+
+    @media (max-width:520px){
+      .mobile-announcement{
+        min-height:52px;
+        padding:7px 10px;
+        gap:3px;
+        flex-direction:column;
+      }
+
+      :root{
+        --mobile-banner-h:52px;
+      }
+
+      .mobile-announcement strong{
+        line-height:1;
+      }
+
+      .mobile-announcement span{
+        font-size:.69rem;
+      }
+
+      .custom-box{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .service{
+        font-size:.82rem;
+        padding:10px 12px;
+      }
+    }
+
+
+    @media (max-width:520px){
+      #custom .wrap{
+        width:calc(100% - 20px);
+        margin-left:10px;
+        margin-right:10px;
+      }
+
+      #custom .custom-box{
+        width:100%;
+        margin:0;
+        padding:22px 12px 26px;
+        border-radius:24px;
+      }
+
+      #custom .custom-copy{
+        padding:0;
+        margin:0;
+      }
+
+      #custom .custom-copy .eyebrow,
+      #custom .custom-copy h2,
+      #custom .custom-copy p{
+        margin-left:0;
+        padding-left:0;
+        text-align:left;
+      }
+
+      #custom .custom-copy h2{
+        max-width:none;
+      }
+
+      #custom .custom-copy .btn{
+        margin-left:0;
+        justify-content:flex-start;
+        text-align:left;
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      #custom .service-grid{
+        margin:4px 0 0;
+        padding:0;
+        justify-content:flex-start;
+        align-content:flex-start;
+        width:100%;
+      }
+
+      #custom .service{
+        margin:0;
+        padding:10px 13px;
+        text-align:left;
+      }
+    }
+
+
+    /* ===== V37: Combined Timeless story + true white Heritage previews ===== */
+    .timeless-combined-section{
+      padding-top:72px;
+      padding-bottom:42px;
+    }
+
+    .timeless-combined-shell{
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 8% 6%, rgba(228,58,53,.13), transparent 31%),
+        radial-gradient(circle at 94% 92%, rgba(228,58,53,.07), transparent 28%),
+        linear-gradient(145deg,#141414,#0d0d0d);
+      box-shadow:0 24px 70px rgba(0,0,0,.24);
+    }
+
+    .timeless-combined-shell .timeless-lockup-feature{
+      margin:0;
+      padding:0;
+      border:0;
+      border-radius:0;
+      background:none;
+      box-shadow:none;
+    }
+
+    .timeless-combined-story{
+      margin-top:24px;
+      padding-top:28px;
+      border-top:1px solid var(--line);
+    }
+
+    .timeless-combined-story .timeless-story-intro{
+      margin-bottom:20px;
+    }
+
+    #designs .design-card[data-preview-surface="light"] .design-preview,
+    #designs .design-preview.preview-surface-light{
+      background:#ffffff !important;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.055);
+    }
+
+    #designs .design-card[data-preview-surface="light"] .design-preview::after,
+    #designs .design-preview.preview-surface-light::after{
+      background:rgba(255,255,255,.94);
+      color:#151515;
+      border:1px solid rgba(0,0,0,.10);
+    }
+
+    @media (max-width:980px){
+      .timeless-combined-section{
+        padding-top:52px;
+        padding-bottom:28px;
+      }
+
+      .timeless-combined-shell{
+        padding:18px;
+        border-radius:24px;
+      }
+
+      .timeless-combined-story{
+        margin-top:20px;
+        padding-top:22px;
+      }
+    }
+
+    @media (max-width:520px){
+      .timeless-combined-section{
+        padding-top:38px;
+        padding-bottom:22px;
+      }
+
+      .timeless-combined-shell{
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .timeless-combined-story{
+        margin-top:18px;
+        padding-top:20px;
+      }
+
+      .timeless-combined-story .timeless-story-intro{
+        margin-bottom:16px;
+      }
+    }
+
+    /* ===== V28: Timeless identity + design-only configurator ===== */
+    .timeless-lockup-feature{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+      align-items:stretch;
+      margin-bottom:22px;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(228,58,53,.14), transparent 32%),
+        linear-gradient(145deg,#151515,#0d0d0d);
+      box-shadow:0 18px 52px rgba(0,0,0,.18);
+    }
+
+    .timeless-lockup{
+      min-height:260px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:20px;
+      background:#090909;
+    }
+
+    .timeless-lockup::after{
+      content:"";
+      position:absolute;
+      left:13%;
+      right:13%;
+      bottom:22%;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--red-bright),transparent);
+      opacity:.72;
+    }
+
+    .timeless-overline{
+      color:#ff716c;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-size:.68rem;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+
+    .timeless-lockup strong{
+      font-size:clamp(3.5rem,7vw,6rem);
+      line-height:.86;
+      letter-spacing:-.07em;
+    }
+
+    .timeless-location{
+      margin-top:18px;
+      color:#eee;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.28em;
+    }
+
+    .timeless-lockup-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:18px 12px 18px 22px;
+    }
+
+    .timeless-lockup-copy h3{
+      margin:0 0 10px;
+      font-size:clamp(1.9rem,3.5vw,3rem);
+      letter-spacing:-.045em;
+    }
+
+    .timeless-lockup-copy p{
+      margin:0 0 22px;
+      max-width:500px;
+      color:var(--muted);
+    }
+
+    .design-config-modal{
+      width:min(1280px,96vw);
+      height:min(86vh,790px);
+      max-height:86vh;
+      grid-template-columns:minmax(0,1.14fr) minmax(420px,.86fr);
+      overflow:hidden;
+    }
+
+    .design-color-preview{
+      min-height:100%;
+      height:100%;
+      padding:34px;
+      overflow:hidden;
+      transition:background .2s ease;
+    }
+
+    .design-color-preview img{
+      width:min(96%,850px);
+      max-height:calc(86vh - 78px);
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.28));
+    }
+
+    .design-config-body{
+      display:flex;
+      flex-direction:column;
+      padding:32px 30px 0;
+      overflow:auto;
+    }
+
+    .selection-summary-row{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0 16px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .selection-summary-row > div:first-child{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .selection-summary-row #selectedPrice{
+      margin-top:2px;
+      font-size:2rem;
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+
+    .selector-kicker{
+      color:#7e7e7e;
+      font-size:.67rem;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .selected-summary{
+      max-width:52%;
+      color:#aaa;
+      text-align:right;
+      font-size:.82rem;
+    }
+
+    .selector-section{
+      padding:17px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .selector-title{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:11px;
+    }
+
+    .selector-title > span{
+      width:24px;
+      height:24px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(228,58,53,.15);
+      color:#ff716c;
+      font-size:.68rem;
+      font-weight:950;
+    }
+
+    .garment-selector{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .garment-select-btn,
+    .size-select-btn{
+      border:1px solid var(--line);
+      background:#131313;
+      color:#ddd;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .garment-select-btn{
+      min-height:64px;
+      padding:10px 12px;
+      border-radius:12px;
+      text-align:left;
+    }
+
+    .garment-select-btn strong{
+      display:block;
+      font-size:.84rem;
+    }
+
+    .garment-select-btn span{
+      display:block;
+      margin-top:3px;
+      color:#888;
+      font-size:.69rem;
+    }
+
+    .garment-select-btn.active,
+    .size-select-btn.active{
+      border-color:rgba(255,76,70,.68);
+      color:#fff;
+      background:rgba(228,58,53,.10);
+      box-shadow:0 0 0 2px rgba(228,58,53,.08);
+    }
+
+    .size-selector{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .size-select-btn{
+      min-width:48px;
+      min-height:42px;
+      padding:8px 10px;
+      border-radius:11px;
+      font-size:.78rem;
+      font-weight:850;
+    }
+
+    .delivery-summary{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px 14px;
+      padding:15px 0 18px;
+      color:#999;
+      font-size:.72rem;
+    }
+
+    .config-action-bar{
+      position:sticky;
+      bottom:0;
+      z-index:4;
+      margin:0 -30px;
+      margin-top:auto;
+      padding:14px 30px calc(14px + env(safe-area-inset-bottom));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      border-top:1px solid var(--line);
+      background:rgba(15,15,15,.97);
+      backdrop-filter:blur(14px);
+    }
+
+    .config-action-bar > div{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .config-action-bar strong{
+      font-size:1.18rem;
+    }
+
+    @media (max-width:980px){
+      .timeless-lockup-feature{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding:18px;
+      }
+
+      .timeless-lockup{
+        min-height:220px;
+      }
+
+      .timeless-lockup strong{
+        font-size:clamp(3.5rem,18vw,5.8rem);
+      }
+
+      .timeless-location{
+        font-size:.67rem;
+        letter-spacing:.23em;
+      }
+
+      .timeless-lockup-copy{
+        padding:6px 2px 8px;
+      }
+
+      .design-config-modal{
+        width:100%;
+        height:94dvh;
+        max-height:94dvh;
+        display:flex;
+        flex-direction:column;
+      }
+
+      .design-color-preview{
+        flex:0 0 min(34dvh,310px);
+        height:auto;
+        min-height:0;
+        padding:18px;
+      }
+
+      .design-color-preview img{
+        max-height:100%;
+        width:auto;
+        max-width:94%;
+      }
+
+      .design-config-body{
+        flex:1 1 auto;
+        padding:22px 18px 0;
+      }
+
+      .config-action-bar{
+        margin-left:-18px;
+        margin-right:-18px;
+        padding-left:18px;
+        padding-right:18px;
+      }
+    }
+
+    @media (max-width:520px){
+      .timeless-lockup-feature{
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .timeless-lockup{
+        min-height:190px;
+      }
+
+      .timeless-lockup strong{
+        font-size:16vw;
+      }
+
+      .timeless-location{
+        font-size:.58rem;
+      }
+
+      .garment-selector{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .selected-summary{
+        max-width:58%;
+        font-size:.74rem;
+      }
+
+      .delivery-summary{
+        display:grid;
+        gap:5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition:none!important;animation:none!important}
+    }
+  
+
+    /* ==========================================================
+       V34 MOBILE-FIRST STOREFRONT POLISH
+       ========================================================== */
+    .collection-shop-head{
+      display:block;
+      margin-bottom:30px;
+    }
+
+    .collection-shop-head > div{
+      max-width:820px;
+    }
+
+    .collection-shop-head p{
+      max-width:520px;
+      font-size:1rem;
+      line-height:1.7;
+    }
+
+    .collection-shop-head p strong{
+      color:#fff;
+      font-weight:850;
+    }
+
+    #designs .gallery{
+      gap:22px;
+    }
+
+    #designs .design-card{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      border-color:rgba(255,255,255,.10);
+      background:linear-gradient(180deg,#121212 0%,#101010 100%);
+      box-shadow:0 10px 34px rgba(0,0,0,.18);
+    }
+
+    #designs .design-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+      box-shadow:inset 0 0 0 1px transparent;
+      transition:.22s ease;
+    }
+
+    #designs .design-card:hover{
+      transform:translateY(-7px) scale(1.008);
+      border-color:rgba(228,58,53,.42);
+      box-shadow:0 22px 56px rgba(0,0,0,.34),0 0 0 1px rgba(228,58,53,.06);
+    }
+
+    #designs .design-card:hover::after{
+      box-shadow:inset 0 0 0 1px rgba(228,58,53,.16);
+    }
+
+    #designs .design-preview{
+      min-height:0;
+      aspect-ratio:1 / .86;
+    }
+
+    #designs .design-preview img{
+      width:min(91%,480px);
+      max-height:89%;
+    }
+
+    #designs .design-preview::after{
+      content:"View options";
+    }
+
+    #designs .design-preview.preview-surface-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);
+    }
+
+    #designs .design-preview.preview-surface-light::after{
+      background:rgba(255,255,255,.92);
+      color:#151515;
+      border:1px solid rgba(0,0,0,.08);
+    }
+
+    #designs .card-body{
+      flex:1 1 auto;
+      padding:22px 22px 24px;
+    }
+
+    #designs .card-body h3{
+      margin-top:7px;
+      font-size:1.15rem;
+      letter-spacing:-.025em;
+    }
+
+    #designs .card-body p{
+      margin:8px 0 15px;
+      color:#c8c8c8;
+      line-height:1.55;
+    }
+
+    .card-color-strip{display:none!important}
+
+    .card-color-names{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:7px;
+      color:#bdbdbd;
+      font-size:.82rem;
+      font-weight:760;
+    }
+
+    .mini-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      flex:0 0 auto;
+      background:var(--dot);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 0 0 2px rgba(255,255,255,.04);
+    }
+
+    .dot-sep{
+      color:#5f5f5f;
+      margin:0 1px;
+    }
+
+    .card-link{
+      margin-top:auto;
+      padding-top:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:#fff;
+      font-size:.88rem;
+      font-weight:900;
+      letter-spacing:.01em;
+    }
+
+    .card-link span{
+      color:#ff5f59;
+      font-size:1.15rem;
+      transition:transform .18s ease;
+    }
+
+    .design-card:hover .card-link span{transform:translateX(4px)}
+
+    .shop-reassurance{
+      margin-top:26px;
+      padding:16px 18px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px 28px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+      color:#d2d2d2;
+      font-size:.86rem;
+      font-weight:720;
+    }
+
+    .shop-reassurance span::first-letter{color:#ff655f}
+
+    @media (max-width:980px){
+      body{
+        padding-bottom:calc(76px + env(safe-area-inset-bottom));
+      }
+
+      .mobile-bottom-nav{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      #designs .gallery{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:18px;
+        overflow:visible;
+        padding:0;
+      }
+
+      #designs .design-card{
+        width:100%;
+        max-width:none;
+        flex:none;
+        scroll-snap-align:none;
+      }
+
+      #designs .design-card:hover{
+        transform:none;
+        box-shadow:0 10px 34px rgba(0,0,0,.18);
+      }
+
+      #designs .design-preview::after{
+        right:14px;
+        bottom:14px;
+        opacity:1;
+        transform:none;
+        background:rgba(0,0,0,.72);
+        backdrop-filter:blur(8px);
+      }
+
+      .shop-reassurance{
+        justify-content:flex-start;
+        gap:9px;
+      }
+
+      .shop-reassurance span{
+        width:100%;
+      }
+
+      /* Product selection behaves like a dedicated mobile product screen. */
+      .modal{
+        align-items:stretch;
+        padding:0;
+      }
+
+      .modal-card.design-config-modal{
+        width:100%;
+        height:100dvh;
+        max-height:100dvh;
+        border:0;
+        border-radius:0;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+        background:#111;
+      }
+
+      .design-color-preview{
+        flex:0 0 clamp(255px,36dvh,350px);
+        min-height:0;
+        height:auto;
+        padding:calc(64px + env(safe-area-inset-top)) 18px 14px;
+        border-bottom:1px solid var(--line);
+      }
+
+      .design-color-preview img{
+        max-width:94%;
+        max-height:94%;
+        width:auto;
+        height:auto;
+      }
+
+      .design-config-body{
+        position:relative;
+        flex:1 1 auto;
+        min-height:0;
+        overflow-y:auto;
+        overscroll-behavior:contain;
+        padding:22px 18px 0;
+        -webkit-overflow-scrolling:touch;
+      }
+
+      .design-config-body > .tag{
+        margin-top:0;
+      }
+
+      .design-config-body #modalTitle{
+        padding-right:48px;
+        font-size:clamp(1.85rem,8vw,2.35rem);
+        line-height:1.05;
+      }
+
+      .design-config-body > p{
+        max-width:42rem;
+        font-size:.96rem;
+        line-height:1.55;
+      }
+
+      .modal-close{
+        position:fixed;
+        top:calc(10px + env(safe-area-inset-top));
+        right:12px;
+        float:none;
+        width:auto;
+        min-width:92px;
+        height:48px;
+        padding:0 14px;
+        border-radius:999px;
+        z-index:2000;
+        background:rgba(10,10,10,.96);
+        border:1px solid rgba(255,255,255,.34);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
+        box-shadow:0 10px 30px rgba(0,0,0,.48);
+        gap:8px;
+        color:#fff;
+      }
+
+      .modal-close::before{
+        content:"Close";
+        font-size:.8rem;
+        font-weight:800;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+      }
+
+      .modal-close span{
+        font-size:1.55rem;
+        line-height:1;
+        transform:translateY(-1px);
+      }
+
+      .selection-summary-row{
+        margin-top:18px;
+      }
+
+      .garment-selector{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .garment-select-btn,
+      .color-option,
+      .size-select-btn{
+        min-height:48px;
+      }
+
+      .config-action-bar{
+        position:sticky;
+        bottom:0;
+        z-index:8;
+        margin-left:-18px;
+        margin-right:-18px;
+        padding:13px 18px calc(13px + env(safe-area-inset-bottom));
+        box-shadow:0 -18px 36px rgba(0,0,0,.30);
+      }
+
+      .config-action-bar .btn{
+        min-width:170px;
+        min-height:50px;
+      }
+    }
+
+    @media (max-width:720px){
+      .collection-shop-head{
+        display:block;
+        margin-bottom:22px;
+      }
+
+      .collection-shop-head h2{
+        font-size:clamp(2.25rem,11vw,3.3rem);
+        line-height:.98;
+      }
+
+      .collection-shop-head p{
+        margin-top:18px;
+        font-size:.95rem;
+      }
+
+      #designs .design-card{
+        border-radius:20px;
+      }
+
+      #designs .design-preview{
+        aspect-ratio:1 / .82;
+      }
+
+      #designs .card-body{
+        padding:19px 18px 21px;
+      }
+
+      #designs .card-body h3{
+        font-size:1.28rem;
+      }
+
+      #designs .card-body p{
+        font-size:.96rem;
+      }
+
+      .card-color-names{
+        font-size:.88rem;
+      }
+
+      .card-link{
+        min-height:44px;
+        padding-top:14px;
+        font-size:.94rem;
+      }
+
+      .shop-reassurance{
+        margin-top:20px;
+        padding:15px 16px;
+        font-size:.84rem;
+      }
+
+      .garment-selector{
+        grid-template-columns:1fr;
+      }
+
+      .garment-select-btn{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        text-align:left;
+      }
+
+      .selector-section{
+        padding-top:17px;
+        margin-top:17px;
+      }
+
+      .delivery-summary{
+        font-size:.82rem;
+      }
+    }
+
+    @media (max-width:430px){
+      .wrap{
+        width:min(calc(100% - 32px), var(--max));
+      }
+
+      #designs .gallery{gap:16px}
+
+      .design-color-preview{
+        flex-basis:clamp(255px,35dvh,325px);
+        padding-left:12px;
+        padding-right:12px;
+      }
+
+      .design-config-body{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .config-action-bar{
+        margin-left:-16px;
+        margin-right:-16px;
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .config-action-bar .btn{
+        min-width:0;
+        padding-left:15px;
+        padding-right:15px;
+        font-size:.84rem;
+      }
+    }
+
+    @media (max-width:360px){
+      .wrap{width:min(calc(100% - 24px), var(--max))}
+      #designs .card-body{padding:17px 15px 19px}
+      .design-color-preview{flex-basis:225px}
+      .selected-summary{font-size:.72rem}
+      .config-action-bar{gap:10px}
+      .config-action-bar strong{font-size:1.05rem}
+      .config-action-bar .btn{font-size:.77rem;padding:11px 12px}
+    }
+
+
+    /* 320px safety: prevent long custom CTA text from widening the page. */
+    @media (max-width:520px){
+      #custom .custom-copy{min-width:0}
+      #custom .custom-copy .btn{
+        width:100%;
+        white-space:normal;
+        justify-content:center;
+        text-align:center;
+        line-height:1.25;
+      }
+    }
+
+    /* ---------- V36 mobile-first hero polish ---------- */
+    .hero-headline-line:first-child{
+      letter-spacing:-.025em;
+    }
+
+    .hero-headline-line + .hero-headline-line{
+      margin-top:.06em;
+      letter-spacing:-.038em;
+    }
+
+    @media (max-width:720px){
+      .hero{
+        padding:30px 0 34px;
+      }
+
+      .hero-grid{
+        gap:20px;
+      }
+
+      .hero .eyebrow{
+        margin-bottom:12px;
+        font-size:.7rem;
+        letter-spacing:.16em;
+      }
+
+      .hero h1{
+        margin-bottom:16px;
+        font-size:clamp(2.75rem,13vw,4rem);
+        line-height:.92;
+      }
+
+      .hero-headline-line:first-child{
+        letter-spacing:-.015em;
+      }
+
+      .hero-headline-line + .hero-headline-line{
+        margin-top:.085em;
+        letter-spacing:-.028em;
+      }
+
+      .hero-copy{
+        max-width:35rem;
+        margin-bottom:20px;
+        font-size:.96rem;
+        line-height:1.52;
+      }
+
+      .hero-actions{
+        gap:9px;
+        margin-bottom:18px;
+      }
+
+      .hero-actions .btn{
+        min-height:50px;
+        border-radius:14px;
+        font-size:.92rem;
+        justify-content:center;
+      }
+
+      .hero-points{
+        display:flex;
+        gap:8px 12px;
+        margin:0;
+        font-size:.78rem;
+        line-height:1.25;
+      }
+
+      .hero-points > span{
+        display:inline-flex;
+        align-items:center;
+        min-height:30px;
+      }
+
+      .hero-points .check{
+        width:16px;
+        height:16px;
+        flex:0 0 16px;
+        margin-right:6px;
+        font-size:.64rem;
+      }
+
+      .showcase{
+        min-height:250px;
+        border-radius:22px;
+      }
+
+      .logo-stage{
+        inset:22px 14px 22px;
+      }
+
+      .official-logo{
+        width:min(290px,76%);
+        max-height:calc(100% - 4px);
+        object-fit:contain;
+        filter:drop-shadow(0 18px 28px rgba(0,0,0,.42));
+      }
+    }
+
+    @media (max-width:430px){
+      .hero{
+        padding-top:24px;
+        padding-bottom:28px;
+      }
+
+      .hero h1{
+        font-size:clamp(2.55rem,13.2vw,3.55rem);
+        margin-bottom:14px;
+      }
+
+      .hero-copy{
+        font-size:.92rem;
+        margin-bottom:18px;
+      }
+
+      .hero-actions .btn{
+        min-height:48px;
+      }
+
+      .hero-points{
+        display:flex;
+        gap:6px 11px;
+      }
+
+      .showcase{
+        min-height:225px;
+      }
+
+      .logo-stage{
+        inset:18px 12px 18px;
+      }
+
+      .official-logo{
+        width:min(250px,72%);
+        max-height:calc(100% - 2px);
+      }
+    }
+
+    @media (max-width:360px){
+      .hero h1{
+        font-size:clamp(2.3rem,12.7vw,3rem);
+      }
+
+      .hero-copy{
+        font-size:.88rem;
+      }
+
+      .hero-points{
+        font-size:.74rem;
+      }
+
+      .showcase{
+        min-height:210px;
+      }
+
+      .official-logo{
+        width:min(230px,70%);
+      }
+    }
+
+  
+    /* ===== REDESIGN FINAL: products first + simplified Timeless story ===== */
+    #designs{
+      padding-top:50px;
+      padding-bottom:62px;
+    }
+
+    #designs .collection-shop-head{
+      margin-bottom:28px;
+    }
+
+    #designs .collection-shop-head h2{
+      max-width:760px;
+    }
+
+    .timeless-combined-section{
+      padding-top:20px;
+      padding-bottom:54px;
+    }
+
+    .timeless-combined-shell{
+      padding:24px;
+    }
+
+    .timeless-lockup-copy p{
+      max-width:640px;
+    }
+
+    .timeless-lockup-copy p strong{
+      display:block;
+      margin-bottom:8px;
+      color:#fff;
+      font-weight:850;
+    }
+
+    @media (max-width:980px){
+      #designs{
+        padding-top:38px;
+        padding-bottom:46px;
+      }
+
+      #designs .collection-shop-head{
+        margin-bottom:22px;
+      }
+
+      .timeless-combined-section{
+        padding-top:4px;
+        padding-bottom:38px;
+      }
+
+      .timeless-combined-shell{
+        padding:18px;
+      }
+
+      .timeless-lockup-feature{
+        gap:18px;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs{
+        padding-top:30px;
+        padding-bottom:38px;
+      }
+
+      #designs .collection-shop-head h2{
+        font-size:clamp(2rem,10vw,2.85rem);
+        line-height:1;
+      }
+
+      .timeless-combined-section{
+        padding-top:0;
+        padding-bottom:32px;
+      }
+
+      .timeless-combined-shell{
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .timeless-lockup-feature{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .timeless-lockup{
+        min-height:188px;
+      }
+
+      .timeless-lockup-copy{
+        padding:4px 2px 8px;
+      }
+
+      .timeless-lockup-copy h3{
+        font-size:clamp(1.65rem,8vw,2.3rem);
+        line-height:1.02;
+      }
+
+      .timeless-lockup-copy p{
+        font-size:.96rem;
+        line-height:1.6;
+      }
+
+      .timeless-lockup-copy .btn{
+        width:100%;
+        min-height:50px;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs{
+        padding-top:26px;
+      }
+
+      .timeless-lockup{
+        min-height:170px;
+      }
+    }
+
+  
+    /* ===== Redesign V2: realistic hanging shirts ===== */
+    .selector-header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:11px;
+      flex-wrap:wrap;
+    }
+
+    .selector-header-row .selector-title{
+      margin-bottom:0;
+    }
+
+    .preview-mode-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px;
+      border-radius:999px;
+      background:#121212;
+      border:1px solid var(--line);
+    }
+
+    .preview-mode-btn{
+      min-height:34px;
+      padding:0 12px;
+      border:0;
+      border-radius:999px;
+      background:transparent;
+      color:#959595;
+      font-size:.72rem;
+      font-weight:900;
+      letter-spacing:.03em;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .preview-mode-btn.active{
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      box-shadow:0 0 0 1px rgba(255,255,255,.08) inset;
+    }
+
+    .preview-mode-btn:hover{
+      color:#fff;
+    }
+
+    .design-preview,
+    .design-color-preview{
+      background:
+        radial-gradient(circle at 76% 18%, rgba(228,58,53,.10), transparent 28%),
+        linear-gradient(180deg,#1b1d20 0%, #121315 58%, #0a0a0a 100%);
+    }
+
+    .shirt-scene{
+      position:relative;
+      width:min(100%,560px);
+      height:min(100%,100%);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:30px;
+      isolation:isolate;
+    }
+
+    .card-shirt-scene{
+      width:min(88%,440px);
+      height:100%;
+      min-height:285px;
+      padding-top:18px;
+    }
+
+    .modal-shirt-scene{
+      width:min(100%,760px);
+      min-height:min(100%,610px);
+      padding-top:26px;
+    }
+
+    .hanger-hook{
+      position:absolute;
+      top:0;
+      left:50%;
+      width:28px;
+      height:38px;
+      transform:translateX(-50%);
+      border:4px solid #0f0f10;
+      border-bottom:0;
+      border-left-color:transparent;
+      border-radius:18px 18px 0 0;
+      z-index:2;
+    }
+
+    .hanger-body{
+      position:absolute;
+      top:24px;
+      left:50%;
+      width:min(46%,190px);
+      height:54px;
+      transform:translateX(-50%);
+      border:4px solid #0f0f10;
+      border-top:0;
+      border-radius:0 0 140px 140px;
+      z-index:2;
+      opacity:.98;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.30));
+    }
+
+    .shirt-mockup{
+      --shirt-base:#151515;
+      --shirt-shadow:#090909;
+      --shirt-highlight:#2a2a2a;
+      --shirt-collar:#101010;
+      position:relative;
+      width:min(66%,340px);
+      aspect-ratio:.84;
+      margin-top:46px;
+      border-radius:22px 22px 16px 16px;
+      background:
+        linear-gradient(180deg,var(--shirt-highlight) 0%, var(--shirt-base) 20%, var(--shirt-base) 68%, var(--shirt-shadow) 100%);
+      box-shadow:
+        0 28px 36px rgba(0,0,0,.34),
+        0 10px 18px rgba(0,0,0,.18),
+        inset 0 1px 1px rgba(255,255,255,.20),
+        inset 0 -6px 14px rgba(0,0,0,.10);
+      z-index:3;
+      overflow:hidden;
+    }
+
+    .shirt-mockup::before,
+    .shirt-mockup::after{
+      content:"";
+      position:absolute;
+      top:42px;
+      width:39%;
+      height:30%;
+      background:
+        linear-gradient(180deg,var(--shirt-highlight) 0%, var(--shirt-base) 28%, var(--shirt-shadow) 100%);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.16),
+        0 10px 16px rgba(0,0,0,.10);
+      z-index:1;
+    }
+
+    .shirt-mockup::before{
+      left:-17%;
+      border-radius:22px 14px 18px 18px;
+      transform:rotate(34deg);
+      transform-origin:top right;
+    }
+
+    .shirt-mockup::after{
+      right:-17%;
+      border-radius:14px 22px 18px 18px;
+      transform:rotate(-34deg);
+      transform-origin:top left;
+    }
+
+    .shirt-neck{
+      position:absolute;
+      top:0;
+      left:50%;
+      width:33%;
+      height:78px;
+      transform:translateX(-50%);
+      background:linear-gradient(180deg,rgba(255,255,255,.22), rgba(255,255,255,.03));
+      clip-path:polygon(12% 0,88% 0,70% 58%,50% 88%,30% 58%);
+      opacity:.26;
+      z-index:4;
+    }
+
+    .shirt-collar{
+      position:absolute;
+      top:18px;
+      left:50%;
+      width:31%;
+      height:58px;
+      transform:translateX(-50%);
+      border-bottom-left-radius:55px 34px;
+      border-bottom-right-radius:55px 34px;
+      background:var(--shirt-collar);
+      box-shadow:
+        inset 0 2px 3px rgba(255,255,255,.18),
+        0 7px 10px rgba(0,0,0,.12);
+      z-index:5;
+    }
+
+    .shirt-collar::after{
+      content:"";
+      position:absolute;
+      inset:7px 7px auto;
+      height:40px;
+      border-bottom-left-radius:46px 28px;
+      border-bottom-right-radius:46px 28px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.16), rgba(255,255,255,.02));
+      opacity:.55;
+    }
+
+    .shirt-fold{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(92deg,rgba(255,255,255,.10), rgba(255,255,255,0) 17%),
+        linear-gradient(268deg,rgba(0,0,0,.10), rgba(0,0,0,0) 18%),
+        radial-gradient(ellipse at center 38%, rgba(255,255,255,.08), transparent 48%);
+      opacity:.65;
+      mix-blend-mode:soft-light;
+      z-index:3;
+      pointer-events:none;
+    }
+
+    .shirt-print{
+      position:absolute;
+      top:var(--print-top, 36%);
+      left:50%;
+      width:var(--print-width, 60%);
+      transform:translateX(-50%);
+      height:auto;
+      object-fit:contain;
+      z-index:6;
+      filter:
+        drop-shadow(0 7px 12px rgba(0,0,0,.16))
+        drop-shadow(0 1px 2px rgba(255,255,255,.08));
+    }
+
+    .shirt-print-wordmark{
+      filter:
+        drop-shadow(0 6px 10px rgba(0,0,0,.14))
+        drop-shadow(0 1px 2px rgba(255,255,255,.04));
+    }
+
+    .design-preview .shirt-mockup{
+      width:min(68%,290px);
+      margin-top:36px;
+    }
+
+    .design-preview .shirt-print{
+      max-width:none;
+    }
+
+    .design-color-preview.shirt-view{
+      background:
+        radial-gradient(circle at 72% 18%, rgba(228,58,53,.12), transparent 28%),
+        linear-gradient(180deg,#1c1d21 0%, #121316 60%, #0b0b0b 100%);
+    }
+
+    .design-color-preview.logo-view-light{
+      background:
+        linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:
+        radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%),
+        #0b0b0b !important;
+    }
+
+    .design-color-preview.logo-view-light img{
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.12));
+    }
+
+    .design-color-preview.logo-view-dark img{
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.35));
+    }
+
+    @media (max-width:980px){
+      .modal-shirt-scene{
+        min-height:360px;
+        padding-top:18px;
+      }
+
+      .design-color-preview.shirt-view{
+        padding-top:26px;
+      }
+
+      .shirt-mockup{
+        width:min(68%,320px);
+      }
+    }
+
+    @media (max-width:720px){
+      .selector-header-row{
+        align-items:flex-start;
+      }
+
+      .preview-mode-toggle{
+        width:100%;
+        justify-content:space-between;
+      }
+
+      .preview-mode-btn{
+        flex:1 1 0;
+        min-height:38px;
+      }
+
+      .card-shirt-scene{
+        width:min(92%,360px);
+        min-height:250px;
+        padding-top:14px;
+      }
+
+      .design-preview .shirt-mockup{
+        width:min(72%,250px);
+        margin-top:30px;
+      }
+
+      .design-color-preview.shirt-view{
+        padding-top:calc(72px + env(safe-area-inset-top));
+      }
+
+      .modal-shirt-scene{
+        min-height:310px;
+        padding-top:0;
+      }
+
+      .modal-shirt-scene .shirt-mockup{
+        width:min(78%,280px);
+        margin-top:28px;
+      }
+
+      .modal-shirt-scene .hanger-body{
+        width:min(52%,170px);
+      }
+    }
+
+    @media (max-width:430px){
+      .design-preview .shirt-mockup{
+        width:min(74%,232px);
+      }
+
+      .card-shirt-scene{
+        min-height:232px;
+      }
+
+      .modal-shirt-scene .shirt-mockup{
+        width:min(82%,252px);
+      }
+    }
+
+  
+    /* ===== Redesign V3: improved realistic hanging shirt mockups ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,.06), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(228,58,53,.08), transparent 24%),
+        linear-gradient(180deg,#1d1f22 0%, #141518 58%, #0d0d0f 100%) !important;
+    }
+
+    .photo-shirt-wrap{
+      position:relative;
+      width:min(92%, 520px);
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+    }
+
+    .photo-shirt-wrap svg{
+      width:100%;
+      height:auto;
+      display:block;
+      overflow:visible;
+      filter:drop-shadow(0 26px 30px rgba(0,0,0,.24));
+    }
+
+    .card-photo-wrap{
+      width:min(82%, 410px);
+      transform:translateY(6px);
+    }
+
+    .modal-photo-wrap{
+      width:min(100%, 720px);
+      transform:translateY(4px);
+    }
+
+    .logo-view-stage{
+      width:min(92%, 760px);
+      min-height:min(100%, 520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%, 760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%, 420px);
+      max-height:78%;
+    }
+
+    @media (max-width:980px){
+      .modal-photo-wrap{
+        width:min(100%, 620px);
+      }
+    }
+
+    @media (max-width:720px){
+      .card-photo-wrap{
+        width:min(86%, 340px);
+      }
+
+      .modal-photo-wrap{
+        width:min(100%, 420px);
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+  
+    /* ===== Redesign V4: real mockup overrides ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:none !important;
+    }
+
+    .design-preview{
+      min-height:380px;
+    }
+
+    .real-shirt-stage{
+      position:relative;
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .card-real-shirt{
+      min-height:380px;
+      padding:0;
+    }
+
+    .modal-real-shirt{
+      width:min(100%, 920px);
+      min-height:min(100%, 640px);
+      margin:0 auto;
+      padding:0;
+    }
+
+    .real-shirt-base{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .real-shirt-art{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      height:auto;
+      z-index:2;
+      filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));
+      pointer-events:none;
+    }
+
+    .real-shirt-art-skyrockets{
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.26));
+    }
+
+    .real-shirt-art-heritage{
+      filter:drop-shadow(0 7px 14px rgba(0,0,0,.14));
+    }
+
+    .real-shirt-art-wordmark{
+      filter:drop-shadow(0 7px 14px rgba(0,0,0,.16));
+    }
+
+    .logo-view-stage{
+      width:min(92%,760px);
+      min-height:min(100%,520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%,760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+      padding:18px;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%,420px);
+      max-height:78%;
+    }
+
+    .design-color-preview.logo-view-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), #0b0b0b !important;
+    }
+
+    @media (max-width:980px){
+      .design-preview{
+        min-height:340px;
+      }
+
+      .card-real-shirt{
+        min-height:340px;
+      }
+
+      .modal-real-shirt{
+        width:min(100%, 640px);
+        min-height:500px;
+      }
+    }
+
+    @media (max-width:720px){
+      .design-preview{
+        min-height:300px;
+      }
+
+      .card-real-shirt{
+        min-height:300px;
+      }
+
+      .modal-real-shirt{
+        width:min(100%, 430px);
+        min-height:360px;
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      .design-preview{
+        min-height:272px;
+      }
+
+      .card-real-shirt{
+        min-height:272px;
+      }
+
+      .modal-real-shirt{
+        min-height:330px;
+      }
+    }
+
+  
+    /* ===== Redesign V5: static real mockup image switching ===== */
+    .design-preview,
+    .design-color-preview.shirt-view{
+      background:none !important;
+    }
+
+    .static-shirt-stage{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card-static-shirt{
+      min-height:380px;
+    }
+
+    .modal-static-shirt{
+      min-height:560px;
+      padding:0;
+    }
+
+    .static-shirt-img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      border-radius:22px;
+      user-select:none;
+      -webkit-user-drag:none;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    .logo-view-stage{
+      width:min(92%,760px);
+      min-height:min(100%,520px);
+      display:grid;
+      place-items:center;
+      margin:0 auto;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .logo-view-stage img{
+      width:min(100%,760px);
+      max-height:calc(86vh - 120px);
+      object-fit:contain;
+      display:block;
+    }
+
+    .design-preview .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      border-radius:0;
+      padding:18px;
+    }
+
+    .design-preview .logo-view-stage img{
+      width:min(88%,420px);
+      max-height:78%;
+    }
+
+    .design-color-preview.logo-view-light{
+      background:linear-gradient(180deg,#fbfaf8 0%, #f2efea 100%) !important;
+    }
+
+    .design-color-preview.logo-view-dark{
+      background:radial-gradient(circle at 76% 20%, rgba(228,58,53,.10), transparent 30%), #0b0b0b !important;
+    }
+
+    @media (max-width:980px){
+      .card-static-shirt{
+        min-height:340px;
+      }
+
+      .modal-static-shirt{
+        min-height:460px;
+      }
+    }
+
+    @media (max-width:720px){
+      .card-static-shirt{
+        min-height:300px;
+      }
+
+      .modal-static-shirt{
+        min-height:340px;
+      }
+
+      .logo-view-stage{
+        min-height:280px;
+        padding:18px 16px;
+      }
+
+      .logo-view-stage img{
+        max-height:38dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      .card-static-shirt{
+        min-height:272px;
+      }
+
+      .modal-static-shirt{
+        min-height:300px;
+      }
+    }
+
+  
+    /* ===== Redesign V6 fixes: initialize shirt cards, working logo view, larger mobile shirt cards ===== */
+    #designs .design-preview{
+      min-height:420px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      background:none !important;
+    }
+
+    #designs .card-static-shirt{
+      min-height:420px;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    #designs .card-static-shirt .static-shirt-img{
+      width:112%;
+      max-width:none;
+      transform:translateY(4px);
+      box-shadow:none;
+    }
+
+    .modal-static-shirt{
+      min-height:580px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .modal-static-shirt .static-shirt-img{
+      width:100%;
+      max-width:900px;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    .design-color-preview.logo-view-light,
+    .design-color-preview.logo-view-dark{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo-view-stage{
+      width:100%;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .logo-view-stage img{
+      width:min(92%, 760px);
+      max-height:76vh;
+      object-fit:contain;
+      display:block;
+      margin:0 auto;
+    }
+
+    @media (max-width:980px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:370px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:116%;
+      }
+
+      .modal-static-shirt{
+        min-height:470px;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:340px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:126%;
+        transform:translateY(8px);
+      }
+
+      .modal-static-shirt{
+        min-height:360px;
+      }
+
+      .logo-view-stage{
+        padding:16px;
+      }
+
+      .logo-view-stage img{
+        width:min(96%, 520px);
+        max-height:42dvh;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs .design-preview,
+      #designs .card-static-shirt{
+        min-height:320px;
+      }
+
+      #designs .card-static-shirt .static-shirt-img{
+        width:132%;
+        transform:translateY(10px);
+      }
+
+      .modal-static-shirt{
+        min-height:320px;
+      }
+    }
+
+  
+    /* ===== Redesign V7 — clean static mockup implementation ===== */
+    #designs .design-preview{
+      aspect-ratio:4 / 4.5 !important;
+      min-height:0 !important;
+      padding:0 !important;
+      overflow:hidden;
+      background:#111 !important;
+      display:block !important;
+    }
+
+    #designs .design-preview::after{
+      z-index:3;
+    }
+
+    #designs .design-preview .card-mockup-image{
+      width:100% !important;
+      height:100% !important;
+      max-width:none !important;
+      max-height:none !important;
+      object-fit:cover !important;
+      object-position:center center;
+      display:block;
+      filter:none !important;
+      transform:none !important;
+    }
+
+    .final-shirt-preview,
+    .final-logo-preview{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .final-shirt-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+    }
+
+    .design-color-preview.logo-view{
+      padding:34px !important;
+    }
+
+    .final-logo-preview img{
+      width:min(92%,820px) !important;
+      height:auto !important;
+      max-height:calc(86vh - 100px) !important;
+      object-fit:contain !important;
+      display:block;
+      filter:none !important;
+    }
+
+    .preview-mode-btn{
+      position:relative;
+      z-index:8;
+    }
+
+    @media (max-width:980px){
+      #designs .design-preview{
+        aspect-ratio:4 / 4.65 !important;
+      }
+
+      .final-shirt-preview img{
+        max-height:100%;
+      }
+    }
+
+    @media (max-width:720px){
+      #designs .gallery{
+        gap:20px;
+      }
+
+      #designs .design-preview{
+        aspect-ratio:4 / 5 !important;
+      }
+
+      #designs .design-preview .card-mockup-image{
+        width:112% !important;
+        height:112% !important;
+        margin-left:-6%;
+        margin-top:-4%;
+        object-fit:cover !important;
+      }
+
+      .design-color-preview.logo-view{
+        min-height:340px !important;
+        padding:calc(68px + env(safe-area-inset-top)) 16px 18px !important;
+      }
+
+      .final-logo-preview img{
+        width:min(98%,560px) !important;
+        max-height:38dvh !important;
+      }
+    }
+
+    @media (max-width:430px){
+      #designs .design-preview{
+        aspect-ratio:4 / 5.15 !important;
+      }
+
+      #designs .design-preview .card-mockup-image{
+        width:118% !important;
+        height:118% !important;
+        margin-left:-9%;
+        margin-top:-7%;
+      }
+    }
+
+  
+    /* ===== Rocket Print Sandbox Cart + Checkout ===== */
+    .cart-trigger{
+      border:0;
+      position:relative;
+    }
+
+    .cart-count{
+      min-width:22px;
+      height:22px;
+      display:inline-grid;
+      place-items:center;
+      padding:0 6px;
+      border-radius:999px;
+      background:#fff;
+      color:#111;
+      font-size:.72rem;
+      font-weight:950;
+      line-height:1;
+    }
+
+    #mobileCartCount{
+      display:inline;
+      color:#ff716c;
+      font-size:.68rem;
+    }
+
+    .cart-overlay,
+    .checkout-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1500;
+      display:none;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(9px);
+      -webkit-backdrop-filter:blur(9px);
+    }
+
+    .cart-overlay.open,
+    .checkout-overlay.open{
+      display:flex;
+    }
+
+    .cart-overlay{
+      justify-content:flex-end;
+    }
+
+    .cart-drawer{
+      width:min(460px,100%);
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      background:#0e0e0e;
+      border-left:1px solid var(--line-strong);
+      box-shadow:-30px 0 80px rgba(0,0,0,.45);
+    }
+
+    .cart-head,
+    .checkout-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      background:#111;
+    }
+
+    .cart-head h2,
+    .checkout-head h2{
+      margin:0;
+      font-size:1.35rem;
+      letter-spacing:-.03em;
+    }
+
+    .checkout-head-main{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      min-width:0;
+    }
+
+    .checkout-shield{
+      flex:0 0 42px;
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(120,211,145,.24);
+      border-radius:12px;
+      background:rgba(78,186,108,.10);
+      color:#8ad59d;
+    }
+
+    .checkout-head-security{
+      margin-top:4px;
+      color:#8f8f8f;
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+
+    .checkout-section-heading{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .checkout-section-heading h3{
+      margin:0;
+    }
+
+    .checkout-section-heading > span{
+      color:#777;
+      font-size:.69rem;
+      line-height:1.4;
+      text-align:right;
+    }
+
+    .field-help{
+      color:#777;
+      font-weight:650;
+      letter-spacing:0;
+    }
+
+    .icon-close{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line-strong);
+      border-radius:50%;
+      background:#171717;
+      color:#fff;
+      cursor:pointer;
+      font-size:1.35rem;
+    }
+
+    .cart-items{
+      flex:1 1 auto;
+      overflow:auto;
+      padding:18px 20px;
+    }
+
+    .cart-empty{
+      min-height:300px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      padding:32px;
+    }
+
+    .cart-item{
+      display:grid;
+      grid-template-columns:82px minmax(0,1fr);
+      gap:14px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-item img{
+      width:82px;
+      height:96px;
+      object-fit:cover;
+      border-radius:12px;
+      background:#171717;
+    }
+
+    .cart-item-title{
+      margin:0 0 5px;
+      font-size:.96rem;
+      font-weight:900;
+    }
+
+    .cart-item-meta{
+      color:#a9a9a9;
+      font-size:.78rem;
+      line-height:1.5;
+    }
+
+    .cart-item-row{
+      margin-top:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .qty-control{
+      display:inline-flex;
+      align-items:center;
+      border:1px solid var(--line-strong);
+      border-radius:10px;
+      overflow:hidden;
+      background:#141414;
+    }
+
+    .qty-control button{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    .qty-control span{
+      min-width:32px;
+      text-align:center;
+      font-size:.84rem;
+      font-weight:850;
+    }
+
+    .remove-item{
+      border:0;
+      background:transparent;
+      color:#ff726d;
+      cursor:pointer;
+      font-size:.77rem;
+      font-weight:800;
+      padding:7px 0;
+    }
+
+    .cart-foot{
+      padding:20px;
+      border-top:1px solid var(--line);
+      background:#111;
+    }
+
+    .cart-estimate-row,
+    .quote-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:5px 0;
+      color:#c7c7c7;
+      font-size:.88rem;
+    }
+
+    .cart-estimate-row strong,
+    .quote-row strong{
+      color:#fff;
+    }
+
+    .cart-note{
+      margin:9px 0 16px;
+      color:#818181;
+      font-size:.75rem;
+      line-height:1.45;
+    }
+
+    .cart-foot .btn{
+      width:100%;
+    }
+
+    .checkout-overlay{
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      overflow:auto;
+    }
+
+    .checkout-shell{
+      width:min(1120px,100%);
+      max-height:min(94vh,940px);
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      border:1px solid var(--line-strong);
+      border-radius:24px;
+      background:#0f0f0f;
+      box-shadow:0 35px 110px rgba(0,0,0,.62);
+    }
+
+    .checkout-body{
+      overflow:auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);
+      gap:0;
+    }
+
+    .checkout-form-pane{
+      padding:26px;
+      border-right:1px solid var(--line);
+    }
+
+    .checkout-summary-pane{
+      padding:26px;
+      background:#121212;
+    }
+
+    @media (min-width:981px){
+      .checkout-summary-pane{
+        position:sticky;
+        top:0;
+        align-self:start;
+        min-height:100%;
+      }
+    }
+
+    .checkout-section{
+      margin-bottom:26px;
+    }
+
+    .checkout-section h3{
+      margin:0 0 14px;
+      font-size:1.02rem;
+      letter-spacing:-.015em;
+    }
+
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .field-span-2{
+      grid-column:1 / -1;
+    }
+
+    .checkout-field{
+      display:grid;
+      gap:7px;
+    }
+
+    .checkout-field label{
+      color:#cfcfcf;
+      font-size:.76rem;
+      font-weight:850;
+      letter-spacing:.03em;
+    }
+
+    .checkout-field input,
+    .checkout-field textarea,
+    .checkout-field select{
+      width:100%;
+      min-height:48px;
+      padding:11px 13px;
+      border:1px solid var(--line-strong);
+      border-radius:11px;
+      background:#151515;
+      color:#fff;
+      outline:none;
+    }
+
+    .checkout-field textarea{
+      min-height:82px;
+      resize:vertical;
+    }
+
+    .checkout-field input:focus,
+    .checkout-field textarea:focus,
+    .checkout-field select:focus{
+      border-color:rgba(255,76,70,.68);
+      box-shadow:0 0 0 3px rgba(228,58,53,.10);
+    }
+
+    .fulfillment-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .fulfillment-option{
+      position:relative;
+      display:block;
+      min-height:88px;
+      padding:15px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#141414;
+      cursor:pointer;
+    }
+
+    .fulfillment-option input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .fulfillment-option strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:.92rem;
+    }
+
+    .fulfillment-option span{
+      color:#8f8f8f;
+      font-size:.75rem;
+      line-height:1.4;
+    }
+
+    .fulfillment-option.selected{
+      border-color:rgba(255,76,70,.68);
+      background:rgba(228,58,53,.09);
+      box-shadow:0 0 0 2px rgba(228,58,53,.07);
+    }
+
+    .fulfillment-option.disabled{
+      opacity:.42;
+      cursor:not-allowed;
+    }
+
+    .local-eligibility-note{
+      margin-top:9px;
+      color:#8b8b8b;
+      font-size:.76rem;
+      line-height:1.45;
+    }
+
+    .quote-card{
+      padding:18px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:15px;
+      background:#0e0e0e;
+      box-shadow:0 12px 34px rgba(0,0,0,.16);
+    }
+
+    .quote-row.total{
+      margin-top:8px;
+      padding-top:13px;
+      border-top:1px solid var(--line-strong);
+      font-size:1.02rem;
+      font-weight:900;
+    }
+
+    .quote-row.total strong{
+      color:#ff5b55;
+      font-size:1.22rem;
+    }
+
+    .checkout-cart-mini{
+      margin-bottom:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .checkout-mini-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:#c9c9c9;
+      font-size:.79rem;
+      line-height:1.4;
+    }
+
+    .checkout-mini-item strong{
+      color:#fff;
+      white-space:nowrap;
+    }
+
+    .server-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:12px;
+      color:#8d8d8d;
+      font-size:.72rem;
+      font-weight:750;
+    }
+
+    .server-badge::before{
+      content:"✓";
+      width:17px;
+      height:17px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(228,58,53,.16);
+      color:#ff716c;
+      font-size:.68rem;
+    }
+
+    .checkout-primary{
+      width:100%;
+      margin-top:16px;
+    }
+
+    .secure-continue-btn{
+      min-height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      font-size:.9rem;
+      letter-spacing:.01em;
+    }
+
+    .paypal-button-mark{
+      display:block;
+      width:24px;
+      height:24px;
+      object-fit:contain;
+      flex:0 0 24px;
+    }
+
+    .checkout-button-note{
+      margin-top:9px;
+      color:#767676;
+      font-size:.66rem;
+      line-height:1.45;
+      text-align:center;
+    }
+
+    .turnstile-wrap{
+      width:100%;
+      min-height:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    #turnstileCheckout{
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
+
+    #turnstileCheckout iframe{
+      max-width:100%;
+    }
+
+    .payment-panel{
+      display:none;
+      margin-top:22px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+    }
+
+    .payment-panel.visible{
+      display:block;
+    }
+
+    .payment-panel{
+      border-top-color:rgba(255,255,255,.11);
+    }
+
+    .payment-panel-head{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      margin-bottom:16px;
+    }
+
+    .payment-shield{
+      flex-basis:36px;
+      width:36px;
+      height:36px;
+      border-radius:10px;
+    }
+
+    .payment-label{
+      margin-bottom:4px;
+      color:#fff;
+      font-size:.9rem;
+      font-weight:900;
+    }
+
+    .payment-security-copy{
+      max-width:460px;
+      color:#8c8c8c;
+      font-size:.7rem;
+      line-height:1.5;
+    }
+
+    .wallet-grid{
+      display:grid;
+      gap:10px;
+    }
+
+    .wallet-slot:empty{
+      display:none;
+    }
+
+    #applePayContainer apple-pay-button{
+      --apple-pay-button-width:100%;
+      --apple-pay-button-height:50px;
+      --apple-pay-button-border-radius:10px;
+      --apple-pay-button-padding:0px 0px;
+      width:100%;
+      height:50px;
+    }
+
+    #googlePayContainer > div,
+    #googlePayContainer button{
+      width:100% !important;
+      max-width:none !important;
+    }
+
+    .pay-divider{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:18px 0;
+      color:#777;
+      font-size:.72rem;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .pay-divider::before,
+    .pay-divider::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background:var(--line);
+    }
+
+    .secure-card-box{
+      padding:16px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:15px;
+      background:#151515;
+      box-shadow:0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .secure-card-head{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .secure-lock{
+      flex:0 0 34px;
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:rgba(228,58,53,.13);
+      color:#ff716c;
+      font-size:1rem;
+    }
+
+    .secure-card-head strong{
+      display:block;
+      color:#fff;
+      font-size:.9rem;
+      margin-bottom:3px;
+    }
+
+    .secure-card-head span{
+      display:block;
+      color:#929292;
+      font-size:.72rem;
+      line-height:1.45;
+    }
+
+    .card-fields{
+      display:grid;
+      gap:10px;
+    }
+
+    .card-field-group{
+      display:grid;
+      gap:6px;
+    }
+
+    .card-field-label{
+      color:#d7d7d7;
+      font-size:.72rem;
+      font-weight:850;
+      letter-spacing:.02em;
+    }
+
+    .card-field-shell{
+      height:50px;
+      min-height:50px;
+      max-height:50px;
+      overflow:hidden;
+      border:1px solid #cfcfcf;
+      border-radius:10px;
+      background:#fff;
+      box-shadow:inset 0 1px 2px rgba(0,0,0,.05);
+    }
+
+    .card-field-shell > *,
+    .card-field-shell iframe{
+      display:block !important;
+      width:100% !important;
+      height:50px !important;
+      min-height:50px !important;
+      max-height:50px !important;
+      border:0 !important;
+    }
+
+    .card-field-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .billing-zip{
+      margin-top:10px;
+    }
+
+    .payment-trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px 14px;
+      margin-top:12px;
+      color:#858585;
+      font-size:.68rem;
+      font-weight:750;
+    }
+
+    .payment-trust-row span{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+    }
+
+    .payment-trust-row span::before{
+      content:"✓";
+      color:#75c98d;
+      font-weight:950;
+    }
+
+    .payment-status{
+      min-height:22px;
+      margin-top:12px;
+      color:#bdbdbd;
+      font-size:.78rem;
+      line-height:1.45;
+    }
+
+    .payment-status.error{
+      color:#ff7c76;
+    }
+
+    .payment-status.success{
+      color:#83d69a;
+    }
+
+    .quote-updating{
+      opacity:.62;
+    }
+
+    .sandbox-banner{
+      margin-bottom:18px;
+      padding:10px 12px;
+      border:1px solid rgba(255,188,76,.26);
+      border-radius:10px;
+      background:rgba(255,188,76,.08);
+      color:#e5c780;
+      font-size:.75rem;
+      line-height:1.45;
+    }
+
+    .checkout-success{
+      display:none;
+      text-align:center;
+      padding:32px 10px 10px;
+    }
+
+    .checkout-success.visible{
+      display:block;
+    }
+
+    .success-mark{
+      width:64px;
+      height:64px;
+      display:grid;
+      place-items:center;
+      margin:0 auto 18px;
+      border-radius:50%;
+      background:rgba(78,186,108,.16);
+      color:#8ad59d;
+      font-size:1.8rem;
+      font-weight:900;
+    }
+
+    .checkout-success h3{
+      margin:0 0 8px;
+      font-size:1.8rem;
+    }
+
+    .checkout-success p{
+      color:var(--muted);
+    }
+
+    .success-order-number{
+      display:inline-block;
+      margin:10px 0 18px;
+      padding:10px 14px;
+      border-radius:10px;
+      background:#191919;
+      border:1px solid var(--line);
+      font-weight:950;
+      letter-spacing:.04em;
+    }
+
+    .is-busy{
+      opacity:.62;
+      pointer-events:none;
+    }
+
+    @media (max-width:980px){
+      .mobile-bottom-nav{
+        grid-template-columns:repeat(4,1fr);
+      }
+
+      .checkout-overlay{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .checkout-shell{
+        width:100%;
+        max-height:100dvh;
+        height:100dvh;
+        border:0;
+        border-radius:0;
+      }
+
+      .checkout-body{
+        grid-template-columns:1fr;
+      }
+
+      .checkout-form-pane{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+    }
+
+    @media (max-width:620px){
+      .checkout-section-heading{
+        display:block;
+      }
+
+      .checkout-section-heading > span{
+        display:block;
+        margin-top:4px;
+        text-align:left;
+      }
+
+      .checkout-head-security{
+        max-width:245px;
+        line-height:1.4;
+      }
+
+      .field-grid,
+      .fulfillment-grid,
+      .card-field-row{
+        grid-template-columns:1fr;
+      }
+
+      .field-span-2{
+        grid-column:auto;
+      }
+
+      .cart-drawer{
+        width:100%;
+      }
+
+      .checkout-head,
+      .cart-head{
+        padding:17px 18px;
+      }
+
+      .checkout-form-pane,
+      .checkout-summary-pane{
+        padding:20px 16px;
+      }
+    }
+
+
+
+    .stripe-sandbox-banner{
+      margin:14px 0;
+      padding:10px 12px;
+      border:1px solid rgba(255,193,7,.45);
+      border-radius:10px;
+      background:rgba(255,193,7,.1);
+      color:#ffd76a;
+      font-size:.74rem;
+      font-weight:850;
+      letter-spacing:.055em;
+      line-height:1.45;
+      text-align:center;
+    }
+
+    .stripe-checkout-shell{
+      margin-top:12px;
+      min-height:520px;
+      overflow:hidden;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 10px 30px rgba(0,0,0,.16);
+    }
+
+    #stripeCheckoutMount{
+      min-height:520px;
+      width:100%;
+    }
+
+    .stripe-trust-row{
+      margin-top:14px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="announcement desktop-announcement">
+    <span><b>Timeless Collection:</b> three Wellington heritage designs are now featured on RocketPrintTX.com.</span>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="Rocket Print home">
+        <img class="brand-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#designs">Shop</a>
+        <a href="#custom">Custom</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn btn-primary cart-trigger" id="cartTrigger" aria-label="Open shopping cart">
+          Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-announcement" role="status" aria-label="Timeless Collection announcement">
+    <strong>Timeless Collection</strong>
+    <span>3 Wellington heritage designs now featured</span>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <div class="wrap">
+      <a href="#designs">Shop Timeless</a>
+      <a href="#custom">Custom Printing</a>
+      <a href="#about">About Rocket Print</a>
+    </div>
+  </nav>
+
+
+  <div class="mobile-scrim" id="mobileScrim" aria-hidden="true"></div>
+
+  <nav class="mobile-bottom-nav" aria-label="Quick navigation">
+    <a href="#designs">
+      <span class="mobile-nav-icon">◆</span>
+      <span>Shop</span>
+    </a>
+    <a href="#custom">
+      <span class="mobile-nav-icon">＋</span>
+      <span>Custom</span>
+    </a>
+    <a href="#about">
+      <span class="mobile-nav-icon">◎</span>
+      <span>About</span>
+    </a>
+    <a href="#cart" id="mobileCartTrigger" role="button" aria-label="Open cart">
+      <span class="mobile-nav-icon">▣</span>
+      <span>Cart <b id="mobileCartCount">0</b></span>
+    </a>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Wellington, Texas</div>
+          <h1>
+            <span class="hero-headline-line">LOCAL DESIGNS.</span>
+            <span class="hero-headline-line hero-red">PREMIUM APPAREL.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Premium local apparel inspired by Wellington and made for everyday wear.
+            Shop the <strong>Timeless Collection</strong> or bring us an idea for a custom project.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#designs" class="btn btn-primary">Shop Timeless Collection</a>
+            <a href="#custom" class="btn btn-secondary">Custom Printing</a>
+          </div>
+
+          <div class="hero-points">
+            <span><i class="check">✓</i> Wellington inspired</span>
+            <span><i class="check">✓</i> Adult, youth &amp; toddler</span>
+            <span><i class="check">✓</i> Custom printing</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="designs">
+      <div class="wrap">
+        <div class="section-head collection-shop-head">
+          <div>
+            <div class="eyebrow">The Timeless Collection</div>
+            <h2>Shop the collection.</h2>
+          </div>
+        </div>
+
+        <div class="gallery" id="gallery">
+
+<article class="design-card" tabindex="0"
+            data-category="timeless school wellington"
+            data-title="Skyrockets Signature"
+            data-tag="Timeless Collection"
+            data-description="Our first Wellington Skyrockets design is a timeless, premium wordmark built to stay relevant year after year."
+            data-design-type="image"
+            data-image="assets/wellington-skyrockets-design.png"
+            data-product="true"
+            data-price="From $19.99"
+            data-colors="Black|Sport Grey"
+            data-default-color="Black"
+            data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
+            data-youth-tee-sizes="XS–XL|$19.99"
+            data-toddler-tee-sizes="2T–6T|$19.99"
+>
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/skyrockets-black.png" alt="Skyrockets Signature on black T-shirt" loading="eager" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Timeless Collection</span>
+                  <h3>Skyrockets Signature</h3>
+                </div>
+                
+              </div>
+              <p>Classic Wellington spirit. Clean enough for every day.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#111111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
+<article class="design-card" tabindex="0"
+            data-category="timeless local wellington"
+            data-preview-surface="light"
+            data-title="Wellington Heritage"
+            data-tag="Timeless Collection"
+            data-description="An elegant script-based Wellington heritage design with a refined boutique feel. Part of the Timeless Collection celebrating Wellington."
+            data-design-type="image"
+            data-image="assets/timeless-wellington-script.png"
+            data-product="true"
+            data-price="From $19.99"
+            data-colors="White|Sport Grey"
+            data-default-color="White"
+            data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
+            data-youth-tee-sizes="XS–XL|$19.99"
+            data-toddler-tee-sizes="2T–6T|$19.99"
+>
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/heritage-white.png" alt="Wellington Heritage on white T-shirt" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Timeless Collection</span>
+                  <h3>Wellington Heritage</h3>
+                </div>
+                
+              </div>
+              <p>An elevated script inspired by Wellington’s roots.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
+<article class="design-card" tabindex="0"
+            data-category="timeless local wellington"
+            data-preview-surface="light"
+            data-title="Wellington Heritage Wordmark"
+            data-tag="Timeless Collection"
+            data-description="A clean black wordmark design built around Wellington and Skyrockets pride. Part of the Timeless Collection celebrating Wellington heritage."
+            data-design-type="image"
+            data-image="assets/timeless-wellington-wordmark.png"
+            data-product="true"
+            data-price="From $19.99"
+            data-colors="White|Sport Grey"
+            data-default-color="White"
+            data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
+            data-youth-tee-sizes="XS–XL|$19.99"
+            data-toddler-tee-sizes="2T–6T|$19.99"
+>
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/wordmark-white.png" alt="Wellington Heritage Wordmark on white T-shirt" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <div>
+                  <span class="tag">Timeless Collection</span>
+                  <h3>Wellington Heritage Wordmark</h3>
+                </div>
+                
+              </div>
+              <p>Minimal, timeless, unmistakably Wellington.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
+              <div class="card-link">View colors &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="shop-reassurance" aria-label="Ordering information">
+          <span>✓ Free Wellington local drop-off</span>
+          <span>✓ Shipping: $12 for 1–2 shirts • $16 for 3+</span>
+          <span>✓ Adult, Youth &amp; Toddler sizes</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections timeless-combined-section" id="collections" aria-labelledby="debutCollectionTitle">
+      <div class="wrap">
+        <div class="timeless-combined-shell">
+          <div class="timeless-lockup-feature">
+            <div class="timeless-lockup">
+              <span class="timeless-overline">Rocket Print presents</span>
+              <strong>TIMELESS</strong>
+              <span class="timeless-location">WELLINGTON, TEXAS</span>
+            </div>
+
+            <div class="timeless-lockup-copy">
+              <div class="eyebrow">Debut Collection</div>
+              <h3 id="debutCollectionTitle">Wellington heritage, made wearable.</h3>
+              <p>
+                <strong>Made for Wellington. Designed to last.</strong>
+                Rooted in Wellington heritage, the Timeless Collection pairs clean, premium typography
+                with everyday pieces made for the game, around town, and anywhere else.
+              </p>
+              <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="custom">
+      <div class="wrap">
+        <div class="custom-box">
+          <div class="custom-copy">
+            <div class="eyebrow">Custom Printing</div>
+            <h2>Bring the idea. We’ll help build the shirt.</h2>
+            <p>
+              Need something unique? Rocket Print can help with apparel for schools,
+              businesses, teams, reunions, fundraisers, events, and personal projects.
+              Start with a logo, a sketch, an inspiration photo, or just an idea.
+            </p>
+            <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Custom Request Form Coming Soon</a>
+          </div>
+
+          <div class="service-grid">
+            <div class="service">Schools & Teams</div>
+            <div class="service">Businesses</div>
+            <div class="service">Events & Groups</div>
+            <div class="service">Family Reunions</div>
+            <div class="service">Boutique Designs</div>
+            <div class="service">Logo Apparel</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap split">
+        <div class="local-card" aria-label="Downtown Wellington, Texas">
+          <div class="about-place">
+            <strong>WELLINGTON<br><span class="hero-red">TEXAS</span></strong>
+            <span class="pride">Small town. Big pride.</span>
+          </div>
+        </div>
+
+        <div class="split-copy">
+          <div class="eyebrow">About Rocket Print</div>
+          <h2>Rooted in Wellington. Made to stand out.</h2>
+          <p>
+            Rocket Print is a Wellington, Texas apparel and custom printing company built for the people,
+            schools, teams, businesses, and events that make small towns feel like home. We focus on clean,
+            wearable design and quality T-shirts for local collections and custom projects.
+          </p>
+          <p>
+            Our goal is simple: make local apparel feel premium, timeless, and worth wearing long after the
+            event, season, or game is over. Small town. Big pride.
+          </p>
+          <a href="#designs" class="btn btn-secondary">Explore the Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    
+    
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2>Good to know.</h2>
+          </div>
+          <p>
+            A few helpful details about ordering, garment care, artwork, and custom projects.
+          </p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>How long does an order usually take?</summary>
+            <p>Most orders are ready in about two weeks. Turnaround can take longer depending on the garment, quantity, availability, and whether the artwork is already print-ready. We confirm the expected timeline before your order is finalized.</p>
+          </details>
+
+          <details>
+            <summary>How should I wash printed apparel?</summary>
+            <p>For the best life of the print, wash garments inside out in cold water with mild detergent. Avoid bleach and fabric softener, and tumble dry low or hang dry when possible. Do not iron directly over the printed design.</p>
+          </details>
+
+          <details>
+            <summary>Do you have a minimum order?</summary>
+            <p>No minimum is required for most standard Rocket Print apparel. Larger group or organization orders can also be quoted together.</p>
+          </details>
+
+          <details>
+            <summary>Do you offer discounts for larger orders?</summary>
+            <p>Yes. Schools, teams, businesses, events, and organizations ordering multiple pieces can request quantity pricing based on the garment, print, and total order size.</p>
+          </details>
+
+          <details>
+            <summary>What kind of artwork should I send?</summary>
+            <p>High-resolution PNG files with transparent backgrounds are ideal. Vector files such as SVG, EPS, or PDF are also excellent when available. If your artwork needs cleanup, we can review it before printing.</p>
+          </details>
+
+          <details>
+            <summary>Can you recreate or clean up a logo?</summary>
+            <p>Yes. We can help clean up low-resolution artwork, rebuild simple logos, or prepare an existing design for apparel printing. More involved design work may be quoted separately.</p>
+          </details>
+
+          <details>
+            <summary>Can I see the design before it is printed?</summary>
+            <p>Yes. Custom orders receive a digital proof for approval before production begins so you can confirm the artwork, placement, and overall look.</p>
+          </details>
+
+          <details>
+            <summary>Can custom items be returned or exchanged?</summary>
+            <p>Because custom apparel is made specifically for the customer, approved custom orders are generally final sale. If there is a production defect or we made an error, contact us and we will make it right.</p>
+          </details>
+
+          <details>
+            <summary>Can you print copyrighted or trademarked artwork?</summary>
+            <p>Customers must have permission to use any logos, characters, trademarks, or other protected artwork they provide. We may ask for confirmation of permission before producing an order.</p>
+          </details>
+
+          <details>
+            <summary>Do you keep custom designs on file for reorders?</summary>
+            <p>Yes. Once we complete a custom project, we can retain the approved design information to make future reorders easier.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <div class="eyebrow">Shop Rocket Print</div>
+          <h2>Order the Timeless Collection.</h2>
+          <p>
+            Choose your design, shirt type, color, and size, then check out securely
+            with card, Apple Pay, or Google Pay.
+          </p>
+          <a href="#designs" class="btn btn-primary">Shop the Collection</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-center">
+      <img class="footer-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
+      <div class="footer-copy">© 2026 Rocket Print. All rights reserved.</div>
+      <div class="footer-copy">Wellington, Texas • rocketprinttx.com</div>
+      <a class="back-to-top" href="#top" aria-label="Back to top">
+        <span aria-hidden="true">↑</span>
+      </a>
+      <div class="back-to-top-label">Back to top</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="designModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card design-config-modal">
+      <button class="modal-close" id="modalClose" aria-label="Close product options"><span aria-hidden="true">×</span></button>
+
+      <div class="modal-preview design-color-preview" id="modalPreview"></div>
+
+      <div class="modal-body design-config-body">
+        <span class="tag" id="modalTag">Timeless Collection</span>
+        <h3 id="modalTitle">Design Preview</h3>
+        <p id="modalDescription">Design details.</p>
+
+        <div class="selection-summary-row">
+          <div>
+            <span class="selector-kicker">Selected Price</span>
+            <strong id="selectedPrice">$24.99</strong>
+          </div>
+          <div class="selected-summary" id="selectedSummary">Adult Tee • Black • S</div>
+        </div>
+
+        <div class="selector-section">
+          <div class="selector-title"><span>1</span><strong>T-Shirt Type</strong></div>
+          <div class="garment-selector" id="garmentSelector"></div>
+        </div>
+
+        <div class="selector-section">
+          <div class="selector-header-row">
+            <div class="selector-title"><span>2</span><strong>Color</strong></div>
+            <div class="preview-mode-toggle" id="previewModeToggle" aria-label="Preview mode">
+              <button type="button" class="preview-mode-btn active" data-view="shirt">Shirt View</button>
+              <button type="button" class="preview-mode-btn" data-view="logo">Logo View</button>
+            </div>
+          </div>
+          <div class="color-options" id="modalColors"></div>
+        </div>
+
+        <div class="selector-section">
+          <div class="selector-title"><span>3</span><strong>Size</strong></div>
+          <div class="size-selector" id="sizeSelector"></div>
+        </div>
+
+        <div class="delivery-summary">
+          <span>✓ Free local drop-off in Wellington, TX 79095</span>
+          <span>✓ Shipping: $12 for 1–2 shirts • $16 for 3+</span>
+          <span>✓ Most orders ready in about 2 weeks</span>
+        </div>
+
+        <div class="config-action-bar">
+          <div>
+            <span class="selector-kicker">Your Price</span>
+            <strong id="stickyPrice">$24.99</strong>
+          </div>
+          <button type="button" class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-head">
+        <div>
+          <div class="tag">Rocket Print</div>
+          <h2 id="cartTitle">Your Cart</h2>
+        </div>
+        <button type="button" class="icon-close" id="cartClose" aria-label="Close cart">×</button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-foot">
+        <div class="cart-estimate-row">
+          <span>Estimated merchandise</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <div class="cart-note">
+          Shipping and tax are calculated securely from the Rocket Print server during checkout.
+        </div>
+        <button type="button" class="btn btn-primary" id="checkoutBtn">Checkout</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="checkout-overlay" id="checkoutOverlay" aria-hidden="true">
+    <div class="checkout-shell" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <div class="checkout-head">
+        <div class="checkout-head-main">
+          <div class="checkout-shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" role="img" aria-hidden="true">
+              <path d="M12 2.4 19 5v5.6c0 4.7-2.8 8.8-7 10.9-4.2-2.1-7-6.2-7-10.9V5l7-2.6Z"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="m8.8 11.8 2 2 4.5-4.6"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tag">Secure Checkout</div>
+            <h2 id="checkoutTitle">Complete your order</h2>
+            <div class="checkout-head-security">
+              Encrypted checkout • Payments securely processed by Stripe
+            </div>
+          </div>
+        </div>
+        <button type="button" class="icon-close" id="checkoutClose" aria-label="Close checkout">×</button>
+      </div>
+
+      <div class="checkout-body" id="checkoutBody">
+        <section class="checkout-form-pane">
+          <div class="checkout-section">
+            <div class="checkout-section-heading">
+              <h3>Contact information</h3>
+              <span>We'll send your receipt and order updates here.</span>
+            </div>
+            <div class="field-grid">
+              <div class="checkout-field field-span-2">
+                <label for="checkoutName">Full name</label>
+                <input id="checkoutName" autocomplete="name" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutEmail">Email</label>
+                <input id="checkoutEmail" type="email" autocomplete="email" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutPhone">Phone <span class="field-help">(delivery updates only)</span></label>
+                <input id="checkoutPhone" type="tel" autocomplete="tel" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <div class="checkout-section-heading">
+              <h3>Delivery address</h3>
+            </div>
+            <div class="field-grid">
+              <div class="checkout-field field-span-2">
+                <label for="checkoutAddress">Street address</label>
+                <input id="checkoutAddress" autocomplete="street-address" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutCity">City</label>
+                <input id="checkoutCity" autocomplete="address-level2" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutState">State</label>
+                <input id="checkoutState" maxlength="2" value="TX" autocomplete="address-level1" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutZip">ZIP code</label>
+                <input id="checkoutZip" inputmode="numeric" autocomplete="postal-code" required>
+              </div>
+
+              <div class="checkout-field">
+                <label for="checkoutNotes">Order notes</label>
+                <input id="checkoutNotes" placeholder="Optional">
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <div class="checkout-section-heading">
+              <h3>Delivery method</h3>
+              <span>Shipping is selected by default.</span>
+            </div>
+
+            <div class="fulfillment-grid">
+              <label class="fulfillment-option selected" id="shippingOption">
+                <input type="radio" name="fulfillment" value="Shipping" checked>
+                <strong>Shipping</strong>
+                <span>$12 for 1–2 shirts • $16 for 3+ shirts</span>
+              </label>
+
+              <label class="fulfillment-option disabled" id="localDropOption">
+                <input type="radio" name="fulfillment" value="Local Drop Off" disabled>
+                <strong>Local Drop Off</strong>
+                <span>Free for Wellington, TX 79095 addresses</span>
+              </label>
+            </div>
+
+            <div class="local-eligibility-note" id="localEligibilityNote">
+              Enter a Wellington, TX 79095 address to unlock free local drop-off.
+            </div>
+          </div>
+        </section>
+
+        <aside class="checkout-summary-pane">
+          <div id="checkoutSummaryNormal">
+            <div class="checkout-section checkout-order-section">
+              <div class="checkout-section-heading">
+                <h3>Order summary</h3>
+                <span>Your cart total updates instantly.</span>
+              </div>
+
+              <div class="checkout-cart-mini" id="checkoutMiniItems"></div>
+
+              <div class="quote-card" aria-label="Order total">
+                <div class="quote-row">
+                  <span>Subtotal</span>
+                  <strong id="quoteSubtotal">—</strong>
+                </div>
+                <div class="quote-row">
+                  <span>Shipping</span>
+                  <strong id="quoteShipping">—</strong>
+                </div>
+                <div class="quote-row">
+                  <span>Estimated tax</span>
+                  <strong id="quoteTax">—</strong>
+                </div>
+                <div class="quote-row total">
+                  <span>Total</span>
+                  <strong id="quoteTotal">—</strong>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-primary checkout-primary secure-continue-btn" id="quoteBtn">
+                <span>Continue to Secure Payment</span>
+              </button>
+
+              <div class="turnstile-wrap" id="turnstileWrap">
+                <div id="turnstileCheckout"></div>
+              </div>
+
+              <div class="checkout-button-note">
+                You will review and approve your payment before any charge is completed.
+              </div>
+            </div>
+
+            <div class="payment-panel" id="paymentPanel">
+              <div class="payment-panel-head">
+                <div class="checkout-shield payment-shield" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" role="img" aria-hidden="true">
+                    <path d="M12 2.4 19 5v5.6c0 4.7-2.8 8.8-7 10.9-4.2-2.1-7-6.2-7-10.9V5l7-2.6Z"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="m8.8 11.8 2 2 4.5-4.6"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="payment-label">Secure payment</div>
+                  <div class="payment-security-copy">
+                    Payment details are entered directly into Stripe's secure embedded checkout.
+                    Rocket Print does not receive or store your full card number or security code.
+                  </div>
+                </div>
+              </div>
+
+              <div class="stripe-sandbox-banner">
+                STRIPE SANDBOX TEST — No real money will move during this checkout.
+              </div>
+
+              <div class="stripe-checkout-shell">
+                <div id="stripeCheckoutMount"></div>
+              </div>
+
+              <div class="payment-trust-row stripe-trust-row">
+                <span>Encrypted checkout</span>
+                <span>Processed securely by Stripe</span>
+                <span>Card data not stored by Rocket Print</span>
+              </div>
+
+              <div class="payment-status" id="paymentStatus" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="checkout-success" id="checkoutSuccess">
+            <div class="success-mark">✓</div>
+            <h3>Order confirmed.</h3>
+            <p>Your payment was completed and your Rocket Print order has been created.</p>
+            <div class="success-order-number" id="successOrderNumber"></div>
+            <p>A confirmation email is on the way.</p>
+            <button type="button" class="btn btn-primary" id="successDoneBtn">Done</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ROCKET_API =
+      'https://rocketprint-payments.shoprocketprint.workers.dev/';
+
+    const CART_STORAGE_KEY = 'rocketPrintCartV1';
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileScrim = document.getElementById('mobileScrim');
+
+    function closeMenu(){
+      if(!mobileMenu || !mobileScrim || !menuBtn) return;
+      mobileMenu.classList.remove('open');
+      mobileScrim.classList.remove('open');
+      mobileScrim.setAttribute('aria-hidden','true');
+      document.body.classList.remove('menu-open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.textContent = '☰';
+    }
+
+    if(menuBtn && mobileMenu && mobileScrim){
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        mobileScrim.classList.toggle('open', isOpen);
+        mobileScrim.setAttribute('aria-hidden', String(!isOpen));
+        document.body.classList.toggle('menu-open', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.textContent = isOpen ? '×' : '☰';
+      });
+
+      mobileScrim.addEventListener('click', closeMenu);
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
+        if(link.id !== 'mobileCartTrigger'){
+          link.addEventListener('click', closeMenu);
+        }
+      });
+    }
+
+
+    /*
+     * ==========================================================
+     * PRODUCT CONFIGURATOR
+     * ==========================================================
+     */
+
+    const shirtColors = {
+      'Black':'#111111',
+      'Sport Grey':'#9b9b9b',
+      'White':'#f5f5f2',
+      'Red':'#a9161c'
+    };
+
+    function getShirtColor(name){
+      return shirtColors[name] || '#171717';
+    }
+
+    const garmentCatalog = {
+      'adult-tee': {
+        label:'Adult Tee',
+        sizes:[
+          ['S','$24.99'],['M','$24.99'],['L','$24.99'],['XL','$24.99'],
+          ['2XL','$28.99'],['3XL','$28.99'],['4XL','$28.99'],['5XL','$28.99']
+        ]
+      },
+      'youth-tee': {
+        label:'Youth Tee',
+        sizes:[['XS','$19.99'],['S','$19.99'],['M','$19.99'],['L','$19.99'],['XL','$19.99']]
+      },
+      'toddler-tee': {
+        label:'Toddler Tee',
+        sizes:[['2T','$19.99'],['3T','$19.99'],['4T','$19.99'],['5T','$19.99'],['6T','$19.99']]
+      }
+    };
+
+    const modal = document.getElementById('designModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalTag = document.getElementById('modalTag');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPreview = document.getElementById('modalPreview');
+    const selectedPrice = document.getElementById('selectedPrice');
+    const stickyPrice = document.getElementById('stickyPrice');
+    const selectedSummary = document.getElementById('selectedSummary');
+    const garmentSelector = document.getElementById('garmentSelector');
+    const modalColors = document.getElementById('modalColors');
+    const previewModeToggle = document.getElementById('previewModeToggle');
+    const sizeSelector = document.getElementById('sizeSelector');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+
+    const productCards = document.querySelectorAll('.design-card[data-product="true"]');
+
+    let activeCard = null;
+    let selectedGarment = 'adult-tee';
+    let selectedColor = 'Black';
+    let selectedSize = 'S';
+    let previewMode = 'shirt';
+
+    function currentPrice(){
+      const garment = garmentCatalog[selectedGarment];
+      const match = garment.sizes.find(([size]) => size === selectedSize) || garment.sizes[0];
+      return match[1];
+    }
+
+    function priceNumber(garmentKey, size){
+      const garment = garmentCatalog[garmentKey];
+      if(!garment) return 0;
+      const match = garment.sizes.find(([candidate]) => candidate === size) || garment.sizes[0];
+      return Number(String(match[1]).replace('$','')) || 0;
+    }
+
+    function garmentLabelToKey(label){
+      return Object.entries(garmentCatalog)
+        .find(([, garment]) => garment.label === label)?.[0] || 'adult-tee';
+    }
+
+    function getProductMockupImage(title, color){
+      const key = (title || '').toLowerCase();
+      const grey = (color || '').toLowerCase().includes('sport');
+
+      if(key.includes('wordmark')){
+        return grey
+          ? 'assets/mockups/wordmark-sport-grey.png'
+          : 'assets/mockups/wordmark-white.png';
+      }
+
+      if(key.includes('heritage')){
+        return grey
+          ? 'assets/mockups/heritage-sport-grey.png'
+          : 'assets/mockups/heritage-white.png';
+      }
+
+      return grey
+        ? 'assets/mockups/skyrockets-sport-grey.png'
+        : 'assets/mockups/skyrockets-black.png';
+    }
+
+    function logoBackground(card){
+      return card && card.dataset.previewSurface === 'light'
+        ? 'linear-gradient(180deg,#ffffff 0%,#f4f2ee 100%)'
+        : 'linear-gradient(180deg,#151515 0%,#090909 100%)';
+    }
+
+    function setPreviewModeButtons(){
+      if(!previewModeToggle) return;
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.view === previewMode);
+        button.setAttribute('aria-pressed', String(button.dataset.view === previewMode));
+      });
+    }
+
+    function renderPreview(){
+      if(!activeCard || !modalPreview) return;
+
+      if(previewMode === 'shirt'){
+        const mockup = getProductMockupImage(activeCard.dataset.title, selectedColor);
+        modalPreview.className = 'modal-preview design-color-preview shirt-view';
+        modalPreview.style.background = '#111';
+        modalPreview.innerHTML = `
+          <div class="final-shirt-preview">
+            <img src="${escapeHtml(getProductMockupImage(activeCard.dataset.title, selectedColor))}"
+                 alt="${escapeHtml(activeCard.dataset.title)} on ${escapeHtml(selectedColor)} T-shirt">
+          </div>`;
+      } else {
+        modalPreview.className = 'modal-preview design-color-preview logo-view';
+        modalPreview.style.background = logoBackground(activeCard);
+        modalPreview.innerHTML = `
+          <div class="final-logo-preview">
+            <img src="${escapeHtml(activeCard.dataset.image)}"
+                 alt="${escapeHtml(activeCard.dataset.title)} logo">
+          </div>`;
+      }
+
+      setPreviewModeButtons();
+    }
+
+    function renderGarments(){
+      garmentSelector.innerHTML = Object.entries(garmentCatalog).map(([key, garment]) =>
+        `<button type="button"
+          class="garment-select-btn${key === selectedGarment ? ' active' : ''}"
+          data-garment="${key}">
+          <strong>${garment.label}</strong>
+          <span>From ${garment.sizes[0][1]}</span>
+        </button>`
+      ).join('');
+
+      garmentSelector.querySelectorAll('.garment-select-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedGarment = button.dataset.garment;
+          selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
+          updateSelection();
+        });
+      });
+    }
+
+    function renderColors(){
+      const colors = (activeCard.dataset.colors || '').split('|').filter(Boolean);
+
+      modalColors.innerHTML = colors.map(color =>
+        `<button type="button"
+          class="color-option${color === selectedColor ? ' active' : ''}"
+          data-color="${escapeHtml(color)}">
+          <i class="color-swatch" style="background:${getShirtColor(color)}"></i>
+          <span>${escapeHtml(color)}</span>
+        </button>`
+      ).join('');
+
+      modalColors.querySelectorAll('.color-option').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedColor = button.dataset.color;
+          previewMode = 'shirt';
+          updateSelection();
+        });
+      });
+    }
+
+    function renderSizes(){
+      const garment = garmentCatalog[selectedGarment];
+
+      sizeSelector.innerHTML = garment.sizes.map(([size, price]) =>
+        `<button type="button"
+          class="size-select-btn${size === selectedSize ? ' active' : ''}"
+          data-size="${size}"
+          aria-label="${size}, ${price}">
+          ${size}
+        </button>`
+      ).join('');
+
+      sizeSelector.querySelectorAll('.size-select-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          selectedSize = button.dataset.size;
+          updateSelection();
+        });
+      });
+    }
+
+    function updateSelection(){
+      if(!activeCard) return;
+
+      const price = currentPrice();
+      const garment = garmentCatalog[selectedGarment];
+
+      selectedPrice.textContent = price;
+      stickyPrice.textContent = price;
+      selectedSummary.textContent = `${garment.label} • ${selectedColor} • ${selectedSize}`;
+
+      garmentSelector.querySelectorAll('.garment-select-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.garment === selectedGarment);
+      });
+
+      modalColors.querySelectorAll('.color-option').forEach(button => {
+        button.classList.toggle('active', button.dataset.color === selectedColor);
+      });
+
+      renderSizes();
+      renderPreview();
+    }
+
+    function openDesign(card){
+      activeCard = card;
+      selectedGarment = 'adult-tee';
+      selectedSize = 'S';
+      selectedColor = card.dataset.defaultColor || (card.dataset.colors || 'Black').split('|')[0];
+      previewMode = 'shirt';
+
+      modalTag.textContent = card.dataset.tag || 'Timeless Collection';
+      modalTitle.textContent = card.dataset.title || 'Design';
+      modalDescription.textContent = card.dataset.description || '';
+
+      renderGarments();
+      renderColors();
+      updateSelection();
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => modalClose.focus());
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      if(!cartOverlay.classList.contains('open') && !checkoutOverlay.classList.contains('open')){
+        document.body.style.overflow = '';
+      }
+    }
+
+    if(previewModeToggle){
+      previewModeToggle.querySelectorAll('.preview-mode-btn').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          previewMode = button.dataset.view;
+          renderPreview();
+        });
+      });
+    }
+
+    productCards.forEach(card => {
+      card.addEventListener('click', () => openDesign(card));
+      card.addEventListener('keydown', event => {
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          openDesign(card);
+        }
+      });
+    });
+
+    if(modalClose) modalClose.addEventListener('click', closeModal);
+
+    if(modal){
+      modal.addEventListener('click', event => {
+        if(event.target === modal) closeModal();
+      });
+    }
+
+
+    /*
+     * ==========================================================
+     * CART
+     * ==========================================================
+     */
+
+    const cartTrigger = document.getElementById('cartTrigger');
+    const mobileCartTrigger = document.getElementById('mobileCartTrigger');
+    const cartCount = document.getElementById('cartCount');
+    const mobileCartCount = document.getElementById('mobileCartCount');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartClose = document.getElementById('cartClose');
+    const cartItems = document.getElementById('cartItems');
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    let cart = loadCart();
+
+    function loadCart(){
+      try{
+        const parsed = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+        return Array.isArray(parsed) ? parsed : [];
+      }catch(error){
+        return [];
+      }
+    }
+
+    function saveCart(){
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      renderCart();
+
+      if(checkoutOverlay && checkoutOverlay.classList.contains('open')){
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+      }
+    }
+
+    function cartKey(item){
+      return [
+        item.design,
+        item.garment,
+        item.color,
+        item.size
+      ].join('|');
+    }
+
+    function addConfiguredItem(){
+      if(!activeCard) return;
+
+      const garment = garmentCatalog[selectedGarment];
+      const item = {
+        design: activeCard.dataset.title,
+        garment: garment.label,
+        color: selectedColor,
+        size: selectedSize,
+        quantity: 1,
+        unitPrice: priceNumber(selectedGarment, selectedSize),
+        mockup: getProductMockupImage(activeCard.dataset.title, selectedColor)
+      };
+
+      const existing = cart.find(candidate => cartKey(candidate) === cartKey(item));
+
+      if(existing){
+        existing.quantity += 1;
+      }else{
+        cart.push(item);
+      }
+
+      saveCart();
+      closeModal();
+      openCart();
+    }
+
+    function cartMerchandiseEstimate(){
+      return cart.reduce((sum, item) => {
+        const key = garmentLabelToKey(item.garment);
+        return sum + priceNumber(key, item.size) * Number(item.quantity || 0);
+      }, 0);
+    }
+
+    function cartQuantity(){
+      return cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    }
+
+    function renderCart(){
+      const quantity = cartQuantity();
+      cartCount.textContent = quantity;
+      mobileCartCount.textContent = quantity;
+
+      if(cart.length === 0){
+        cartItems.innerHTML = `
+          <div class="cart-empty">
+            <div>
+              <strong style="display:block;color:#fff;font-size:1.1rem;margin-bottom:8px;">Your cart is empty.</strong>
+              Choose a Timeless Collection design to get started.
+            </div>
+          </div>`;
+        checkoutBtn.disabled = true;
+      }else{
+        cartItems.innerHTML = cart.map((item, index) => `
+          <div class="cart-item">
+            <img src="${escapeHtml(item.mockup || getProductMockupImage(item.design, item.color))}"
+                 alt="${escapeHtml(item.design)}">
+            <div>
+              <div class="cart-item-title">${escapeHtml(item.design)}</div>
+              <div class="cart-item-meta">
+                ${escapeHtml(item.garment)} • ${escapeHtml(item.color)} • ${escapeHtml(item.size)}
+              </div>
+              <div class="cart-item-row">
+                <div class="qty-control" aria-label="Quantity controls">
+                  <button type="button" data-cart-action="decrease" data-index="${index}" aria-label="Decrease quantity">−</button>
+                  <span>${Number(item.quantity)}</span>
+                  <button type="button" data-cart-action="increase" data-index="${index}" aria-label="Increase quantity">+</button>
+                </div>
+                <strong>$${(priceNumber(garmentLabelToKey(item.garment), item.size) * item.quantity).toFixed(2)}</strong>
+              </div>
+              <button type="button" class="remove-item" data-cart-action="remove" data-index="${index}">
+                Remove
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        checkoutBtn.disabled = false;
+      }
+
+      cartSubtotal.textContent = `$${cartMerchandiseEstimate().toFixed(2)}`;
+      renderCheckoutMiniItems();
+    }
+
+    cartItems.addEventListener('click', event => {
+      const button = event.target.closest('[data-cart-action]');
+      if(!button) return;
+
+      const index = Number(button.dataset.index);
+      const action = button.dataset.cartAction;
+      const item = cart[index];
+      if(!item) return;
+
+      if(action === 'increase'){
+        item.quantity = Math.min(100, Number(item.quantity || 0) + 1);
+      }else if(action === 'decrease'){
+        item.quantity = Math.max(1, Number(item.quantity || 1) - 1);
+      }else if(action === 'remove'){
+        cart.splice(index, 1);
+      }
+
+      saveCart();
+    });
+
+    function openCart(){
+      closeMenu();
+      cartOverlay.classList.add('open');
+      cartOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      renderCart();
+      requestAnimationFrame(() => cartClose.focus());
+    }
+
+    function closeCart(){
+      cartOverlay.classList.remove('open');
+      cartOverlay.setAttribute('aria-hidden','true');
+      if(!checkoutOverlay.classList.contains('open') && !modal.classList.contains('open')){
+        document.body.style.overflow = '';
+      }
+    }
+
+    cartTrigger.addEventListener('click', openCart);
+
+    mobileCartTrigger.addEventListener('click', event => {
+      event.preventDefault();
+      openCart();
+    });
+
+    cartClose.addEventListener('click', closeCart);
+
+    cartOverlay.addEventListener('click', event => {
+      if(event.target === cartOverlay) closeCart();
+    });
+
+    if(addToCartBtn){
+      addToCartBtn.addEventListener('click', addConfiguredItem);
+    }
+
+
+    /*
+     * ==========================================================
+     * CHECKOUT + SERVER QUOTE
+     * ==========================================================
+     */
+
+    const checkoutOverlay = document.getElementById('checkoutOverlay');
+    const checkoutClose = document.getElementById('checkoutClose');
+    const checkoutBody = document.getElementById('checkoutBody');
+    const checkoutSummaryNormal = document.getElementById('checkoutSummaryNormal');
+    const checkoutSuccess = document.getElementById('checkoutSuccess');
+    const successOrderNumber = document.getElementById('successOrderNumber');
+    const successDoneBtn = document.getElementById('successDoneBtn');
+
+    const checkoutName = document.getElementById('checkoutName');
+    const checkoutEmail = document.getElementById('checkoutEmail');
+    const checkoutPhone = document.getElementById('checkoutPhone');
+    const checkoutAddress = document.getElementById('checkoutAddress');
+    const checkoutCity = document.getElementById('checkoutCity');
+    const checkoutState = document.getElementById('checkoutState');
+    const checkoutZip = document.getElementById('checkoutZip');
+    const checkoutNotes = document.getElementById('checkoutNotes');
+
+    const shippingOption = document.getElementById('shippingOption');
+    const localDropOption = document.getElementById('localDropOption');
+    const localEligibilityNote = document.getElementById('localEligibilityNote');
+
+    const checkoutMiniItems = document.getElementById('checkoutMiniItems');
+    const quoteSubtotal = document.getElementById('quoteSubtotal');
+    const quoteShipping = document.getElementById('quoteShipping');
+    const quoteTax = document.getElementById('quoteTax');
+    const quoteTotal = document.getElementById('quoteTotal');
+    const quoteBtn = document.getElementById('quoteBtn');
+    const turnstileCheckout = document.getElementById('turnstileCheckout');
+    const paymentPanel = document.getElementById('paymentPanel');
+    const paymentStatus = document.getElementById('paymentStatus');
+    const stripeCheckoutMount = document.getElementById('stripeCheckoutMount');
+
+    const CLIENT_TEXAS_TAX_RATE = 0.0825;
+    const CLIENT_SHIPPING_1_TO_2 = 12.00;
+    const CLIENT_SHIPPING_3_PLUS = 16.00;
+
+    const TURNSTILE_SITE_KEY = '0x4AAAAAAFQkG9ZPeZkpU6Pq';
+    const TURNSTILE_ACTION = 'rocket_print_checkout';
+
+    let turnstileWidgetId = null;
+    let turnstileInitPromise = null;
+    let turnstilePendingResolve = null;
+    let turnstilePendingReject = null;
+
+    let currentQuote = null;
+    let currentQuoteFingerprint = '';
+    let preparedStripeSessionId = '';
+    let stripeClient = null;
+    let stripeEmbeddedCheckout = null;
+
+    function escapeHtml(value){
+      return String(value ?? '')
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;');
+    }
+
+    function renderCheckoutMiniItems(){
+      if(!checkoutMiniItems) return;
+
+      if(cart.length === 0){
+        checkoutMiniItems.innerHTML = '<span style="color:#888;">No items.</span>';
+        return;
+      }
+
+      checkoutMiniItems.innerHTML = cart.map(item => {
+        const price = priceNumber(garmentLabelToKey(item.garment), item.size);
+        return `
+          <div class="checkout-mini-item">
+            <span>
+              ${Number(item.quantity)} × ${escapeHtml(item.design)}<br>
+              <small>${escapeHtml(item.garment)} • ${escapeHtml(item.color)} • ${escapeHtml(item.size)}</small>
+            </span>
+            <strong>$${(price * item.quantity).toFixed(2)}</strong>
+          </div>`;
+      }).join('');
+    }
+
+    function isWellingtonCheckoutAddress(){
+      return (
+        checkoutCity.value.trim().toLowerCase() === 'wellington' &&
+        checkoutState.value.trim().toUpperCase() === 'TX' &&
+        checkoutZip.value.trim().slice(0,5) === '79095'
+      );
+    }
+
+    function updateLocalDropEligibility(){
+      const localRadio = localDropOption.querySelector('input');
+      const shippingRadio = shippingOption.querySelector('input');
+      const eligible = isWellingtonCheckoutAddress();
+      const wasLocal = localRadio.checked;
+
+      localRadio.disabled = !eligible;
+      localDropOption.classList.toggle('disabled', !eligible);
+
+      if(!eligible && wasLocal){
+        shippingRadio.checked = true;
+      }
+
+      localEligibilityNote.textContent = eligible
+        ? 'This address qualifies for free Wellington local drop-off.'
+        : 'Enter a Wellington, TX 79095 address to unlock free local drop-off.';
+
+      updateFulfillmentVisuals();
+
+      if(wasLocal && !eligible){
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+      }
+    }
+
+    function updateFulfillmentVisuals(){
+      document.querySelectorAll('input[name="fulfillment"]').forEach(radio => {
+        radio.closest('.fulfillment-option')
+          ?.classList.toggle('selected', radio.checked);
+      });
+    }
+
+    function selectedFulfillment(){
+      return document.querySelector('input[name="fulfillment"]:checked')?.value || 'Shipping';
+    }
+
+    function checkoutPayload(){
+      return {
+        customerName: checkoutName.value.trim(),
+        email: checkoutEmail.value.trim(),
+        phone: checkoutPhone.value.trim(),
+        fulfillmentMethod: selectedFulfillment(),
+        address: checkoutAddress.value.trim(),
+        city: checkoutCity.value.trim(),
+        state: checkoutState.value.trim().toUpperCase(),
+        zip: checkoutZip.value.trim(),
+        notes: checkoutNotes.value.trim(),
+        companyWebsite: '',
+        items: cart.map(item => ({
+          design: item.design,
+          garment: item.garment,
+          color: item.color,
+          size: item.size,
+          quantity: Number(item.quantity),
+          unitPrice: 0.01
+        }))
+      };
+    }
+
+    function payloadFingerprint(payload = checkoutPayload()){
+      return JSON.stringify({
+        customerName: payload.customerName,
+        email: payload.email,
+        phone: payload.phone,
+        fulfillmentMethod: payload.fulfillmentMethod,
+        address: payload.address,
+        city: payload.city,
+        state: payload.state,
+        zip: payload.zip,
+        notes: payload.notes,
+        items: payload.items.map(item => ({
+          design:item.design,
+          garment:item.garment,
+          color:item.color,
+          size:item.size,
+          quantity:item.quantity
+        }))
+      });
+    }
+
+    function validateCheckoutFields(){
+      const required = [
+        [checkoutName,'Enter your full name.'],
+        [checkoutEmail,'Enter your email address.'],
+        [checkoutPhone,'Enter your phone number.'],
+        [checkoutAddress,'Enter your street address.'],
+        [checkoutCity,'Enter your city.'],
+        [checkoutState,'Enter your state.'],
+        [checkoutZip,'Enter your ZIP code.']
+      ];
+
+      for(const [field, message] of required){
+        if(!field.value.trim()){
+          field.focus();
+          throw new Error(message);
+        }
+      }
+
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.value.trim())){
+        checkoutEmail.focus();
+        throw new Error('Enter a valid email address.');
+      }
+
+      if(cart.length === 0){
+        throw new Error('Your cart is empty.');
+      }
+
+      if(selectedFulfillment() === 'Local Drop Off' && !isWellingtonCheckoutAddress()){
+        throw new Error('Local drop-off is only available in Wellington, TX 79095.');
+      }
+    }
+
+    function roundClientMoney(value){
+      return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
+    }
+
+    function localCheckoutEstimate(){
+      const subtotal = roundClientMoney(cartMerchandiseEstimate());
+      const quantity = cartQuantity();
+
+      const shipping =
+        selectedFulfillment() === 'Local Drop Off'
+          ? 0
+          : (
+              quantity <= 2
+                ? CLIENT_SHIPPING_1_TO_2
+                : CLIENT_SHIPPING_3_PLUS
+            );
+
+      /*
+       * This is only the browser display estimate.
+       * The Cloudflare payment backend independently recalculates every amount.
+       *
+       * The State field defaults to TX. If a buyer changes State, this
+       * estimate changes locally with no API call.
+       */
+      const state = checkoutState.value.trim().toUpperCase();
+
+      const tax =
+        state === 'TX'
+          ? roundClientMoney(
+              (subtotal + shipping) *
+              CLIENT_TEXAS_TAX_RATE
+            )
+          : 0;
+
+      return {
+        subtotal,
+        shipping,
+        tax,
+        total: roundClientMoney(subtotal + shipping + tax)
+      };
+    }
+
+    function renderQuoteValues(quote){
+      if(!quote) return;
+
+      quoteSubtotal.textContent =
+        `$${Number(quote.subtotal).toFixed(2)}`;
+
+      quoteShipping.textContent =
+        Number(quote.shipping) === 0
+          ? 'FREE'
+          : `$${Number(quote.shipping).toFixed(2)}`;
+
+      quoteTax.textContent =
+        `$${Number(quote.tax).toFixed(2)}`;
+
+      quoteTotal.textContent =
+        `$${Number(quote.total).toFixed(2)}`;
+    }
+
+    function renderLocalCheckoutTotals(){
+      if(cart.length === 0){
+        quoteSubtotal.textContent = '—';
+        quoteShipping.textContent = '—';
+        quoteTax.textContent = '—';
+        quoteTotal.textContent = '—';
+        return;
+      }
+
+      renderQuoteValues(localCheckoutEstimate());
+    }
+
+    function setPaymentStatus(message, type=''){
+      paymentStatus.textContent = message || '';
+      paymentStatus.className = 'payment-status' + (type ? ` ${type}` : '');
+    }
+
+    function invalidatePreparedCheckout(message=''){
+      currentQuote = null;
+      currentQuoteFingerprint = '';
+      preparedStripeSessionId = '';
+
+      if(stripeEmbeddedCheckout){
+        try{
+          stripeEmbeddedCheckout.destroy();
+        }catch(error){
+          console.debug('Stripe Embedded Checkout was already cleared.');
+        }
+      }
+
+      stripeEmbeddedCheckout = null;
+      stripeClient = null;
+
+      if(stripeCheckoutMount){
+        stripeCheckoutMount.innerHTML = '';
+      }
+
+      paymentPanel.classList.remove('visible');
+
+      quoteBtn.disabled = false;
+      quoteBtn.classList.remove('is-busy');
+      quoteBtn.innerHTML = '<span>Continue to Secure Payment</span>';
+
+      if(message){
+        setPaymentStatus(message);
+      }else{
+        setPaymentStatus('');
+      }
+    }
+
+    function settleTurnstilePending(error, token=''){
+      const resolve = turnstilePendingResolve;
+      const reject = turnstilePendingReject;
+
+      turnstilePendingResolve = null;
+      turnstilePendingReject = null;
+
+      if(error){
+        if(reject) reject(error);
+        return;
+      }
+
+      if(resolve) resolve(token);
+    }
+
+    async function ensureTurnstileWidget(){
+      if(turnstileWidgetId !== null){
+        return turnstileWidgetId;
+      }
+
+      if(turnstileInitPromise){
+        return turnstileInitPromise;
+      }
+
+      turnstileInitPromise = (async () => {
+        const started = Date.now();
+
+        while(
+          (!window.turnstile || typeof window.turnstile.render !== 'function') &&
+          (Date.now() - started < 12000)
+        ){
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        if(!window.turnstile || typeof window.turnstile.render !== 'function'){
+          throw new Error('Security verification could not load. Check your connection and try again.');
+        }
+
+        turnstileWidgetId = window.turnstile.render('#turnstileCheckout', {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark',
+          size: 'flexible',
+          execution: 'execute',
+          appearance: 'interaction-only',
+          action: TURNSTILE_ACTION,
+
+          callback(token){
+            settleTurnstilePending(null, token);
+          },
+
+          'error-callback'(errorCode){
+            console.error('Turnstile error:', errorCode);
+            settleTurnstilePending(
+              new Error('Security verification failed. Please try again.')
+            );
+          },
+
+          'expired-callback'(){
+            settleTurnstilePending(
+              new Error('Security verification expired. Please try again.')
+            );
+          },
+
+          'timeout-callback'(){
+            settleTurnstilePending(
+              new Error('Security verification timed out. Please try again.')
+            );
+          }
+        });
+
+        return turnstileWidgetId;
+      })();
+
+      try{
+        return await turnstileInitPromise;
+      }finally{
+        turnstileInitPromise = null;
+      }
+    }
+
+    function resetTurnstileWidget(){
+      if(
+        turnstileWidgetId !== null &&
+        window.turnstile &&
+        typeof window.turnstile.reset === 'function'
+      ){
+        try{
+          window.turnstile.reset(turnstileWidgetId);
+        }catch(error){
+          console.error('Unable to reset Turnstile:', error);
+        }
+      }
+    }
+
+    async function getFreshTurnstileToken(){
+      const widgetId = await ensureTurnstileWidget();
+
+      if(turnstilePendingResolve || turnstilePendingReject){
+        throw new Error('Security verification is already running.');
+      }
+
+      resetTurnstileWidget();
+
+      return await new Promise((resolve, reject) => {
+        turnstilePendingResolve = resolve;
+        turnstilePendingReject = reject;
+
+        try{
+          window.turnstile.execute(widgetId);
+        }catch(error){
+          settleTurnstilePending(
+            new Error('Security verification could not start. Please try again.')
+          );
+        }
+      });
+    }
+
+    function onTurnstileLoaded(){
+      ensureTurnstileWidget().catch(error => {
+        console.error('Turnstile preload failed:', error);
+      });
+    }
+
+    async function apiPost(payload){
+      const response = await fetch(ROCKET_API, {
+        method:'POST',
+        headers:{
+          'Content-Type':'text/plain;charset=utf-8'
+        },
+        body:JSON.stringify(payload),
+        redirect:'follow',
+        cache:'no-store'
+      });
+
+      const responseText = await response.text();
+      let data;
+
+      try{
+        data = JSON.parse(responseText);
+      }catch(error){
+        throw new Error('Rocket Print checkout returned an invalid response.');
+      }
+
+      if(!response.ok || !data.ok){
+        throw new Error(data.error || 'Rocket Print checkout request failed.');
+      }
+
+      return data;
+    }
+
+    async function stripeApiPost(path, payload){
+      const base = ROCKET_API.replace(/\/+$/, '');
+
+      const response = await fetch(base + path, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(payload),
+        cache:'no-store'
+      });
+
+      const responseText = await response.text();
+      let data;
+
+      try{
+        data = JSON.parse(responseText);
+      }catch(error){
+        throw new Error('Rocket Print Stripe checkout returned an invalid response.');
+      }
+
+      if(!response.ok || !data.ok){
+        throw new Error(data.error || 'Unable to prepare Stripe checkout.');
+      }
+
+      return data;
+    }
+
+    async function waitForStripeJs(){
+      const started = Date.now();
+
+      while(typeof window.Stripe !== 'function' && Date.now() - started < 12000){
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+
+      if(typeof window.Stripe !== 'function'){
+        throw new Error('Stripe secure checkout could not load. Refresh the page and try again.');
+      }
+    }
+
+    async function mountStripeCheckout(result){
+      await waitForStripeJs();
+
+      if(stripeEmbeddedCheckout){
+        try{
+          stripeEmbeddedCheckout.destroy();
+        }catch(error){}
+        stripeEmbeddedCheckout = null;
+      }
+
+      stripeCheckoutMount.innerHTML = '';
+      stripeClient = window.Stripe(result.publishableKey);
+
+      stripeEmbeddedCheckout = await stripeClient.initEmbeddedCheckout({
+        clientSecret:result.clientSecret
+      });
+
+      stripeEmbeddedCheckout.mount('#stripeCheckoutMount');
+    }
+
+    async function prepareSecureCheckout(){
+      validateCheckoutFields();
+
+      const payload = checkoutPayload();
+      const fingerprint = payloadFingerprint(payload);
+
+      quoteBtn.classList.add('is-busy');
+      quoteBtn.disabled = true;
+      quoteBtn.textContent = 'Security Check…';
+
+      setPaymentStatus(
+        'Running a quick security check before Stripe checkout…'
+      );
+
+      let turnstileToken = '';
+
+      try{
+        turnstileToken = await getFreshTurnstileToken();
+
+        if(fingerprint !== payloadFingerprint()){
+          throw new Error('Order details changed during the security check. Please continue again.');
+        }
+
+        quoteBtn.textContent = 'Verifying Order Securely…';
+
+        setPaymentStatus(
+          'Verifying products, shipping, tax, and Stripe catalog pricing…'
+        );
+
+        const result = await stripeApiPost(
+          '/stripe/create-checkout-session',
+          {
+            turnstileToken,
+            ...payload
+          }
+        );
+
+        if(
+          !result.sessionId ||
+          !result.clientSecret ||
+          !result.publishableKey ||
+          !result.quote
+        ){
+          throw new Error('Secure Stripe checkout could not be prepared.');
+        }
+
+        if(fingerprint !== payloadFingerprint()){
+          throw new Error('Order details changed while the secure total was being verified. Please continue again.');
+        }
+
+        currentQuote = result.quote;
+        currentQuoteFingerprint = fingerprint;
+        preparedStripeSessionId = result.sessionId;
+
+        renderQuoteValues(currentQuote);
+        paymentPanel.classList.add('visible');
+
+        quoteBtn.classList.remove('is-busy');
+        quoteBtn.disabled = true;
+        quoteBtn.textContent = 'Secure Payment Ready ✓';
+
+        setPaymentStatus(
+          'Stripe Sandbox checkout is ready. Use Stripe test payment details only — no real money will move.',
+          'success'
+        );
+
+        await mountStripeCheckout(result);
+
+        paymentPanel.scrollIntoView({
+          behavior:'smooth',
+          block:'nearest'
+        });
+
+      }catch(error){
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+        throw error;
+      }finally{
+        resetTurnstileWidget();
+        quoteBtn.classList.remove('is-busy');
+
+        if(!preparedStripeSessionId){
+          quoteBtn.disabled = false;
+        }
+      }
+    }
+
+    function openCheckout(){
+      if(cart.length === 0) return;
+
+      closeCart();
+      checkoutSummaryNormal.style.display = '';
+      checkoutSuccess.classList.remove('visible');
+      renderCheckoutMiniItems();
+      updateLocalDropEligibility();
+      invalidatePreparedCheckout();
+      renderLocalCheckoutTotals();
+
+      checkoutOverlay.classList.add('open');
+      checkoutOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      ensureTurnstileWidget().catch(error => {
+        console.error('Turnstile preload failed:', error);
+      });
+
+      requestAnimationFrame(() => checkoutName.focus());
+    }
+
+    function closeCheckout(){
+      invalidatePreparedCheckout();
+      checkoutOverlay.classList.remove('open');
+      checkoutOverlay.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    checkoutBtn.addEventListener('click', openCheckout);
+    checkoutClose.addEventListener('click', closeCheckout);
+    successDoneBtn.addEventListener('click', closeCheckout);
+
+    checkoutOverlay.addEventListener('click', event => {
+      if(event.target === checkoutOverlay) closeCheckout();
+    });
+
+    quoteBtn.addEventListener('click', async () => {
+      try{
+        await prepareSecureCheckout();
+      }catch(error){
+        console.error(error);
+        setPaymentStatus(
+          error.message || 'Unable to prepare secure Stripe checkout.',
+          'error'
+        );
+      }
+    });
+
+    [
+      checkoutName,
+      checkoutEmail,
+      checkoutPhone,
+      checkoutAddress,
+      checkoutCity,
+      checkoutState,
+      checkoutZip,
+      checkoutNotes
+    ].forEach(field => {
+      const handleOrderDetailEdit = () => {
+        if(preparedStripeSessionId){
+          invalidatePreparedCheckout(
+            'Order details changed. Continue to secure payment again to verify the updated order.'
+          );
+        }
+
+        if(
+          field === checkoutCity ||
+          field === checkoutState ||
+          field === checkoutZip
+        ){
+          updateLocalDropEligibility();
+        }
+
+        if(field === checkoutState){
+          renderLocalCheckoutTotals();
+        }
+      };
+
+      field.addEventListener('input', handleOrderDetailEdit);
+      field.addEventListener('change', handleOrderDetailEdit);
+    });
+
+    document.querySelectorAll('input[name="fulfillment"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        updateFulfillmentVisuals();
+        invalidatePreparedCheckout();
+        renderLocalCheckoutTotals();
+      });
+    });
+
+    /*
+     * ==========================================================
+     * LEGACY DISABLED LINKS + KEYBOARD
+     * ==========================================================
+     */
+
+    document.querySelectorAll('a[aria-disabled="true"]').forEach(link => {
+      link.addEventListener('click', event => event.preventDefault());
+    });
+
+    document.addEventListener('keydown', event => {
+      if(event.key === 'Escape'){
+        if(checkoutOverlay.classList.contains('open')){
+          closeCheckout();
+          return;
+        }
+
+        if(cartOverlay.classList.contains('open')){
+          closeCart();
+          return;
+        }
+
+        if(modal && modal.classList.contains('open')){
+          closeModal();
+        }
+
+        closeMenu();
+      }
+    });
+
+    renderCart();
+    updateLocalDropEligibility();
+    renderLocalCheckoutTotals();
+  </script>
+
+  <script
+    defer
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoaded">
+  </script>
+
+
+
+
+  <script defer src="https://js.stripe.com/v3/"></script>
+
+</body>
+</html>
