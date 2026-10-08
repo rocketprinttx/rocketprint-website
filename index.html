@@ -6030,7 +6030,7 @@
 
   <script>
     const ROCKET_API =
-      'https://script.google.com/macros/s/AKfycbzEeXT3Y5_NqpF4rJo-twmf6SNmN3MpyzLBFOGRRutqDBRVIW0_rQvUP6BF9K35ULuX/exec';
+      'https://rocketprint-payments.shoprocketprint.workers.dev/';
 
     const CART_STORAGE_KEY = 'rocketPrintCartV1';
 
@@ -6589,6 +6589,7 @@
     let currentQuote = null;
     let currentQuoteFingerprint = '';
     let preparedPayPalOrderId = '';
+    let preparedCheckoutToken = '';
 
     let paypalSdk = null;
     let paypalEligibility = null;
@@ -6771,7 +6772,7 @@
 
       /*
        * This is only the browser display estimate.
-       * The Apps Script backend independently recalculates every amount.
+       * The Cloudflare payment backend independently recalculates every amount.
        *
        * The State field defaults to TX. If a buyer changes State, this
        * estimate changes locally with no API call.
@@ -6833,6 +6834,7 @@
       currentQuote = null;
       currentQuoteFingerprint = '';
       preparedPayPalOrderId = '';
+      preparedCheckoutToken = '';
 
       paymentPanel.classList.remove('visible');
 
@@ -7037,7 +7039,7 @@
           ...payload
         });
 
-        if(!result.paypalOrderId || !result.quote){
+        if(!result.paypalOrderId || !result.checkoutToken || !result.quote){
           throw new Error('Secure checkout could not prepare the payment order.');
         }
 
@@ -7052,6 +7054,7 @@
         currentQuote = result.quote;
         currentQuoteFingerprint = fingerprint;
         preparedPayPalOrderId = result.paypalOrderId;
+        preparedCheckoutToken = result.checkoutToken;
 
         /*
          * Replace the local estimate with the authoritative server amount.
@@ -7105,6 +7108,7 @@
 
       if(
         !preparedPayPalOrderId ||
+        !preparedCheckoutToken ||
         !currentQuote ||
         currentQuoteFingerprint !== payloadFingerprint()
       ){
@@ -7117,9 +7121,14 @@
     }
 
     async function capturePayPalOrder(orderId){
+      if(!preparedCheckoutToken){
+        throw new Error('Secure checkout session is missing. Please restart checkout.');
+      }
+
       const result = await apiPost({
         action:'capturePayPalOrder',
-        paypalOrderId:orderId
+        paypalOrderId:orderId,
+        checkoutToken:preparedCheckoutToken
       });
 
       if(result.paymentStatus !== 'Paid' || !result.orderNumber){
@@ -7141,6 +7150,7 @@
       currentQuote = null;
       currentQuoteFingerprint = '';
       preparedPayPalOrderId = '';
+      preparedCheckoutToken = '';
 
       successOrderNumber.textContent = result.orderNumber;
       checkoutSummaryNormal.style.display = 'none';
@@ -7221,7 +7231,7 @@
     ].forEach(field => {
       const handleOrderDetailEdit = () => {
         /*
-         * Normal form typing never calls Apps Script and never creates a PayPal order.
+         * Normal form typing never calls the payment backend and never creates a PayPal order.
          * If a payment order was already prepared, editing any order detail invalidates
          * it so stale customer/order data can never be paid.
          */
@@ -7630,7 +7640,7 @@
               console.error('Apple Pay merchant validation failed for host:', window.location.hostname, error);
               session.abort();
               setPaymentStatus(
-                `Apple Pay merchant validation failed for ${window.location.hostname}. Confirm this exact hostname is registered in PayPal Sandbox.`,
+                `Apple Pay merchant validation failed for ${window.location.hostname}. Confirm this exact hostname is registered for Apple Pay in PayPal Live.`,
                 'error'
               );
             }
