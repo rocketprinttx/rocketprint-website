@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V42-MOBILE" />
+  <meta name="rocket-print-release" content="2026-10-V43-CUSTOM-REQUEST" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -5967,6 +5967,72 @@
       }
     }
 
+  
+    /* ===== V43: Custom Request Form ===== */
+    .custom-request-note{margin-top:12px;color:#8d8d8d;font-size:.82rem;line-height:1.45}
+    .custom-request-overlay{position:fixed;inset:0;z-index:10060;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .custom-request-overlay.open{display:flex}
+    .custom-request-shell{width:min(980px,100%);max-height:min(92vh,920px);display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.11);border-radius:28px;background:radial-gradient(circle at 90% 8%,rgba(228,58,53,.12),transparent 30%),#101010;box-shadow:0 35px 100px rgba(0,0,0,.55)}
+    .custom-request-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 26px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+    .custom-request-head-main{display:flex;align-items:center;gap:15px;min-width:0}
+    .custom-request-icon{width:48px;height:48px;flex:0 0 auto;display:grid;place-items:center;border-radius:15px;color:#ff6d68;background:rgba(228,58,53,.12);border:1px solid rgba(228,58,53,.28);font-size:1.4rem;font-weight:900}
+    .custom-request-head .tag{color:#ff6d68;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem;font-weight:900}
+    .custom-request-head h2{margin:4px 0 0;font-size:1.55rem;letter-spacing:-.025em}
+    .custom-request-close{width:44px;height:44px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:#171717;color:#fff;font-size:1.35rem;cursor:pointer}
+    .custom-request-body{overflow:auto;overscroll-behavior:contain;padding:26px}
+    .custom-request-intro{margin:0 0 22px;color:#aaa;line-height:1.55;max-width:760px}
+    .custom-request-section{margin-bottom:24px;padding:22px;border:1px solid var(--line);border-radius:20px;background:#121212}
+    .custom-request-section:last-of-type{margin-bottom:18px}
+    .custom-request-section-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:16px}
+    .custom-request-section-head h3{margin:0;font-size:1.05rem}
+    .custom-request-section-head span{color:#777;font-size:.74rem}
+    .custom-request-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .custom-request-field{min-width:0}
+    .custom-request-field.full{grid-column:1/-1}
+    .custom-request-field label,.custom-request-label{display:block;margin:0 0 7px;color:#d8d8d8;font-size:.78rem;font-weight:800}
+    .custom-request-field label .optional{color:#777;font-weight:600}
+    .custom-request-field input,.custom-request-field select,.custom-request-field textarea{width:100%;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:#171717;color:#fff;font:inherit;font-size:.95rem;padding:13px 14px;outline:none;transition:border-color .16s ease,box-shadow .16s ease}
+    .custom-request-field textarea{resize:vertical;min-height:130px;line-height:1.5}
+    .custom-request-field input:focus,.custom-request-field select:focus,.custom-request-field textarea:focus{border-color:rgba(228,58,53,.72);box-shadow:0 0 0 3px rgba(228,58,53,.10)}
+    .custom-garment-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .custom-garment-option{position:relative;cursor:pointer}
+    .custom-garment-option input{position:absolute;opacity:0;pointer-events:none}
+    .custom-garment-option span{min-height:48px;display:flex;align-items:center;justify-content:center;padding:9px 10px;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#171717;color:#aaa;font-size:.82rem;font-weight:800;transition:.16s ease}
+    .custom-garment-option input:checked + span{color:#fff;border-color:#e43a35;background:rgba(228,58,53,.14);box-shadow:inset 0 0 0 1px rgba(228,58,53,.22)}
+    .custom-request-help{margin:7px 0 0;color:#767676;font-size:.72rem;line-height:1.45}
+    .custom-request-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+    .custom-request-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:18px}
+    .custom-request-actions .btn{min-height:48px;border:0}
+    .custom-request-status{min-height:22px;margin:12px 0 0;color:#aaa;font-size:.82rem;line-height:1.45}
+    .custom-request-status.error{color:#ff8c87}.custom-request-status.success{color:#76db98}
+    #turnstileCustomRequest{width:100%;min-height:0;overflow:hidden}
+    #turnstileCustomRequest iframe{max-width:100%}
+    .custom-request-success{display:none;min-height:420px;padding:46px 28px;text-align:center;align-items:center;justify-content:center;flex-direction:column}
+    .custom-request-success.visible{display:flex}
+    .custom-request-success-mark{width:76px;height:76px;display:grid;place-items:center;margin:0 auto 18px;border-radius:50%;background:rgba(39,159,83,.14);border:1px solid rgba(71,204,112,.27);color:#70df95;font-size:2rem;font-weight:900}
+    .custom-request-success h3{margin:0 0 10px;font-size:1.65rem}
+    .custom-request-success p{max-width:590px;margin:0 auto 10px;color:#aaa;line-height:1.55}
+    .custom-request-id{display:inline-flex;margin:10px auto 22px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#151515;color:#eee;font-size:.82rem;font-weight:800;letter-spacing:.03em}
+    @media (max-width:760px){
+      .custom-request-overlay{padding:0;align-items:stretch;background:#0d0d0d}
+      .custom-request-shell{width:100%;max-height:none;height:100dvh;border:0;border-radius:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+      .custom-request-head{padding:16px 16px 14px;position:sticky;top:0;z-index:2;background:rgba(15,15,15,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+      .custom-request-icon{width:42px;height:42px;border-radius:13px}
+      .custom-request-head h2{font-size:1.22rem}
+      .custom-request-close{width:42px;height:42px}
+      .custom-request-body{padding:18px 14px 26px}
+      .custom-request-section{margin-bottom:14px;padding:16px 13px;border-radius:17px}
+      .custom-request-section-head{margin-bottom:13px}
+      .custom-request-grid{grid-template-columns:1fr;gap:12px}
+      .custom-request-field.full{grid-column:auto}
+      .custom-request-field input,.custom-request-field select,.custom-request-field textarea{font-size:16px;min-height:48px}
+      .custom-garment-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .custom-request-actions{position:sticky;bottom:0;z-index:2;margin:18px -14px -26px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,#0f0f0f 75%,rgba(15,15,15,.94));border-top:1px solid var(--line)}
+      .custom-request-actions .btn{width:100%;justify-content:center;min-height:50px}
+      .custom-request-success{min-height:calc(100dvh - 78px);padding:38px 20px}
+    }
+    @media (max-width:380px){.custom-garment-options{grid-template-columns:1fr}.custom-request-head .tag{font-size:.62rem}.custom-request-head h2{font-size:1.12rem}}
+
   </style>
 
 
@@ -6254,7 +6320,8 @@
               businesses, teams, reunions, fundraisers, events, and personal projects.
               Start with a logo, a sketch, an inspiration photo, or just an idea.
             </p>
-            <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true">Custom Request Form Coming Soon</a>
+            <button type="button" class="btn btn-primary" id="openCustomRequestBtn">Start a Custom Request</button>
+            <div class="custom-request-note">No payment required. Tell us what you need and we’ll follow up by email.</div>
           </div>
 
           <div class="service-grid">
@@ -6472,6 +6539,88 @@
         <button type="button" class="btn btn-secondary" id="keepShoppingBtn">Keep Shopping</button>
         <button type="button" class="btn btn-primary" id="viewCartBtn">View Cart</button>
       </div>
+    </div>
+  </div>
+
+
+  <div class="custom-request-overlay" id="customRequestOverlay" aria-hidden="true">
+    <div class="custom-request-shell" role="dialog" aria-modal="true" aria-labelledby="customRequestTitle">
+      <div class="custom-request-head">
+        <div class="custom-request-head-main">
+          <div class="custom-request-icon" aria-hidden="true">+</div>
+          <div><div class="tag">Custom Printing</div><h2 id="customRequestTitle">Tell us what you want to make</h2></div>
+        </div>
+        <button type="button" class="custom-request-close" id="closeCustomRequestBtn" aria-label="Close custom request form">×</button>
+      </div>
+
+      <form class="custom-request-body" id="customRequestForm" novalidate>
+        <div id="customRequestFormContent">
+          <p class="custom-request-intro">Share the basics and Rocket Print will follow up by email to confirm the garment, artwork, quantity, pricing, and timeline before anything is produced.</p>
+
+          <section class="custom-request-section">
+            <div class="custom-request-section-head"><h3>Contact information</h3><span>* Required</span></div>
+            <div class="custom-request-grid">
+              <div class="custom-request-field"><label for="customName">Full name *</label><input id="customName" name="customerName" autocomplete="name" maxlength="80" required></div>
+              <div class="custom-request-field"><label for="customOrganization">Organization / group <span class="optional">(optional)</span></label><input id="customOrganization" name="organization" autocomplete="organization" maxlength="100" placeholder="School, team, business, event, etc."></div>
+              <div class="custom-request-field"><label for="customEmail">Email *</label><input id="customEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+              <div class="custom-request-field"><label for="customPhone">Phone *</label><input id="customPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" required></div>
+            </div>
+          </section>
+
+          <section class="custom-request-section">
+            <div class="custom-request-section-head"><h3>Project details</h3><span>Give us your best estimate</span></div>
+            <div class="custom-request-grid">
+              <div class="custom-request-field">
+                <label for="customRequestType">Project type *</label>
+                <select id="customRequestType" name="requestType" required>
+                  <option value="">Choose one</option><option>School / Team</option><option>Business</option><option>Event / Group</option><option>Family Reunion</option><option>Boutique Design</option><option>Logo Apparel</option><option>Personal Project</option><option>Other</option>
+                </select>
+              </div>
+              <div class="custom-request-field"><label for="customQuantity">Estimated quantity *</label><input id="customQuantity" name="estimatedQuantity" type="number" inputmode="numeric" min="1" max="1000" step="1" placeholder="Example: 24" required></div>
+              <div class="custom-request-field full">
+                <span class="custom-request-label">Garment type(s) *</span>
+                <div class="custom-garment-options" id="customGarmentOptions">
+                  <label class="custom-garment-option"><input type="checkbox" name="garmentType" value="T-Shirts"><span>T-Shirts</span></label>
+                  <label class="custom-garment-option"><input type="checkbox" name="garmentType" value="Hoodies"><span>Hoodies</span></label>
+                  <label class="custom-garment-option"><input type="checkbox" name="garmentType" value="Sweatshirts"><span>Sweatshirts</span></label>
+                  <label class="custom-garment-option"><input type="checkbox" name="garmentType" value="Other"><span>Other</span></label>
+                </div>
+              </div>
+              <div class="custom-request-field"><label for="customSizes">Sizes needed <span class="optional">(optional)</span></label><input id="customSizes" name="sizes" maxlength="160" placeholder="Example: Adult S–2XL, Youth M–XL"></div>
+              <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
+              <div class="custom-request-field"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><input id="customNeededBy" name="neededBy" type="date"></div>
+              <div class="custom-request-field">
+                <label for="customArtworkStatus">Artwork status *</label>
+                <select id="customArtworkStatus" name="artworkStatus" required>
+                  <option value="">Choose one</option><option>I have print-ready artwork</option><option>I have a logo / artwork that may need cleanup</option><option>I have an inspiration image or sketch</option><option>I need Rocket Print to help create the design</option><option>I only have an idea right now</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <section class="custom-request-section">
+            <div class="custom-request-section-head"><h3>Artwork & description</h3><span>Links are optional</span></div>
+            <div class="custom-request-grid">
+              <div class="custom-request-field full"><label for="customArtworkLink">Artwork / inspiration link <span class="optional">(optional)</span></label><input id="customArtworkLink" name="artworkLink" type="url" inputmode="url" maxlength="500" placeholder="Google Drive, Canva, Dropbox, website link, etc."><p class="custom-request-help">Use a shareable link if you already have artwork. We can arrange file transfer later if needed.</p></div>
+              <div class="custom-request-field full"><label for="customDescription">What do you want us to make? *</label><textarea id="customDescription" name="projectDescription" maxlength="2500" required placeholder="Tell us what you want the design to say or look like, where it should print, and any details that matter."></textarea></div>
+              <div class="custom-request-field full"><label for="customNotes">Anything else? <span class="optional">(optional)</span></label><textarea id="customNotes" name="notes" maxlength="1200" placeholder="Budget target, delivery details, special requests, etc."></textarea></div>
+            </div>
+          </section>
+
+          <div class="custom-request-honeypot" aria-hidden="true"><label for="customCompanyWebsite">Website</label><input id="customCompanyWebsite" name="companyWebsite" tabindex="-1" autocomplete="off"></div>
+          <div id="turnstileCustomRequest"></div>
+          <div class="custom-request-status" id="customRequestStatus" role="status" aria-live="polite"></div>
+          <div class="custom-request-actions"><button type="submit" class="btn btn-primary" id="customRequestSubmitBtn">Send Custom Request</button></div>
+        </div>
+
+        <div class="custom-request-success" id="customRequestSuccess">
+          <div class="custom-request-success-mark">✓</div>
+          <h3>Request sent.</h3>
+          <p>Thanks — Rocket Print received your custom project details. We’ll review the request and follow up at the email address you provided.</p>
+          <div class="custom-request-id" id="customRequestId">Request received</div>
+          <button type="button" class="btn btn-primary" id="customRequestDoneBtn">Done</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -7748,6 +7897,10 @@
       ensureTurnstileWidget().catch(error => {
         console.error('Turnstile preload failed:', error);
       });
+
+      ensureCustomTurnstileWidget().catch(error => {
+        console.error('Custom request Turnstile preload failed:', error);
+      });
     }
 
     async function stripeApiPost(path, payload){
@@ -8173,6 +8326,198 @@
       }
     }
 
+
+    /*
+     * ==========================================================
+     * CUSTOM REQUEST FORM
+     * ==========================================================
+     */
+    const customRequestOverlay=document.getElementById('customRequestOverlay');
+    const openCustomRequestBtn=document.getElementById('openCustomRequestBtn');
+    const closeCustomRequestBtn=document.getElementById('closeCustomRequestBtn');
+    const customRequestForm=document.getElementById('customRequestForm');
+    const customRequestFormContent=document.getElementById('customRequestFormContent');
+    const customRequestSuccess=document.getElementById('customRequestSuccess');
+    const customRequestStatus=document.getElementById('customRequestStatus');
+    const customRequestSubmitBtn=document.getElementById('customRequestSubmitBtn');
+    const customRequestId=document.getElementById('customRequestId');
+    const customRequestDoneBtn=document.getElementById('customRequestDoneBtn');
+    const customName=document.getElementById('customName');
+    const customEmail=document.getElementById('customEmail');
+    const customPhone=document.getElementById('customPhone');
+    const customOrganization=document.getElementById('customOrganization');
+    const customRequestType=document.getElementById('customRequestType');
+    const customQuantity=document.getElementById('customQuantity');
+    const customSizes=document.getElementById('customSizes');
+    const customColors=document.getElementById('customColors');
+    const customNeededBy=document.getElementById('customNeededBy');
+    const customArtworkStatus=document.getElementById('customArtworkStatus');
+    const customArtworkLink=document.getElementById('customArtworkLink');
+    const customDescription=document.getElementById('customDescription');
+    const customNotes=document.getElementById('customNotes');
+    const customCompanyWebsite=document.getElementById('customCompanyWebsite');
+
+    const CUSTOM_TURNSTILE_ACTION='rocket_print_custom_request';
+    let customTurnstileWidgetId=null;
+    let customTurnstileInitPromise=null;
+    let customTurnstilePendingResolve=null;
+    let customTurnstilePendingReject=null;
+    let customSubmissionId='';
+
+    function selectedCustomGarments(){
+      return Array.from(document.querySelectorAll('input[name="garmentType"]:checked')).map(input=>input.value);
+    }
+
+    function setCustomRequestStatus(message,type=''){
+      customRequestStatus.textContent=message||'';
+      customRequestStatus.className='custom-request-status'+(type?` ${type}`:'');
+    }
+
+    function resetCustomRequestView(){
+      customRequestFormContent.style.display='';
+      customRequestSuccess.classList.remove('visible');
+      customRequestId.textContent='Request received';
+      setCustomRequestStatus('');
+    }
+
+    function openCustomRequest(){
+      resetCustomRequestView();
+      customRequestOverlay.classList.add('open');
+      customRequestOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      setTimeout(()=>customName?.focus({preventScroll:true}),120);
+      ensureCustomTurnstileWidget().catch(error=>console.error('Custom request Turnstile preload failed:',error));
+    }
+
+    function closeCustomRequest(){
+      customRequestOverlay.classList.remove('open');
+      customRequestOverlay.setAttribute('aria-hidden','true');
+      if(!checkoutOverlay.classList.contains('open')&&!cartOverlay.classList.contains('open')&&!(modal&&modal.classList.contains('open'))){
+        document.body.style.overflow='';
+      }
+    }
+
+    function settleCustomTurnstilePending(error,token=''){
+      const resolve=customTurnstilePendingResolve;
+      const reject=customTurnstilePendingReject;
+      customTurnstilePendingResolve=null;
+      customTurnstilePendingReject=null;
+      if(error){if(reject)reject(error);return}
+      if(resolve)resolve(token);
+    }
+
+    async function ensureCustomTurnstileWidget(){
+      if(customTurnstileWidgetId!==null)return customTurnstileWidgetId;
+      if(customTurnstileInitPromise)return customTurnstileInitPromise;
+      customTurnstileInitPromise=(async()=>{
+        const started=Date.now();
+        while((!window.turnstile||typeof window.turnstile.render!=='function')&&(Date.now()-started<12000)){
+          await new Promise(resolve=>setTimeout(resolve,100));
+        }
+        if(!window.turnstile||typeof window.turnstile.render!=='function'){
+          throw new Error('Security verification could not load. Check your connection and try again.');
+        }
+        customTurnstileWidgetId=window.turnstile.render('#turnstileCustomRequest',{
+          sitekey:TURNSTILE_SITE_KEY,theme:'dark',size:'flexible',execution:'execute',appearance:'interaction-only',action:CUSTOM_TURNSTILE_ACTION,
+          callback(token){settleCustomTurnstilePending(null,token)},
+          'error-callback'(errorCode){console.error('Custom request Turnstile error:',errorCode);settleCustomTurnstilePending(new Error('Security verification failed. Please try again.'))},
+          'expired-callback'(){settleCustomTurnstilePending(new Error('Security verification expired. Please try again.'))},
+          'timeout-callback'(){settleCustomTurnstilePending(new Error('Security verification timed out. Please try again.'))}
+        });
+        return customTurnstileWidgetId;
+      })();
+      try{return await customTurnstileInitPromise}finally{customTurnstileInitPromise=null}
+    }
+
+    function resetCustomTurnstileWidget(){
+      if(customTurnstileWidgetId!==null&&window.turnstile&&typeof window.turnstile.reset==='function'){
+        try{window.turnstile.reset(customTurnstileWidgetId)}catch(error){console.error('Unable to reset custom request Turnstile:',error)}
+      }
+    }
+
+    async function getFreshCustomTurnstileToken(){
+      const widgetId=await ensureCustomTurnstileWidget();
+      if(customTurnstilePendingResolve||customTurnstilePendingReject)throw new Error('Security verification is already running.');
+      resetCustomTurnstileWidget();
+      return await new Promise((resolve,reject)=>{
+        customTurnstilePendingResolve=resolve;
+        customTurnstilePendingReject=reject;
+        try{window.turnstile.execute(widgetId)}catch(error){settleCustomTurnstilePending(new Error('Security verification could not start. Please try again.'))}
+      });
+    }
+
+    function validateCustomRequestForm(){
+      const required=[[customName,'Enter your full name.'],[customEmail,'Enter your email address.'],[customPhone,'Enter your phone number.'],[customRequestType,'Choose a project type.'],[customQuantity,'Enter an estimated quantity.'],[customArtworkStatus,'Choose your artwork status.'],[customDescription,'Tell us what you want to make.']];
+      for(const [field,message] of required){
+        if(!String(field.value||'').trim()){field.focus();throw new Error(message)}
+      }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customEmail.value.trim())){customEmail.focus();throw new Error('Enter a valid email address.')}
+      const quantity=Number(customQuantity.value);
+      if(!Number.isInteger(quantity)||quantity<1||quantity>1000){customQuantity.focus();throw new Error('Estimated quantity must be between 1 and 1,000.')}
+      if(selectedCustomGarments().length===0){document.getElementById('customGarmentOptions')?.scrollIntoView({behavior:'smooth',block:'center'});throw new Error('Choose at least one garment type.')}
+      if(customArtworkLink.value.trim()){
+        try{const url=new URL(customArtworkLink.value.trim());if(!['http:','https:'].includes(url.protocol))throw new Error()}
+        catch(error){customArtworkLink.focus();throw new Error('Enter a valid http:// or https:// artwork link.')}
+      }
+    }
+
+    function customRequestPayload(turnstileToken){
+      if(!customSubmissionId){
+        customSubmissionId=(window.crypto&&typeof window.crypto.randomUUID==='function')?window.crypto.randomUUID():`web-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      }
+      return{
+        submissionId:customSubmissionId,customerName:customName.value.trim(),email:customEmail.value.trim(),phone:customPhone.value.trim(),
+        organization:customOrganization.value.trim(),requestType:customRequestType.value.trim(),garmentTypes:selectedCustomGarments(),
+        estimatedQuantity:Number(customQuantity.value),sizes:customSizes.value.trim(),colors:customColors.value.trim(),neededBy:customNeededBy.value,
+        artworkStatus:customArtworkStatus.value.trim(),artworkLink:customArtworkLink.value.trim(),projectDescription:customDescription.value.trim(),
+        notes:customNotes.value.trim(),companyWebsite:customCompanyWebsite.value.trim(),turnstileToken
+      };
+    }
+
+    async function submitCustomRequest(payload){
+      const base=ROCKET_API.replace(/\/+$/,'');
+      const response=await fetch(base+'/custom-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
+      const text=await response.text();
+      let result=null;
+      try{result=JSON.parse(text)}catch(error){throw new Error('Rocket Print could not submit the request right now. Please try again.')}
+      if(!response.ok||!result||result.ok!==true)throw new Error((result&&result.error)||'Rocket Print could not submit the request right now. Please try again.');
+      return result;
+    }
+
+    openCustomRequestBtn?.addEventListener('click',openCustomRequest);
+    closeCustomRequestBtn?.addEventListener('click',closeCustomRequest);
+    customRequestDoneBtn?.addEventListener('click',closeCustomRequest);
+    customRequestOverlay?.addEventListener('click',event=>{if(event.target===customRequestOverlay)closeCustomRequest()});
+
+    customRequestForm?.addEventListener('submit',async event=>{
+      event.preventDefault();
+      try{
+        validateCustomRequestForm();
+        customRequestSubmitBtn.disabled=true;
+        customRequestSubmitBtn.classList.add('is-busy');
+        customRequestSubmitBtn.textContent='Sending Request…';
+        setCustomRequestStatus('Running secure verification…');
+        const token=await getFreshCustomTurnstileToken();
+        setCustomRequestStatus('Sending your request to Rocket Print…');
+        const result=await submitCustomRequest(customRequestPayload(token));
+        customRequestId.textContent=result.requestId?`Request ${result.requestId}`:'Request received';
+        customRequestFormContent.style.display='none';
+        customRequestSuccess.classList.add('visible');
+        customRequestForm.reset();
+        customSubmissionId='';
+        resetCustomTurnstileWidget();
+      }catch(error){
+        console.error('Custom request failed:',error);
+        setCustomRequestStatus(error&&error.message?error.message:'Unable to send the request. Please try again.','error');
+        resetCustomTurnstileWidget();
+      }finally{
+        customRequestSubmitBtn.disabled=false;
+        customRequestSubmitBtn.classList.remove('is-busy');
+        customRequestSubmitBtn.textContent='Send Custom Request';
+      }
+    });
+
+
     /*
      * ==========================================================
      * LEGACY DISABLED LINKS + KEYBOARD
@@ -8185,6 +8530,11 @@
 
     document.addEventListener('keydown', event => {
       if(event.key === 'Escape'){
+        if(customRequestOverlay && customRequestOverlay.classList.contains('open')){
+          closeCustomRequest();
+          return;
+        }
+
         if(cartChoiceOverlay && cartChoiceOverlay.classList.contains('open')){
           closeAddedToCart();
           return;
