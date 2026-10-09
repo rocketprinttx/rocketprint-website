@@ -5300,10 +5300,271 @@
       margin-top:14px;
     }
 
+
+    /* ===== Add-to-cart choice + branded Stripe return processing ===== */
+    .cart-choice-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1750;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.74);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .cart-choice-overlay.open{
+      display:flex;
+    }
+
+    .cart-choice-card{
+      width:min(520px,100%);
+      border:1px solid var(--line-strong);
+      border-radius:22px;
+      background:linear-gradient(180deg,#151515 0%,#0d0d0d 100%);
+      box-shadow:0 28px 90px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+
+    .cart-choice-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 20px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-choice-head strong{
+      color:#fff;
+      font-size:1.02rem;
+      letter-spacing:-.02em;
+    }
+
+    .cart-choice-body{
+      display:grid;
+      grid-template-columns:96px 1fr;
+      gap:18px;
+      align-items:center;
+      padding:22px 20px 8px;
+    }
+
+    .cart-choice-thumb{
+      width:96px;
+      aspect-ratio:1 / 1.08;
+      object-fit:cover;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#171717;
+    }
+
+    .cart-choice-copy h3{
+      margin:0 0 6px;
+      color:#fff;
+      font-size:1.2rem;
+      letter-spacing:-.025em;
+    }
+
+    .cart-choice-meta{
+      color:var(--muted);
+      line-height:1.5;
+      font-size:.86rem;
+    }
+
+    .cart-choice-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      padding:20px;
+    }
+
+    .cart-choice-actions .btn{
+      width:100%;
+      justify-content:center;
+    }
+
+    .stripe-return-gate{
+      position:fixed;
+      inset:0;
+      z-index:5000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      min-height:100dvh;
+      padding:28px;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(224,38,38,.13), transparent 34%),
+        #080808;
+      color:#fff;
+      text-align:center;
+    }
+
+    html.stripe-return-pending{
+      background:#080808;
+    }
+
+    html.stripe-return-pending body > *{
+      visibility:hidden !important;
+    }
+
+    html.stripe-return-pending body > #stripeReturnGate{
+      visibility:visible !important;
+      display:flex !important;
+    }
+
+    .stripe-return-card{
+      width:min(520px,100%);
+      padding:38px 28px 34px;
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:24px;
+      background:rgba(16,16,16,.96);
+      box-shadow:0 32px 100px rgba(0,0,0,.6);
+    }
+
+    .rocket-processing-spinner{
+      position:relative;
+      width:150px;
+      height:150px;
+      display:grid;
+      place-items:center;
+      margin:0 auto 24px;
+    }
+
+    .rocket-processing-spinner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:4px solid rgba(255,255,255,.08);
+      border-top-color:#f33a35;
+      border-right-color:rgba(243,58,53,.42);
+      filter:drop-shadow(0 0 12px rgba(243,58,53,.42));
+      animation:rocket-spin .9s linear infinite;
+    }
+
+    .rocket-processing-spinner::after{
+      content:"";
+      position:absolute;
+      inset:13px;
+      border-radius:50%;
+      border:1px solid rgba(243,58,53,.16);
+      box-shadow:inset 0 0 30px rgba(243,58,53,.07);
+    }
+
+    .rocket-processing-spinner img{
+      position:relative;
+      z-index:1;
+      width:105px;
+      height:105px;
+      object-fit:contain;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.55));
+    }
+
+    @keyframes rocket-spin{
+      to{ transform:rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .rocket-processing-spinner::before{
+        animation-duration:2.4s;
+      }
+    }
+
+    .stripe-return-kicker{
+      margin-bottom:8px;
+      color:#ff625d;
+      font-size:.72rem;
+      font-weight:950;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+
+    .stripe-return-card h2{
+      margin:0 0 10px;
+      font-size:clamp(1.55rem,5vw,2rem);
+      letter-spacing:-.035em;
+    }
+
+    .stripe-return-card p{
+      margin:0 auto;
+      max-width:420px;
+      color:#aaa;
+      font-size:.92rem;
+      line-height:1.65;
+    }
+
+    @media (max-width:620px){
+      .cart-choice-overlay{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .cart-choice-card{
+        width:100%;
+        border-radius:22px 22px 0 0;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+      }
+
+      .cart-choice-actions{
+        grid-template-columns:1fr;
+      }
+
+      .cart-choice-actions #keepShoppingBtn{
+        order:2;
+      }
+
+      .cart-choice-actions #viewCartBtn{
+        order:1;
+      }
+
+      .stripe-return-card{
+        padding:34px 20px 30px;
+      }
+
+      .rocket-processing-spinner{
+        width:132px;
+        height:132px;
+      }
+
+      .rocket-processing-spinner img{
+        width:92px;
+        height:92px;
+      }
+    }
+
   </style>
+
+
+  <script>
+    (function(){
+      try{
+        const params = new URLSearchParams(window.location.search);
+        if(params.get('stripe_return') === '1'){
+          document.documentElement.classList.add('stripe-return-pending');
+        }
+      }catch(error){}
+    })();
+  </script>
+
 </head>
 
 <body>
+
+  <div class="stripe-return-gate" id="stripeReturnGate" role="status" aria-live="polite" aria-atomic="true">
+    <div class="stripe-return-card">
+      <div class="rocket-processing-spinner" aria-hidden="true">
+        <img src="assets/rocket-print-logo.png" alt="">
+      </div>
+      <div class="stripe-return-kicker">Secure checkout</div>
+      <h2 id="stripeReturnTitle">Processing your payment…</h2>
+      <p id="stripeReturnMessage">Please don’t close this window. We’re confirming your payment and creating your Rocket Print order.</p>
+    </div>
+  </div>
+
   <div class="announcement desktop-announcement">
     <span><b>Timeless Collection:</b> three Wellington heritage designs are now featured on RocketPrintTX.com.</span>
   </div>
@@ -5748,6 +6009,27 @@
       </div>
     </div>
 
+  </div>
+
+
+  <div class="cart-choice-overlay" id="cartChoiceOverlay" aria-hidden="true">
+    <div class="cart-choice-card" role="dialog" aria-modal="true" aria-labelledby="cartChoiceTitle">
+      <div class="cart-choice-head">
+        <strong id="cartChoiceTitle">Added to your cart</strong>
+        <button type="button" class="icon-close" id="cartChoiceClose" aria-label="Close">×</button>
+      </div>
+      <div class="cart-choice-body">
+        <img class="cart-choice-thumb" id="cartChoiceThumb" src="assets/rocket-print-logo.png" alt="">
+        <div class="cart-choice-copy">
+          <h3 id="cartChoiceProduct">Rocket Print item</h3>
+          <div class="cart-choice-meta" id="cartChoiceMeta"></div>
+        </div>
+      </div>
+      <div class="cart-choice-actions">
+        <button type="button" class="btn btn-secondary" id="keepShoppingBtn">Keep Shopping</button>
+        <button type="button" class="btn btn-primary" id="viewCartBtn">View Cart</button>
+      </div>
+    </div>
   </div>
 
   <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
@@ -6255,7 +6537,11 @@
     function closeModal(){
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden','true');
-      if(!cartOverlay.classList.contains('open') && !checkoutOverlay.classList.contains('open')){
+      if(
+        !cartOverlay.classList.contains('open') &&
+        !checkoutOverlay.classList.contains('open') &&
+        !(cartChoiceOverlay && cartChoiceOverlay.classList.contains('open'))
+      ){
         document.body.style.overflow = '';
       }
     }
@@ -6304,6 +6590,13 @@
     const cartItems = document.getElementById('cartItems');
     const cartSubtotal = document.getElementById('cartSubtotal');
     const checkoutBtn = document.getElementById('checkoutBtn');
+    const cartChoiceOverlay = document.getElementById('cartChoiceOverlay');
+    const cartChoiceClose = document.getElementById('cartChoiceClose');
+    const cartChoiceThumb = document.getElementById('cartChoiceThumb');
+    const cartChoiceProduct = document.getElementById('cartChoiceProduct');
+    const cartChoiceMeta = document.getElementById('cartChoiceMeta');
+    const keepShoppingBtn = document.getElementById('keepShoppingBtn');
+    const viewCartBtn = document.getElementById('viewCartBtn');
 
     let cart = loadCart();
 
@@ -6359,7 +6652,36 @@
 
       saveCart();
       closeModal();
-      openCart();
+      showAddedToCart(item);
+    }
+
+    function showAddedToCart(item){
+      if(!cartChoiceOverlay) return;
+
+      cartChoiceThumb.src = item.mockup || getProductMockupImage(item.design, item.color);
+      cartChoiceThumb.alt = item.design;
+      cartChoiceProduct.textContent = item.design;
+      cartChoiceMeta.textContent = `${item.garment} • ${item.color} • ${item.size}`;
+
+      cartChoiceOverlay.classList.add('open');
+      cartChoiceOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => viewCartBtn && viewCartBtn.focus());
+    }
+
+    function closeAddedToCart(){
+      if(!cartChoiceOverlay) return;
+
+      cartChoiceOverlay.classList.remove('open');
+      cartChoiceOverlay.setAttribute('aria-hidden','true');
+
+      if(
+        !cartOverlay.classList.contains('open') &&
+        !checkoutOverlay.classList.contains('open') &&
+        !modal.classList.contains('open')
+      ){
+        document.body.style.overflow = '';
+      }
     }
 
     function cartMerchandiseEstimate(){
@@ -6451,7 +6773,11 @@
     function closeCart(){
       cartOverlay.classList.remove('open');
       cartOverlay.setAttribute('aria-hidden','true');
-      if(!checkoutOverlay.classList.contains('open') && !modal.classList.contains('open')){
+      if(
+        !checkoutOverlay.classList.contains('open') &&
+        !modal.classList.contains('open') &&
+        !(cartChoiceOverlay && cartChoiceOverlay.classList.contains('open'))
+      ){
         document.body.style.overflow = '';
       }
     }
@@ -6468,6 +6794,27 @@
     cartOverlay.addEventListener('click', event => {
       if(event.target === cartOverlay) closeCart();
     });
+
+    if(cartChoiceClose){
+      cartChoiceClose.addEventListener('click', closeAddedToCart);
+    }
+
+    if(keepShoppingBtn){
+      keepShoppingBtn.addEventListener('click', closeAddedToCart);
+    }
+
+    if(viewCartBtn){
+      viewCartBtn.addEventListener('click', () => {
+        closeAddedToCart();
+        openCart();
+      });
+    }
+
+    if(cartChoiceOverlay){
+      cartChoiceOverlay.addEventListener('click', event => {
+        if(event.target === cartChoiceOverlay) closeAddedToCart();
+      });
+    }
 
     if(addToCartBtn){
       addToCartBtn.addEventListener('click', addConfiguredItem);
@@ -7157,6 +7504,23 @@
      * ==========================================================
      */
 
+    const stripeReturnGate = document.getElementById('stripeReturnGate');
+    const stripeReturnTitle = document.getElementById('stripeReturnTitle');
+    const stripeReturnMessage = document.getElementById('stripeReturnMessage');
+
+    function setStripeReturnProcessing(title, message){
+      if(stripeReturnTitle) stripeReturnTitle.textContent = title;
+      if(stripeReturnMessage) stripeReturnMessage.textContent = message;
+    }
+
+    function releaseStripeReturnGate(){
+      document.documentElement.classList.remove('stripe-return-pending');
+      if(stripeReturnGate){
+        stripeReturnGate.style.display = 'none';
+        stripeReturnGate.setAttribute('aria-hidden','true');
+      }
+    }
+
     async function getStripeSessionStatus(sessionId){
       const base = ROCKET_API.replace(/\/+$/, '');
       const response = await fetch(
@@ -7185,6 +7549,16 @@
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
       renderCart();
 
+      const successParagraphs = checkoutSuccess.querySelectorAll('p');
+      if(successParagraphs[0]){
+        successParagraphs[0].textContent =
+          'Your payment was completed and your Rocket Print order has been created.';
+      }
+      if(successParagraphs[1]){
+        successParagraphs[1].textContent =
+          'A confirmation email is on the way.';
+      }
+
       checkoutSummaryNormal.style.display = 'none';
       checkoutSuccess.classList.add('visible');
       successOrderNumber.textContent = label;
@@ -7198,6 +7572,8 @@
         top:0,
         behavior:'auto'
       });
+
+      requestAnimationFrame(releaseStripeReturnGate);
     }
 
     async function handleStripeReturn(){
@@ -7209,6 +7585,11 @@
 
       const sessionId = params.get('session_id') || '';
 
+      setStripeReturnProcessing(
+        'Processing your payment…',
+        'Please don’t close this window. We’re confirming your payment and creating your Rocket Print order.'
+      );
+
       const cleanUrl =
         window.location.pathname +
         (window.location.hash || '');
@@ -7216,13 +7597,14 @@
       window.history.replaceState({}, document.title, cleanUrl);
 
       if(!sessionId){
+        releaseStripeReturnGate();
         return;
       }
 
       try{
         let status = null;
 
-        for(let attempt = 0; attempt < 10; attempt++){
+        for(let attempt = 0; attempt < 40; attempt++){
           status = await getStripeSessionStatus(sessionId);
 
           if(
@@ -7233,15 +7615,28 @@
             return;
           }
 
+          if(status.paymentStatus === 'paid' && attempt >= 3){
+            setStripeReturnProcessing(
+              'Payment received. Finishing your order…',
+              'Your card was approved. We’re creating your Rocket Print order and sending your confirmation email. Please don’t submit another payment.'
+            );
+          }
+
           if(status.paymentStatus && status.paymentStatus !== 'paid'){
-            break;
+            setStripeReturnProcessing(
+              'Finishing checkout…',
+              'Stripe is still confirming the payment status. Please keep this window open.'
+            );
           }
 
           await new Promise(resolve => setTimeout(resolve, 750));
         }
 
         if(status && status.paymentStatus === 'paid'){
-          showStripeOrderConfirmation('Payment received');
+          cart = [];
+          localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+          renderCart();
+
           const successParagraphs = checkoutSuccess.querySelectorAll('p');
           if(successParagraphs[0]){
             successParagraphs[0].textContent =
@@ -7251,10 +7646,30 @@
             successParagraphs[1].textContent =
               'Do not submit another payment. Your confirmation email will arrive when processing finishes.';
           }
+
+          checkoutSummaryNormal.style.display = 'none';
+          checkoutSuccess.classList.add('visible');
+          successOrderNumber.textContent = 'Payment received';
+          setPaymentStatus('');
+          checkoutOverlay.classList.add('open');
+          checkoutOverlay.setAttribute('aria-hidden','false');
+          document.body.style.overflow = 'hidden';
+          checkoutBody.scrollTo({ top:0, behavior:'auto' });
+          requestAnimationFrame(releaseStripeReturnGate);
+          return;
         }
+
+        setStripeReturnProcessing(
+          'Checkout status pending',
+          'We could not confirm the final payment status yet. Please do not submit another payment. Check your email for your Rocket Print confirmation.'
+        );
 
       }catch(error){
         console.error('Stripe return verification failed:', error);
+        setStripeReturnProcessing(
+          'We’re confirming your order…',
+          'Please do not submit another payment. If confirmation is delayed, check your email for the Rocket Print order confirmation.'
+        );
       }
     }
 
@@ -7270,6 +7685,11 @@
 
     document.addEventListener('keydown', event => {
       if(event.key === 'Escape'){
+        if(cartChoiceOverlay && cartChoiceOverlay.classList.contains('open')){
+          closeAddedToCart();
+          return;
+        }
+
         if(checkoutOverlay.classList.contains('open')){
           closeCheckout();
           return;
