@@ -4424,7 +4424,7 @@
     }
 
   
-    /* ===== Rocket Print Sandbox Cart + Checkout ===== */
+    /* ===== Rocket Print Cart + Stripe Checkout ===== */
     .cart-trigger{
       border:0;
       position:relative;
@@ -4916,13 +4916,6 @@
       letter-spacing:.01em;
     }
 
-    .paypal-button-mark{
-      display:block;
-      width:24px;
-      height:24px;
-      object-fit:contain;
-      flex:0 0 24px;
-    }
 
     .checkout-button-note{
       margin-top:9px;
@@ -5170,16 +5163,6 @@
       opacity:.62;
     }
 
-    .sandbox-banner{
-      margin-bottom:18px;
-      padding:10px 12px;
-      border:1px solid rgba(255,188,76,.26);
-      border-radius:10px;
-      background:rgba(255,188,76,.08);
-      color:#e5c780;
-      font-size:.75rem;
-      line-height:1.45;
-    }
 
     .checkout-success{
       display:none;
@@ -5298,7 +5281,26 @@
       }
     }
 
-</style>
+
+    .stripe-checkout-shell{
+      margin-top:12px;
+      min-height:520px;
+      overflow:hidden;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 10px 30px rgba(0,0,0,.16);
+    }
+
+    #stripeCheckoutMount{
+      min-height:520px;
+      width:100%;
+    }
+
+    .stripe-trust-row{
+      margin-top:14px;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -5789,7 +5791,7 @@
             <div class="tag">Secure Checkout</div>
             <h2 id="checkoutTitle">Complete your order</h2>
             <div class="checkout-head-security">
-              Encrypted checkout • Payments securely processed by PayPal
+              Encrypted checkout • Payments securely processed by Stripe
             </div>
           </div>
         </div>
@@ -5909,13 +5911,7 @@
               </div>
 
               <button type="button" class="btn btn-primary checkout-primary secure-continue-btn" id="quoteBtn">
-                <img
-                  class="paypal-button-mark"
-                  src="https://www.paypalobjects.com/webstatic/icon/pp258.png"
-                  alt=""
-                  aria-hidden="true"
-                >
-                <span>Checkout Through PayPal</span>
+                <span>Continue to Secure Payment</span>
               </button>
 
               <div class="turnstile-wrap" id="turnstileWrap">
@@ -5940,75 +5936,21 @@
                 <div>
                   <div class="payment-label">Secure payment</div>
                   <div class="payment-security-copy">
-                    Card numbers and security codes are entered directly into PayPal-hosted fields.
-                    Rocket Print does not receive or store your full card number or CVV.
+                    Payment details are entered directly into Stripe's secure embedded checkout.
+                    Rocket Print does not receive or store your full card number or security code.
                   </div>
                 </div>
               </div>
 
-              <div class="wallet-grid">
-                <div class="wallet-slot" id="applePayContainer"></div>
-                <div class="wallet-slot" id="googlePayContainer"></div>
+
+              <div class="stripe-checkout-shell">
+                <div id="stripeCheckoutMount"></div>
               </div>
 
-              <div class="pay-divider">or pay securely by card</div>
-
-              <div id="cardPaymentArea">
-                <div class="secure-card-box">
-                  <div class="secure-card-head">
-                    <div class="secure-lock" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="17" height="17" role="img" aria-hidden="true">
-                        <rect x="5" y="10" width="14" height="10" rx="2"
-                              fill="none" stroke="currentColor" stroke-width="1.8"/>
-                        <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10"
-                              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <strong>Credit or debit card</strong>
-                      <span>Secure fields are provided and isolated by PayPal.</span>
-                    </div>
-                  </div>
-
-                  <div class="card-fields">
-                    <div class="card-field-group">
-                      <div class="card-field-label">Name on card</div>
-                      <div class="card-field-shell" id="paypal-card-fields-name"></div>
-                    </div>
-
-                    <div class="card-field-group">
-                      <div class="card-field-label">Card number</div>
-                      <div class="card-field-shell" id="paypal-card-fields-number"></div>
-                    </div>
-
-                    <div class="card-field-row">
-                      <div class="card-field-group">
-                        <div class="card-field-label">Expiration</div>
-                        <div class="card-field-shell" id="paypal-card-fields-expiry"></div>
-                      </div>
-
-                      <div class="card-field-group">
-                        <div class="card-field-label">Security code</div>
-                        <div class="card-field-shell" id="paypal-card-fields-cvv"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="checkout-field billing-zip">
-                    <label for="billingZip">Billing ZIP</label>
-                    <input id="billingZip" inputmode="numeric" autocomplete="postal-code">
-                  </div>
-
-                  <div class="payment-trust-row">
-                    <span>Encrypted checkout</span>
-                    <span>Processed by PayPal</span>
-                    <span>Card data not stored by Rocket Print</span>
-                  </div>
-
-                  <button type="button" class="btn btn-primary checkout-primary" id="cardPayBtn">
-                    Pay Securely by Card
-                  </button>
-                </div>
+              <div class="payment-trust-row stripe-trust-row">
+                <span>Encrypted checkout</span>
+                <span>Processed securely by Stripe</span>
+                <span>Card data not stored by Rocket Print</span>
               </div>
 
               <div class="payment-status" id="paymentStatus" aria-live="polite"></div>
@@ -6554,7 +6496,6 @@
     const checkoutState = document.getElementById('checkoutState');
     const checkoutZip = document.getElementById('checkoutZip');
     const checkoutNotes = document.getElementById('checkoutNotes');
-    const billingZip = document.getElementById('billingZip');
 
     const shippingOption = document.getElementById('shippingOption');
     const localDropOption = document.getElementById('localDropOption');
@@ -6569,10 +6510,7 @@
     const turnstileCheckout = document.getElementById('turnstileCheckout');
     const paymentPanel = document.getElementById('paymentPanel');
     const paymentStatus = document.getElementById('paymentStatus');
-    const cardPayBtn = document.getElementById('cardPayBtn');
-    const cardPaymentArea = document.getElementById('cardPaymentArea');
-    const applePayContainer = document.getElementById('applePayContainer');
-    const googlePayContainer = document.getElementById('googlePayContainer');
+    const stripeCheckoutMount = document.getElementById('stripeCheckoutMount');
 
     const CLIENT_TEXAS_TAX_RATE = 0.0825;
     const CLIENT_SHIPPING_1_TO_2 = 12.00;
@@ -6588,20 +6526,9 @@
 
     let currentQuote = null;
     let currentQuoteFingerprint = '';
-    let preparedPayPalOrderId = '';
-    let preparedCheckoutToken = '';
-
-    let paypalSdk = null;
-    let paypalEligibility = null;
-    let paypalInitPromise = null;
-    let paypalEnvironment = 'sandbox';
-    let cardSession = null;
-    let cardFieldsMounted = false;
-    let applePayReady = false;
-    let googlePayReady = false;
-    let googlePaySession = null;
-    let googlePaymentsClient = null;
-    let googlePayConfig = null;
+    let preparedStripeSessionId = '';
+    let stripeClient = null;
+    let stripeEmbeddedCheckout = null;
 
     function escapeHtml(value){
       return String(value ?? '')
@@ -6833,15 +6760,28 @@
     function invalidatePreparedCheckout(message=''){
       currentQuote = null;
       currentQuoteFingerprint = '';
-      preparedPayPalOrderId = '';
-      preparedCheckoutToken = '';
+      preparedStripeSessionId = '';
+
+      if(stripeEmbeddedCheckout){
+        try{
+          stripeEmbeddedCheckout.destroy();
+        }catch(error){
+          console.debug('Stripe Embedded Checkout was already cleared.');
+        }
+      }
+
+      stripeEmbeddedCheckout = null;
+      stripeClient = null;
+
+      if(stripeCheckoutMount){
+        stripeCheckoutMount.innerHTML = '';
+      }
 
       paymentPanel.classList.remove('visible');
 
       quoteBtn.disabled = false;
       quoteBtn.classList.remove('is-busy');
-      quoteBtn.innerHTML =
-        '<img class="paypal-button-mark" src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="" aria-hidden="true"><span>Checkout Through PayPal</span>';
+      quoteBtn.innerHTML = '<span>Continue to Secure Payment</span>';
 
       if(message){
         setPaymentStatus(message);
@@ -6973,14 +6913,15 @@
       });
     }
 
-    async function apiPost(payload){
-      const response = await fetch(ROCKET_API, {
+    async function stripeApiPost(path, payload){
+      const base = ROCKET_API.replace(/\/+$/, '');
+
+      const response = await fetch(base + path, {
         method:'POST',
         headers:{
-          'Content-Type':'text/plain;charset=utf-8'
+          'Content-Type':'application/json'
         },
         body:JSON.stringify(payload),
-        redirect:'follow',
         cache:'no-store'
       });
 
@@ -6990,14 +6931,46 @@
       try{
         data = JSON.parse(responseText);
       }catch(error){
-        throw new Error('Rocket Print checkout returned an invalid response.');
+        throw new Error('Rocket Print Stripe checkout returned an invalid response.');
       }
 
       if(!response.ok || !data.ok){
-        throw new Error(data.error || 'Rocket Print checkout request failed.');
+        throw new Error(data.error || 'Unable to prepare Stripe checkout.');
       }
 
       return data;
+    }
+
+    async function waitForStripeJs(){
+      const started = Date.now();
+
+      while(typeof window.Stripe !== 'function' && Date.now() - started < 12000){
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+
+      if(typeof window.Stripe !== 'function'){
+        throw new Error('Stripe secure checkout could not load. Refresh the page and try again.');
+      }
+    }
+
+    async function mountStripeCheckout(result){
+      await waitForStripeJs();
+
+      if(stripeEmbeddedCheckout){
+        try{
+          stripeEmbeddedCheckout.destroy();
+        }catch(error){}
+        stripeEmbeddedCheckout = null;
+      }
+
+      stripeCheckoutMount.innerHTML = '';
+      stripeClient = window.Stripe(result.publishableKey);
+
+      stripeEmbeddedCheckout = await stripeClient.initEmbeddedCheckout({
+        clientSecret:result.clientSecret
+      });
+
+      stripeEmbeddedCheckout.mount('#stripeCheckoutMount');
     }
 
     async function prepareSecureCheckout(){
@@ -7011,7 +6984,7 @@
       quoteBtn.textContent = 'Security Check…';
 
       setPaymentStatus(
-        'Running a quick security check before payment…'
+        'Running a quick security check before Stripe checkout…'
       );
 
       let turnstileToken = '';
@@ -7026,62 +6999,47 @@
         quoteBtn.textContent = 'Verifying Order Securely…';
 
         setPaymentStatus(
-          'Verifying prices, shipping, tax, and order details on the Rocket Print server…'
+          'Verifying products, shipping, tax, and Stripe catalog pricing…'
         );
 
-        /*
-         * The backend validates the single-use Cloudflare Turnstile token
-         * before it reprices the cart and creates the PayPal order.
-         */
-        const result = await apiPost({
-          action:'createPayPalOrder',
-          turnstileToken,
-          ...payload
-        });
+        const result = await stripeApiPost(
+          '/stripe/create-checkout-session',
+          {
+            turnstileToken,
+            ...payload
+          }
+        );
 
-        if(!result.paypalOrderId || !result.checkoutToken || !result.quote){
-          throw new Error('Secure checkout could not prepare the payment order.');
+        if(
+          !result.sessionId ||
+          !result.clientSecret ||
+          !result.publishableKey ||
+          !result.quote
+        ){
+          throw new Error('Secure Stripe checkout could not be prepared.');
         }
 
-        /*
-         * If the form changed while the request was running, do not expose a
-         * payment order tied to stale customer/order details.
-         */
         if(fingerprint !== payloadFingerprint()){
           throw new Error('Order details changed while the secure total was being verified. Please continue again.');
         }
 
         currentQuote = result.quote;
         currentQuoteFingerprint = fingerprint;
-        preparedPayPalOrderId = result.paypalOrderId;
-        preparedCheckoutToken = result.checkoutToken;
+        preparedStripeSessionId = result.sessionId;
 
-        /*
-         * Replace the local estimate with the authoritative server amount.
-         * This is the amount PayPal will use.
-         */
         renderQuoteValues(currentQuote);
-
-        if(!billingZip.value.trim()){
-          billingZip.value = checkoutZip.value.trim();
-        }
-
         paymentPanel.classList.add('visible');
 
         quoteBtn.classList.remove('is-busy');
         quoteBtn.disabled = true;
-        quoteBtn.textContent = 'Order Verified ✓';
+        quoteBtn.textContent = 'Secure Payment Ready ✓';
 
         setPaymentStatus(
-          'Order total verified. Loading secure payment methods…'
-        );
-
-        await setupPaymentMethods();
-
-        setPaymentStatus(
-          'Secure payment methods are ready. Your verified total will not change unless you edit the order.',
+          'Secure Stripe checkout is ready. Complete your payment below.',
           'success'
         );
+
+        await mountStripeCheckout(result);
 
         paymentPanel.scrollIntoView({
           behavior:'smooth',
@@ -7094,73 +7052,12 @@
         throw error;
       }finally{
         resetTurnstileWidget();
-
         quoteBtn.classList.remove('is-busy');
 
-        if(!preparedPayPalOrderId){
+        if(!preparedStripeSessionId){
           quoteBtn.disabled = false;
         }
       }
-    }
-
-    function requirePreparedPayPalOrder(){
-      validateCheckoutFields();
-
-      if(
-        !preparedPayPalOrderId ||
-        !preparedCheckoutToken ||
-        !currentQuote ||
-        currentQuoteFingerprint !== payloadFingerprint()
-      ){
-        throw new Error(
-          'Your order needs to be securely verified. Click Checkout Through PayPal before choosing a payment method.'
-        );
-      }
-
-      return preparedPayPalOrderId;
-    }
-
-    async function capturePayPalOrder(orderId){
-      if(!preparedCheckoutToken){
-        throw new Error('Secure checkout session is missing. Please restart checkout.');
-      }
-
-      const result = await apiPost({
-        action:'capturePayPalOrder',
-        paypalOrderId:orderId,
-        checkoutToken:preparedCheckoutToken
-      });
-
-      if(result.paymentStatus !== 'Paid' || !result.orderNumber){
-        throw new Error('Payment was not confirmed as paid.');
-      }
-
-      return result;
-    }
-
-    function showCheckoutSuccess(result){
-      cart = [];
-
-      /*
-       * Persist the empty cart without running the normal checkout invalidation UI.
-       */
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-      renderCart();
-
-      currentQuote = null;
-      currentQuoteFingerprint = '';
-      preparedPayPalOrderId = '';
-      preparedCheckoutToken = '';
-
-      successOrderNumber.textContent = result.orderNumber;
-      checkoutSummaryNormal.style.display = 'none';
-      checkoutSuccess.classList.add('visible');
-      setPaymentStatus('');
-
-      checkoutBody.scrollTo({
-        top:0,
-        behavior:'smooth'
-      });
     }
 
     function openCheckout(){
@@ -7178,14 +7075,6 @@
       checkoutOverlay.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
 
-      /*
-       * Prime PayPal in the background so payment methods load faster after the
-       * deliberate secure verification step. This does not create or charge an order.
-       */
-      initializePayPalSdk().catch(error => {
-        console.error('PayPal SDK preload failed:', error);
-      });
-
       ensureTurnstileWidget().catch(error => {
         console.error('Turnstile preload failed:', error);
       });
@@ -7194,6 +7083,7 @@
     }
 
     function closeCheckout(){
+      invalidatePreparedCheckout();
       checkoutOverlay.classList.remove('open');
       checkoutOverlay.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
@@ -7213,7 +7103,7 @@
       }catch(error){
         console.error(error);
         setPaymentStatus(
-          error.message || 'Unable to prepare secure checkout.',
+          error.message || 'Unable to prepare secure Stripe checkout.',
           'error'
         );
       }
@@ -7230,14 +7120,9 @@
       checkoutNotes
     ].forEach(field => {
       const handleOrderDetailEdit = () => {
-        /*
-         * Normal form typing never calls the payment backend and never creates a PayPal order.
-         * If a payment order was already prepared, editing any order detail invalidates
-         * it so stale customer/order data can never be paid.
-         */
-        if(preparedPayPalOrderId){
+        if(preparedStripeSessionId){
           invalidatePreparedCheckout(
-            'Order details changed. Continue through PayPal again to securely verify the updated order.'
+            'Order details changed. Continue to secure payment again to verify the updated order.'
           );
         }
 
@@ -7249,10 +7134,6 @@
           updateLocalDropEligibility();
         }
 
-        /*
-         * State affects the local tax estimate. This is browser-only math; there is
-         * no network request. All other contact/address typing leaves totals alone.
-         */
         if(field === checkoutState){
           renderLocalCheckoutTotals();
         }
@@ -7270,608 +7151,112 @@
       });
     });
 
-
     /*
      * ==========================================================
-     * PAYPAL JS SDK v6
+     * STRIPE RETURN / ORDER CONFIRMATION
      * ==========================================================
      */
 
-    window.onPayPalWebSdkLoaded = function(){
-      initializePayPalSdk()
-        .then(() => {
-          if(
-            preparedPayPalOrderId &&
-            currentQuote &&
-            paymentPanel.classList.contains('visible')
-          ){
-            return setupPaymentMethods();
-          }
-        })
-        .catch(error => {
-          console.error('PayPal SDK initialization failed:', error);
-          if(preparedPayPalOrderId){
-            setPaymentStatus(
-              'Secure payment methods could not load. Refresh the page and try again.',
-              'error'
-            );
-          }
-        });
-    };
+    async function getStripeSessionStatus(sessionId){
+      const base = ROCKET_API.replace(/\/+$/, '');
+      const response = await fetch(
+        base + '/stripe/session-status?session_id=' + encodeURIComponent(sessionId),
+        { cache:'no-store' }
+      );
 
-    window.onGooglePayLoaded = function(){
-      googlePayReady = true;
-      if(
-        preparedPayPalOrderId &&
-        currentQuote &&
-        paymentPanel.classList.contains('visible')
-      ){
-        setupPaymentMethods().catch(console.error);
-      }
-    };
-
-    window.onApplePayLoaded = function(){
-      applePayReady = true;
-      if(
-        preparedPayPalOrderId &&
-        currentQuote &&
-        paymentPanel.classList.contains('visible')
-      ){
-        setupPaymentMethods().catch(console.error);
-      }
-    };
-
-    async function initializePayPalSdk(){
-      if(paypalSdk) return paypalSdk;
-      if(paypalInitPromise) return paypalInitPromise;
-
-      paypalInitPromise = (async () => {
-        if(!window.paypal || typeof window.paypal.createInstance !== 'function'){
-          throw new Error('PayPal checkout library has not loaded yet.');
-        }
-
-        if(
-          typeof window.isBrowserSupportedByPayPal === 'function' &&
-          !window.isBrowserSupportedByPayPal()
-        ){
-          throw new Error('This browser is not supported for secure checkout. Try a current version of Chrome, Safari, Edge, or Firefox.');
-        }
-
-        let configResult;
-
-        // New backend action is preferred because PayPal recommends clientId
-        // authentication for standard one-time checkout, cards, Apple Pay, and Google Pay.
-        try{
-          configResult = await apiPost({
-            action:'clientConfig'
-          });
-        }catch(error){
-          // Backward-compatible fallback until the Apps Script deployment is updated.
-          configResult = await apiPost({
-            action:'clientToken'
-          });
-        }
-
-        paypalEnvironment =
-          String(configResult.environment || 'sandbox').toLowerCase();
-
-        const sdkOptions = {
-          components:[
-            'card-fields',
-            'applepay-payments',
-            'googlepay-payments'
-          ],
-          pageType:'checkout'
-        };
-
-        if(configResult.clientId){
-          sdkOptions.clientId = configResult.clientId;
-        }else if(configResult.clientToken){
-          sdkOptions.clientToken = configResult.clientToken;
-        }else{
-          throw new Error('PayPal checkout configuration is incomplete.');
-        }
-
-        paypalSdk = await window.paypal.createInstance(sdkOptions);
-
-        // Prime eligibility early so checkout feels immediate after the quote returns.
-        paypalEligibility = await paypalSdk.findEligibleMethods({
-          currencyCode:'USD',
-          countryCode:'US'
-        });
-
-        return paypalSdk;
-      })();
+      const responseText = await response.text();
+      let data;
 
       try{
-        return await paypalInitPromise;
+        data = JSON.parse(responseText);
       }catch(error){
-        paypalInitPromise = null;
-        throw error;
+        throw new Error('Rocket Print could not verify the completed Stripe payment.');
       }
+
+      if(!response.ok || !data.ok){
+        throw new Error(data.error || 'Rocket Print could not verify the completed Stripe payment.');
+      }
+
+      return data;
     }
 
-    async function setupPaymentMethods(){
-      if(!currentQuote) return;
+    function showStripeOrderConfirmation(label='Payment confirmed'){
+      cart = [];
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      renderCart();
+
+      checkoutSummaryNormal.style.display = 'none';
+      checkoutSuccess.classList.add('visible');
+      successOrderNumber.textContent = label;
+      setPaymentStatus('');
+
+      checkoutOverlay.classList.add('open');
+      checkoutOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      checkoutBody.scrollTo({
+        top:0,
+        behavior:'auto'
+      });
+    }
+
+    async function handleStripeReturn(){
+      const params = new URLSearchParams(window.location.search);
+
+      if(params.get('stripe_return') !== '1'){
+        return;
+      }
+
+      const sessionId = params.get('session_id') || '';
+
+      const cleanUrl =
+        window.location.pathname +
+        (window.location.hash || '');
+
+      window.history.replaceState({}, document.title, cleanUrl);
+
+      if(!sessionId){
+        return;
+      }
 
       try{
-        const sdk = await initializePayPalSdk();
+        let status = null;
 
-        if(!paypalEligibility){
-          paypalEligibility = await sdk.findEligibleMethods({
-            currencyCode:'USD',
-            countryCode:'US'
-          });
-        }
-
-        if(paypalEligibility.isEligible('advanced_cards')){
-          await setupCardFields(sdk);
-          cardPaymentArea.style.display = '';
-        }else{
-          cardPaymentArea.style.display = 'none';
-        }
-
-        if(paypalEligibility.isEligible('applepay')){
-          await setupApplePay(sdk);
-        }else{
-          applePayContainer.innerHTML = '';
-        }
-
-        if(paypalEligibility.isEligible('googlepay')){
-          await setupGooglePay(sdk);
-        }else{
-          googlePayContainer.innerHTML = '';
-        }
-
-        if(
-          !paypalEligibility.isEligible('advanced_cards') &&
-          !paypalEligibility.isEligible('applepay') &&
-          !paypalEligibility.isEligible('googlepay')
-        ){
-          setPaymentStatus(
-            'No eligible payment method is available in this browser. Try another browser or device.',
-            'error'
-          );
-        }
-
-      }catch(error){
-        console.error(error);
-        setPaymentStatus(
-          'Secure payment methods could not load. Refresh the page and try again.',
-          'error'
-        );
-      }
-    }
-
-
-    /*
-     * ==========================================================
-     * CARD FIELDS
-     * ==========================================================
-     */
-
-    async function setupCardFields(sdk){
-      if(cardFieldsMounted) return;
-
-      cardSession = sdk.createCardFieldsOneTimePaymentSession();
-
-      const fieldStyle = {
-        input:{
-          fontSize:'16px',
-          fontFamily:'Arial, sans-serif',
-          fontWeight:'600',
-          color:'#111111',
-          background:'#ffffff',
-          height:'50px',
-          lineHeight:'22px',
-          padding:'14px'
-        },
-        ':focus':{
-          color:'#000000',
-          outline:'none'
-        },
-        '.invalid':{
-          color:'#b42318'
-        }
-      };
-
-      const nameField = cardSession.createCardFieldsComponent({
-        type:'name',
-        placeholder:'',
-        style:fieldStyle
-      });
-
-      const numberField = cardSession.createCardFieldsComponent({
-        type:'number',
-        placeholder:'',
-        style:fieldStyle
-      });
-
-      const expiryField = cardSession.createCardFieldsComponent({
-        type:'expiry',
-        placeholder:'',
-        style:fieldStyle
-      });
-
-      const cvvField = cardSession.createCardFieldsComponent({
-        type:'cvv',
-        placeholder:'',
-        style:fieldStyle
-      });
-
-      document.getElementById('paypal-card-fields-name').appendChild(nameField);
-      document.getElementById('paypal-card-fields-number').appendChild(numberField);
-      document.getElementById('paypal-card-fields-expiry').appendChild(expiryField);
-      document.getElementById('paypal-card-fields-cvv').appendChild(cvvField);
-
-      cardFieldsMounted = true;
-    }
-
-    cardPayBtn.addEventListener('click', async () => {
-      if(!cardSession){
-        setPaymentStatus('Card fields are still loading. Try again in a moment.', 'error');
-        return;
-      }
-
-      cardPayBtn.classList.add('is-busy');
-      cardPayBtn.disabled = true;
-      setPaymentStatus('Starting secure card payment…');
-
-      try{
-        const orderId = requirePreparedPayPalOrder();
-
-        const {data, state} = await cardSession.submit(orderId, {
-          billingAddress:{
-            postalCode:(billingZip.value.trim() || checkoutZip.value.trim())
-          }
-        });
-
-        if(state === 'canceled'){
-          setPaymentStatus('Card authentication was canceled. You can try again.', 'error');
-          return;
-        }
-
-        if(state === 'failed'){
-          throw new Error(data?.message || 'Card payment failed. Check your card details and try again.');
-        }
-
-        if(state !== 'succeeded'){
-          throw new Error('Card payment could not be completed.');
-        }
-
-        const liabilityShift = data?.liabilityShift;
-
-        if(liabilityShift === 'NO' || liabilityShift === 'UNKNOWN'){
-          throw new Error('Card authentication was not successful. Please try another card.');
-        }
-
-        setPaymentStatus('Payment approved. Finalizing your order…');
-
-        const result = await capturePayPalOrder(data?.orderId || orderId);
-
-        showCheckoutSuccess(result);
-
-      }catch(error){
-        console.error(error);
-        setPaymentStatus(error.message || 'Card payment failed. Please try again.', 'error');
-      }finally{
-        cardPayBtn.classList.remove('is-busy');
-        cardPayBtn.disabled = false;
-      }
-    });
-
-
-    /*
-     * ==========================================================
-     * APPLE PAY
-     * ==========================================================
-     */
-
-    async function setupApplePay(sdk){
-      if(
-        !window.ApplePaySession ||
-        !ApplePaySession.canMakePayments()
-      ){
-        applePayContainer.innerHTML = '';
-        return;
-      }
-
-      if(!applePayReady && !customElements.get('apple-pay-button')){
-        return;
-      }
-
-      if(applePayContainer.dataset.ready === 'true'){
-        return;
-      }
-
-      const paypalAppleSession =
-        await sdk.createApplePayOneTimePaymentSession();
-
-      const config =
-        await paypalAppleSession.config();
-
-      applePayContainer.innerHTML =
-        '<apple-pay-button buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
-
-      const button =
-        applePayContainer.querySelector('apple-pay-button');
-
-      button.addEventListener('click', async () => {
-        try{
-          validateCheckoutFields();
+        for(let attempt = 0; attempt < 10; attempt++){
+          status = await getStripeSessionStatus(sessionId);
 
           if(
-            !preparedPayPalOrderId ||
-            !currentQuote ||
-            currentQuoteFingerprint !== payloadFingerprint()
+            status.paymentStatus === 'paid' &&
+            status.verified === true
           ){
-            throw new Error('Click Checkout Through PayPal to securely verify your order before using Apple Pay.');
+            showStripeOrderConfirmation('Payment confirmed');
+            return;
           }
 
-          const request = {
-            countryCode:'US',
-            currencyCode:'USD',
-            merchantCapabilities:config.merchantCapabilities,
-            supportedNetworks:config.supportedNetworks,
-            requiredBillingContactFields:['name','postalAddress'],
-            requiredShippingContactFields:[],
-            total:{
-              label:'Rocket Print',
-              amount:Number(currentQuote.total).toFixed(2),
-              type:'final'
-            }
-          };
+          if(status.paymentStatus && status.paymentStatus !== 'paid'){
+            break;
+          }
 
-          const session =
-            new ApplePaySession(4, request);
-
-          session.onvalidatemerchant = async event => {
-            try{
-              const {merchantSession} =
-                await paypalAppleSession.validateMerchant({
-                  validationUrl:event.validationURL
-                });
-
-              session.completeMerchantValidation(
-                merchantSession
-              );
-
-            }catch(error){
-              console.error('Apple Pay merchant validation failed for host:', window.location.hostname, error);
-              session.abort();
-              setPaymentStatus(
-                `Apple Pay merchant validation failed for ${window.location.hostname}. Confirm this exact hostname is registered for Apple Pay in PayPal Live.`,
-                'error'
-              );
-            }
-          };
-
-          session.onpaymentauthorized = async event => {
-            try{
-              setPaymentStatus('Authorizing Apple Pay…');
-
-              const orderId =
-                requirePreparedPayPalOrder();
-
-              await paypalAppleSession.confirmOrder({
-                orderId,
-                token:event.payment.token,
-                billingContact:event.payment.billingContact,
-                shippingContact:event.payment.shippingContact
-              });
-
-              const result =
-                await capturePayPalOrder(orderId);
-
-              session.completePayment({
-                status:ApplePaySession.STATUS_SUCCESS
-              });
-
-              showCheckoutSuccess(result);
-
-            }catch(error){
-              console.error(error);
-
-              session.completePayment({
-                status:ApplePaySession.STATUS_FAILURE
-              });
-
-              setPaymentStatus(
-                error.message || 'Apple Pay payment failed. Please try again.',
-                'error'
-              );
-            }
-          };
-
-          session.oncancel = () => {
-            setPaymentStatus('Apple Pay was canceled. Your cart is still saved.');
-          };
-
-          session.begin();
-
-        }catch(error){
-          console.error(error);
-          setPaymentStatus(error.message || 'Unable to start Apple Pay.', 'error');
+          await new Promise(resolve => setTimeout(resolve, 750));
         }
-      });
 
-      applePayContainer.dataset.ready = 'true';
-    }
-
-
-    /*
-     * ==========================================================
-     * GOOGLE PAY
-     * ==========================================================
-     */
-
-    async function setupGooglePay(sdk){
-      if(
-        !googlePayReady ||
-        !window.google ||
-        !google.payments ||
-        !google.payments.api
-      ){
-        return;
-      }
-
-      if(googlePayContainer.dataset.ready === 'true'){
-        return;
-      }
-
-      const details =
-        paypalEligibility.getDetails('googlepay');
-
-      googlePaySession =
-        sdk.createGooglePayOneTimePaymentSession();
-
-      if(typeof googlePaySession.getGooglePayConfig === 'function'){
-        googlePayConfig =
-          await googlePaySession.getGooglePayConfig();
-      }else{
-        googlePayConfig =
-          googlePaySession.formatConfigForPaymentRequest(
-            details.config
-          );
-      }
-
-      googlePaymentsClient =
-        new google.payments.api.PaymentsClient({
-          environment:
-            paypalEnvironment === 'live'
-              ? 'PRODUCTION'
-              : 'TEST',
-          paymentDataCallbacks:{
-            onPaymentAuthorized:async paymentData => {
-              try{
-                setPaymentStatus('Authorizing Google Pay…');
-
-                const orderId =
-                  requirePreparedPayPalOrder();
-
-                const confirmResult =
-                  await googlePaySession.confirmOrder({
-                    orderId,
-                    paymentMethodData:paymentData.paymentMethodData
-                  });
-
-                if(confirmResult.status === 'PAYER_ACTION_REQUIRED'){
-                  if(typeof googlePaySession.initiatePayerAction === 'function'){
-                    const payerAction =
-                      await googlePaySession.initiatePayerAction({
-                        orderId
-                      });
-
-                    if(
-                      payerAction?.liabilityShift === 'NO' ||
-                      payerAction?.liabilityShift === 'UNKNOWN'
-                    ){
-                      throw new Error('Google Pay authentication was not successful.');
-                    }
-                  }else{
-                    throw new Error(
-                      'Google Pay requires additional card authentication for this payment. Please use the card checkout below.'
-                    );
-                  }
-                }else if(confirmResult.status !== 'APPROVED'){
-                  throw new Error('Google Pay did not approve this payment.');
-                }
-
-                const result =
-                  await capturePayPalOrder(orderId);
-
-                showCheckoutSuccess(result);
-
-                return {
-                  transactionState:'SUCCESS'
-                };
-
-              }catch(error){
-                console.error(error);
-                setPaymentStatus(
-                  error.message || 'Google Pay payment failed. Please try again.',
-                  'error'
-                );
-
-                return {
-                  transactionState:'ERROR',
-                  error:{
-                    intent:'PAYMENT_AUTHORIZATION',
-                    message:error.message || 'Payment failed.',
-                    reason:'PAYMENT_DATA_INVALID'
-                  }
-                };
-              }
-            }
+        if(status && status.paymentStatus === 'paid'){
+          showStripeOrderConfirmation('Payment received');
+          const successParagraphs = checkoutSuccess.querySelectorAll('p');
+          if(successParagraphs[0]){
+            successParagraphs[0].textContent =
+              'Your payment was received and your Rocket Print confirmation is still being finalized.';
           }
-        });
-
-      const ready =
-        await googlePaymentsClient.isReadyToPay({
-          allowedPaymentMethods:googlePayConfig.allowedPaymentMethods,
-          apiVersion:googlePayConfig.apiVersion,
-          apiVersionMinor:googlePayConfig.apiVersionMinor
-        });
-
-      if(!ready.result){
-        googlePayContainer.innerHTML = '';
-        return;
-      }
-
-      const button =
-        googlePaymentsClient.createButton({
-          buttonType:'buy',
-          buttonColor:'black',
-          buttonSizeMode:'fill',
-          onClick:async () => {
-            try{
-              validateCheckoutFields();
-
-              if(
-                !preparedPayPalOrderId ||
-                !currentQuote ||
-                currentQuoteFingerprint !== payloadFingerprint()
-              ){
-                throw new Error('Click Checkout Through PayPal to securely verify your order before using Google Pay.');
-              }
-
-              const googlePaymentRequest = {
-                apiVersion:googlePayConfig.apiVersion,
-                apiVersionMinor:googlePayConfig.apiVersionMinor,
-                allowedPaymentMethods:googlePayConfig.allowedPaymentMethods,
-                merchantInfo:googlePayConfig.merchantInfo,
-                transactionInfo:{
-                  countryCode:googlePayConfig.countryCode || 'US',
-                  currencyCode:'USD',
-                  totalPriceStatus:'FINAL',
-                  totalPrice:Number(currentQuote.total).toFixed(2),
-                  totalPriceLabel:'Rocket Print'
-                },
-                callbackIntents:[
-                  'PAYMENT_AUTHORIZATION'
-                ]
-              };
-
-              await googlePaymentsClient.loadPaymentData(
-                googlePaymentRequest
-              );
-
-            }catch(error){
-              if(error?.statusCode === 'CANCELED'){
-                setPaymentStatus('Google Pay was canceled. Your cart is still saved.');
-              }else{
-                console.error(error);
-                setPaymentStatus(error.message || 'Unable to start Google Pay.', 'error');
-              }
-            }
+          if(successParagraphs[1]){
+            successParagraphs[1].textContent =
+              'Do not submit another payment. Your confirmation email will arrive when processing finishes.';
           }
-        });
+        }
 
-      googlePayContainer.innerHTML = '';
-      googlePayContainer.appendChild(button);
-      googlePayContainer.dataset.ready = 'true';
+      }catch(error){
+        console.error('Stripe return verification failed:', error);
+      }
     }
-
 
     /*
      * ==========================================================
@@ -7906,6 +7291,9 @@
     renderCart();
     updateLocalDropEligibility();
     renderLocalCheckoutTotals();
+    handleStripeReturn().catch(error => {
+      console.error('Unable to restore Stripe checkout result:', error);
+    });
   </script>
 
   <script
@@ -7913,23 +7301,10 @@
     src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoaded">
   </script>
 
-  <script
-    async
-    src="https://www.paypal.com/web-sdk/v6/core"
-    onload="onPayPalWebSdkLoaded()">
-  </script>
 
-  <script
-    async
-    src="https://pay.google.com/gp/p/js/pay.js"
-    onload="onGooglePayLoaded()">
-  </script>
 
-  <script
-    async
-    src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"
-    onload="onApplePayLoaded()">
-  </script>
+
+  <script defer src="https://js.stripe.com/v3/"></script>
 
 </body>
 </html>
