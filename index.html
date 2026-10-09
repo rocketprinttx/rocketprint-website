@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="rocket-print-release" content="2026-10-V42-MOBILE" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -5544,6 +5545,428 @@
       }
     }
 
+
+    /* ===== MOBILE RELEASE PASS — V42 ===== */
+    html,
+    body{
+      max-width:100%;
+      overflow-x:clip;
+    }
+
+    img,
+    svg,
+    video,
+    canvas,
+    iframe{
+      max-width:100%;
+    }
+
+    button,
+    .btn,
+    a,
+    input,
+    select,
+    textarea{
+      touch-action:manipulation;
+    }
+
+    @media (max-width:980px){
+      .checkout-overlay{
+        background:#0d0d0d;
+        overscroll-behavior:none;
+      }
+
+      .checkout-shell{
+        min-height:100dvh;
+        height:100dvh;
+        max-height:100dvh;
+        overflow:hidden;
+      }
+
+      .checkout-head{
+        flex:0 0 auto;
+        padding-top:calc(15px + env(safe-area-inset-top));
+        padding-left:max(18px,env(safe-area-inset-left));
+        padding-right:max(18px,env(safe-area-inset-right));
+        background:rgba(17,17,17,.98);
+        box-shadow:0 1px 0 rgba(255,255,255,.05);
+      }
+
+      .checkout-body{
+        display:block;
+        flex:1 1 auto;
+        min-height:0;
+        overflow-y:auto;
+        overflow-x:hidden;
+        overscroll-behavior:contain;
+        -webkit-overflow-scrolling:touch;
+        scroll-behavior:smooth;
+      }
+
+      .checkout-form-pane,
+      .checkout-summary-pane{
+        min-width:0;
+      }
+
+      .checkout-summary-pane{
+        border-top:1px solid var(--line);
+        background:linear-gradient(180deg,#121212 0%,#0e0e0e 100%);
+        padding-bottom:calc(34px + env(safe-area-inset-bottom));
+      }
+
+      .payment-panel{
+        scroll-margin-top:18px;
+      }
+
+      .stripe-checkout-shell,
+      #stripeCheckoutMount{
+        width:100%;
+        max-width:100%;
+      }
+
+      .stripe-checkout-shell{
+        overflow:hidden;
+      }
+
+      .checkout-overlay.success-state .checkout-form-pane{
+        display:none !important;
+      }
+
+      .checkout-overlay.success-state .checkout-summary-pane{
+        min-height:calc(100dvh - 94px - env(safe-area-inset-top));
+        border-top:0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .checkout-overlay.success-state .checkout-success{
+        width:100%;
+        max-width:520px;
+        padding:28px 8px calc(38px + env(safe-area-inset-bottom));
+      }
+
+      .cart-drawer{
+        height:100dvh;
+        border-left:0;
+      }
+
+      .cart-head{
+        flex:0 0 auto;
+        padding-top:calc(17px + env(safe-area-inset-top));
+      }
+
+      .cart-items{
+        overscroll-behavior:contain;
+        -webkit-overflow-scrolling:touch;
+      }
+
+      .cart-foot{
+        flex:0 0 auto;
+        padding-bottom:calc(18px + env(safe-area-inset-bottom));
+      }
+
+      .qty-control button,
+      .remove-item,
+      .icon-close{
+        min-width:44px;
+        min-height:44px;
+      }
+
+      .cart-choice-card{
+        max-height:min(86dvh,620px);
+      }
+
+      .cart-choice-actions{
+        padding-bottom:calc(20px + env(safe-area-inset-bottom));
+      }
+
+      .cart-choice-actions .btn{
+        min-height:52px;
+      }
+
+      .stripe-return-gate{
+        padding-top:calc(24px + env(safe-area-inset-top));
+        padding-right:max(20px,env(safe-area-inset-right));
+        padding-bottom:calc(24px + env(safe-area-inset-bottom));
+        padding-left:max(20px,env(safe-area-inset-left));
+      }
+
+      .design-config-body,
+      .cart-items,
+      .checkout-body{
+        scrollbar-width:thin;
+        scrollbar-color:#444 transparent;
+      }
+    }
+
+    @media (max-width:620px){
+      .checkout-head{
+        gap:12px;
+        padding-bottom:14px;
+      }
+
+      .checkout-head-main{
+        gap:11px;
+      }
+
+      .checkout-shield{
+        flex-basis:38px;
+        width:38px;
+        height:38px;
+        border-radius:11px;
+      }
+
+      .checkout-head .tag{
+        font-size:.66rem;
+        letter-spacing:.11em;
+      }
+
+      .checkout-head h2{
+        margin-top:2px;
+        font-size:1.22rem;
+        line-height:1.1;
+      }
+
+      .checkout-head-security{
+        max-width:245px;
+        margin-top:3px;
+        font-size:.66rem;
+        line-height:1.35;
+      }
+
+      .checkout-form-pane,
+      .checkout-summary-pane{
+        padding:20px 16px;
+      }
+
+      .checkout-section{
+        margin-bottom:24px;
+      }
+
+      .checkout-section-heading{
+        margin-bottom:12px;
+      }
+
+      .checkout-section-heading h3{
+        font-size:1rem;
+      }
+
+      .checkout-field input,
+      .checkout-field textarea,
+      .checkout-field select{
+        min-height:50px;
+        font-size:16px;
+        border-radius:12px;
+      }
+
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid{
+        grid-template-columns:minmax(0,1fr) 92px;
+      }
+
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid > :nth-child(1),
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid > :nth-child(4),
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid > :nth-child(5){
+        grid-column:1 / -1;
+      }
+
+      .fulfillment-grid{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+      }
+
+      .fulfillment-option{
+        min-height:104px;
+        padding:13px 12px;
+        border-radius:13px;
+      }
+
+      .fulfillment-option strong{
+        font-size:.88rem;
+      }
+
+      .fulfillment-option span{
+        font-size:.7rem;
+        line-height:1.35;
+      }
+
+      .checkout-mini-item{
+        gap:10px;
+        font-size:.78rem;
+      }
+
+      .quote-card{
+        padding:16px;
+      }
+
+      .secure-continue-btn{
+        min-height:54px;
+        border-radius:13px;
+        font-size:.88rem;
+      }
+
+      .payment-panel-head{
+        gap:10px;
+      }
+
+      .payment-security-copy{
+        font-size:.71rem;
+        line-height:1.45;
+      }
+
+      .stripe-checkout-shell,
+      #stripeCheckoutMount{
+        min-height:500px;
+      }
+
+      .stripe-checkout-shell{
+        margin-left:-2px;
+        margin-right:-2px;
+        border-radius:12px;
+      }
+
+      .payment-trust-row{
+        gap:7px 10px;
+        font-size:.64rem;
+      }
+
+      .checkout-success h3{
+        font-size:1.65rem;
+      }
+
+      .checkout-success p{
+        font-size:.9rem;
+        line-height:1.55;
+      }
+
+      .success-mark{
+        width:60px;
+        height:60px;
+      }
+
+      .success-order-number{
+        max-width:100%;
+        overflow-wrap:anywhere;
+      }
+
+      .cart-item{
+        grid-template-columns:72px minmax(0,1fr);
+        gap:12px;
+      }
+
+      .cart-item img{
+        width:72px;
+        height:86px;
+      }
+
+      .qty-control button{
+        width:42px;
+        height:42px;
+      }
+
+      .cart-choice-body{
+        grid-template-columns:82px minmax(0,1fr);
+        gap:14px;
+        padding:18px 16px 6px;
+      }
+
+      .cart-choice-thumb{
+        width:82px;
+      }
+
+      .cart-choice-head,
+      .cart-choice-actions{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .stripe-return-card{
+        width:min(100%,460px);
+        border-radius:22px;
+      }
+    }
+
+    @media (max-width:430px){
+      .mobile-bottom-nav{
+        left:6px;
+        right:6px;
+        bottom:calc(6px + env(safe-area-inset-bottom));
+      }
+
+      .mobile-bottom-nav a{
+        min-height:50px;
+      }
+
+      .design-color-preview{
+        flex-basis:clamp(220px,31dvh,290px) !important;
+      }
+
+      .design-config-body{
+        padding-top:18px;
+      }
+
+      .design-config-body #modalTitle{
+        font-size:clamp(1.72rem,7.8vw,2.08rem);
+      }
+
+      .selector-section{
+        margin-top:15px;
+        padding-top:15px;
+      }
+
+      .garment-select-btn,
+      .color-option,
+      .size-select-btn{
+        min-height:50px;
+      }
+
+      .config-action-bar{
+        padding-top:11px;
+      }
+
+      .config-action-bar .btn{
+        min-height:52px;
+      }
+
+      .cart-choice-copy h3{
+        font-size:1.05rem;
+      }
+
+      .stripe-return-card{
+        padding:30px 18px 28px;
+      }
+
+      .rocket-processing-spinner{
+        width:122px;
+        height:122px;
+        margin-bottom:20px;
+      }
+
+      .rocket-processing-spinner img{
+        width:84px;
+        height:84px;
+      }
+    }
+
+    @media (max-width:360px){
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid,
+      .fulfillment-grid{
+        grid-template-columns:1fr;
+      }
+
+      .checkout-form-pane .checkout-section:nth-child(2) .field-grid > *{
+        grid-column:auto !important;
+      }
+
+      .checkout-head-security{
+        display:none;
+      }
+
+      .checkout-head h2{
+        font-size:1.08rem;
+      }
+    }
+
   </style>
 
 
@@ -7457,7 +7880,7 @@
 
         paymentPanel.scrollIntoView({
           behavior:'smooth',
-          block:'nearest'
+          block:window.matchMedia('(max-width: 980px)').matches ? 'start' : 'nearest'
         });
 
       }catch(error){
@@ -7480,6 +7903,7 @@
       closeCart();
       checkoutSummaryNormal.style.display = '';
       checkoutSuccess.classList.remove('visible');
+      checkoutOverlay.classList.remove('success-state');
       renderCheckoutMiniItems();
       updateLocalDropEligibility();
       invalidatePreparedCheckout();
@@ -7493,12 +7917,19 @@
         console.error('Turnstile preload failed:', error);
       });
 
-      requestAnimationFrame(() => checkoutName.focus());
+      requestAnimationFrame(() => {
+        if(window.matchMedia('(min-width: 981px)').matches){
+          checkoutName.focus();
+        }else{
+          checkoutBody.scrollTo({ top:0, behavior:'auto' });
+        }
+      });
     }
 
     function closeCheckout(){
       invalidatePreparedCheckout();
       checkoutOverlay.classList.remove('open');
+      checkoutOverlay.classList.remove('success-state');
       checkoutOverlay.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
     }
@@ -7632,6 +8063,7 @@
       setPaymentStatus('');
 
       checkoutOverlay.classList.add('open');
+      checkoutOverlay.classList.add('success-state');
       checkoutOverlay.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
 
@@ -7719,6 +8151,7 @@
           successOrderNumber.textContent = 'Payment received';
           setPaymentStatus('');
           checkoutOverlay.classList.add('open');
+          checkoutOverlay.classList.add('success-state');
           checkoutOverlay.setAttribute('aria-hidden','false');
           document.body.style.overflow = 'hidden';
           checkoutBody.scrollTo({ top:0, behavior:'auto' });
