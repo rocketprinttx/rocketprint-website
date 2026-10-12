@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V45-CUSTOM-FORM-SIZES" />
+  <meta name="rocket-print-release" content="2026-10-V46-WHITE-DATE-ICON" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6008,8 +6008,11 @@
     .custom-size-option span{min-width:48px;min-height:42px;display:flex;align-items:center;justify-content:center;padding:8px 11px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:#1a1a1a;color:#aaa;font-size:.78rem;font-weight:850;transition:.16s ease}
     .custom-size-option input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
     .custom-size-option input:checked + span{color:#fff;border-color:#e43a35;background:rgba(228,58,53,.16);box-shadow:inset 0 0 0 1px rgba(228,58,53,.24)}
-    #customNeededBy{color-scheme:dark}
-    #customNeededBy::-webkit-calendar-picker-indicator{filter:invert(1) brightness(2);opacity:1;cursor:pointer}
+    .custom-date-wrap{position:relative}
+    .custom-date-wrap #customNeededBy{padding-right:52px;color-scheme:dark}
+    .custom-date-wrap #customNeededBy::-webkit-calendar-picker-indicator{opacity:0;cursor:pointer;position:relative;z-index:2}
+    .custom-date-icon{position:absolute;right:1px;top:1px;bottom:1px;width:46px;display:grid;place-items:center;border-radius:0 11px 11px 0;background:#171717;color:#fff;pointer-events:none;z-index:3}
+    .custom-date-icon svg{width:20px;height:20px;display:block;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .custom-request-help{margin:7px 0 0;color:#767676;font-size:.72rem;line-height:1.45}
     .custom-request-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
     .custom-request-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:18px}
@@ -6645,7 +6648,7 @@
                 <p class="custom-request-help">Select every size you expect to need. You can choose multiple sizes across Adult, Youth, and Toddler.</p>
               </div>
               <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
-              <div class="custom-request-field"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><input id="customNeededBy" name="neededBy" type="date"></div>
+              <div class="custom-request-field"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><div class="custom-date-wrap"><input id="customNeededBy" name="neededBy" type="date"><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span></div></div>
               <div class="custom-request-field">
                 <label for="customArtworkStatus">Artwork status *</label>
                 <select id="customArtworkStatus" name="artworkStatus" required>
