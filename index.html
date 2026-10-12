@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V43-CUSTOM-REQUEST" />
+  <meta name="rocket-print-release" content="2026-10-V44-SIMPLIFIED-STOREFRONT" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6033,6 +6033,50 @@
     }
     @media (max-width:380px){.custom-garment-options{grid-template-columns:1fr}.custom-request-head .tag{font-size:.62rem}.custom-request-head h2{font-size:1.12rem}}
 
+
+    /* ===== V44: simplified storefront + larger mobile product preview ===== */
+    @media (max-width:980px){
+      :root{--mobile-banner-h:0px;}
+    }
+
+    .selected-summary-standalone{
+      margin:10px 0 2px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      width:max-content;
+      max-width:100%;
+    }
+
+    @media (max-width:720px){
+      .design-color-preview.shirt-view{
+        flex-basis:clamp(315px,46dvh,410px) !important;
+        min-height:315px !important;
+        padding:0 !important;
+      }
+
+      .design-color-preview.shirt-view .final-shirt-preview img{
+        width:116% !important;
+        height:116% !important;
+        max-width:none !important;
+        max-height:none !important;
+        object-fit:contain !important;
+      }
+    }
+
+    @media (max-width:430px){
+      .design-color-preview.shirt-view{
+        flex-basis:clamp(300px,44dvh,375px) !important;
+        min-height:300px !important;
+      }
+
+      .design-color-preview.shirt-view .final-shirt-preview img{
+        width:122% !important;
+        height:122% !important;
+      }
+    }
+
   </style>
 
 
@@ -6062,10 +6106,6 @@
     </div>
   </div>
 
-  <div class="announcement desktop-announcement">
-    <span><b>Timeless Collection:</b> three Wellington heritage designs are now featured on RocketPrintTX.com.</span>
-  </div>
-
   <header>
     <div class="wrap nav">
       <a href="#top" class="brand" aria-label="Rocket Print home">
@@ -6086,11 +6126,6 @@
       </div>
     </div>
   </header>
-
-  <div class="mobile-announcement" role="status" aria-label="Timeless Collection announcement">
-    <strong>Timeless Collection</strong>
-    <span>3 Wellington heritage designs now featured</span>
-  </div>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="wrap">
@@ -6133,20 +6168,15 @@
           </h1>
 
           <p class="hero-copy">
-            Premium local apparel inspired by Wellington and made for everyday wear.
-            Shop the <strong>Timeless Collection</strong> or bring us an idea for a custom project.
+            We offer quality apparel for the whole family, along with custom designs made just for you.
+            Whether you’re shopping our collection or bringing your own ideas to life, we’re happy you’re here!
           </p>
 
           <div class="hero-actions">
-            <a href="#designs" class="btn btn-primary">Shop Timeless Collection</a>
+            <a href="#designs" class="btn btn-primary">Shop Our Collection</a>
             <a href="#custom" class="btn btn-secondary">Custom Printing</a>
           </div>
 
-          <div class="hero-points">
-            <span><i class="check">✓</i> Wellington inspired</span>
-            <span><i class="check">✓</i> Adult, youth &amp; toddler</span>
-            <span><i class="check">✓</i> Custom printing</span>
-          </div>
         </div>
 
       </div>
@@ -6168,7 +6198,7 @@
             data-category="timeless school wellington"
             data-title="Skyrockets Signature"
             data-tag="Timeless Collection"
-            data-description="Our first Wellington Skyrockets design is a timeless, premium wordmark built to stay relevant year after year."
+            data-description="A classic Wellington Skyrockets design made for everyday wear. Simple, comfortable, and timeless."
             data-design-type="image"
             data-image="assets/wellington-skyrockets-design.png"
             data-product="true"
@@ -6193,7 +6223,7 @@
                 </div>
                 
               </div>
-              <p>Classic Wellington spirit. Clean enough for every day.</p>
+              <p>A classic Wellington Skyrockets design made for everyday wear. Simple, comfortable, and timeless.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#111111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
               <div class="card-hoodie-note">Hoodie available in Black • Adult &amp; Youth</div>
               <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
@@ -6205,7 +6235,7 @@
             data-preview-surface="light"
             data-title="Wellington Heritage"
             data-tag="Timeless Collection"
-            data-description="An elegant script-based Wellington heritage design with a refined boutique feel. Part of the Timeless Collection celebrating Wellington."
+            data-description="A classic Wellington design with a simple, timeless look. Comfortable, versatile, and perfect for everyday wear."
             data-design-type="image"
             data-image="assets/timeless-wellington-script.png"
             data-product="true"
@@ -6230,7 +6260,7 @@
                 </div>
                 
               </div>
-              <p>An elevated script inspired by Wellington’s roots.</p>
+              <p>A classic Wellington design with a simple, timeless look. Comfortable, versatile, and perfect for everyday wear.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
               <div class="card-hoodie-note">Hoodie available in White • Adult &amp; Youth</div>
               <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
@@ -6242,7 +6272,7 @@
             data-preview-surface="light"
             data-title="Wellington Heritage Wordmark"
             data-tag="Timeless Collection"
-            data-description="A clean black wordmark design built around Wellington and Skyrockets pride. Part of the Timeless Collection celebrating Wellington heritage."
+            data-description="A clean, traditional Wellington Skyrockets design with bold lettering and a simple, classic look. An easy choice for everyday wear."
             data-design-type="image"
             data-image="assets/timeless-wellington-wordmark.png"
             data-product="true"
@@ -6267,7 +6297,7 @@
                 </div>
                 
               </div>
-              <p>Minimal, timeless, unmistakably Wellington.</p>
+              <p>A clean, traditional Wellington Skyrockets design with bold lettering and a simple, classic look. An easy choice for everyday wear.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
               <div class="card-hoodie-note">Hoodie available in White • Adult &amp; Youth</div>
               <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
@@ -6277,9 +6307,9 @@
         </div>
 
         <div class="shop-reassurance" aria-label="Ordering information">
-          <span>✓ Free Wellington local drop-off</span>
-          <span>✓ Shipping: $12 for 1–2 items • $16 for 3+</span>
-          <span>✓ Tees: Adult, Youth &amp; Toddler • Hoodies: Adult &amp; Youth</span>
+          <span>✓ Free local drop-off in Wellington</span>
+          <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
+          <span>✓ Adult, Youth &amp; Toddler Tees • Adult &amp; Youth Hoodies</span>
         </div>
       </div>
     </section>
@@ -6296,13 +6326,12 @@
 
             <div class="timeless-lockup-copy">
               <div class="eyebrow">Debut Collection</div>
-              <h3 id="debutCollectionTitle">Wellington heritage, made wearable.</h3>
+              <h3 id="debutCollectionTitle">Everyday favorites. Timeless designs.</h3>
               <p>
-                <strong>Made for Wellington. Designed to last.</strong>
-                Rooted in Wellington heritage, the Timeless Collection pairs clean, premium typography
-                with everyday pieces made for the game, around town, and anywhere else.
+                Our first collection brings together simple, classic styles made for everyday wear.
+                Available in tees and hoodies for the whole family.
               </p>
-              <a class="btn btn-primary" href="#designs">View Timeless Collection</a>
+              <a class="btn btn-primary" href="#designs">Shop the Collection</a>
             </div>
           </div>
         </div>
@@ -6341,7 +6370,6 @@
         <div class="local-card" aria-label="Downtown Wellington, Texas">
           <div class="about-place">
             <strong>WELLINGTON<br><span class="hero-red">TEXAS</span></strong>
-            <span class="pride">Small town. Big pride.</span>
           </div>
         </div>
 
@@ -6355,7 +6383,7 @@
           </p>
           <p>
             Our goal is simple: make local apparel feel premium, timeless, and worth wearing long after the
-            event, season, or game is over. Small town. Big pride.
+            event, season, or game is over.
           </p>
           <a href="#designs" class="btn btn-secondary">Explore the Gallery</a>
         </div>
@@ -6432,23 +6460,6 @@
       </div>
     </section>
 
-
-
-
-
-    <section>
-      <div class="wrap">
-        <div class="cta">
-          <div class="eyebrow">Shop Rocket Print</div>
-          <h2>Order the Timeless Collection.</h2>
-          <p>
-            Choose your design, shirt type, color, and size, then check out securely
-            with card, Apple Pay, or Google Pay.
-          </p>
-          <a href="#designs" class="btn btn-primary">Shop the Collection</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -6474,13 +6485,7 @@
         <h3 id="modalTitle">Design Preview</h3>
         <p id="modalDescription">Design details.</p>
 
-        <div class="selection-summary-row">
-          <div>
-            <span class="selector-kicker">Selected Price</span>
-            <strong id="selectedPrice">$24.99</strong>
-          </div>
-          <div class="selected-summary" id="selectedSummary">Adult Tee • Black • S</div>
-        </div>
+        <div class="selected-summary selected-summary-standalone" id="selectedSummary">Adult Tee • Black • S</div>
 
         <div class="selector-section">
           <div class="selector-title"><span>1</span><strong>Garment</strong></div>
@@ -6504,9 +6509,9 @@
         </div>
 
         <div class="delivery-summary">
-          <span>✓ Free local drop-off in Wellington, TX 79095</span>
-          <span>✓ Shipping: $12 for 1–2 items • $16 for 3+</span>
-          <span>✓ Most orders ready in about 2 weeks</span>
+          <span>✓ Free local drop-off in Wellington</span>
+          <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
+          <span>✓ Please allow approximately 2 weeks for your order to be ready.</span>
         </div>
 
         <div class="config-action-bar">
@@ -7136,7 +7141,7 @@
       const price = currentPrice();
       const garment = garmentCatalog[selectedGarment];
 
-      selectedPrice.textContent = price;
+      if(selectedPrice) selectedPrice.textContent = price;
       stickyPrice.textContent = price;
       selectedSummary.textContent = `${garment.label} • ${selectedColor} • ${selectedSize}`;
 
