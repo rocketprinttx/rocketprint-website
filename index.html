@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V51-MOBILE-DATE-DIRECT-TAP" />
+  <meta name="rocket-print-release" content="2026-10-V49-MOBILE-DATE-CONTAINMENT" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6485,253 +6485,6 @@
       }
     }
 
-
-    /* ===== V50: mobile-safe Needed by control =====
-       The native date input is removed from the layout entirely and reduced to
-       a 1px visually-hidden control. The visible date box is a native <label>,
-       so tapping anywhere on the box still activates the device date picker
-       without allowing Safari/Chrome's intrinsic date-input width to overflow. */
-    .custom-date-field{
-      min-width:0 !important;
-      width:100% !important;
-      max-width:100% !important;
-      overflow:hidden !important;
-      contain:inline-size;
-    }
-
-    .custom-date-field > .custom-request-label{
-      display:block;
-      width:100%;
-      max-width:100%;
-      margin:0 0 7px;
-      cursor:pointer;
-    }
-
-    .custom-date-wrap{
-      position:relative;
-      display:block;
-      inline-size:100% !important;
-      max-inline-size:100% !important;
-      min-inline-size:0 !important;
-      block-size:50px;
-      margin:0 !important;
-      overflow:hidden !important;
-      border:1px solid rgba(255,255,255,.13);
-      border-radius:12px;
-      background:#171717;
-      cursor:pointer;
-      box-sizing:border-box !important;
-    }
-
-    .custom-date-display{
-      position:absolute;
-      inset:0 48px 0 0;
-      display:flex;
-      align-items:center;
-      min-width:0;
-      max-width:calc(100% - 48px);
-      padding:0 14px;
-      color:#fff;
-      font-size:16px;
-      line-height:1.2;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      pointer-events:none;
-    }
-
-    .custom-date-display.is-placeholder{
-      color:#8d8d8d;
-    }
-
-    .custom-date-wrap .custom-date-icon{
-      position:absolute;
-      right:0;
-      top:0;
-      bottom:0;
-      width:48px;
-      display:grid;
-      place-items:center;
-      border-radius:0 11px 11px 0;
-      background:#171717;
-      color:#fff;
-      pointer-events:none;
-    }
-
-    /* Never let the browser's native date control participate in layout width. */
-    .custom-date-native{
-      position:absolute !important;
-      width:1px !important;
-      height:1px !important;
-      min-width:1px !important;
-      max-width:1px !important;
-      margin:0 !important;
-      padding:0 !important;
-      border:0 !important;
-      opacity:0 !important;
-      overflow:hidden !important;
-      clip:rect(0 0 0 0) !important;
-      clip-path:inset(50%) !important;
-      white-space:nowrap !important;
-      pointer-events:none !important;
-    }
-
-    .custom-date-field:focus-within .custom-date-wrap{
-      border-color:rgba(228,58,53,.72);
-      box-shadow:0 0 0 3px rgba(228,58,53,.10);
-    }
-
-    @media (max-width:760px){
-      .custom-date-field{
-        grid-column:1 / -1 !important;
-        inline-size:100% !important;
-        max-inline-size:100% !important;
-        justify-self:stretch !important;
-      }
-
-      .custom-date-wrap{
-        inline-size:100% !important;
-        max-inline-size:100% !important;
-      }
-    }
-
-
-    /* ===== V51: direct-tap mobile date picker =====
-       The native date input covers the entire Needed by field as a transparent
-       overlay. This gives iOS/Android a real direct tap on type=date while the
-       visual shell stays fully contained inside the form. */
-    .custom-date-field{
-      position:relative !important;
-      display:block !important;
-      width:100% !important;
-      min-width:0 !important;
-      max-width:100% !important;
-      overflow:hidden !important;
-      box-sizing:border-box !important;
-      cursor:pointer !important;
-      contain:inline-size;
-    }
-
-    .custom-date-field > .custom-request-label{
-      display:block !important;
-      width:auto !important;
-      max-width:100% !important;
-      margin:0 0 7px !important;
-      pointer-events:none !important;
-    }
-
-    .custom-date-wrap{
-      position:relative !important;
-      display:block !important;
-      width:auto !important;
-      min-width:0 !important;
-      max-width:100% !important;
-      height:50px !important;
-      margin:0 !important;
-      overflow:hidden !important;
-      box-sizing:border-box !important;
-      border:1px solid rgba(255,255,255,.13) !important;
-      border-radius:12px !important;
-      background:#171717 !important;
-      pointer-events:none !important;
-    }
-
-    .custom-date-display{
-      position:absolute !important;
-      inset:0 48px 0 0 !important;
-      display:flex !important;
-      align-items:center !important;
-      min-width:0 !important;
-      max-width:calc(100% - 48px) !important;
-      padding:0 14px !important;
-      overflow:hidden !important;
-      white-space:nowrap !important;
-      text-overflow:ellipsis !important;
-      color:#fff !important;
-      font-size:16px !important;
-      line-height:1.2 !important;
-      box-sizing:border-box !important;
-      pointer-events:none !important;
-    }
-
-    .custom-date-display.is-placeholder{
-      color:#8d8d8d !important;
-    }
-
-    .custom-date-wrap .custom-date-icon{
-      position:absolute !important;
-      right:0 !important;
-      top:0 !important;
-      bottom:0 !important;
-      width:48px !important;
-      display:grid !important;
-      place-items:center !important;
-      border-radius:0 11px 11px 0 !important;
-      background:#171717 !important;
-      color:#fff !important;
-      pointer-events:none !important;
-      z-index:2 !important;
-    }
-
-    /* Real native control: direct-tap overlay, but removed from layout sizing. */
-    .custom-date-field .custom-date-native{
-      position:absolute !important;
-      inset:0 !important;
-      z-index:10 !important;
-      display:block !important;
-      width:100% !important;
-      height:100% !important;
-      min-width:0 !important;
-      max-width:100% !important;
-      margin:0 !important;
-      padding:0 !important;
-      border:0 !important;
-      border-radius:0 !important;
-      box-sizing:border-box !important;
-      opacity:.001 !important;
-      background:transparent !important;
-      color:transparent !important;
-      clip:auto !important;
-      clip-path:none !important;
-      white-space:normal !important;
-      overflow:hidden !important;
-      pointer-events:auto !important;
-      cursor:pointer !important;
-      -webkit-appearance:none !important;
-      appearance:none !important;
-    }
-
-    .custom-date-field .custom-date-native::-webkit-calendar-picker-indicator{
-      position:absolute !important;
-      inset:0 !important;
-      width:100% !important;
-      height:100% !important;
-      margin:0 !important;
-      padding:0 !important;
-      opacity:0 !important;
-      cursor:pointer !important;
-    }
-
-    .custom-date-field:focus-within .custom-date-wrap{
-      border-color:rgba(228,58,53,.72) !important;
-      box-shadow:0 0 0 3px rgba(228,58,53,.10) !important;
-    }
-
-    @media (max-width:760px){
-      .custom-date-field{
-        grid-column:1 / -1 !important;
-        width:100% !important;
-        min-width:0 !important;
-        max-width:100% !important;
-        justify-self:stretch !important;
-      }
-
-      .custom-date-wrap{
-        width:auto !important;
-        max-width:100% !important;
-      }
-    }
-
   </style>
 
 
@@ -7286,7 +7039,7 @@
                 <p class="custom-request-help">Select every size you expect to need. You can choose multiple sizes across Adult, Youth, and Toddler.</p>
               </div>
               <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
-              <label class="custom-request-field custom-date-field" id="customNeededByField"><span class="custom-request-label">Needed by <span class="optional">(optional)</span></span><span class="custom-date-wrap"><span class="custom-date-display" id="customNeededByDisplay">Choose a date</span><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span></span><input id="customNeededBy" class="custom-date-native" name="neededBy" type="date" aria-label="Needed by date"></label>
+              <div class="custom-request-field custom-date-field" id="customNeededByField"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><div class="custom-date-wrap"><span class="custom-date-display" id="customNeededByDisplay">Choose a date</span><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span><input id="customNeededBy" name="neededBy" type="date" aria-label="Needed by date"></div></div>
               <div class="custom-request-field">
                 <label for="customArtworkStatus">Artwork status *</label>
                 <select id="customArtworkStatus" name="artworkStatus" required>
@@ -9084,8 +8837,29 @@
       customNeededByDisplay.textContent=formatCustomNeededByDate(customNeededBy.value);
       customNeededByDisplay.classList.toggle('is-placeholder',!hasValue);
     }
+
+    function openCustomNeededByPicker(){
+      if(!customNeededBy) return;
+      try{
+        if(typeof customNeededBy.showPicker==='function'){
+          customNeededBy.showPicker();
+          return;
+        }
+      }catch(error){
+        // iOS/Safari may require a direct tap on the native date input.
+      }
+      try{ customNeededBy.focus({preventScroll:true}); }catch(error){ customNeededBy.focus(); }
+      try{ customNeededBy.click(); }catch(error){}
+    }
+
     customNeededBy?.addEventListener('change',syncCustomNeededByDisplay);
     customNeededBy?.addEventListener('input',syncCustomNeededByDisplay);
+
+    customNeededByField?.addEventListener('click',event=>{
+      if(event.target===customNeededBy) return;
+      if(event.target.closest('button,a,select,textarea')) return;
+      openCustomNeededByPicker();
+    });
 
     syncCustomNeededByDisplay();
 
