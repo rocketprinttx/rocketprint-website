@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V45-CUSTOM-FORM-SIZES" />
+  <meta name="rocket-print-release" content="2026-10-V52-RESTORE-NATIVE-DATE" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6008,8 +6008,13 @@
     .custom-size-option span{min-width:48px;min-height:42px;display:flex;align-items:center;justify-content:center;padding:8px 11px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:#1a1a1a;color:#aaa;font-size:.78rem;font-weight:850;transition:.16s ease}
     .custom-size-option input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
     .custom-size-option input:checked + span{color:#fff;border-color:#e43a35;background:rgba(228,58,53,.16);box-shadow:inset 0 0 0 1px rgba(228,58,53,.24)}
-    #customNeededBy{color-scheme:dark}
-    #customNeededBy::-webkit-calendar-picker-indicator{filter:invert(1) brightness(2);opacity:1;cursor:pointer}
+        .custom-date-field{cursor:pointer}
+    .custom-date-field label{cursor:pointer}
+    .custom-date-wrap{position:relative;cursor:pointer}
+    .custom-date-wrap #customNeededBy{padding-right:52px;color-scheme:dark;cursor:pointer}
+    .custom-date-wrap #customNeededBy::-webkit-calendar-picker-indicator{opacity:0;cursor:pointer;position:absolute;inset:0;width:100%;height:100%;z-index:4}
+    .custom-date-icon{position:absolute;right:1px;top:1px;bottom:1px;width:46px;display:grid;place-items:center;border-radius:0 11px 11px 0;background:#171717;color:#fff;pointer-events:none;z-index:3}
+    .custom-date-icon svg{width:20px;height:20px;display:block;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .custom-request-help{margin:7px 0 0;color:#767676;font-size:.72rem;line-height:1.45}
     .custom-request-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
     .custom-request-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:18px}
@@ -6088,6 +6093,277 @@
       .design-color-preview.shirt-view .final-shirt-preview img{
         width:122% !important;
         height:122% !important;
+      }
+    }
+
+
+    /* ===== V48: mobile custom request form containment ===== */
+    .custom-request-overlay,
+    .custom-request-shell,
+    .custom-request-body,
+    #customRequestFormContent,
+    .custom-request-section,
+    .custom-request-grid,
+    .custom-request-field,
+    .custom-size-selector,
+    .custom-size-group,
+    .custom-size-options,
+    .custom-date-wrap,
+    .custom-request-actions,
+    .custom-request-success{
+      min-width:0;
+      max-width:100%;
+    }
+
+    .custom-request-head-main > div:last-child{
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .custom-request-head h2,
+    .custom-request-section-head h3,
+    .custom-request-section-head span,
+    .custom-request-intro,
+    .custom-request-help,
+    .custom-request-status,
+    .custom-request-success p{
+      overflow-wrap:anywhere;
+    }
+
+    .custom-request-field input,
+    .custom-request-field select,
+    .custom-request-field textarea{
+      min-width:0;
+      max-width:100%;
+    }
+
+    .custom-request-id{
+      max-width:100%;
+      white-space:normal;
+      overflow-wrap:anywhere;
+      text-align:center;
+    }
+
+    @media (max-width:760px){
+      .custom-request-overlay.open{
+        width:100%;
+        max-width:100vw;
+        overflow:hidden;
+      }
+
+      .custom-request-shell{
+        width:100%;
+        max-width:100vw;
+        min-width:0;
+        height:100vh;
+        height:100dvh;
+        max-height:100dvh;
+        overflow:hidden;
+      }
+
+      .custom-request-head{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        gap:10px;
+      }
+
+      .custom-request-head-main{
+        flex:1 1 auto;
+        min-width:0;
+        max-width:calc(100% - 52px);
+      }
+
+      .custom-request-head h2{
+        max-width:100%;
+        line-height:1.14;
+      }
+
+      .custom-request-body{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow-y:auto;
+        overflow-x:hidden;
+        -webkit-overflow-scrolling:touch;
+        overscroll-behavior-y:contain;
+        scroll-padding-bottom:92px;
+        padding-left:max(14px, env(safe-area-inset-left));
+        padding-right:max(14px, env(safe-area-inset-right));
+      }
+
+      .custom-request-intro,
+      .custom-request-section{
+        width:100%;
+        max-width:100%;
+      }
+
+      .custom-request-section-head{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        flex-wrap:wrap;
+        align-items:flex-start;
+        justify-content:flex-start;
+        row-gap:4px;
+      }
+
+      .custom-request-section-head h3{
+        min-width:0;
+        flex:1 1 auto;
+      }
+
+      .custom-request-section-head span{
+        flex:0 1 100%;
+      }
+
+      .custom-request-grid{
+        width:100%;
+        max-width:100%;
+      }
+
+      .custom-request-field,
+      .custom-request-field.full{
+        width:100%;
+        max-width:100%;
+      }
+
+      .custom-request-field input,
+      .custom-request-field select,
+      .custom-request-field textarea{
+        display:block;
+        width:100%;
+        max-width:100%;
+      }
+
+      .custom-garment-options{
+        width:100%;
+        max-width:100%;
+      }
+
+      .custom-garment-option{
+        min-width:0;
+        max-width:100%;
+      }
+
+      .custom-garment-option span{
+        width:100%;
+        min-width:0;
+        max-width:100%;
+        overflow-wrap:anywhere;
+      }
+
+      .custom-size-group{
+        width:100%;
+        max-width:100%;
+        overflow:hidden;
+      }
+
+      .custom-size-options{
+        width:100%;
+        max-width:100%;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(46px,1fr));
+        gap:7px;
+      }
+
+      .custom-size-option,
+      .custom-size-option span{
+        width:100%;
+        min-width:0;
+        max-width:100%;
+      }
+
+      .custom-date-field,
+      .custom-date-wrap,
+      .custom-date-wrap #customNeededBy{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+      }
+
+      #turnstileCustomRequest{
+        display:block;
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow:hidden;
+      }
+
+      #turnstileCustomRequest > div,
+      #turnstileCustomRequest iframe{
+        max-width:100% !important;
+      }
+
+      .custom-request-actions{
+        width:100%;
+        max-width:100%;
+        margin:18px 0 0;
+        padding:12px 0 calc(12px + env(safe-area-inset-bottom));
+        left:auto;
+        right:auto;
+      }
+
+      .custom-request-success{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow-x:hidden;
+      }
+
+      .custom-request-success .btn{
+        max-width:100%;
+      }
+    }
+
+    @media (max-width:380px){
+      .custom-request-head{
+        padding:13px 10px 12px;
+      }
+
+      .custom-request-head-main{
+        gap:9px;
+        max-width:calc(100% - 48px);
+      }
+
+      .custom-request-icon{
+        width:38px;
+        height:38px;
+        border-radius:12px;
+      }
+
+      .custom-request-close{
+        width:40px;
+        height:40px;
+      }
+
+      .custom-request-body{
+        padding-top:14px;
+        padding-bottom:22px;
+        padding-left:max(10px, env(safe-area-inset-left));
+        padding-right:max(10px, env(safe-area-inset-right));
+      }
+
+      .custom-request-section{
+        padding:14px 10px;
+      }
+
+      .custom-size-group{
+        padding:10px 8px;
+      }
+
+      .custom-size-options{
+        grid-template-columns:repeat(auto-fit,minmax(42px,1fr));
+        gap:6px;
+      }
+
+      .custom-size-option span{
+        padding:8px 6px;
+      }
+
+      .custom-request-actions{
+        margin-top:16px;
+        padding-bottom:calc(10px + env(safe-area-inset-bottom));
       }
     }
 
@@ -6645,7 +6921,7 @@
                 <p class="custom-request-help">Select every size you expect to need. You can choose multiple sizes across Adult, Youth, and Toddler.</p>
               </div>
               <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
-              <div class="custom-request-field"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><input id="customNeededBy" name="neededBy" type="date"></div>
+              <div class="custom-request-field custom-date-field" id="customNeededByField"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><div class="custom-date-wrap"><input id="customNeededBy" name="neededBy" type="date"><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span></div></div>
               <div class="custom-request-field">
                 <label for="customArtworkStatus">Artwork status *</label>
                 <select id="customArtworkStatus" name="artworkStatus" required>
@@ -8407,6 +8683,7 @@
     const customQuantity=document.getElementById('customQuantity');
     const customColors=document.getElementById('customColors');
     const customNeededBy=document.getElementById('customNeededBy');
+    const customNeededByField=document.getElementById('customNeededByField');
     const customArtworkStatus=document.getElementById('customArtworkStatus');
     const customArtworkLink=document.getElementById('customArtworkLink');
     const customDescription=document.getElementById('customDescription');
@@ -8419,6 +8696,24 @@
     let customTurnstilePendingResolve=null;
     let customTurnstilePendingReject=null;
     let customSubmissionId='';
+
+    function openCustomNeededByPicker(){
+      if(!customNeededBy) return;
+      try{
+        if(typeof customNeededBy.showPicker==='function'){
+          customNeededBy.showPicker();
+          return;
+        }
+      }catch(error){
+        // Some browsers only allow the native picker directly from the input.
+      }
+      try{ customNeededBy.focus({preventScroll:true}); }catch(error){ customNeededBy.focus(); }
+    }
+
+    customNeededByField?.addEventListener('click',event=>{
+      if(event.target.closest('button,a,select,textarea')) return;
+      openCustomNeededByPicker();
+    });
 
     function selectedCustomGarments(){
       return Array.from(document.querySelectorAll('input[name="garmentType"]:checked')).map(input=>input.value);
