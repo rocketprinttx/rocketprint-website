@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V48-MOBILE-CUSTOM-FORM" />
+  <meta name="rocket-print-release" content="2026-10-V49-MOBILE-DATE-CONTAINMENT" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6367,6 +6367,124 @@
       }
     }
 
+
+    /* ===== V49: mobile-safe native date picker =====
+       The native date input is a transparent absolute overlay. This avoids
+       mobile Safari/Chrome intrinsic date-control widths from expanding the
+       custom form beyond the viewport. */
+    .custom-date-field{
+      min-width:0;
+      width:100%;
+      max-width:100%;
+      overflow:hidden;
+    }
+
+    .custom-date-wrap{
+      position:relative;
+      width:100%;
+      max-width:100%;
+      min-width:0;
+      height:50px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:12px;
+      background:#171717;
+      cursor:pointer;
+      isolation:isolate;
+    }
+
+    .custom-date-display{
+      position:absolute;
+      inset:0 48px 0 0;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      min-width:0;
+      padding:0 14px;
+      color:#fff;
+      font-size:16px;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      pointer-events:none;
+    }
+
+    .custom-date-display.is-placeholder{
+      color:#8d8d8d;
+    }
+
+    .custom-date-wrap .custom-date-icon{
+      right:0;
+      top:0;
+      bottom:0;
+      width:48px;
+      border-radius:0 11px 11px 0;
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .custom-date-wrap #customNeededBy{
+      position:absolute !important;
+      inset:0 !important;
+      z-index:4 !important;
+      display:block !important;
+      width:100% !important;
+      min-width:0 !important;
+      max-width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      border-radius:12px !important;
+      opacity:0 !important;
+      background:transparent !important;
+      color:transparent !important;
+      -webkit-appearance:none !important;
+      appearance:none !important;
+      cursor:pointer !important;
+    }
+
+    .custom-date-wrap #customNeededBy::-webkit-date-and-time-value{
+      min-width:0 !important;
+      width:0 !important;
+      padding:0 !important;
+      margin:0 !important;
+    }
+
+    .custom-date-wrap #customNeededBy::-webkit-calendar-picker-indicator{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      opacity:0 !important;
+      cursor:pointer !important;
+    }
+
+    .custom-date-wrap:focus-within{
+      border-color:rgba(228,58,53,.72);
+      box-shadow:0 0 0 3px rgba(228,58,53,.10);
+    }
+
+    @media (max-width:760px){
+      .custom-date-field,
+      .custom-date-wrap{
+        width:100% !important;
+        max-width:100% !important;
+        min-width:0 !important;
+      }
+
+      .custom-date-wrap{
+        height:50px;
+      }
+
+      .custom-date-display{
+        max-width:calc(100% - 48px);
+      }
+    }
+
   </style>
 
 
@@ -6921,7 +7039,7 @@
                 <p class="custom-request-help">Select every size you expect to need. You can choose multiple sizes across Adult, Youth, and Toddler.</p>
               </div>
               <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
-              <div class="custom-request-field custom-date-field" id="customNeededByField"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><div class="custom-date-wrap"><input id="customNeededBy" name="neededBy" type="date"><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span></div></div>
+              <div class="custom-request-field custom-date-field" id="customNeededByField"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><div class="custom-date-wrap"><span class="custom-date-display" id="customNeededByDisplay">Choose a date</span><span class="custom-date-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span><input id="customNeededBy" name="neededBy" type="date" aria-label="Needed by date"></div></div>
               <div class="custom-request-field">
                 <label for="customArtworkStatus">Artwork status *</label>
                 <select id="customArtworkStatus" name="artworkStatus" required>
@@ -8684,6 +8802,7 @@
     const customColors=document.getElementById('customColors');
     const customNeededBy=document.getElementById('customNeededBy');
     const customNeededByField=document.getElementById('customNeededByField');
+    const customNeededByDisplay=document.getElementById('customNeededByDisplay');
     const customArtworkStatus=document.getElementById('customArtworkStatus');
     const customArtworkLink=document.getElementById('customArtworkLink');
     const customDescription=document.getElementById('customDescription');
@@ -8697,6 +8816,28 @@
     let customTurnstilePendingReject=null;
     let customSubmissionId='';
 
+    function formatCustomNeededByDate(value){
+      if(!value) return 'Choose a date';
+      const parts=value.split('-').map(Number);
+      if(parts.length!==3 || parts.some(Number.isNaN)) return value;
+      try{
+        return new Intl.DateTimeFormat('en-US',{
+          month:'short',
+          day:'numeric',
+          year:'numeric'
+        }).format(new Date(parts[0],parts[1]-1,parts[2]));
+      }catch(error){
+        return value;
+      }
+    }
+
+    function syncCustomNeededByDisplay(){
+      if(!customNeededByDisplay || !customNeededBy) return;
+      const hasValue=Boolean(customNeededBy.value);
+      customNeededByDisplay.textContent=formatCustomNeededByDate(customNeededBy.value);
+      customNeededByDisplay.classList.toggle('is-placeholder',!hasValue);
+    }
+
     function openCustomNeededByPicker(){
       if(!customNeededBy) return;
       try{
@@ -8705,15 +8846,22 @@
           return;
         }
       }catch(error){
-        // Some browsers only allow the native picker directly from the input.
+        // iOS/Safari may require a direct tap on the native date input.
       }
       try{ customNeededBy.focus({preventScroll:true}); }catch(error){ customNeededBy.focus(); }
+      try{ customNeededBy.click(); }catch(error){}
     }
 
+    customNeededBy?.addEventListener('change',syncCustomNeededByDisplay);
+    customNeededBy?.addEventListener('input',syncCustomNeededByDisplay);
+
     customNeededByField?.addEventListener('click',event=>{
+      if(event.target===customNeededBy) return;
       if(event.target.closest('button,a,select,textarea')) return;
       openCustomNeededByPicker();
     });
+
+    syncCustomNeededByDisplay();
 
     function selectedCustomGarments(){
       return Array.from(document.querySelectorAll('input[name="garmentType"]:checked')).map(input=>input.value);
