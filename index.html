@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V44-SIMPLIFIED-STOREFRONT" />
+  <meta name="rocket-print-release" content="2026-10-V45-CUSTOM-FORM-SIZES" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -5999,6 +5999,17 @@
     .custom-garment-option input{position:absolute;opacity:0;pointer-events:none}
     .custom-garment-option span{min-height:48px;display:flex;align-items:center;justify-content:center;padding:9px 10px;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#171717;color:#aaa;font-size:.82rem;font-weight:800;transition:.16s ease}
     .custom-garment-option input:checked + span{color:#fff;border-color:#e43a35;background:rgba(228,58,53,.14);box-shadow:inset 0 0 0 1px rgba(228,58,53,.22)}
+    .custom-size-selector{display:grid;gap:12px}
+    .custom-size-group{padding:12px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:#151515}
+    .custom-size-group-title{display:block;margin:0 0 9px;color:#aaa;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+    .custom-size-options{display:flex;flex-wrap:wrap;gap:8px}
+    .custom-size-option{position:relative;cursor:pointer}
+    .custom-size-option input{position:absolute;opacity:0;pointer-events:none}
+    .custom-size-option span{min-width:48px;min-height:42px;display:flex;align-items:center;justify-content:center;padding:8px 11px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:#1a1a1a;color:#aaa;font-size:.78rem;font-weight:850;transition:.16s ease}
+    .custom-size-option input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
+    .custom-size-option input:checked + span{color:#fff;border-color:#e43a35;background:rgba(228,58,53,.16);box-shadow:inset 0 0 0 1px rgba(228,58,53,.24)}
+    #customNeededBy{color-scheme:dark}
+    #customNeededBy::-webkit-calendar-picker-indicator{filter:invert(1) brightness(2);opacity:1;cursor:pointer}
     .custom-request-help{margin:7px 0 0;color:#767676;font-size:.72rem;line-height:1.45}
     .custom-request-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
     .custom-request-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:18px}
@@ -6027,6 +6038,9 @@
       .custom-request-field.full{grid-column:auto}
       .custom-request-field input,.custom-request-field select,.custom-request-field textarea{font-size:16px;min-height:48px}
       .custom-garment-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .custom-size-group{padding:11px}
+      .custom-size-options{gap:7px}
+      .custom-size-option span{min-width:46px;min-height:44px;padding:8px 10px;font-size:.78rem}
       .custom-request-actions{position:sticky;bottom:0;z-index:2;margin:18px -14px -26px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,#0f0f0f 75%,rgba(15,15,15,.94));border-top:1px solid var(--line)}
       .custom-request-actions .btn{width:100%;justify-content:center;min-height:50px}
       .custom-request-success{min-height:calc(100dvh - 78px);padding:38px 20px}
@@ -6591,7 +6605,45 @@
                   <label class="custom-garment-option"><input type="checkbox" name="garmentType" value="Other"><span>Other</span></label>
                 </div>
               </div>
-              <div class="custom-request-field"><label for="customSizes">Sizes needed <span class="optional">(optional)</span></label><input id="customSizes" name="sizes" maxlength="160" placeholder="Example: Adult S–2XL, Youth M–XL"></div>
+              <div class="custom-request-field full">
+                <span class="custom-request-label">Sizes needed <span class="optional">(optional)</span></span>
+                <div class="custom-size-selector" id="customSizeOptions" role="group" aria-label="Sizes needed">
+                  <div class="custom-size-group">
+                    <span class="custom-size-group-title">Adult</span>
+                    <div class="custom-size-options">
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult S"><span>S</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult M"><span>M</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult L"><span>L</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult XL"><span>XL</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult 2XL"><span>2XL</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult 3XL"><span>3XL</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult 4XL"><span>4XL</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Adult 5XL"><span>5XL</span></label>
+                    </div>
+                  </div>
+                  <div class="custom-size-group">
+                    <span class="custom-size-group-title">Youth</span>
+                    <div class="custom-size-options">
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Youth XS"><span>XS</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Youth S"><span>S</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Youth M"><span>M</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Youth L"><span>L</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Youth XL"><span>XL</span></label>
+                    </div>
+                  </div>
+                  <div class="custom-size-group">
+                    <span class="custom-size-group-title">Toddler</span>
+                    <div class="custom-size-options">
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Toddler 2T"><span>2T</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Toddler 3T"><span>3T</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Toddler 4T"><span>4T</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Toddler 5T"><span>5T</span></label>
+                      <label class="custom-size-option"><input type="checkbox" name="customSize" value="Toddler 6T"><span>6T</span></label>
+                    </div>
+                  </div>
+                </div>
+                <p class="custom-request-help">Select every size you expect to need. You can choose multiple sizes across Adult, Youth, and Toddler.</p>
+              </div>
               <div class="custom-request-field"><label for="customColors">Garment color(s) <span class="optional">(optional)</span></label><input id="customColors" name="colors" maxlength="160" placeholder="Example: Black, white, red"></div>
               <div class="custom-request-field"><label for="customNeededBy">Needed by <span class="optional">(optional)</span></label><input id="customNeededBy" name="neededBy" type="date"></div>
               <div class="custom-request-field">
@@ -8353,7 +8405,6 @@
     const customOrganization=document.getElementById('customOrganization');
     const customRequestType=document.getElementById('customRequestType');
     const customQuantity=document.getElementById('customQuantity');
-    const customSizes=document.getElementById('customSizes');
     const customColors=document.getElementById('customColors');
     const customNeededBy=document.getElementById('customNeededBy');
     const customArtworkStatus=document.getElementById('customArtworkStatus');
@@ -8371,6 +8422,19 @@
 
     function selectedCustomGarments(){
       return Array.from(document.querySelectorAll('input[name="garmentType"]:checked')).map(input=>input.value);
+    }
+
+    function selectedCustomSizes(){
+      return Array.from(document.querySelectorAll('input[name="customSize"]:checked')).map(input=>input.value);
+    }
+
+    function selectedCustomSizesText(){
+      const selected=selectedCustomSizes();
+      const groups=[['Adult','Adult '],['Youth','Youth '],['Toddler','Toddler ']];
+      return groups.map(([label,prefix])=>{
+        const sizes=selected.filter(value=>value.startsWith(prefix)).map(value=>value.slice(prefix.length));
+        return sizes.length?`${label}: ${sizes.join('/')}`:'';
+      }).filter(Boolean).join(' | ');
     }
 
     function setCustomRequestStatus(message,type=''){
@@ -8473,7 +8537,7 @@
       return{
         submissionId:customSubmissionId,customerName:customName.value.trim(),email:customEmail.value.trim(),phone:customPhone.value.trim(),
         organization:customOrganization.value.trim(),requestType:customRequestType.value.trim(),garmentTypes:selectedCustomGarments(),
-        estimatedQuantity:Number(customQuantity.value),sizes:customSizes.value.trim(),colors:customColors.value.trim(),neededBy:customNeededBy.value,
+        estimatedQuantity:Number(customQuantity.value),sizes:selectedCustomSizesText(),colors:customColors.value.trim(),neededBy:customNeededBy.value,
         artworkStatus:customArtworkStatus.value.trim(),artworkLink:customArtworkLink.value.trim(),projectDescription:customDescription.value.trim(),
         notes:customNotes.value.trim(),companyWebsite:customCompanyWebsite.value.trim(),turnstileToken
       };
