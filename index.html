@@ -6367,6 +6367,24 @@
       }
     }
 
+    /* V42.3: Christmas Edition uses the same gallery sizing as the other products.
+       The main gallery thumbnail stays clean (no copyright watermark), while the modal
+       shirt previews continue using the watermarked color mockups. */
+    #designs .christmas-card .christmas-preview .card-mockup-image {
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      object-fit:cover !important;
+      object-position:center center !important;
+      transform:none !important;
+    }
+    /* Keep the three full front+back images and the standalone Logo View unchanged. */
+    .design-color-preview.shirt-view:has(.final-shirt-preview img[src*="christmas-"]) { padding:12px!important; }
+    .design-color-preview.shirt-view:has(.final-shirt-preview img[src*="christmas-"]) .final-shirt-preview img {
+      object-fit:contain!important; width:100%; height:100%;
+    }
+
+
   </style>
 
 
@@ -6477,12 +6495,45 @@
       <div class="wrap">
         <div class="section-head collection-shop-head">
           <div>
-            <div class="eyebrow">The Timeless Collection</div>
+            <div class="eyebrow">Christmas Edition + The Timeless Collection</div>
             <h2>Shop the collection.</h2>
           </div>
         </div>
 
         <div class="gallery" id="gallery">
+
+          <article class="design-card christmas-card" tabindex="0"
+            data-category="christmas holiday seasonal wellington skyrockets"
+            data-title="Tis the Season"
+            data-tag="Christmas Edition"
+            data-description="Celebrate Christmas in our seasonal Skyrockets hoodie. A cozy front chest design and a festive, full-color back featuring glowing Christmas lights, and a fireside winter scene."
+            data-design-type="image"
+            data-image="assets/christmas-special-back-preview.webp"
+            data-product="true"
+            data-price="From $32.99"
+            data-garments="youth-hoodie|adult-hoodie"
+            data-default-garment="adult-hoodie"
+            data-colors="Red|Black|White"
+            data-hoodie-colors="Red|Black|White"
+            data-default-color="Red"
+            data-adult-hoodie-sizes="S–XL|$39.99;2XL|$49.99;3XL–5XL|$54.99"
+            data-youth-hoodie-sizes="S–XL|$32.99">
+            <div class="design-preview christmas-preview">
+              <img class="card-mockup-image" src="assets/mockups/christmas-red-hoodie-card.webp"
+                   alt="Tis the Season red hoodie shown from the front and back" loading="eager" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row"><div>
+                <span class="tag">Christmas Edition</span>
+                <h3>Tis the Season</h3>
+              </div></div>
+              <p>A festive front and back, ready for the season. Choose Red, Black, or White.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#c91b21"></span>Red <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#f5f5f2"></span>White</div>
+              <div class="card-hoodie-note">Youth S–XL from $32.99 • Adult S–5XL from $39.99</div>
+              <div class="card-link">View hoodie &amp; colors <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
 
 <article class="design-card" tabindex="0"
             data-category="timeless school wellington"
@@ -6599,7 +6650,7 @@
         <div class="shop-reassurance" aria-label="Ordering information">
           <span>✓ Free local drop-off in Wellington</span>
           <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
-          <span>✓ Adult, Youth &amp; Toddler Tees • Adult &amp; Youth Hoodies</span>
+          <span>✓ Tees &amp; hoodies for the family • Christmas Edition hoodies</span>
         </div>
       </div>
     </section>
@@ -7263,6 +7314,28 @@
       }
     };
 
+    const christmasGarmentCatalog = {
+      'adult-hoodie': {
+        label:'Adult Hoodie',
+        sizes:[
+          ['S','$39.99'],['M','$39.99'],['L','$39.99'],['XL','$39.99'],
+          ['2XL','$49.99'],['3XL','$54.99'],['4XL','$54.99'],['5XL','$54.99']
+        ]
+      },
+      'youth-hoodie': {
+        label:'Youth Hoodie',
+        sizes:[['S','$32.99'],['M','$32.99'],['L','$32.99'],['XL','$32.99']]
+      }
+    };
+
+    function isChristmasDesign(design){
+      return design === 'Tis the Season';
+    }
+
+    function catalogForDesign(design){
+      return isChristmasDesign(design) ? christmasGarmentCatalog : garmentCatalog;
+    }
+
     const modal = document.getElementById('designModal');
     const modalClose = document.getElementById('modalClose');
     const modalTitle = document.getElementById('modalTitle');
@@ -7287,15 +7360,18 @@
     let previewMode = 'shirt';
 
     function currentPrice(){
-      const garment = garmentCatalog[selectedGarment];
+      const catalog = catalogForDesign(activeCard?.dataset.title);
+      const garment = catalog[selectedGarment];
       const match = garment.sizes.find(([size]) => size === selectedSize) || garment.sizes[0];
       return match[1];
     }
 
-    function priceNumber(garmentKey, size){
-      const garment = garmentCatalog[garmentKey];
+    function priceNumber(garmentKey, size, design = ''){
+      const garment = catalogForDesign(design)[garmentKey];
       if(!garment) return 0;
-      const match = garment.sizes.find(([candidate]) => candidate === size) || garment.sizes[0];
+      const match = garment.sizes.find(([candidate]) => candidate === size);
+      // Missing sizes must not silently charge the wrong price.
+      if(!match) return 0;
       return Number(String(match[1]).replace('$','')) || 0;
     }
 
@@ -7317,6 +7393,10 @@
     }
 
     function getProductMockupImage(title, color, garmentKey = ''){
+      if(isChristmasDesign(title)){
+        const chosen = ['Red','Black','White'].includes(color) ? color.toLowerCase() : 'red';
+        return 'assets/mockups/christmas-' + chosen + '-hoodie.webp';
+      }
       const key = (title || '').toLowerCase();
 
       if(isHoodieGarment(garmentKey)){
@@ -7374,7 +7454,7 @@
         modalPreview.innerHTML = `
           <div class="final-shirt-preview">
             <img src="${escapeHtml(mockup)}"
-                 alt="${escapeHtml(activeCard.dataset.title)} on ${escapeHtml(selectedColor)} ${isHoodieGarment(selectedGarment) ? 'hoodie' : 'T-shirt'}">
+                 alt="${escapeHtml(activeCard.dataset.title)} front and back on ${escapeHtml(selectedColor)} ${isHoodieGarment(selectedGarment) ? 'hoodie' : 'T-shirt'}">
           </div>`;
       } else {
         modalPreview.className = 'modal-preview design-color-preview logo-view';
@@ -7390,7 +7470,8 @@
     }
 
     function renderGarments(){
-      garmentSelector.innerHTML = Object.entries(garmentCatalog).map(([key, garment]) =>
+      const availableGarments = catalogForDesign(activeCard.dataset.title);
+      garmentSelector.innerHTML = Object.entries(availableGarments).map(([key, garment]) =>
         `<button type="button"
           class="garment-select-btn${key === selectedGarment ? ' active' : ''}"
           data-garment="${key}">
@@ -7403,7 +7484,7 @@
         button.addEventListener('click', event => {
           event.stopPropagation();
           selectedGarment = button.dataset.garment;
-          selectedSize = garmentCatalog[selectedGarment].sizes[0][0];
+          selectedSize = catalogForDesign(activeCard.dataset.title)[selectedGarment].sizes[0][0];
 
           const colors = availableColorsForSelection();
           if(colors.length && !colors.includes(selectedColor)){
@@ -7443,7 +7524,7 @@
     }
 
     function renderSizes(){
-      const garment = garmentCatalog[selectedGarment];
+      const garment = catalogForDesign(activeCard.dataset.title)[selectedGarment];
 
       sizeSelector.innerHTML = garment.sizes.map(([size, price]) =>
         `<button type="button"
@@ -7467,7 +7548,7 @@
       if(!activeCard) return;
 
       const price = currentPrice();
-      const garment = garmentCatalog[selectedGarment];
+      const garment = catalogForDesign(activeCard.dataset.title)[selectedGarment];
 
       if(selectedPrice) selectedPrice.textContent = price;
       stickyPrice.textContent = price;
@@ -7487,8 +7568,8 @@
 
     function openDesign(card){
       activeCard = card;
-      selectedGarment = 'adult-tee';
-      selectedSize = 'S';
+      selectedGarment = card.dataset.defaultGarment || 'adult-tee';
+      selectedSize = catalogForDesign(card.dataset.title)[selectedGarment].sizes[0][0];
       selectedColor = card.dataset.defaultColor || (card.dataset.colors || 'Black').split('|')[0];
       previewMode = 'shirt';
 
@@ -7603,14 +7684,14 @@
     function addConfiguredItem(){
       if(!activeCard) return;
 
-      const garment = garmentCatalog[selectedGarment];
+      const garment = catalogForDesign(activeCard.dataset.title)[selectedGarment];
       const item = {
         design: activeCard.dataset.title,
         garment: garment.label,
         color: selectedColor,
         size: selectedSize,
         quantity: 1,
-        unitPrice: priceNumber(selectedGarment, selectedSize),
+        unitPrice: priceNumber(selectedGarment, selectedSize, activeCard.dataset.title),
         mockup: getProductMockupImage(activeCard.dataset.title, selectedColor, selectedGarment)
       };
 
@@ -7659,7 +7740,7 @@
     function cartMerchandiseEstimate(){
       return cart.reduce((sum, item) => {
         const key = garmentLabelToKey(item.garment);
-        return sum + priceNumber(key, item.size) * Number(item.quantity || 0);
+        return sum + priceNumber(key, item.size, item.design) * Number(item.quantity || 0);
       }, 0);
     }
 
@@ -7677,7 +7758,7 @@
           <div class="cart-empty">
             <div>
               <strong style="display:block;color:#fff;font-size:1.1rem;margin-bottom:8px;">Your cart is empty.</strong>
-              Choose a Timeless Collection design to get started.
+              Choose a Rocket Print design to get started.
             </div>
           </div>`;
         checkoutBtn.disabled = true;
@@ -7697,7 +7778,7 @@
                   <span>${Number(item.quantity)}</span>
                   <button type="button" data-cart-action="increase" data-index="${index}" aria-label="Increase quantity">+</button>
                 </div>
-                <strong>$${(priceNumber(garmentLabelToKey(item.garment), item.size) * item.quantity).toFixed(2)}</strong>
+                <strong>$${(priceNumber(garmentLabelToKey(item.garment), item.size, item.design) * item.quantity).toFixed(2)}</strong>
               </div>
               <button type="button" class="remove-item" data-cart-action="remove" data-index="${index}">
                 Remove
@@ -7867,7 +7948,7 @@
       }
 
       checkoutMiniItems.innerHTML = cart.map(item => {
-        const price = priceNumber(garmentLabelToKey(item.garment), item.size);
+        const price = priceNumber(garmentLabelToKey(item.garment), item.size, item.design);
         return `
           <div class="checkout-mini-item">
             <span>
