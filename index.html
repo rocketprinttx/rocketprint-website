@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V52-RESTORE-NATIVE-DATE" />
+  <meta name="rocket-print-release" content="2026-10-V53-TIMELESS-LONG-SLEEVE" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6549,6 +6549,7 @@
             data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
+            data-long-sleeve-colors="Black|Sport Grey"
             data-hoodie-colors="Black"
             data-adult-hoodie-sizes="S–XL|$40.00;2XL–5XL|$50.00"
             data-youth-hoodie-sizes="XS–XL|$38.00"
@@ -6566,8 +6567,8 @@
               </div>
               <p>A classic Wellington Skyrockets design made for everyday wear. Simple, comfortable, and timeless.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#111111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
-              <div class="card-hoodie-note">Hoodie available in Black • Adult &amp; Youth</div>
-              <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
+              <div class="card-hoodie-note">Long sleeve available in Black or Sport Grey • Adult S–3XL<br>Hoodie available in Black • Adult &amp; Youth</div>
+              <div class="card-link">View tees, long sleeves &amp; hoodies <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -6586,6 +6587,7 @@
             data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
+            data-long-sleeve-colors="White|Sport Grey"
             data-hoodie-colors="White"
             data-adult-hoodie-sizes="S–XL|$40.00;2XL–5XL|$50.00"
             data-youth-hoodie-sizes="XS–XL|$38.00"
@@ -6603,8 +6605,8 @@
               </div>
               <p>A classic Wellington design with a simple, timeless look. Comfortable, versatile, and perfect for everyday wear.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
-              <div class="card-hoodie-note">Hoodie available in White • Adult &amp; Youth</div>
-              <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
+              <div class="card-hoodie-note">Long sleeve available in White or Sport Grey • Adult S–3XL<br>Hoodie available in White • Adult &amp; Youth</div>
+              <div class="card-link">View tees, long sleeves &amp; hoodies <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -6623,6 +6625,7 @@
             data-tee-sizes="S–XL|$24.99;2XL–5XL|$28.99"
             data-youth-tee-sizes="XS–XL|$19.99"
             data-toddler-tee-sizes="2T–6T|$19.99"
+            data-long-sleeve-colors="White|Sport Grey"
             data-hoodie-colors="White"
             data-adult-hoodie-sizes="S–XL|$40.00;2XL–5XL|$50.00"
             data-youth-hoodie-sizes="XS–XL|$38.00"
@@ -6640,8 +6643,8 @@
               </div>
               <p>A clean, traditional Wellington Skyrockets design with bold lettering and a simple, classic look. An easy choice for everyday wear.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#f5f5f2"></span>White <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
-              <div class="card-hoodie-note">Hoodie available in White • Adult &amp; Youth</div>
-              <div class="card-link">View tees &amp; hoodies <span aria-hidden="true">→</span></div>
+              <div class="card-hoodie-note">Long sleeve available in White or Sport Grey • Adult S–3XL<br>Hoodie available in White • Adult &amp; Youth</div>
+              <div class="card-link">View tees, long sleeves &amp; hoodies <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -6650,7 +6653,7 @@
         <div class="shop-reassurance" aria-label="Ordering information">
           <span>✓ Free local drop-off in Wellington</span>
           <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
-          <span>✓ Tees &amp; hoodies for the family • Christmas Edition hoodies</span>
+          <span>✓ Tees, long sleeves &amp; hoodies for the family • Christmas Edition hoodies</span>
         </div>
       </div>
     </section>
@@ -7293,6 +7296,13 @@
           ['2XL','$28.99'],['3XL','$28.99'],['4XL','$28.99'],['5XL','$28.99']
         ]
       },
+      'adult-long-sleeve': {
+        label:'Adult Long Sleeve',
+        sizes:[
+          ['S','$29.99'],['M','$29.99'],['L','$29.99'],['XL','$29.99'],
+          ['2XL','$34.99'],['3XL','$39.99']
+        ]
+      },
       'youth-tee': {
         label:'Youth Tee',
         sizes:[['XS','$19.99'],['S','$19.99'],['M','$19.99'],['L','$19.99'],['XL','$19.99']]
@@ -7384,11 +7394,17 @@
       return garmentKey === 'adult-hoodie' || garmentKey === 'youth-hoodie';
     }
 
+    function isLongSleeveGarment(garmentKey){
+      return garmentKey === 'adult-long-sleeve';
+    }
+
     function availableColorsForSelection(){
       if(!activeCard) return [];
       const source = isHoodieGarment(selectedGarment)
         ? (activeCard.dataset.hoodieColors || '')
-        : (activeCard.dataset.colors || '');
+        : isLongSleeveGarment(selectedGarment)
+          ? (activeCard.dataset.longSleeveColors || activeCard.dataset.colors || '')
+          : (activeCard.dataset.colors || '');
       return source.split('|').filter(Boolean);
     }
 
@@ -7412,6 +7428,24 @@
       }
 
       const grey = (color || '').toLowerCase().includes('sport');
+
+      if(isLongSleeveGarment(garmentKey)){
+        if(key.includes('wordmark')){
+          return grey
+            ? 'assets/mockups/wordmark-sport-grey-long-sleeve.webp'
+            : 'assets/mockups/wordmark-white-long-sleeve.webp';
+        }
+
+        if(key.includes('heritage')){
+          return grey
+            ? 'assets/mockups/heritage-sport-grey-long-sleeve.webp'
+            : 'assets/mockups/heritage-white-long-sleeve.webp';
+        }
+
+        return grey
+          ? 'assets/mockups/skyrockets-sport-grey-long-sleeve.webp'
+          : 'assets/mockups/skyrockets-black-long-sleeve.webp';
+      }
 
       if(key.includes('wordmark')){
         return grey
@@ -7454,7 +7488,7 @@
         modalPreview.innerHTML = `
           <div class="final-shirt-preview">
             <img src="${escapeHtml(mockup)}"
-                 alt="${escapeHtml(activeCard.dataset.title)} front and back on ${escapeHtml(selectedColor)} ${isHoodieGarment(selectedGarment) ? 'hoodie' : 'T-shirt'}">
+                 alt="${escapeHtml(activeCard.dataset.title)} front view on ${escapeHtml(selectedColor)} ${isHoodieGarment(selectedGarment) ? 'hoodie' : isLongSleeveGarment(selectedGarment) ? 'long-sleeve T-shirt' : 'T-shirt'}">
           </div>`;
       } else {
         modalPreview.className = 'modal-preview design-color-preview logo-view';
