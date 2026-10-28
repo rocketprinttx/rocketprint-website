@@ -1,4 +1,4 @@
-/* Rocket Print V54.1 staging migration — consent-aware website metrics.
+/* Rocket Print V54.1 R3 staging migration — consent-aware website metrics.
    Tracking identifiers are selected by hostname. Only approved product metadata is sent;
    never customer names, emails, phone numbers, messages, uploaded files, payment details,
    order IDs, session IDs, or URL query strings.
@@ -139,24 +139,35 @@
   updateButtons();
   if(!config){deciding=false;updateButtons();return;}
   if(explicitChoice){applyConsent(explicitChoice,false);return;}
-  // Only enable cookies automatically after a same-origin, edge-derived US country check.
-  // Unknown country or lookup errors fail closed. No external tag loads while this check runs.
+  // A recognized browser-level global opt-out prevents default-on tracking.
+  // The visitor may still control the website preference explicitly.
+  if(navigator.globalPrivacyControl===true){applyConsent('denied',false);return;}
+
+  // R3: Read the first-party Cloudflare trace's country line; this endpoint has
+  // been confirmed to return loc=US for the staging site. Never store, log or
+  // transmit its IP/user-agent lines. If unavailable, fall back to the existing
+  // Pages Function. No third-party analytics loads before a positive US result.
   var completed=false;
-  var timeout=setTimeout(function(){
+  var timeout=setTimeout(function(){finishCountry(false);},10000);
+  function finishCountry(isUS){
     if(completed||choiceChanged)return;
-    completed=true;
-    applyConsent('denied',false);
-  },4500);
-  fetch('/analytics-region',{credentials:'same-origin',cache:'no-store'})
-    .then(function(response){if(!response.ok)throw Error('Region lookup failed');return response.json();})
+    completed=true;clearTimeout(timeout);
+    applyConsent(isUS===true?'granted':'denied',false);
+  }
+  function legacyRegionCheck(){
+    return fetch('/analytics-region',{credentials:'same-origin',cache:'no-store'})
+      .then(function(response){if(!response.ok)throw Error('Region lookup failed');return response.json();})
+      .then(function(data){return data && data.us===true;});
+  }
+  fetch('/cdn-cgi/trace',{credentials:'same-origin',cache:'no-store'})
+    .then(function(response){if(!response.ok)throw Error('Trace lookup failed');return response.text();})
     .then(function(data){
-      if(completed||choiceChanged)return;
-      completed=true;clearTimeout(timeout);
-      applyConsent(data && data.us===true?'granted':'denied',false);
+      var result=data.match(/^loc=([A-Z]{2})\r?$/m);
+      if(!result)throw Error('Country missing');
+      finishCountry(result[1]==='US');
     })
     .catch(function(){
       if(completed||choiceChanged)return;
-      completed=true;clearTimeout(timeout);
-      applyConsent('denied',false);
+      legacyRegionCheck().then(finishCountry).catch(function(){finishCountry(false);});
     });
 })();
