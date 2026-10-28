@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="rocket-print-release" content="2026-10-V54-BELLE-QUARTER-ZIP" />
+  <meta name="rocket-print-site-build" content="2026-10-V54.1-PAGES-ANALYTICS-PRIVACY" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6385,6 +6386,11 @@
     }
 
 
+
+    /* V54 staging migration: unobtrusive, legible footer privacy links */
+    .rp-privacy-links{font-size:.77rem;letter-spacing:.01em;margin-top:3px}
+    .rp-privacy-links a{color:#aaa;text-decoration:underline;text-decoration-color:#646464;text-underline-offset:3px}
+    .rp-privacy-links a:hover,.rp-privacy-links a:focus-visible{color:#fff;text-decoration-color:var(--red-bright)}
   </style>
 
 
@@ -6403,7 +6409,7 @@
 
 <body>
 
-  <div class="stripe-return-gate" id="stripeReturnGate" role="status" aria-live="polite" aria-atomic="true">
+  <div class="stripe-return-gate" id="stripeReturnGate" data-clarity-mask="true" role="status" aria-live="polite" aria-atomic="true">
     <div class="stripe-return-card">
       <div class="rocket-processing-spinner" aria-hidden="true">
         <img src="assets/rocket-print-logo.png" alt="">
@@ -6862,6 +6868,7 @@
       <img class="footer-logo" src="assets/rocket-print-logo.png" alt="Rocket Print">
       <div class="footer-copy">© 2026 Rocket Print. All rights reserved.</div>
       <div class="footer-copy">Wellington, Texas • rocketprinttx.com</div>
+      <div class="footer-copy rp-privacy-links"><a href="privacy.html">Privacy Policy</a><span aria-hidden="true"> · </span><a href="privacy.html#privacy-choices">Privacy Choices</a></div>
       <a class="back-to-top" href="#top" aria-label="Back to top">
         <span aria-hidden="true">↑</span>
       </a>
@@ -6943,7 +6950,7 @@
   </div>
 
 
-  <div class="custom-request-overlay" id="customRequestOverlay" aria-hidden="true">
+  <div class="custom-request-overlay" id="customRequestOverlay" data-clarity-mask="true" aria-hidden="true">
     <div class="custom-request-shell" role="dialog" aria-modal="true" aria-labelledby="customRequestTitle">
       <div class="custom-request-head">
         <div class="custom-request-head-main">
@@ -7111,7 +7118,7 @@
       </div>
 
       <div class="checkout-body" id="checkoutBody">
-        <section class="checkout-form-pane">
+        <section class="checkout-form-pane" data-clarity-mask="true">
           <div class="checkout-section">
             <div class="checkout-section-heading">
               <h3>Contact information</h3>
@@ -7256,7 +7263,7 @@
 
 
               <div class="stripe-checkout-shell">
-                <div id="stripeCheckoutMount"></div>
+                <div id="stripeCheckoutMount" data-clarity-mask="true"></div>
               </div>
 
               <div class="payment-trust-row stripe-trust-row">
@@ -7269,7 +7276,7 @@
             </div>
           </div>
 
-          <div class="checkout-success" id="checkoutSuccess">
+          <div class="checkout-success" id="checkoutSuccess" data-clarity-mask="true">
             <div class="success-mark">✓</div>
             <h3>Order confirmed.</h3>
             <p>Your payment was completed and your Rocket Print order has been created.</p>
@@ -7611,6 +7618,7 @@
 
           renderColors();
           updateSelection();
+          window.rocketAnalytics?.track('select_product_option', {item_name:activeCard.dataset.title,option_type:'garment',option_value:catalogForDesign(activeCard.dataset.title)[selectedGarment].label});
         });
       });
     }
@@ -7637,6 +7645,7 @@
           selectedColor = button.dataset.color;
           previewMode = 'shirt';
           updateSelection();
+          window.rocketAnalytics?.track('select_product_option', {item_name:activeCard.dataset.title,option_type:'color',option_value:selectedColor});
         });
       });
     }
@@ -7658,6 +7667,7 @@
           event.stopPropagation();
           selectedSize = button.dataset.size;
           updateSelection();
+          window.rocketAnalytics?.track('select_product_option', {item_name:activeCard.dataset.title,option_type:'size',option_value:selectedSize});
         });
       });
     }
@@ -7702,6 +7712,10 @@
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
+      window.rocketAnalytics?.itemEvent('view_item', {
+        design:card.dataset.title, garment:catalogForDesign(card.dataset.title)[selectedGarment].label,
+        color:selectedColor, size:selectedSize, unitPrice:priceNumber(selectedGarment,selectedSize,card.dataset.title),quantity:1
+      });
       requestAnimationFrame(() => modalClose.focus());
     }
 
@@ -7822,6 +7836,7 @@
       }
 
       saveCart();
+      window.rocketAnalytics?.itemEvent('add_to_cart', item);
       closeModal();
       showAddedToCart(item);
     }
@@ -7933,6 +7948,7 @@
     });
 
     function openCart(){
+      window.rocketAnalytics?.cartEvent('view_cart',cart);
       closeMenu();
       cartOverlay.classList.add('open');
       cartOverlay.setAttribute('aria-hidden','false');
@@ -8584,6 +8600,7 @@
 
     function openCheckout(){
       if(cart.length === 0) return;
+      window.rocketAnalytics?.cartEvent('begin_checkout',cart);
 
       closeCart();
       checkoutSummaryNormal.style.display = '';
@@ -8944,6 +8961,7 @@
     }
 
     function openCustomRequest(){
+      window.rocketAnalytics?.track('view_custom_form',{form_type:'custom_printing'});
       resetCustomRequestView();
       customRequestOverlay.classList.add('open');
       customRequestOverlay.setAttribute('aria-hidden','false');
@@ -9066,6 +9084,7 @@
         customRequestId.textContent=result.requestId?`Request ${result.requestId}`:'Request received';
         customRequestFormContent.style.display='none';
         customRequestSuccess.classList.add('visible');
+        window.rocketAnalytics?.track('generate_lead',{lead_type:'custom_printing',submission_status:'accepted'});
         customRequestForm.reset();
         customSubmissionId='';
         resetCustomTurnstileWidget();
@@ -9128,6 +9147,8 @@
       console.error('Unable to restore Stripe checkout result:', error);
     });
   </script>
+
+  <script defer src="assets/rocket-analytics.js"></script>
 
   <script
     defer
