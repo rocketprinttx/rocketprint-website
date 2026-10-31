@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="rocket-print-release" content="2026-10-V54-BELLE-QUARTER-ZIP" />
-  <meta name="rocket-print-site-build" content="2026-10-V54.2-SIMPLIFIED-REQUEST-AUTO-DELIVERY" />
+  <meta name="rocket-print-site-build" content="2026-10-V54.3-COLLINGSWORTH-COUNTY-DELIVERY" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6708,7 +6708,7 @@
         </div>
 
         <div class="shop-reassurance" aria-label="Ordering information">
-          <span>✓ Free local drop-off in Wellington</span>
+          <span>✓ Free local delivery in Collingsworth County, TX</span>
           <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
           <span>✓ Tees, long sleeves, hoodies &amp; new boutique styles • Christmas Edition hoodies</span>
         </div>
@@ -6887,7 +6887,7 @@
         </div>
 
         <div class="delivery-summary">
-          <span>✓ Free local drop-off in Wellington</span>
+          <span>✓ Free local delivery in Collingsworth County, TX</span>
           <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
           <span>✓ Please allow approximately 2 weeks for your order to be ready.</span>
         </div>
@@ -6984,7 +6984,7 @@
           <strong id="cartSubtotal">$0.00</strong>
         </div>
         <div class="cart-note">
-          Free Wellington local delivery is selected by default. Shipping for other addresses and any applicable tax are confirmed at secure checkout.
+          Free Collingsworth County local delivery is shown by default. Shipping for addresses outside our local area and applicable tax are confirmed at secure checkout.
         </div>
         <button type="button" class="btn btn-primary" id="checkoutBtn">Checkout</button>
       </div>
@@ -7074,7 +7074,7 @@
           <div class="checkout-section">
             <div class="checkout-section-heading">
               <h3>Delivery method</h3>
-              <span>Free local delivery is selected automatically for Wellington.</span>
+              <span>Free local delivery is selected automatically for eligible Collingsworth County addresses.</span>
             </div>
 
             <div class="fulfillment-grid">
@@ -7087,12 +7087,15 @@
               <label class="fulfillment-option selected" id="localDropOption">
                 <input type="radio" name="fulfillment" value="Local Drop Off" checked>
                 <strong>Local Drop Off</strong>
-                <span>Free for Wellington, TX 79095 addresses</span>
+                <span>Free in Collingsworth County, TX</span>
               </label>
             </div>
 
             <div class="local-eligibility-note" id="localEligibilityNote">
-              Free local drop-off applies in Wellington, TX 79095. We’ll add shipping automatically for other addresses.
+              Free local delivery is available for recognized Collingsworth County communities. Shipping is added automatically for other destinations.
+            </div>
+            <div class="local-eligibility-note" style="margin-top:6px;">
+              Live in rural Collingsworth County but your postal address shows shipping? <a href="mailto:support@rocketprinttx.com?subject=Collingsworth%20County%20Delivery">Contact us</a> before paying so we can confirm local delivery.
             </div>
           </div>
         </section>
@@ -7947,6 +7950,17 @@
     const CLIENT_SHIPPING_1_TO_2 = 12.00;
     const CLIENT_SHIPPING_3_PLUS = 16.00;
 
+    const COLLINGSWORTH_LOCAL_CITY_ZIPS = Object.freeze({
+      wellington: ['79095'],
+      dodson: ['79230'],
+      quail: ['79251'],
+      samnorwood: ['79077'],
+      // Small unincorporated communities lack their own current USPS ZIP.
+      // Their locally used mailing ZIP may vary; ask to confirm unusual rural addresses.
+      dozier: ['79077', '79095', '79251'],
+      lutie: ['79077', '79095']
+    });
+
     const TURNSTILE_SITE_KEY = '0x4AAAAAAFQkG9ZPeZkpU6Pq';
     const TURNSTILE_ACTION = 'rocket_print_checkout';
 
@@ -7991,31 +8005,34 @@
       }).join('');
     }
 
-    function isWellingtonCheckoutAddress(){
-      const city = checkoutCity.value.trim().toLowerCase();
+    function isCollingsworthCheckoutAddress(){
+      const city = checkoutCity.value.trim().toLowerCase().replace(/\s+/g, ' ');
       const state = checkoutState.value.trim().toUpperCase();
       const zip = checkoutZip.value.trim();
-      return city === 'wellington' && state === 'TX' && /^79095(?:-\d{4})?$/.test(zip);
+      if(state !== 'TX' || !/^\d{5}(?:-\d{4})?$/.test(zip)) return false;
+      const postalCodes = COLLINGSWORTH_LOCAL_CITY_ZIPS[city];
+      return Array.isArray(postalCodes) && postalCodes.includes(zip.slice(0, 5));
     }
 
-    // An incomplete address keeps the starting local estimate; an entered
-    // non-Wellington destination immediately switches to the existing paid rate.
-    // The Worker checks the complete destination before creating checkout.
-    function isClearlyOutsideWellington(){
-      const city = checkoutCity.value.trim().toLowerCase();
+    // Keep free local delivery as the provisional default until enough of
+    // the address is entered. The Worker always validates complete addresses.
+    function isClearlyOutsideCollingsworth(){
+      const city = checkoutCity.value.trim().toLowerCase().replace(/\s+/g, ' ');
       const state = checkoutState.value.trim().toUpperCase();
       const zip = checkoutZip.value.trim();
-      const nonlocalCity = city.length >= 3 && !'wellington'.startsWith(city);
+      const cities = Object.keys(COLLINGSWORTH_LOCAL_CITY_ZIPS);
+      const knownZips = [...new Set(Object.values(COLLINGSWORTH_LOCAL_CITY_ZIPS).flat())];
+      const nonlocalCity = city.length >= 3 && !cities.some(name => name.startsWith(city));
       const nonlocalState = state.length === 2 && state !== 'TX';
-      const nonlocalZip = /^\d{5}/.test(zip) && zip.slice(0,5) !== '79095';
+      const nonlocalZip = /^\d{5}/.test(zip) && !knownZips.includes(zip.slice(0, 5));
       return nonlocalCity || nonlocalState || nonlocalZip;
     }
 
     function updateLocalDropEligibility(){
       const localRadio = localDropOption.querySelector('input');
       const shippingRadio = shippingOption.querySelector('input');
-      const eligible = isWellingtonCheckoutAddress();
-      const outside = isClearlyOutsideWellington();
+      const eligible = isCollingsworthCheckoutAddress();
+      const outside = isClearlyOutsideCollingsworth();
       const ship = outside || (!eligible && checkoutCity.value.trim().length > 0 &&
         checkoutZip.value.trim().length >= 5);
       const previous = selectedFulfillment();
@@ -8029,10 +8046,10 @@
       shippingOption.classList.toggle('disabled', !ship);
 
       localEligibilityNote.textContent = eligible
-        ? 'Free local drop-off applies to your Wellington, TX 79095 address.'
+        ? 'Free local delivery applies to your Collingsworth County address.'
         : ship
-          ? 'Standard shipping applies outside Wellington, TX 79095 ($12 for 1–2 items; $16 for 3+ items).'
-          : 'Free Wellington local drop-off shown until your address is entered. Shipping will be added automatically for other addresses.';
+          ? 'Standard shipping applies to destinations outside our automatically recognized Collingsworth County local delivery area ($12 for 1–2 items; $16 for 3+ items). If your address is actually inside the county, contact us before paying.'
+          : 'Free Collingsworth County local delivery shown until your address is entered. Standard shipping will be added for other destinations.';
 
       updateFulfillmentVisuals();
       if(previous !== selectedFulfillment()){
@@ -8128,8 +8145,8 @@
         throw new Error('Your cart is empty.');
       }
 
-      if(selectedFulfillment() === 'Local Drop Off' && !isWellingtonCheckoutAddress()){
-        throw new Error('Local drop-off is only available in Wellington, TX 79095.');
+      if(selectedFulfillment() === 'Local Drop Off' && !isCollingsworthCheckoutAddress()){
+        throw new Error('Free local delivery requires a recognized Collingsworth County, TX address. Contact us if your rural county address is not recognized.');
       }
     }
 
