@@ -6573,8 +6573,8 @@
               </div>
               <p>A classic Wellington Skyrockets design made for everyday wear. Simple, comfortable, and timeless.</p>
               <div class="card-color-names"><span class="mini-dot" style="--dot:#111111"></span>Black <span class="dot-sep">·</span> <span class="mini-dot" style="--dot:#9b9b9b"></span>Sport Grey</div>
-              <div class="card-hoodie-note">Long sleeve available in Black or Sport Grey • Adult S–3XL<br>Hoodie available in Black • Adult &amp; Youth</div>
-              <div class="card-link">View tees, long sleeves &amp; hoodies <span aria-hidden="true">→</span></div>
+              <div class="card-hoodie-note">Long sleeve in Black or Sport Grey • Adult S–3XL<br>Black hoodies • Adult &amp; Youth • NEW: Black Infant Bodysuit, NB–24MOS</div>
+              <div class="card-link">View tees, hoodies &amp; bodysuits <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -7318,12 +7318,25 @@
       }
     };
 
+    // V54.4: Exclusive Skyrockets Signature infant bodysuit option.
+    // Do not expose this garment on the other Timeless designs.
+    const signatureGarmentCatalog = {
+      ...garmentCatalog,
+      'infant-bodysuit': {
+        label:'Infant Bodysuit',
+        sizes:[
+          ['NB','$19.99'],['6MOS','$19.99'],['12MOS','$19.99'],
+          ['18MOS','$19.99'],['24MOS','$19.99']
+        ]
+      }
+    };
+
     function isChristmasDesign(design){
       return design === 'Tis the Season';
     }
 
     function catalogForDesign(design){
-      return boutiqueGarmentCatalog[design] || (isChristmasDesign(design) ? christmasGarmentCatalog : garmentCatalog);
+      return boutiqueGarmentCatalog[design] || (isChristmasDesign(design) ? christmasGarmentCatalog : (design === 'Skyrockets Signature' ? signatureGarmentCatalog : garmentCatalog));
     }
 
     const modal = document.getElementById('designModal');
@@ -7366,7 +7379,7 @@
     }
 
     function garmentLabelToKey(label){
-      const catalogs = [garmentCatalog, christmasGarmentCatalog,
+      const catalogs = [garmentCatalog, signatureGarmentCatalog, christmasGarmentCatalog,
         ...Object.values(boutiqueGarmentCatalog)];
       for(const catalog of catalogs){
         const match = Object.entries(catalog).find(([, garment]) => garment.label === label);
@@ -7385,6 +7398,7 @@
 
     function availableColorsForSelection(){
       if(!activeCard) return [];
+      if(selectedGarment === 'infant-bodysuit') return ['Black'];
       const source = isHoodieGarment(selectedGarment)
         ? (activeCard.dataset.hoodieColors || '')
         : isLongSleeveGarment(selectedGarment)
@@ -7394,6 +7408,9 @@
     }
 
     function getProductMockupImage(title, color, garmentKey = ''){
+      if(title === 'Skyrockets Signature' && garmentKey === 'infant-bodysuit'){
+        return 'assets/mockups/skyrockets-signature-black-infant-bodysuit.webp';
+      }
       if(title === 'Wellington Belle Crewneck'){
         return 'assets/mockups/wellington-belle-crewneck-black.webp';
       }
