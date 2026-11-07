@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-10-V54-BELLE-QUARTER-ZIP" />
-  <meta name="rocket-print-site-build" content="2026-10-V54.3-COLLINGSWORTH-COUNTY-DELIVERY" />
+  <meta name="rocket-print-release" content="2026-11-V55-WELLINGTON-VINTAGE-BOW" />
+  <meta name="rocket-print-site-build" content="2026-11-V55-WELLINGTON-VINTAGE-BOW" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6680,6 +6680,33 @@
             </div>
           </article>
 
+
+          <!-- V55: Standalone Sand crewneck, approved Wellington Vintage Bow artwork and boutique flat-lay mockup. -->
+          <article class="design-card" tabindex="0"
+            data-category="timeless boutique wellington vintage bow sand crewneck sweatshirt skyrockets"
+            data-title="Wellington Vintage Bow Crewneck"
+            data-tag="Timeless Collection"
+            data-description="A warm Sand Gildan Heavy Blend crewneck featuring oversized distressed vintage-red WELLINGTON lettering, a hand-painted pink-red bow, star accents, and flowing Skyrockets script. Soft, unisex fleece for cool-weather days."
+            data-design-type="image"
+            data-image="assets/wellington-vintage-bow-crewneck-logo.webp"
+            data-product="true"
+            data-price="From $39.99"
+            data-garments="adult-crewneck"
+            data-default-garment="adult-crewneck"
+            data-colors="Sand"
+            data-default-color="Sand">
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/wellington-vintage-bow-crewneck-sand.webp" alt="Wellington Vintage Bow Sand Gildan crewneck with vintage-red lettering and a pink bow in a winter boutique flat-lay" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row"><div><span class="tag">Timeless Collection</span><h3>Wellington Vintage Bow Crewneck</h3></div></div>
+              <p>Vintage Wellington charm, a soft pink bow, and cozy Sand fleece for an everyday boutique look.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#d8c9a9"></span>Sand</div>
+              <div class="card-hoodie-note">Adult S–XL $39.99 • 2XL $44.99 • 3XL $47.99</div>
+              <div class="card-link">View crewneck &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
           <article class="design-card" tabindex="0"
             data-category="timeless boutique wellington quarter zip classic red pullover"
             data-title="Wellington Classic Quarter-Zip"
@@ -6710,7 +6737,7 @@
         <div class="shop-reassurance" aria-label="Ordering information">
           <span>✓ Free local delivery in Collingsworth County, TX</span>
           <span>✓ Shipping: $12 (1–2 items) | $16 (3+ items)</span>
-          <span>✓ Tees, long sleeves, hoodies &amp; new boutique styles • Christmas Edition hoodies</span>
+          <span>✓ Tees, long sleeves, hoodies, crewnecks &amp; quarter-zips • Christmas Edition hoodies</span>
         </div>
       </div>
     </section>
@@ -7239,7 +7266,8 @@
       'Black':'#111111',
       'Sport Grey':'#9b9b9b',
       'White':'#f5f5f2',
-      'Red':'#a9161c'
+      'Red':'#a9161c',
+      'Sand':'#d8c9a9'
     };
 
     function getShirtColor(name){
@@ -7290,6 +7318,15 @@
           sizes:[
             ['S','$29.99'],['M','$29.99'],['L','$29.99'],['XL','$29.99'],
             ['2XL','$34.99'],['3XL','$39.99'],['4XL','$39.99'],['5XL','$39.99']
+          ]
+        }
+      },
+      'Wellington Vintage Bow Crewneck': {
+        'adult-crewneck': {
+          label:'Adult Crewneck',
+          sizes:[
+            ['S','$39.99'],['M','$39.99'],['L','$39.99'],['XL','$39.99'],
+            ['2XL','$44.99'],['3XL','$47.99']
           ]
         }
       },
@@ -7413,6 +7450,9 @@
       }
       if(title === 'Wellington Belle Crewneck'){
         return 'assets/mockups/wellington-belle-crewneck-black.webp';
+      }
+      if(title === 'Wellington Vintage Bow Crewneck'){
+        return 'assets/mockups/wellington-vintage-bow-crewneck-sand.webp';
       }
       if(title === 'Wellington Classic Quarter-Zip'){
         return 'assets/mockups/wellington-classic-quarter-zip-red.webp';
