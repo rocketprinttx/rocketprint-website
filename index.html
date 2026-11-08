@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="rocket-print-release" content="2026-11-V55-WELLINGTON-VINTAGE-BOW" />
-  <meta name="rocket-print-site-build" content="2026-11-V55-WELLINGTON-VINTAGE-BOW" />
+  <meta name="rocket-print-release" content="2026-11-V56-COFFEE-COLLECTION" />
+  <meta name="rocket-print-site-build" content="2026-11-V56-COFFEE-COLLECTION" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Rocket Print — Wellington, Texas apparel and custom printing. Explore the Timeless Collection, premium local designs, and custom apparel." />
   <meta name="theme-color" content="#080808" />
@@ -6501,7 +6501,7 @@
       <div class="wrap">
         <div class="section-head collection-shop-head">
           <div>
-            <div class="eyebrow">Christmas Edition + The Timeless Collection</div>
+            <div class="eyebrow">Christmas Edition + The Timeless Collection + Coffee Collection</div>
             <h2>Shop the collection.</h2>
           </div>
         </div>
@@ -6729,6 +6729,59 @@
               <div class="card-color-names"><span class="mini-dot" style="--dot:#a9161c"></span>Red</div>
               <div class="card-hoodie-note">Adult S–3XL • From $34.99</div>
               <div class="card-link">View quarter-zip &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
+          <!-- V56: Coffee Collection. Two designs; two Gildan garments per design. -->
+          <article class="design-card" tabindex="0"
+            data-category="coffee collection life happens coffee helps iced coffee sand gildan crewneck long sleeve"
+            data-title="Life Happens Coffee Helps"
+            data-tag="Coffee Collection"
+            data-description="Our Life Happens Coffee Helps design features an iced coffee, gingham bow and warm coffeehouse details. Choose a Sand Gildan crewneck or long-sleeve T-shirt in adult sizes S–3XL."
+            data-design-type="image"
+            data-image="assets/coffee-life-happens-artwork.webp"
+            data-product="true"
+            data-price="From $29.99"
+            data-garments="adult-crewneck|adult-long-sleeve"
+            data-default-garment="adult-crewneck"
+            data-colors="Sand"
+            data-long-sleeve-colors="Sand"
+            data-default-color="Sand">
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/coffee-life-happens-sand-crewneck.webp" alt="Life Happens Coffee Helps on Sand Gildan crewneck sweatshirt" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row"><div><span class="tag">Coffee Collection</span><h3>Life Happens Coffee Helps</h3></div></div>
+              <p>Coffee comforts in Sand. Choose a Gildan crewneck or long sleeve.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#dcc5a3"></span>Sand</div>
+              <div class="card-hoodie-note">Adult S–3XL • Long sleeve from $29.99 • Crewneck from $39.99</div>
+              <div class="card-link">View garments &amp; sizes <span aria-hidden="true">→</span></div>
+            </div>
+          </article>
+
+          <article class="design-card" tabindex="0"
+            data-category="coffee collection espresso yourself dark chocolate gildan crewneck long sleeve"
+            data-title="Espresso Yourself"
+            data-tag="Coffee Collection"
+            data-description="Our Espresso Yourself design pairs nostalgic cafe lettering with a steaming espresso cup. Choose a Dark Chocolate Gildan crewneck or long-sleeve T-shirt in adult sizes S–3XL."
+            data-design-type="image"
+            data-image="assets/coffee-espresso-yourself-artwork.webp"
+            data-product="true"
+            data-price="From $29.99"
+            data-garments="adult-crewneck|adult-long-sleeve"
+            data-default-garment="adult-crewneck"
+            data-colors="Dark Chocolate"
+            data-long-sleeve-colors="Dark Chocolate"
+            data-default-color="Dark Chocolate">
+            <div class="design-preview">
+              <img class="card-mockup-image" src="assets/mockups/coffee-espresso-yourself-chocolate-crewneck.webp" alt="Espresso Yourself on Dark Chocolate Gildan crewneck sweatshirt" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-row"><div><span class="tag">Coffee Collection</span><h3>Espresso Yourself</h3></div></div>
+              <p>A rich Dark Chocolate coffeehouse look. Choose a Gildan crewneck or long sleeve.</p>
+              <div class="card-color-names"><span class="mini-dot" style="--dot:#3a2118"></span>Dark Chocolate</div>
+              <div class="card-hoodie-note">Adult S–3XL • Long sleeve from $29.99 • Crewneck from $39.99</div>
+              <div class="card-link">View garments &amp; sizes <span aria-hidden="true">→</span></div>
             </div>
           </article>
 
@@ -7263,6 +7316,8 @@
      */
 
     const shirtColors = {
+      'Dark Chocolate':'#3a2118',
+      'Sand':'#dcc5a3',
       'Black':'#111111',
       'Sport Grey':'#9b9b9b',
       'White':'#f5f5f2',
@@ -7312,6 +7367,28 @@
 
     // V54 boutique garments are not global: each new design exposes only its own style.
     const boutiqueGarmentCatalog = {
+      // V56 Coffee Collection pricing is exclusive to these two designs.
+      // Other V55 long-sleeve and crewneck prices are deliberately unchanged.
+      'Life Happens Coffee Helps': {
+        'adult-crewneck': {
+          label:'Adult Crewneck',
+          sizes:[['S','$39.99'],['M','$39.99'],['L','$39.99'],['XL','$39.99'],['2XL','$44.99'],['3XL','$44.99']]
+        },
+        'adult-long-sleeve': {
+          label:'Adult Long Sleeve',
+          sizes:[['S','$29.99'],['M','$29.99'],['L','$29.99'],['XL','$29.99'],['2XL','$34.99'],['3XL','$34.99']]
+        }
+      },
+      'Espresso Yourself': {
+        'adult-crewneck': {
+          label:'Adult Crewneck',
+          sizes:[['S','$39.99'],['M','$39.99'],['L','$39.99'],['XL','$39.99'],['2XL','$44.99'],['3XL','$44.99']]
+        },
+        'adult-long-sleeve': {
+          label:'Adult Long Sleeve',
+          sizes:[['S','$29.99'],['M','$29.99'],['L','$29.99'],['XL','$29.99'],['2XL','$34.99'],['3XL','$34.99']]
+        }
+      },
       'Wellington Belle Crewneck': {
         'adult-crewneck': {
           label:'Adult Crewneck',
@@ -7445,6 +7522,17 @@
     }
 
     function getProductMockupImage(title, color, garmentKey = ''){
+      // V56: Garment-specific complete images; no CSS artwork overlays.
+      if(title === 'Life Happens Coffee Helps'){
+        return garmentKey === 'adult-long-sleeve'
+          ? 'assets/mockups/coffee-life-happens-sand-long-sleeve.webp'
+          : 'assets/mockups/coffee-life-happens-sand-crewneck.webp';
+      }
+      if(title === 'Espresso Yourself'){
+        return garmentKey === 'adult-long-sleeve'
+          ? 'assets/mockups/coffee-espresso-yourself-chocolate-long-sleeve.webp'
+          : 'assets/mockups/coffee-espresso-yourself-chocolate-crewneck.webp';
+      }
       if(title === 'Skyrockets Signature' && garmentKey === 'infant-bodysuit'){
         return 'assets/mockups/skyrockets-signature-black-infant-bodysuit.webp';
       }
